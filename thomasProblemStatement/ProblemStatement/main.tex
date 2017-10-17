@@ -49,10 +49,9 @@
     \end{minipage}\\[2cm]
     \begin{abstract}
     \item 
-			The Project we are working on requires us to connect the Northwest Climate Toolbox database to an already existing AgBizClimate System. This System Will take the data from the weather database and produce a crop yield forecast. This forecast will then be displayed though the AgBizClimate system. The goal for this project is to provide guidance for farmers, researchers and government agencies on how climate change will affect crop yield.
+						Climate change is a big problem facing everyone, however it will impact farmers and Ranchers more than the rest of us. The AgBizClimate project hopes to give farmers the tools to deal with the challenges climate change presents. The AgBizLogic tool already provides a tool that displays long term climate data and allows the user and allows the user to make adjustments to crop yields, inputs and budget. Our challenge is to create a tool that gets and displays short term seasonal climate forecasts. This tool will display the data for the user and allow adjustments to made to yield, inputs and budgets.
 			
-			We will solve this problem using a python based RESTFUL API as a Django application. Essentially our application will go out to the database get the necessary data and package it up as a JSON object for the AgBizClimate system.
-			
+			To solve this problem we will use the existing Northwest Climate Toolbox. The Northwest Climate Toolbox has an API that will provide short term climate predictions over one season. We will create a restful API that will connect to this database. We will then modify the front end to allow the users to view the short term climate data and then make changes to the yield, input, demand and budgets for their crop. Finally we will then store their updates in a database.
 
     \end{abstract}
     \vfill % Fill the rest of the page with whitespace
@@ -60,26 +59,24 @@
 		
 \section{The Problem}
 
-	Climate Change, a big and difficult problem for every one, but especially so for the worlds food producers. As the climate continues to warm the current agricultural system will be pushed to innovate, become more efficient and ultimately feed the world. To meet this goal farmers will need cutting edge tools that provide farm-level support. Governments and researchers will need tools to help provide guidance on the effects of global warming and global warming related policies. The AgBizClimate program is one solution to this need. Currently the AgBizClimate system is just the business logic along with the view to solve this problem.
+	Climate Change is a big and difficult problem for everyone, but especially so for the worlds food producers. As the climate continues to warm the current agricultural system will be pushed to innovate, become more efficient and ultimately feed the world. To meet this goal farmers and Ranchers a like will need cutting edge tools that provide farm-level support. Governments and researchers will need tools to help provide guidance on the effects of global warming and global warming related policies. The AgBizClimate program is one solution to this need. Currently the AgBizClimate system contains a tool that can fulfill this need for long term climate data. This tool allows farmers and ranchers to look at long term projections and make adjustments to their yields, inputs, demand and budgets. However, this is only part of the puzzle, farmers and ranchers will also need short term seasonal tools to help direct seasonal decision making.
 		
-		This is only half of the solution to providing accurate climate predictions for farmers, researchers and Governments. To complete the solution we will need the necessary climate data for the AgBizClimate system. Luckily one such database already exists in the Northwest Climate Tool Box. Our problem is to connect the current AgBizClimate system to the Northwest Climate Toolbox database. 
-		
-		ADD ADDITION INFORMATION AFTER MEETING WITH CLIENT
+	The goal of this project is to provide farmers and ranchers with a tool to help them make short term seasonal decisions regarding their crops and livestock. This tool will get and display seasonal climate predictions and allow the user to make adjustments to crop yield, inputs and budgets. To accomplish this task we will need a source or short term climate predictions. Luckily one such source exists in the Northwest Climate Toolbox. The goal for our tool is to display the climate data, then let the user make adjustments to yield, inputs, demand and budgets. This will allow farmers and ranchers to make informed seasonal choices and help them better use their resources.
 
 \section{The Solution}
 
-		To solve this problem we will create a python based RESTFUL API in Django. We will use the Django REST framework to create the API. We will use the REST frame work to connect to the Northwest Climate Toolbox. Once connected to the database we will need to determine what data we need from the database and what form the AgBizClimate system will need the data in. Once we know what the AgBizClimate system needs it will be fairly easy to process the data and pass it to the AgBizClimate system.
+	To solve this problem we will create an API to connect to the database. Once we have the short term climate data we can send it to the front end where it will be plotted and displayed to the user. The user will then change yield, inputs, and demand. We will then send this data to the existing backed which will do some calculations on the users budget. This adjusted budget will then be displayed where the user can review and make changes to this budget. The result will then be stored in the database.
 	
-		Another problem that will need to be solved is how to get meaningful data out of the data base. I anticipate that this database will be rather large and contain lots of tables. To make accessing the data easier I would like to build a transpiler. The transpiler is another layer of abstraction that will write the necessary query statements need to get the data out of the database. This will make writing the API much more simple as we will not have our Query Statements spread out so much in the file. This will also make building complex Query statements easier and will lead to clearer faster code.
+	The API will be a python based RESTFUL API in Django. We will use the Django REST framework to create an API. This API will connect to the Northwest Climate Toolbox and will provide short term climate predictions. Our tool will provide forecasts for four different parameters mean temperature, precipitation, mean temperature difference from average and mean precipitation percent of average. Once the data has been retried from the Northwest Climate toolbox we will send it to the front end where it will be displayed for the user.
+	
+	The front end will be done through Angular. Using Angular will allow us to take advantage of common plotting libraries to plot the data. Once the plots have been created we will display them to our user. After displaying the plot we will allow the user to make adjustments to the yield, inputs and demand for their product. We will then send this to the back end where adjustments will be made to the users budget. The user will then be asked to review the budget and make any final adjustments before the data is sent to the database.
 		
-		ADD ADDITION INFORMATION AFTER MEETING WITH CLIENT
-
 \section {Performance Metrics}
 		
 		We will know when we have completed this project when our system successfully and accurately responds to every request made by the AgBizClimate system. Successfully meaning it delivers the data and accurately meaning the data is correct. Our system will need to respond in under 2 seconds to each request.
 		
-		We will also provide quality assurance for our project as 90 percent of the code will be covered by unit tests with 100 percent of the unit tests passing. These tests will be non-trivial and will attempt to emulate how the system is intended to be used. These test will use mock data instead of pinging the database.
+		Our system will also need to accurately draw climate graphs from the data provided by the API. Meaning that the graphs produced represent the data.The front end will also need to provide the plots for mean temperature, mean precipitation, mean temperature difference from average and precipitation percent of average. The front end will also be required to post the budget data with out error 100 percent of the time.
 		
-		ADD ADDITION ITEMS AFTER MEETING WITH CLIENT
+		We will also provide quality assurance for our project as 90 percent of the code will be covered by unit tests with 100 percent of the unit tests passing. These tests will be non-trivial and will attempt to emulate how the system is intended to be used. These test will use mock data instead of pinging the database.
 
 \end{document}
