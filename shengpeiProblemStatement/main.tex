@@ -51,7 +51,7 @@
         \end{flushright}
     \end{minipage}\\[2cm]
     \begin{abstract}
-    \item Seasonal climate is one of the essential factors that affects harvest and returns of crops and farming investment programs of enterprises and organizations. As a sub-project of AgBizLogic, AgBizClimate is dedicated to deliver essential information about climate change to farmers, and help professionals to develop management pathways that best fit their operations under a changing climate. This project aims to link the crucial seasonal climate data from the Northwest Climate Toolbox database to AgBizLogic so that it can provide specific analysis and illustrations through powerful graphics. AgBizClimate is designed to enable farmers and agriculture enterprises to decide appropriate farming investment projects for their crops and products.\\
+    \item Seasonal climate is one of the essential factors that affects harvest, returns of crops and farming investment programs of enterprises and organizations. As a sub-project of AgBizLogic, AgBizClimate is dedicated to deliver essential information about climate change to farmers, and help professionals to develop management pathways that best fit their operations under a changing climate. This project aims to link the crucial seasonal climate data from the Northwest Climate Toolbox database to AgBizLogic so that it can provide specific analysis and illustrations through powerful graphics. AgBizClimate is designed to enable farmers and agriculture enterprises to decide appropriate farming investment projects for their crops and products.\\
     Currently AgBizClimate has a long-term climate tool but no such tool exists for short term climate data. We will implement a tool to extract short-term climate data from the Northwest Climate Toolbox database, display it to the user and allow the user to adjust crop yields, inputs and costs. Moreover, a landing tool will be developed to allow users to switch between short term seasonal tool and long-term climate data tool.
 
     \end{abstract}
@@ -65,9 +65,9 @@
     
     Generally, the tool is designed to work as follows. First, the user selects which crops they would like to analyze. Users can choose three to five different crops for analysis. Secondly, users place a pin on a map to select the location where the crops are located. Thirdly, the climate data of the specified location is plotted and displayed for the user. fourthly, the users would make adjustments to the crops yields, inputs and prices by simple GUI operations. Lastly, the user will make any final budget adjustments and will save the budget.\\
     
-    Although it sounds simple, there are several key problems to solve before we can plot data on AgBizClimate web pages. First, the weather data could vary in terms of both format and scale from the Northwest Climate Toolbox. We will need to ensure that the data is collect in a useful format so it will be easier to display. Secondly, the dynamically collected data should be appropriately stored and managed so that it can be flexibly employed in AgBizClimate. Lastly, we will need to find a way to plot the data in clear and readable way for our users.
+    Although it sounds simple, there are several key problems to solve before we can plot data on AgBizClimate web pages. First, the weather data could vary in terms of both format and scale from the Northwest Climate Toolbox. We will need to ensure that the data is collected in a useful format so it will be easier to display. Secondly, the dynamically collected data should be appropriately stored and managed so that it can be flexibly employed in AgBizClimate. Lastly, we will need to find a way to plot the data in clear and readable way for our users.
 	  \section*{Proposed solution}
-   As we have decided the source of the seasonal climate data is Northwest Climate Toolbox (https://climatetoolbox.org). This database provides climate data from around the country in various formats. We will write a tool to retrieve them from remote database and store them in the local AgBizClimate server. We will then  parse the local climate data, and extract the relevant data and process it for display. Finally, the desired climate data is provided to the AgBizClimate application to be displayed to the user.\\
+   As we have decided the source of the seasonal climate data is Northwest Climate Toolbox (https://climatetoolbox.org). This database provides climate data from around the country in various formats. We will write a tool to retrieve the data from a remote database and store it in the local AgBizClimate server. We will then  parse the local climate data, extract the relevant data and process it for display. Finally, the desired climate data is provided to the AgBizClimate application to be displayed to the user.\\
    
    The main tool we chose is Python, a lightweight and efficient programming language. It is effective at network programming, parsing and transforming various data formats such as XML and JSON. We will use the Django web development frame work to make development quick and simple.\\
    
@@ -78,13 +78,10 @@
     
     First, climate data for crops shall be retrieved through network (Internet) using programs (scripts) automatically without manual intervention under normal conditions. Once configured, the programs (scripts) shall be able to run and download any available and desired climate data from the remote climate toolbox server automatically.\\
     
-    Second, it is known that more climate data will be produced over time. The climate data Shall be updated periodically, triggered manually by clicking a button or typing a command on the locally. There will also be configuration files that will allow the administrator of this system to set how often this data is updated.\\
+    Second, it is known that more climate data will be produced over time. The climate data Shall be updated periodically, triggered manually by clicking a button or typing a command on the locally. There will also be configuration files that will allow the administrator of this system to set how often this data is updated and allow for automatic updates to the data.\\
     
     Thirdly, The UI shall display the requested climate data in a clear and readable format. The UI shall then allow the user to view and adjust, yields, inputs, prices and budgets. The UI shall then allow the user to export the resulting budget as a pdf file.\\
     
     Lastly, these operations should be friendly and useable to both professional and non-professional users and give users warnings or tips if they are making unsafe operations like deleting data files.\\
-
-
-
 
 \end{document}
