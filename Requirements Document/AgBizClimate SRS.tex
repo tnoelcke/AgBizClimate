@@ -156,35 +156,53 @@ This section contains all of the functional and quality requirements of the AgBi
 			%it will make our Gantt Chart much easier to draft.
 			\subsubsection{Functional Requirements For API}
 					\paragraph{Functional Requirement 1.1}
-						Get User data
+						\textbf{ID: FR1.1}
+						Title: Request for Users Location Data
+						Description: The API shall take an HTTP Post request with the users State and County as parameters. Upon receiving the HTTP Post request the API will strip the parameters off the Request and store the values in variables for later use.
+						Dependencies: FR2.1
 					\end{Functional Requirement 1.1}
 
 					\paragrph{Functional Requirement 1.2}
-						Transform Location
+						\textbf{ID: FR1.2}
+						Title: Transforming Users Location data.
+						Description: The API shall take the users Sate and county information and transform it into latitude and longitude. It shall then store the results in a variable for later use.
+						Dependencies: FR1.1, FR2.1
 					\end{Functional Requirement 1.2}
 
 					\paragrph{Functional Requirement 1.3}
-						Authentication with NWCTB API
+						\textbf{ID: FR1.3}
+						Title: NWCTB Authentication
+						Description: The API shall authenticate the connection with the NWCTB by sending a request to connect to the NWCTB. This request will include a validation key to ensure that the connection is valid.
+						Dependencies: None.
 					\end{Functional Requirement 1.3}
 
 					\paragraph{Functional Requirement 1.4}
-						Request Data
+						\textbf{ID: FR1.4}
+						Description: After the correct user information has been gathered and the connection with the NWCTB has been authenticated the API shall send a request to the NWCTB API for the information the user requested. This request shall be made via an HTTP Get request.
+						Dependencies: 1.1, 1.2, 1.3 and 2.1
 					\end{Functional Requirement 1.4}
 					
 					\paragraph{Functional Requirement 1.5}
-						Take data from FR 1.4 and place it in a json object with useful labels.
+						\textbf{ID: FR1.5}
+						Description: After sending the request for the data to the NWCTB API the API shall wait for a response to the request. Once a response has been send the API will receive this response through an HTTP Response. If the request for the user data results in an error the API shall pass the relevant error message to the back end to be displayed to the user.
+						Dependencies: 1.1, 1.2, 1.3, 1.4 and 1.5.
 					\end{Functional Requirement 1.5}
-						Send Data to the front end through an HTTP request so it can be Plotted.
-					\paragraph{Plot The resulting data}
-
-					\end{Plot The Resulting data}
+						
+					\paragraph{Functional Requirement 1.6}
+							\textbf{ID: FR1.6}
+							
+					\end{Functional Requirement 1.6}
+					
+					\paragraph{Functional Requirement 1.7}
+						\textbf{ID; FR1.7}
+					\end{Functional Requirement 1.7}
 			\end{Functional Requirements For API}
 			
 			\subsubsection{Functional Requirements For Front End}
 				\paragrph{Functional Requirement 2.1}
 					In this section I will describe the landing page that will allow the user to switch between long term and short term climate data.
 				\end{Functional Requirement 2.1}
-
+					
 				\paragraph{Functional Requirement 2.2}
 					In this section I will talk about how the user will enter in their location by county and state and will click submit. This will fire a HTTP request for the data.
 				\end{Functional Requirement 2.2}
