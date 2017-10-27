@@ -126,28 +126,32 @@ This section contains all of the functional and quality requirements of the AgBi
     \subsection{External Interface Requirements}
 		This section provides a detailed description of all inputs into and outputs from the short term climate tool for the AgBizClimate system. This section will also provide descriptions for the hardware, software and communication interfaces. Additionally we will provide detailed prototypes for the user interface for the short term climate data tool.
         \subsubsection{User Interface}
-					When the user first navigates to AgBizClimate from the AgBizLogic main page the user will be directed to a landing page. This landing page will allow the user to either select the existing long term climate tool or the short term climate tool that we will be developing. On this page there will be a brief description of the tool and what does. This description will also describe the difference between the long term climate data tool and the short term data climate tool. Below this description will be two buttons one to run the long term climate data tool and one to run the short term climate data tool. Clicking the long term climate data tool button will take you to the long term climate data tool page. Clicking the short term climate data tool button will take you to the short term climate data tool page. A prototype of this page is shown below in figure 3.1//
-					After clicking on the short term climate data tool page you will be directed to a page that will allow you to create a new climate scenario. This page will allow the user to chose which budgets they would like to adjust and make notes about this scenario.
+					When the user first navigates to AgBizClimate from the AgBizLogic main page the user will be directed to a landing page. This landing page will allow the user to either select the existing long term climate tool or the short term climate tool that we will be developing. On this page there will be a brief description of the tool and what does. This description will also describe the difference between the long term climate data tool and the short term data climate tool. Below this description will be two buttons one to run the long term climate data tool and one to run the short term climate data tool. Clicking the long term climate data tool button will take you to the long term climate data tool page. Clicking the short term climate data tool button will take you to the short term climate data tool page. A prototype of this page is shown below in figure 3.1 (Not yet available)//
 					
-
+					After clicking on the short term climate data tool page you will be directed to a page that will allow you to create a new climate scenario. This page will allow the user to chose which budgets they would like to adjust and make notes about this scenario. This page also allows them to cancel or delete the scenario they are currently working on. A prototype for this page is shown below in figure 3.2 (Not yet available)//
+					
+					Once the user Selects their budgets, makes notes on the scenario and clicks continue the will be redirected to a page where they will be prompted to enter their location. This page will take a county and a sate as input. This page will have a drop down menu for the state and the county. Before the user can enter a County they will be forced to enter a state. Once a state is entered the county drop down menu will auto populate and the user will be allowed to enter a county. A prototype of this page is shown below in figure 3.3 (Not yet available)\\
+					
+					After clicking continue the user will be taken to the plots for the location they selected. This page will initially have the 7 month average precipitation plot selected as the default. However, the user can select from four options via a drop down menu. Changing what is selected in the drop down menu will change which plot is displayed. Once the user has reviewed the plots they can then enter in how much they think their yield will be effected based on the climate data. A prototype of this page is shown below in figure 3.4 (Not yet available)\\
+					
+					Next the user will be directed to the budget review page. This page will display a summary of the budget. The summary of the budget will include Income, General Cash Costs and A total summary of the budget. This page will allow the user to adjust the cost per unit, input costs, and quantity sold and will adjust their budget in near real time. This page will also allow the user to remove or add inputs to their general costs. This page will also allow the user to save their budget and output it as a PDF. A prototype of this page is shown below in figure 3.5 (Not yet available)\\					
+					
         \end{User Interface}
 
         \subsubsection{Hardware Interfaces}
-
+					This project requires no designed hardware and the hardware this system is running on is managed by the Operating system as a result no hardware interfaces are necessary. Additionally the connection the the NWCTB is managed over the network and requires no hardware interface.
         \end{Hardware Interface}
 
         \subsubsection{Software Interface}
-        
+					There are several software interfaces in this application, one between the back end and the front end, one between the back end and the Database and finally a software interface between our RESTFUl API and the NWCTB. The majority of the connections between the front end and the back end are managed for us the the current AgBizLogic system. However, we will still need to connect our API to the back end to provide the data from the NWCTB. To make this connection we will use a RESTFULL API. This will allow for the back end code to make a direct call to our API to extract the data.
+					We will also need a connection between the NWCTB and our API. At the time of writing this document we have not received any information from the NWCTB regarding the API they have promised access too. However, We do know that we will need to authenticate the connection with the data base, send a request and then receive the result. Authenticating the connection will involve some sort of hand shake where we pass the NWCTB a key. Once we authenticate the connection we can then send a request. A request will contain a variety of information including a location for which we want the data. Once we have sent the request we will then wait for the response and accept the data. We may also need to store this data is a data base. If this is necessary we will need an additional software interface between the database and the API.
         \end{Software Interface}
 
         \subsubsection{Communications Interfaces}
-
+					This project will require communication between its various parts. One key lane of communication is between the front end and back end of the application. Another key lane of communication will be between the NWCTB and our API. Most of the communication between components will be carried out through HTTP requests. These are managed by the operating system and will not effect the way our application works.
         \end{Communications Interfaces}
     \end{External Interface Requirements}
 
-    \subsection{User Stories}
-
-    \end{User Stories}
 			%Decided to go with functional requirements instead of user stories because
 			%it will make our Gantt Chart much easier to draft.
 			\subsubsection{Functional Requirements For API}
@@ -201,19 +205,21 @@ This section contains all of the functional and quality requirements of the AgBi
     \end{Functional Requirements}
 
     \subsection{Performance Requirements}
-
+				In this section we will discuss how our application needs to preform in order to fill our obligation to our client.
     \end{Performance Requirements}
 
     \subsection{Design Constraints}
-
+			In this section we will discuss what frame works and languages will be used to complete this project.
     \end{Design Constraints}
 
-    \subsection{Software System Attributes}
-
-    \end{Software System Attributes}
-
     \subsection{Other Requirements}
-
+				This section will cover any additional information pertinent to this project but not covered in other sections.
+				\subsubsection{Stretch Requirements}
+				In this section we will discuss requirements not apart of our contract with our client. These goals will not be required as apart of this project but are objectives that we would like to complete.
+					\paragraph{Stretch Requirement 1.1}
+						Google map pin placement for getting user location.
+					\end{Stretch Requirement 1.1}
+				\end{Stretch Requirements}
     \end{Other Requirements}
 \end {Specific Requirements}
 
