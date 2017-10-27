@@ -179,22 +179,25 @@ This section contains all of the functional and quality requirements of the AgBi
 					\paragraph{Functional Requirement 1.4}
 						\textbf{ID: FR1.4}
 						Description: After the correct user information has been gathered and the connection with the NWCTB has been authenticated the API shall send a request to the NWCTB API for the information the user requested. This request shall be made via an HTTP Get request.
-						Dependencies: 1.1, 1.2, 1.3 and 2.1
+						Dependencies: FR1.1, FR1.2, FR1.3 and FR2.1
 					\end{Functional Requirement 1.4}
 					
 					\paragraph{Functional Requirement 1.5}
 						\textbf{ID: FR1.5}
-						Description: After sending the request for the data to the NWCTB API the API shall wait for a response to the request. Once a response has been send the API will receive this response through an HTTP Response. If the request for the user data results in an error the API shall pass the relevant error message to the back end to be displayed to the user.
-						Dependencies: 1.1, 1.2, 1.3, 1.4 and 1.5.
+						Description: After sending the request for the data to the NWCTB API the API shall wait for a response to the request. Once a response has been send the API will receive this response through an HTTP Response. If the request for the user data results in an error the API shall send the appropriate response code along with a useful error message. This shall be done through an HTTP Post response.
+						Dependencies: FR1.1, FR1.2, FR1.3, FR1.4 and FR1.5.
 					\end{Functional Requirement 1.5}
 						
 					\paragraph{Functional Requirement 1.6}
 							\textbf{ID: FR1.6}
-							
+							Description: Once the request has been successfully received the API shall process the raw data in the response body of the HTTP response sent by the NWCTB API. The raw data shall be placed into a JSON object and useful labels shall be applied to the JSON object so it can be easily displayed later.
+							Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR2.1
 					\end{Functional Requirement 1.6}
 					
 					\paragraph{Functional Requirement 1.7}
 						\textbf{ID; FR1.7}
+						Description: Once the data has been place into a JSON object and formatted the API shall send the resulting data to the front end application so it can be displayed. This shall be done via an HTTP Post response. The JSON object that contains the formatted data shall be placed in the response body. The appropriate headers for the Response shall be set to indicate that the response contains a JSON object.
+						Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR1.6 and FR2.1
 					\end{Functional Requirement 1.7}
 			\end{Functional Requirements For API}
 			
