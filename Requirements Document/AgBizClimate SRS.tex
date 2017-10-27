@@ -122,8 +122,9 @@
 \end {Overall Description}
 
 \section{Specific Requirements}
-
+This section contains all of the functional and quality requirements of the AgBizClimate System. We will give detailed description of what's being added to the AgBizLogic system along with the features we will implement.
     \subsection{External Interface Requirements}
+		This section provides a detailed description of all inputs into and outputs from the AgBizClimate system. This section will also provide descriptions for the hardware, software and communication interfaces. Additionally we will provide detailed prototypes for the user interface.
         \subsubsection{User Interface}
         \end{User Interface}
 
@@ -143,32 +144,57 @@
     \subsection{User Stories}
 
     \end{User Stories}
+			%Decided to go with functional requirements instead of user stories because
+			%it will make our Gantt Chart much easier to draft.
+			\subsubsection{Functional Requirements For API}
+					\paragraph{Functional Requirement 1.1}
+						Get User data
+					\end{Functional Requirement 1.1}
 
-    \subsection{Functional Requirements for Backend}
-        \subsubsection{Get Location From User}
+					\paragrph{Functional Requirement 1.2}
+						Transform Location
+					\end{Functional Requirement 1.2}
 
-        \end{Get Location From User}
+					\paragrph{Functional Requirement 1.3}
+						Authentication with NWCTB API
+					\end{Functional Requirement 1.3}
 
-        \subsubsection{Transform Location}
+					\paragraph{Functional Requirement 1.4}
+						Request Data
+					\end{Functional Requirement 1.4}
+					
+					\paragraph{Functional Requirement 1.5}
+						Take data from FR 1.4 and place it in a json object with useful labels.
+					\end{Functional Requirement 1.5}
+						Send Data to the front end through an HTTP request so it can be Plotted.
+					\paragraph{Plot The resulting data}
 
-        \end{Transform Location}
+					\end{Plot The Resulting data}
+			\end{Functional Requirements For API}
+			
+			\subsubsection{Functional Requirements For Front End}
+				\paragrph{Functional Requirement 2.1}
+					In this section I will describe the landing page that will allow the user to switch between long term and short term climate data.
+				\end{Functional Requirement 2.1}
 
-        \subsubsection{Authentication}
-
-        \end{Authentication}
-
-        \subsubsection{Request Data}
-
-        \end{Request Data}
-
-        \subsubsection{Format Data}
-
-        \end{Format Data}
-
-        \subsubsection{Plot The resulting data}
-
-        \end{Plot The Resulting data}
-    \end{Functional Requirements for Backend}
+				\paragraph{Functional Requirement 2.2}
+					In this section I will talk about how the user will enter in their location by county and state and will click submit. This will fire a HTTP request for the data.
+				\end{Functional Requirement 2.2}
+				
+				\paragraph{Functional Requirement 2.3}
+					In this section I will talk about how the front end will receive the data from the API and will then plot it.
+				\end{Functional Requirement 2.3}
+				
+				\paragraph{Functional Requirement 2.4}
+					In this section i will talk about how the user will then enter what percentage they think this will effect the yield of their crop.
+				\end{Functional Requirement 2.4}
+				
+				\paragraph{Functional Requirement 2.5}
+					In this section i will talk about how we will take the user input and pass it
+					to the existing AgBizClimate budget page.
+				\end{Functional Requirement 2.5}
+			\end {Functional Requirements for Front End}
+    \end{Functional Requirements}
 
     \subsection{Performance Requirements}
 
