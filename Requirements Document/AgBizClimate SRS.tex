@@ -84,6 +84,7 @@
 		\end {Purpose}
 		
 		\subsection{Scope}
+			This project is a part of a much larger AgBizLogic program. However, the purpose of this project is to 
 		\end{Scope}
 		
 		\subsection{Definitions, Acronyms and Abbreviations}
@@ -99,24 +100,20 @@
 		\end{Overview}
 \end {Introduction}
 \section{Overall Description}
-	\subsection{Product perspective}
-		Here we will talk about the product in a general sense and talk about what it is supposed to do from a high level.
-	\end
-	
 	\subsection {Product Functions}
-		Describe specifically what the product is supposed to do.
+				AgBizClimate is a web based decision tool that will allow users to gain specific insight on how localized climate data for the next seven months will affect their costs and net returns. The AgBizClimate tool will allow users to input their location (state, county) and the budget for the specific crop they are trying to farm. AgBizClimate will then grab the climate data for the next seven months for that location and provide graphical data showing temperature and precipitation. Users will then be able to input the percentage they think these factors will affect their crops. Finally the tool will adjust for these factors and provide final estimates on the projected yield and production back to the user.
 	\end
 	
 	\subsection{User Characteristics}
-		Talk about who will be using our product and briefly describe them.
+		AgbizClimate users can be split into two subgroups, agricultural producers and climate researchers. The first subgroup, agricultural users who use this product tend to be between fifty and sixty years old of mixed gender. Their educational background rangers from none to the completion of college. The primary language this group uses is English, but there are some Spanish users as well. Most of the users in this group tend to have novice computational skills. The primary domain for these users is agricultural and business management. Most agricultural producers who use this product are motivated by the potential profit that the decision service AgBizClimate could potentially offer. The second subgroup, climate researchers range from ages twenty to forty and are of mixed gender. The educational background for most climate researchers  exceed the postgraduate level with their primary language being English. These users generally have advanced computational skills and are motivated by the easily accessible climate and weather data.
 	\end{User Characteristics}
 	
 	\subsection{Constraints}
-		
+		There are several key constraints that this product has to work within. The first constraint is that we only have access to two data parameters from the North West Climate Tool box, precipitation and temperature. Secondly, we only have access to their data via the NWCTB API which could have additional restrictions such as limited usage per day, mislabeled data, or poor documentation. Thirdly, we don’t have access to any of the hardware that AgBizClimate is exists on as it is being managed by a third party. This will prevent us from improving the hardware or cause roadblocks if their servers are having issues. Lastly, we are limited to using the languages Python and JavaScript since we are integrating our product into an already existing project.
 	\end{Constraints}
 	
 	\subsection {Assumptions and Dependencies}
-	
+		We are assuming that the Northwest Climate Toolbox is a functional API that will allow us to pull location based temperature and precipitation data. This data will most likely come in the form of a text body of which we will then format into a JSON object and store in a Mongo database for future use. Due to the fact that we are writing an addition to an existing project we do not need to interact with the user budgets as these have already been defined. This fact extends to the calculations portion of the AgBizClimate product. Our team will simply be accessing data via the NWCT API, then format the data, store the data, and hand the data over to the tool while will provide some additional front end support.
 	\end{Assumptions and Dependencies}
 	
 \end {Overall Description}
@@ -247,12 +244,8 @@ This section contains all of the functional and quality requirements of the AgBi
 			\end{Software Constraints}
 			
 			\subsubsection{Hardware Constraints}
-			
+				Another factor that will effect how our software works is the hardware that this system is running on. The hardware this system runs on has already been determined and is managed by the university. We don't expect that the hardware will affect our project. However, we have no control over the hardware the AgBizLogic system is running on.
 			\end{Hardware Constraints}
-			
-			
-			
-			
     \end{Design Constraints}
 
     \subsection{Other Requirements}
