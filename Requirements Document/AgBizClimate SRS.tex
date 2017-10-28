@@ -195,7 +195,7 @@ This section contains all of the functional and quality requirements of the AgBi
 					\end{Functional Requirement 1.6}
 					
 					\paragraph{Functional Requirement 1.7}
-						\textbf{ID; FR1.7}
+						\textbf{ID: FR1.7}
 						Description: Once the data has been place into a JSON object and formatted the API shall send the resulting data to the front end application so it can be displayed. This shall be done via an HTTP Post response. The JSON object that contains the formatted data shall be placed in the response body. The appropriate headers for the Response shall be set to indicate that the response contains a JSON object.
 						Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR1.6 and FR2.1
 					\end{Functional Requirement 1.7}
@@ -203,24 +203,33 @@ This section contains all of the functional and quality requirements of the AgBi
 			
 			\subsubsection{Functional Requirements For Front End}
 				\paragrph{Functional Requirement 2.1}
-					In this section I will describe the landing page that will allow the user to switch between long term and short term climate data.
+					\textbf{ID: FR2.1}
+					Description: Upon loading the AgBizClimate application the user will be directed to a loading page this page will allow the user to select between the short term climate tool and the long term climate tool.
+					Dependencies: None.
 				\end{Functional Requirement 2.1}
 					
 				\paragraph{Functional Requirement 2.2}
-					In this section I will talk about how the user will enter in their location by county and state and will click submit. This will fire a HTTP request for the data.
+					\textbf{ID: FR2.2}
+					Description: After selecting the short term data tool the user will be directed to a page where they will be required to enter the location they would like to analyze. This page will require the user to first enter a state via a drop down menu and then a county via a drop down menu. Clicking the continue button will send an HTTP request to the API for the climate data for the location the user requested. The Front end will then wait for a response to the request sent to the API. This request shall be made through an HTTP Post request.
+					Dependencies: FR2.1
 				\end{Functional Requirement 2.2}
 				
 				\paragraph{Functional Requirement 2.3}
-					In this section I will talk about how the front end will receive the data from the API and will then plot it.
+					\textbf{ID: FR2.3}
+					Description: After the API processes the request for the data for the location the the user specified the front end will receive the response from the API. The front end shall then take the data out of the response body and use a plotting library to plot the data and display it to the user.
+					Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR, 1.6, FR1.7, FR2.1 and FR2.2
 				\end{Functional Requirement 2.3}
 				
 				\paragraph{Functional Requirement 2.4}
-					In this section i will talk about how the user will then enter what percentage they think this will effect the yield of their crop.
+					\textbf{ID: FR2.4}
+					Description: Once the data has been plotted and displayed the the user front end shall allow the user to make adjustments to the expected yield of the crop they are analyzing. This shall be done via a text box. The user input shall be limited to a decimal number with no more than one decimal place.
+					Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR, 1.6, FR1.7, FR2.1, FR2.2 and FR2.3
 				\end{Functional Requirement 2.4}
 				
 				\paragraph{Functional Requirement 2.5}
-					In this section i will talk about how we will take the user input and pass it
-					to the existing AgBizClimate budget page.
+					\textbf{ID: FR2.5}
+					Description: Once the user has entered the adjustments to the yield for the crop they are analyzing they shall then be redirected to the existing AgBizClimate budgeting tool. This tool will be sent the data they entered in the previous step and shall reflect the adjustments to yield that they made.
+					Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR, 1.6, FR1.7, FR2.1, FR2.2, FR2.3 and FR2.4
 				\end{Functional Requirement 2.5}
 			\end {Functional Requirements for Front End}
     \end{Functional Requirements}
@@ -230,7 +239,20 @@ This section contains all of the functional and quality requirements of the AgBi
     \end{Performance Requirements}
 
     \subsection{Design Constraints}
-			In this section we will discuss what frame works and languages will be used to complete this project.
+			The constraints of this project can be divided into two parts. Software constraints and hardware constraints. In this section we will discuss these constraints.
+			\subsubsection{Software Constraints}
+				This project shall be implemented using Django, Angular JS and SQL databases. What we add must also be done using Django, Angular JS and SQL.
+				
+				Additional what we create must work with the the existing AgBizLogic system. This means we will be forced to use software interfaces and databases that have already been implemented that we have no control over. 
+			\end{Software Constraints}
+			
+			\subsubsection{Hardware Constraints}
+			
+			\end{Hardware Constraints}
+			
+			
+			
+			
     \end{Design Constraints}
 
     \subsection{Other Requirements}
@@ -238,7 +260,8 @@ This section contains all of the functional and quality requirements of the AgBi
 				\subsubsection{Stretch Requirements}
 				In this section we will discuss requirements not apart of our contract with our client. These goals will not be required as apart of this project but are objectives that we would like to complete.
 					\paragraph{Stretch Requirement 1.1}
-						Google map pin placement for getting user location.
+						Description: In requirement 2.2 instead of using two drop down menus to select the location the user would be able to use a pin on a map of the US to select their location. This would be done through an existing library that would allow us to take a pin on a map and produce a latitude and longitude.
+						Dependencies: FR2.1 and FR2.2
 					\end{Stretch Requirement 1.1}
 				\end{Stretch Requirements}
     \end{Other Requirements}
@@ -247,7 +270,7 @@ This section contains all of the functional and quality requirements of the AgBi
 
 
 \section{Gantt Chart}
-	more or less a burn down chart
+	In this section we will have a schedule of our project based on the functional requirements section. This schedule will take into account the various dependencies on each requirement so we can implement the features in an order that allows for ease of development.
 \end {Gantt Chart}
 		
 
