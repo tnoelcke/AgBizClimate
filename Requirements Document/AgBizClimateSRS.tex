@@ -1,4 +1,4 @@
-\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEETran}
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage{setspace}
@@ -100,8 +100,8 @@
 		\end{References}
 		
 		\subsection{Overview}
-			Seasonal climate is one of the essential factors that affects harvest, returns of crops and farming investment programs of enterprises and organizations. As a sub-project of AgBizLogic, AgBizClimate is dedicated to deliver essential information about climate change to farmers, and help professionals to develop management pathways that best fit their operations under a changing climate. This project aims to link the crucial seasonal climate data from the Northwest Climate Toolbox database to AgBizLogic so that it can provide specific analysis and illustrations through powerful graphics. AgBizClimate is designed to enable farmers and agriculture enterprises to decide appropriate farming investment projects for their crops and products.\\
-    Currently AgBizClimate has a long-term climate tool but no such tool exists for short term climate data. We will implement a tool to extract short-term climate data from the Northwest Climate Toolbox database, display it to the user and allow the user to adjust crop yields, inputs and costs. Moreover, a landing tool will be developed to allow users to switch between short term seasonal tool and long-term climate data tool.\\
+			Seasonal climate is one of the essential factors that affects harvest, returns of crops and farming investment programs of enterprises and organizations. As a sub-project of AgBizLogic, AgBizClimate is dedicated to deliver essential information about climate change to farmers, and help professionals to develop management pathways that best fit their operations under a changing climate. This project aims to link the crucial seasonal climate data from the Northwest Climate Toolbox database to AgBizLogic so that it can provide specific analysis and illustrations through powerful graphics. AgBizClimate is designed to enable farmers and agriculture enterprises to decide appropriate farming investment projects for their crops and products.
+    Currently AgBizClimate has a long-term climate tool but no such tool exists for short term climate data. We will implement a tool to extract short-term climate data from the Northwest Climate Toolbox database, display it to the user and allow the user to adjust crop yields, inputs and costs. Moreover, a landing tool will be developed to allow users to switch between short term seasonal tool and long-term climate data tool.
 		\end{Overview}
 \end {Introduction}
 \section{Overall Description}
@@ -142,7 +142,7 @@ This section contains all of the functional and quality requirements of the AgBi
 
         \subsubsection{Hardware Interfaces}
 					This project requires no designed hardware and the hardware this system is running on is managed by the Operating system as a result no hardware interfaces are necessary. Additionally the connection the the NWCTB is managed over the network and requires no hardware interface.
-        \end{Hardware Interface}
+        \end{Hardware Interfaces}
 
         \subsubsection{Software Interface}
 					There are several software interfaces in this application, one between the back end and the front end, one between the back end and the Database and finally a software interface between our RESTFUl API and the NWCTB. The majority of the connections between the front end and the back end are managed for us the the current AgBizLogic system. However, we will still need to connect our API to the back end to provide the data from the NWCTB. To make this connection we will use a RESTFULL API. This will allow for the back end code to make a direct call to our API to extract the data.
@@ -157,81 +157,81 @@ This section contains all of the functional and quality requirements of the AgBi
 			%Decided to go with functional requirements instead of user stories because
 			%it will make our Gantt Chart much easier to draft.
 			\subsubsection{Functional Requirements For API}
-					\paragraph{Functional Requirement 1.1}//
-						\textbf{ID: FR1.1}//
-						Title: Request for Users Location Data//
+					\paragraph{Functional Requirement 1.1}
+						\textbf{ID: FR1.1}
+						Title: Request for Users Location Data
 						Description: The API shall take an HTTP Post request with the users State and County as parameters. Upon receiving the HTTP Post request the API will strip the parameters off the Request and store the values in variables for later use.//
-						Dependencies: FR2.1//
-					\end{Functional Requirement 1.1}//
+						Dependencies: FR2.1
+					\end{Functional Requirement 1.1}
 
-					\paragrph{Functional Requirement 1.2}//
-						\textbf{ID: FR1.2}//
-						Title: Transforming Users Location data.//
-						Description: The API shall take the users Sate and county information and transform it into latitude and longitude. It shall then store the results in a variable for later use.//
-						Dependencies: FR1.1, FR2.1//
+					\paragrph{Functional Requirement 1.2}
+						\textbf{ID: FR1.2}
+						Title: Transforming Users Location data.
+						Description: The API shall take the users Sate and county information and transform it into latitude and longitude. It shall then store the results in a variable for later use.
+						Dependencies: FR1.1, FR2.1
 					\end{Functional Requirement 1.2}
 
-					\paragrph{Functional Requirement 1.3}//
-						\textbf{ID: FR1.3}//
-						Title: NWCTB Authentication//
-						Description: The API shall authenticate the connection with the NWCTB by sending a request to connect to the NWCTB. This request will include a validation key to ensure that the connection is valid.//
-						Dependencies: None.//
+					\paragrph{Functional Requirement 1.3}
+						\textbf{ID: FR1.3}
+						Title: NWCTB Authentication
+						Description: The API shall authenticate the connection with the NWCTB by sending a request to connect to the NWCTB. This request will include a validation key to ensure that the connection is valid.
+						Dependencies: None.
 					\end{Functional Requirement 1.3}
 
-					\paragraph{Functional Requirement 1.4}//
-						\textbf{ID: FR1.4}//
-						Description: After the correct user information has been gathered and the connection with the NWCTB has been authenticated the API shall send a request to the NWCTB API for the information the user requested. This request shall be made via an HTTP Get request.//
-						Dependencies: FR1.1, FR1.2, FR1.3 and FR2.1//
+					\paragraph{Functional Requirement 1.4}
+						\textbf{ID: FR1.4}
+						Description: After the correct user information has been gathered and the connection with the NWCTB has been authenticated the API shall send a request to the NWCTB API for the information the user requested. This request shall be made via an HTTP Get request.
+						Dependencies: FR1.1, FR1.2, FR1.3 and FR2.1
 					\end{Functional Requirement 1.4}
 					
-					\paragraph{Functional Requirement 1.5}//
-						\textbf{ID: FR1.5}//
-						Description: After sending the request for the data to the NWCTB API the API shall wait for a response to the request. Once a response has been send the API will receive this response through an HTTP Response. If the request for the user data results in an error the API shall send the appropriate response code along with a useful error message. This shall be done through an HTTP Post response.//
-						Dependencies: FR1.1, FR1.2, FR1.3, FR1.4 and FR1.5.//
+					\paragraph{Functional Requirement 1.5}
+						\textbf{ID: FR1.5}
+						Description: After sending the request for the data to the NWCTB API the API shall wait for a response to the request. Once a response has been send the API will receive this response through an HTTP Response. If the request for the user data results in an error the API shall send the appropriate response code along with a useful error message. This shall be done through an HTTP Post response.
+						Dependencies: FR1.1, FR1.2, FR1.3, FR1.4 and FR1.5.
 					\end{Functional Requirement 1.5}
 						
-					\paragraph{Functional Requirement 1.6}//
-							\textbf{ID: FR1.6}//
-							Description: Once the request has been successfully received the API shall process the raw data in the response body of the HTTP response sent by the NWCTB API. The raw data shall be placed into a JSON object and useful labels shall be applied to the JSON object so it can be easily displayed later.//
-							Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR2.1//
+					\paragraph{Functional Requirement 1.6}
+							\textbf{ID: FR1.6}
+							Description: Once the request has been successfully received the API shall process the raw data in the response body of the HTTP response sent by the NWCTB API. The raw data shall be placed into a JSON object and useful labels shall be applied to the JSON object so it can be easily displayed later.
+							Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR2.1
 					\end{Functional Requirement 1.6}
 					
-					\paragraph{Functional Requirement 1.7}//
-						\textbf{ID: FR1.7}//
-						Description: Once the data has been place into a JSON object and formatted the API shall send the resulting data to the front end application so it can be displayed. This shall be done via an HTTP Post response. The JSON object that contains the formatted data shall be placed in the response body. The appropriate headers for the Response shall be set to indicate that the response contains a JSON object.//
-						Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR1.6 and FR2.1//
+					\paragraph{Functional Requirement 1.7}
+						\textbf{ID: FR1.7}
+						Description: Once the data has been place into a JSON object and formatted the API shall send the resulting data to the front end application so it can be displayed. This shall be done via an HTTP Post response. The JSON object that contains the formatted data shall be placed in the response body. The appropriate headers for the Response shall be set to indicate that the response contains a JSON object.
+						Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR1.6 and FR2.1
 					\end{Functional Requirement 1.7}
 			\end{Functional Requirements For API}
 			
 			\subsubsection{Functional Requirements For Front End}
-				\paragrph{Functional Requirement 2.1}//
-					\textbf{ID: FR2.1}//
-					Description: Upon loading the AgBizClimate application the user will be directed to a loading page this page will allow the user to select between the short term climate tool and the long term climate tool.//
-					Dependencies: None.//
+				\paragrph{Functional Requirement 2.1}
+					\textbf{ID: FR2.1}
+					Description: Upon loading the AgBizClimate application the user will be directed to a loading page this page will allow the user to select between the short term climate tool and the long term climate tool.
+					Dependencies: None.
 				\end{Functional Requirement 2.1}
 					
-				\paragraph{Functional Requirement 2.2}//
-					\textbf{ID: FR2.2}//
-					Description: After selecting the short term data tool the user will be directed to a page where they will be required to enter the location they would like to analyze. This page will require the user to first enter a state via a drop down menu and then a county via a drop down menu. Clicking the continue button will send an HTTP request to the API for the climate data for the location the user requested. The Front end will then wait for a response to the request sent to the API. This request shall be made through an HTTP Post request.//
-					Dependencies: FR2.1//
+				\paragraph{Functional Requirement 2.2}
+					\textbf{ID: FR2.2}
+					Description: After selecting the short term data tool the user will be directed to a page where they will be required to enter the location they would like to analyze. This page will require the user to first enter a state via a drop down menu and then a county via a drop down menu. Clicking the continue button will send an HTTP request to the API for the climate data for the location the user requested. The Front end will then wait for a response to the request sent to the API. This request shall be made through an HTTP Post request.
+					Dependencies: FR2.1
 				\end{Functional Requirement 2.2}
 				
-				\paragraph{Functional Requirement 2.3}//
-					\textbf{ID: FR2.3}//
-					Description: After the API processes the request for the data for the location the the user specified the front end will receive the response from the API. The front end shall then take the data out of the response body and use a plotting library to plot the data and display it to the user.//
-					Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR, 1.6, FR1.7, FR2.1 and FR2.2//
+				\paragraph{Functional Requirement 2.3}
+					\textbf{ID: FR2.3}
+					Description: After the API processes the request for the data for the location the the user specified the front end will receive the response from the API. The front end shall then take the data out of the response body and use a plotting library to plot the data and display it to the user.
+					Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR, 1.6, FR1.7, FR2.1 and FR2.2
 				\end{Functional Requirement 2.3}
 				
-				\paragraph{Functional Requirement 2.4}//
-					\textbf{ID: FR2.4}//
-					Description: Once the data has been plotted and displayed the the user front end shall allow the user to make adjustments to the expected yield of the crop they are analyzing. This shall be done via a text box. The user input shall be limited to a decimal number with no more than one decimal place.//
+				\paragraph{Functional Requirement 2.4}
+					\textbf{ID: FR2.4}
+					Description: Once the data has been plotted and displayed the the user front end shall allow the user to make adjustments to the expected yield of the crop they are analyzing. This shall be done via a text box. The user input shall be limited to a decimal number with no more than one decimal place.
 					Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR, 1.6, FR1.7, FR2.1, FR2.2 and FR2.3//
 				\end{Functional Requirement 2.4}
 				
-				\paragraph{Functional Requirement 2.5}//
-					\textbf{ID: FR2.5}//
-					Description: Once the user has entered the adjustments to the yield for the crop they are analyzing they shall then be redirected to the existing AgBizClimate budgeting tool. This tool will be sent the data they entered in the previous step and shall reflect the adjustments to yield that they made.//
-					Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR, 1.6, FR1.7, FR2.1, FR2.2, FR2.3 and FR2.4//
+				\paragraph{Functional Requirement 2.5}
+					\textbf{ID: FR2.5}
+					Description: Once the user has entered the adjustments to the yield for the crop they are analyzing they shall then be redirected to the existing AgBizClimate budgeting tool. This tool will be sent the data they entered in the previous step and shall reflect the adjustments to yield that they made.
+					Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR, 1.6, FR1.7, FR2.1, FR2.2, FR2.3 and FR2.4
 				\end{Functional Requirement 2.5}
 			\end {Functional Requirements for Front End}
     \end{Functional Requirements}
@@ -264,12 +264,6 @@ This section contains all of the functional and quality requirements of the AgBi
 				\end{Stretch Requirements}
     \end{Other Requirements}
 \end {Specific Requirements}
-
-
-
-\section{Gantt Chart}
-	In this section we will have a schedule of our project based on the functional requirements section. This schedule will take into account the various dependencies on each requirement so we can implement the features in an order that allows for ease of development.
-\end {Gantt Chart}
 		
 
 \end{document}
