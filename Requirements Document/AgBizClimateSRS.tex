@@ -101,7 +101,7 @@
 				AgBizClimate is a web based decision tool that will allow users to gain specific insight on how localized climate data for the next seven months will affect their costs and net returns. The AgBizClimate tool will allow users to input their location (state, county) and the budget for the specific crop they are trying to farm. AgBizClimate will then grab the climate data for the next seven months for that location and provide graphical data showing temperature and precipitation. Users will then be able to input the percentage they think these factors will affect their crops. Finally the tool will adjust for these factors and provide final estimates on the projected yield and production back to the user.\\
 	
 	\subsection{User Characteristics}
-		AgbizClimate users can be split into two subgroups, agricultural producers and climate researchers. The first subgroup, agricultural users who use this product tend to be between fifty and sixty years old of mixed gender. Their educational background rangers from none to the completion of college. The primary language this group uses is English, but there are some Spanish users as well. Most of the users in this group tend to have novice computational skills. The primary domain for these users is agricultural and business management. Most agricultural producers who use this product are motivated by the potential profit that the decision service AgBizClimate could potentially offer. The second subgroup, climate researchers range from ages twenty to forty and are of mixed gender. The educational background for most climate researchers  exceed the postgraduate level with their primary language being English. These users generally have advanced computational skills and are motivated by the easily accessible climate and weather data.\\
+		AgBizClimate users can be split into two subgroups, agricultural producers and climate researchers. The first subgroup, agricultural users who use this product tend to be between fifty and sixty years old of mixed gender. Their educational background rangers from none to the completion of college. The primary language this group uses is English, but there are some Spanish users as well. Most of the users in this group tend to have novice computational skills. The primary domain for these users is agricultural and business management. Most agricultural producers who use this product are motivated by the potential profit that the decision service AgBizClimate could potentially offer. The second subgroup, climate researchers range from ages twenty to forty and are of mixed gender. The educational background for most climate researchers  exceed the postgraduate level with their primary language being English. These users generally have advanced computational skills and are motivated by the easily accessible climate and weather data.\\
 	
 	\subsection{Constraints}
 		There are several key constraints that this product has to work within. The first constraint is that we only have access to two data parameters from the North West Climate Tool box, precipitation and temperature. Secondly, we only have access to their data via the NWCTB API which could have additional restrictions such as limited usage per day, mislabeled data, or poor documentation. Thirdly, we don’t have access to any of the hardware that AgBizClimate is exists on as it is being managed by a third party. This will prevent us from improving the hardware or cause roadblocks if their servers are having issues. Lastly, we are limited to using the languages Python and JavaScript since we are integrating our product into an already existing project.\\
@@ -138,6 +138,7 @@ This section contains all of the functional and quality requirements of the AgBi
 			%Decided to go with functional requirements instead of user stories because
 			%it will make our Gantt Chart much easier to draft.
 			\subsubsection{Functional Requirements For API}
+            	In this Section we will list and discuss the functional requirements for this project. Each functional requirement shall have an ID, Title, Description and Dependencies. The ID shall be unique for each requirement. The description will give a detailed expiation of the requirement. The dependencies section will list the requirements that will need to be complete before starting work on that requirement.\\
 					\paragraph{Functional Requirement 1.1}
 						\textbf{ID: FR1.1} \hfill \break
 						Title: Request for Users Location Data\hfill \break
@@ -212,7 +213,16 @@ This section contains all of the functional and quality requirements of the AgBi
 					Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR, 1.6, FR1.7, FR2.1, FR2.2, FR2.3 and FR2.4\hfill \break
 
     \subsection{Performance Requirements}
-				In this section we will discuss how our application needs to preform in order to fill our obligation to our client.\\
+    	In this section we will list the performance metrics for our application. This performance metrics will describe acceptable performance for our application. Each requirement will have a title and a description that provides details for how that metric will be measured.
+				\subsubsection{Performance Metric 1}
+               	\textbf{Title:} Run Time Performance \hfill \break
+                Our application shall provide the plotted data in a reasonable amount of time 100 percent of the time. Reasonable being defined as less than 5 seconds. This time shall be measured from the time the user presses the next button after selecting their state and county to the time the web page is loaded with the plot being displayed.\\
+                \subsubsection{Performance Metric 2}
+                \textbf{Title:} Reliability \hfill \break
+                Our application shall provide the correct result to the user 100 percent of the time. This result can include an error if the user enters a location that doesn't exist or if the data the user request is unavailable.
+                \subsubsection{Performance Metric 3}
+                \textbf{Title:} Test Coverage \hfill \break
+                During this project we will also be required to write unit tests for this project. The AgBizClimate short term climate tool shall have 90 percent test coverage on all code that is deemed testable. If a section of code isn't testable that will not count towards our test coverage.
 
     \subsection{Design Constraints}
 			The constraints of this project can be divided into two parts. Software constraints and hardware constraints. In this section we will discuss these constraints.\\
