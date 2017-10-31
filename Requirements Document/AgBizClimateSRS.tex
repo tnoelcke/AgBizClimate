@@ -11,7 +11,7 @@
 \def \GroupMemberOne{	Thomas Noelcke}
 \def \GroupMemberTwo{	Shane Barrantes}
 \def \GroupMemberThree{	Shengpei Yuan}
-\def \CapstoneProjectName{ Linking Seasonal Weather Data to AgBizClimate}
+\def \CapstoneProjectName{ Linking Seasonal Weather Data to AgBizClimate\texttrademark}
 \def \CapstoneSponsorCompany{ Oregon State University}
 \def \CapstoneSponsorPerson{ Clark Seavert}
 
@@ -81,7 +81,7 @@
 		This SRS describes the requirements and specifications of the AgBizClimate web application. This document will explain the functional features of this web application. This includes the interface details, design constraints and considerations such as performance characteristics. This SRS is intended out outline how we will proceed with the development of the AgBizClimate system.\\
 		
 		\subsection{Scope}
-			This project is a part of a much larger AgBizLogic program. However, the purpose of this project is to add a short term climate tool to the AgBizClimate module. This limits the scope of the project to the AgBizClimate Module. Additionally, we will only be adding the short term climate data tool as the long term climate data tool already exists.\\
+			This project is a part of a much larger AgBiz Logic\texttrademark program. However, the purpose of this project is to add a short term climate tool to the AgBizClimate module. This limits the scope of the project to the AgBizClimate Module. Additionally, we will only be adding the short term climate data tool as the long term climate data tool already exists.\\
 		
 		\subsection{Definitions, Acronyms and Abbreviations}
 			RESTFUL API-\\
@@ -222,14 +222,18 @@ This section contains all of the functional and quality requirements of the AgBi
                 Our application shall provide the correct result to the user 100 percent of the time. This result can include an error if the user enters a location that doesn't exist or if the data the user request is unavailable.
                 \subsubsection{Performance Metric 3}
                 \textbf{Title:} Test Coverage \hfill \break
-                During this project we will also be required to write unit tests for this project. The AgBizClimate short term climate tool shall have 90 percent test coverage on all code that is deemed testable. If a section of code isn't testable that will not count towards our test coverage.
+                During this project we will also be required to write unit tests for this project. The AgBizClimate short term climate tool shall have 90 percent test coverage on all code that is deemed testable. If a section of code isn't testable that will not count towards our test coverage. (We only need to provide unit tests for API routes).
+								\subsubsection{Performance Metric 4}
+								Front end testing.
+								\subsubsection{Performance Metric 5}
+								Test that budget is getting saved with the correct data.
 
     \subsection{Design Constraints}
 			The constraints of this project can be divided into two parts. Software constraints and hardware constraints. In this section we will discuss these constraints.\\
 			\subsubsection{Software Constraints}
 				This project shall be implemented using Django, Angular JS and SQL databases. What we add must also be done using Django, Angular JS and SQL.\\
 				
-				Additional what we create must work with the the existing AgBizLogic system. This means we will be forced to use software interfaces and databases that have already been implemented that we have no control over.\\ 
+				Additionally, what we create must work with the the existing AgBizLogic system. This means we will be forced to use software interfaces and databases that have already been implemented that we have no control over.\\ 
 			
 			\subsubsection{Hardware Constraints}
 				Another factor that will effect how our software works is the hardware that this system is running on. The hardware this system runs on has already been determined and is managed by the university. We don't expect that the hardware will affect our project. However, we have no control over the hardware the AgBizLogic system is running on.\\
@@ -242,5 +246,8 @@ This section contains all of the functional and quality requirements of the AgBi
 						Title: Location Via a Map\\
 						Description: In requirement 2.2 instead of using two drop down menus to select the location the user would be able to use a pin on a map of the US to select their location. This would be done through an existing library that would allow us to take a pin on a map and produce a latitude and longitude.\\
 						Dependencies: FR2.1 and FR2.2\\
+\section{Gantt Chart}
+
+Here we will place our Gantt Chart. Will get completed before Friday.\\ 
 		
 \end{document}
