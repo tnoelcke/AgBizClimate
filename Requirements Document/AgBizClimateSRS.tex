@@ -89,9 +89,13 @@
 			Climate Scenario - This is a theoretical calculation of yields, inputs and of the overall budget for one situation based on the climate data.\\
 			SQL Database - This is a relational database that makes storing and accessing data easy.\\
 
+			\renewcommand\refname{\vskip -1cm}
 		\subsection{References}
-			Here we will need to pace a reference to the NWCTB documentation. We may also want to place a reference to existing AgBizClimate docs.
-			We will also need a reference to our problem statement.\\
+
+		\nocite{*}
+    \bibliographystyle{IEEEtran}
+    \bibliography{IEEEabrv,References}
+
 
 		\subsection{Overview}
 			Seasonal climate is one of the essential factors that affects agricultural production. As a module of AgBiz Logic, AgBizClimate delivers essential information about climate change to farmers, and help professionals to develop management pathways that best fit their operations under a changing climate. This project aims to link the crucial seasonal climate data from the Northwest Climate Toolbox database to AgBiz Logic so that it can provide changes in net returns of crop and livestock enterprises through powerful graphics and tables. \\
@@ -134,15 +138,15 @@ This section contains all of the functional and quality requirements of the AgBi
 
         \subsubsection{Communications Interfaces}
 					This project will require communication between its various parts. One key lane of communication is between the front end and back end of the application. Another key lane of communication will be between the NWCTB and our API. Most of the communication between components will be carried out through HTTP requests. These are managed by the operating system and will not effect the way our application works.\\
-					
-					
+
+
 		\subsection{Functional Requirements}
 			In this Section we will list and discuss the functional requirements for this project. Each functional requirement shall have an ID, Title, Description and Dependencies. The ID shall be unique for each requirement. The description will give a detailed expiation of the requirement. The dependencies section will list the requirements that will need to be complete before starting work on that requirement.\\
-			
+
 
 			%Decided to go with functional requirements instead of user stories because
 			%it will make our Gantt Chart much easier to draft.
-			\subsubsection{Functional Requirements For API}   	
+			\subsubsection{Functional Requirements For API}
 					\paragraph{Functional Requirement 1.1}
 						\textbf{ID: FR1.1} \hfill \break
 						Title: Request for Users Location Data\hfill \break
@@ -186,7 +190,7 @@ This section contains all of the functional and quality requirements of the AgBi
 						Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR1.6 and FR2.1\hfill \break
 
 			\subsubsection{Functional Requirements For Front End}
-			
+
 				\paragraph{Functional Requirement 2.1}
 					\textbf{ID: FR2.1}\hfill \break
 					Title: Landing Page.\hfill \break
@@ -232,7 +236,7 @@ This section contains all of the functional and quality requirements of the AgBi
 				Title: Unit Tests for Budget Save \hfill \break
 				Description: We shall provide unit tests that ensure that the budget is being correctly saved once the user is all done making adjustments to their budget. This test case shall ensure that the values sent to the back-end of the application are posted to the database. The test will also ensure that the values posted in the database are correct.\\
 				Dependencies:  FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR, 1.6, FR1.7, FR2.1, FR2.2, FR2.3, FR2.4 and FR2.5\hfill \break
-								
+
     \subsection{Performance Requirements}
     	In this section we will list the performance metrics for our application. This performance metrics will describe acceptable performance for our application. Each requirement will have a title and a description that provides details for how that metric will be measured.
 				\subsubsection{Performance Metric 1}
@@ -263,5 +267,8 @@ This section contains all of the functional and quality requirements of the AgBi
 \section{Gantt Chart}
 
 Here we will place our Gantt Chart. Will get completed before Friday.\\
+
+
+
 
 \end{document}
