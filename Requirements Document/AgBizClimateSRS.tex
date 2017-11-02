@@ -134,11 +134,15 @@ This section contains all of the functional and quality requirements of the AgBi
 
         \subsubsection{Communications Interfaces}
 					This project will require communication between its various parts. One key lane of communication is between the front end and back end of the application. Another key lane of communication will be between the NWCTB and our API. Most of the communication between components will be carried out through HTTP requests. These are managed by the operating system and will not effect the way our application works.\\
+					
+					
+		\subsection{Functional Requirements}
+			In this Section we will list and discuss the functional requirements for this project. Each functional requirement shall have an ID, Title, Description and Dependencies. The ID shall be unique for each requirement. The description will give a detailed expiation of the requirement. The dependencies section will list the requirements that will need to be complete before starting work on that requirement.\\
+			
 
 			%Decided to go with functional requirements instead of user stories because
 			%it will make our Gantt Chart much easier to draft.
-			\subsubsection{Functional Requirements For API}
-            	In this Section we will list and discuss the functional requirements for this project. Each functional requirement shall have an ID, Title, Description and Dependencies. The ID shall be unique for each requirement. The description will give a detailed expiation of the requirement. The dependencies section will list the requirements that will need to be complete before starting work on that requirement.\\
+			\subsubsection{Functional Requirements For API}   	
 					\paragraph{Functional Requirement 1.1}
 						\textbf{ID: FR1.1} \hfill \break
 						Title: Request for Users Location Data\hfill \break
@@ -182,6 +186,7 @@ This section contains all of the functional and quality requirements of the AgBi
 						Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR1.6 and FR2.1\hfill \break
 
 			\subsubsection{Functional Requirements For Front End}
+			
 				\paragraph{Functional Requirement 2.1}
 					\textbf{ID: FR2.1}\hfill \break
 					Title: Landing Page.\hfill \break
@@ -211,7 +216,23 @@ This section contains all of the functional and quality requirements of the AgBi
 					Title: Redirect To Budget Tool.\hfill \break
 					Description: Once the user has entered the adjustments to the yield for the crop they are analyzing they shall then be redirected to the existing AgBizClimate budgeting tool. This tool will be sent the data they entered in the previous step and shall reflect the adjustments to yield that they made.\\
 					Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR, 1.6, FR1.7, FR2.1, FR2.2, FR2.3 and FR2.4\hfill \break
-
+			\subsubsection{Functional Requirements for Testing}
+				\paragraph{Functional Requirement 3.1}
+				\textbf{ID: FR3.1}\hfill \break
+				Title: Unit Tests For API Routes.
+				Description: We shall write unit tests to cover 100 percent of our API routes. Each route shall have a test case that is non-trivial and seeks to emulate how the route will be used by the application. These test cases shall test that the correct response is returned from each API route.\\
+				Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR1.6 and FR2.1\hfill \break
+				\paragraph{Functional Requirement 3.2}
+				\textbf{ID: FR3.2}\hfill \break
+				Title: Unit Tests for User Actions on Front End \hfill \break
+				Description: We shall provide unit tests for the various user actions on the front end of the application. The front end tests shall ensure that clickable objects on the page perform the correct action. We shall provide tests for all clickable objects that redirect the application to another page. Our tests shall ensure that if a clickable action is clicked that the correct action is taken for each clickable object.\\
+				Dependencies:  FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR, 1.6, FR1.7, FR2.1, FR2.2, FR2.3, FR2.4 and FR2.5\hfill \break
+				\paragraph{Functional Requirement 3.3}
+				\textbf{ID: FR3.3}\hfill \break
+				Title: Unit Tests for Budget Save \hfill \break
+				Description: We shall provide unit tests that ensure that the budget is being correctly saved once the user is all done making adjustments to their budget. This test case shall ensure that the values sent to the back-end of the application are posted to the database. The test will also ensure that the values posted in the database are correct.\\
+				Dependencies:  FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR, 1.6, FR1.7, FR2.1, FR2.2, FR2.3, FR2.4 and FR2.5\hfill \break
+								
     \subsection{Performance Requirements}
     	In this section we will list the performance metrics for our application. This performance metrics will describe acceptable performance for our application. Each requirement will have a title and a description that provides details for how that metric will be measured.
 				\subsubsection{Performance Metric 1}
@@ -219,14 +240,7 @@ This section contains all of the functional and quality requirements of the AgBi
                 Our application shall provide the plotted data in a reasonable amount of time 100 percent of the time. Reasonable being defined as less than 5 seconds. This time shall be measured from the time the user presses the next button after selecting their state and county to the time the web page is loaded with the plot being displayed.\\
                 \subsubsection{Performance Metric 2}
                 \textbf{Title:} Reliability \hfill \break
-                Our application shall provide the correct result to the user 100 percent of the time. This result can include an error if the user enters a location that doesn't exist or if the data the user request is unavailable.
-                \subsubsection{Performance Metric 3}
-                \textbf{Title:} Test Coverage \hfill \break
-                During this project we will also be required to write unit tests for this project. The AgBizClimate short term climate tool shall have 90 percent test coverage on all code that is deemed testable. If a section of code isn't testable that will not count towards our test coverage. (We only need to provide unit tests for API routes).
-								\subsubsection{Performance Metric 4}
-								Front end testing.
-								\subsubsection{Performance Metric 5}
-								Test that budget is getting saved with the correct data.
+                Our application shall provide the correct result to the user 100 percent of the time. This result can include an error if the user enters a location that doesn't exist or if the data the user request is unavailable.\\
 
     \subsection{Design Constraints}
 			The constraints of this project can be divided into two parts. Software constraints and hardware constraints. In this section we will discuss these constraints.\\
