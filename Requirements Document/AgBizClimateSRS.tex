@@ -121,46 +121,16 @@ This section contains all of the functional and quality requirements of the \tex
     \subsection{External Interface Requirements}
 		This section provides a detailed description of all inputs into and outputs from the short term climate tool for the \textit{AgBizClimate} system. This section will also provide descriptions for the hardware, software and communication interfaces. Additionally we will provide detailed prototypes for the user interface for the short term climate data tool.\\
         \subsubsection{User Interface}
-					When the user first navigates to \textit{AgBizClimate} from the \textit{AgBiz Logic} main page the user will be directed to a landing page. This landing page will allow the user to either select the existing long term climate tool or the short term climate tool that we will be developing. On this page there will be a brief description of the tool and what does. This description will also describe the difference between the long term climate data tool and the short term data climate tool. Below this description will be two buttons one to run the long term climate data tool and one to run the short term climate data tool. Clicking the long term climate data tool button will take you to the long term climate data tool page. Clicking the short term climate data tool button will take you to the short term climate data tool page. A prototype of this page is shown below in figure 3.1.\\
-					
-					\begin{figure}
-						\includegraphics[width=\linewidth]{Figures/LandingPage.eps}
-						\caption{Landing Page}
-						\label{figure3.1}
-					\end{figure}
-					
+					When the user first navigates to \textit{AgBizClimate} from the \textit{AgBiz Logic} main page the user will be directed to a landing page. This landing page will allow the user to either select the existing long term climate tool or the short term climate tool that we will be developing. On this page there will be a brief description of the tool and what does. This description will also describe the difference between the long term climate data tool and the short term data climate tool. Below this description will be two buttons one to run the long term climate data tool and one to run the short term climate data tool. Clicking the long term climate data tool button will take you to the long term climate data tool page. Clicking the short term climate data tool button will take you to the short term climate data tool page. For a prototype of this page see section \ref{ref:FigTab} Figures and Tables figure \ref{figure3.1}.\\
 
-					After clicking on the short term climate data tool page you will be directed to a page that will allow you to create a new climate scenario. This page will allow the user to chose which budgets they would like to adjust and make notes about this scenario. This page also allows them to cancel or delete the scenario they are currently working on. A prototype for this page is shown below in figure 3.2.\\
-					
-					\begin{figure}
-						\includegraphics[width=\linewidth]{Figures/ClimateScenario.eps}
-						\caption{Allows user to select budgets and make notes}
-						\label{figure3.2}	
-					\end{figure}
+					After clicking on the short term climate data tool page you will be directed to a page that will allow you to create a new climate scenario. This page will allow the user to chose which budgets they would like to adjust and make notes about this scenario. This page also allows them to cancel or delete the scenario they are currently working on. For a prototype of this page see section \ref{ref:FigTab} Figures and Tables figure \ref{figure3.2}.\\
 
-					Once the user Selects their budgets, makes notes on the scenario and clicks continue the will be redirected to a page where they will be prompted to enter their location. This page will take a county and a sate as input. This page will have a drop down menu for the state and the county. Before the user can enter a County they will be forced to enter a state. Once a state is entered the county drop down menu will auto populate and the user will be allowed to enter a county. A prototype of this page is shown below in figure 3.3.\\
-					
-					\begin{figure}
-						\includegraphics[width=\linewidth]{Figures/SelectStateAndCounty.eps}
-						\caption{Allows User to select location}
-						\label{figure3.3}
-					\end{figure}
+					Once the user Selects their budgets, makes notes on the scenario and clicks continue the will be redirected to a page where they will be prompted to enter their location. This page will take a county and a sate as input. This page will have a drop down menu for the state and the county. Before the user can enter a County they will be forced to enter a state. Once a state is entered the county drop down menu will auto populate and the user will be allowed to enter a county. For a prototype of this page see section \ref{ref:FigTab} Figures and Tables figure \ref{figure3.3}.\\
 
-					After clicking continue the user will be taken to the plots for the location they selected. This page will initially have the 7 month average precipitation plot selected as the default. However, the user can select from four options via a drop down menu. Changing what is selected in the drop down menu will change which plot is displayed. Once the user has reviewed the plots they can then enter in how much they think their yield will be effected based on the climate data. A prototype of this page is shown below in figure 3.4.\\
+					After clicking continue the user will be taken to the plots for the location they selected. This page will initially have the 7 month average precipitation plot selected as the default. However, the user can select from four options via a drop down menu. Changing what is selected in the drop down menu will change which plot is displayed. Once the user has reviewed the plots they can then enter in how much they think their yield will be effected based on the climate data. For a prototype of this page see section \ref{ref:FigTab} Figures and Tables figure \ref{figure3.4}.\\
 					
-					\begin{figure}
-						\includegraphics[width=\linewidth]{Figures/ChartPage.eps}
-						\caption{Displays the Data in a plot}
-						\label{figure3.4}
-					\end{figure}
-
-					Next the user will be directed to the budget review page. This page will display a summary of the budget. The summary of the budget will include Income, General Cash Costs and A total summary of the budget. This page will allow the user to adjust the cost per unit, input costs, and quantity sold and will adjust their budget in near real time. This page will also allow the user to remove or add inputs to their general costs. This page will also allow the user to save their budget and output it as a PDF. A prototype of this page is shown below in figure 3.5 (Not yet available)\\
+					Next the user will be directed to the budget review page. This page will display a summary of the budget. The summary of the budget will include Income, General Cash Costs and A total summary of the budget. This page will allow the user to adjust the cost per unit, input costs, and quantity sold and will adjust their budget in near real time. This page will also allow the user to remove or add inputs to their general costs. This page will also allow the user to save their budget and output it as a PDF. For a prototype of this page see \ref{ref:FigTab} Figures and Tables figure \ref{figure3.5}.\\
 					
-					\begin{figure}
-						\includegraphics[width=\linewidth]{Figures/BudgetReivew.eps}
-						\caption{Allows user to view their budget}
-						\label{figure3.5}
-					\end{figure}
 
         \subsubsection{Hardware Interfaces}
 					This project requires no designed hardware and the hardware this system is running on is managed by the Operating system as a result no hardware interfaces are necessary. Additionally the connection the the NWCTB is managed over the network and requires no hardware interface.\\
@@ -184,7 +154,7 @@ This section contains all of the functional and quality requirements of the \tex
 						\textbf{ID: FR1.1} \hfill \break
 						Title: Request for Users Location Data\hfill \break
 						Description: The API shall take an HTTP Post request with the users State and County as parameters. Upon receiving the HTTP Post request the API will strip the parameters off the Request and store the values in variables for later use.\\
-						Dependencies: FR2.1\hfill \break
+						Dependencies: FR2.1 and FR2.2\hfill \break
 
 					\paragraph{Functional Requirement 1.2}
 						\textbf{ID: FR1.2}\hfill \break
@@ -194,7 +164,7 @@ This section contains all of the functional and quality requirements of the \tex
 
 					\paragraph{Functional Requirement 1.3}
 						\textbf{ID: FR1.3}\hfill \break
-						Title: NWCTB Authentication
+						Title: NWCTB Authentication \hfill \break
 						Description: The API shall authenticate the connection with the NWCTB by sending a request to connect to the NWCTB. This request will include a validation key to ensure that the connection is valid.\\
 						Dependencies: None.\hfill \break
 
@@ -256,7 +226,7 @@ This section contains all of the functional and quality requirements of the \tex
 			\subsubsection{Functional Requirements for Testing}
 				\paragraph{Functional Requirement 3.1}
 				\textbf{ID: FR3.1}\hfill \break
-				Title: Unit Tests For API Routes.
+				Title: Unit Tests For API Routes.\hfill \break
 				Description: We shall write unit tests to cover 100 percent of our API routes. Each route shall have a test case that is non-trivial and seeks to emulate how the route will be used by the application. These test cases shall test that the correct response is returned from each API route.\\
 				Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR1.6 and FR2.1\hfill \break
 				\paragraph{Functional Requirement 3.2}
@@ -294,12 +264,46 @@ This section contains all of the functional and quality requirements of the \tex
 				\subsubsection{Stretch Requirements}
 				In this section we will discuss requirements not apart of our contract with our client. These goals will not be required as apart of this project but are objectives that we would like to complete.\\
 					\paragraph{Stretch Requirement 1.1}
+						\textbf{ID: SR1.1}\hfill \break
 						Title: Location Via a Map\\
 						Description: In requirement 2.2 instead of using two drop down menus to select the location the user would be able to use a pin on a map of the US to select their location. This would be done through an existing library that would allow us to take a pin on a map and produce a latitude and longitude.\\
 						Dependencies: FR2.1 and FR2.2\\
 \section{Gantt Chart}
 
 Here we will place our Gantt Chart. Will get completed before Friday.\\
+
+
+\section{Figures and Tables} \label{ref:FigTab}
+
+	\begin{figure}[h]
+		\includegraphics[width=\linewidth]{Figures/LandingPage.eps}
+		\caption{Landing Page}
+		\label{figure3.1}
+	\end{figure}
+					
+	\begin{figure}[h]				
+		\includegraphics[width=\linewidth]{Figures/ClimateScenario.eps}
+		\caption{Allows user to select budgets and make notes}
+		\label{figure3.2}					
+	\end{figure}
+					
+	\begin{figure}[h]
+		\includegraphics[width=\linewidth]{Figures/SelectStateAndCounty.eps}
+		\caption{Allows User to select location}
+		\label{figure3.3}
+	\end{figure}
+					
+	\begin{figure}[h]
+		\includegraphics[width=\linewidth]{Figures/ChartPage.eps}
+		\caption{Displays the Data in a plot}
+		\label{figure3.4}
+	\end{figure}
+					
+	\begin{figure}[h]
+		\includegraphics[width=\linewidth]{Figures/BudgetReivew.eps}
+		\caption{Allows user to view their budget}
+		\label{figure3.5}
+	\end{figure}
 
 
 
