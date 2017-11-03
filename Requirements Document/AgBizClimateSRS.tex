@@ -72,7 +72,8 @@
 \pagenumbering{arabic}
 \tableofcontents
 % 7. uncomment this (if applicable). Consider adding a page break.
-%\listoffigures
+\listoffigures 
+\newpage
 %\listoftables
 \clearpage
 
@@ -85,7 +86,7 @@
 			This project is a part of a much larger AgBiz Logic\texttrademark program. However, the purpose of this project is to add a short term climate tool to the \textit{AgBizClimate} module. This limits the scope of the project to the \textit{AgBizClimate} Module. Additionally, we will only be adding the short term climate data tool as the long term climate data tool already exists.\\
 
 		\subsection{Definitions, Acronyms and Abbreviations}
-			REST - Representaional State Transfer, This is a type of architecture that manages a the state of the program. This is esspecially populare in web development.\\
+			REST - Representaional State Transfer, This is a type of architecture that manages the state of the program. This is esspecially populare in web development.\\
 			API- Application Programming Interface. This is a peice of softwared that allows a connection to another peice of software providing some sort of service.\\
 			NWCTB - Northwest Climate Toolbox. This is the database we will be connecting to that will provide the short term climate data we plan to use.\\
 			Climate Scenario - This is a theoretical calculation of yields, inputs and of the overall budget for one situation based on the climate data.\\
@@ -101,7 +102,7 @@
 
 		\subsection{Overview}
 			Seasonal climate is one of the essential factors that affects agricultural production. As a module of \textit{AgBiz Logic}, \textit{AgBizClimate} delivers essential information about climate change to farmers, and help professionals to develop management pathways that best fit their operations under a changing climate. This project aims to link the crucial seasonal climate data from the Northwest Climate Toolbox database to \textit{AgBiz Logic} so that it can provide changes in net returns of crop and livestock enterprises through powerful graphics and tables. \\
-      Currently \textit{AgBizClimate} has a long-term climate tool but no such tool exists for short term climate data. We will implement a tool to extract short-term climate data from the Northwest Climate Toolbox database, display it to the user and allow the user to adjust crop and livestock yields or quality of products sold and, production inputs. Moreover, a landing tool will be developed to allow users to switch between short-term seasonal tool and long-term climate data tool.\\
+			Currently \textit{AgBizClimate} has a long-term climate tool but no such tool exists for short term climate data. We will implement a tool to extract short-term climate data from the Northwest Climate Toolbox database, display it to the user and allow the user to adjust crop and livestock yields or quality of products sold and, production inputs. Moreover, a landing tool will be developed to allow users to switch between short-term seasonal tool and long-term climate data tool.\\
 \section{Overall Description}
 	\subsection {Product Functions}
 				\textit{AgBizClimate} is a web based decision tool that will allow users to gain specific insight on how localized climate data for the next seven months will affect their crop and livestock yields or quality of products sold and production inputs. The \textit{AgBizClimate} tool will allow users to input their location (state, county) and a budget for the specific crop or livestock enterprise. \textit{AgBizClimate} will select climate data for the next seven months for that location and provide graphical data showing temperature and precipitation. Users will then be able to change yields or quality of product sold by a percentage they think these factors will affect and modify production inputs. Finally the tool will calculate the net returns.\\
@@ -120,16 +121,47 @@ This section contains all of the functional and quality requirements of the \tex
     \subsection{External Interface Requirements}
 		This section provides a detailed description of all inputs into and outputs from the short term climate tool for the \textit{AgBizClimate} system. This section will also provide descriptions for the hardware, software and communication interfaces. Additionally we will provide detailed prototypes for the user interface for the short term climate data tool.\\
         \subsubsection{User Interface}
-					When the user first navigates to \textit{AgBizClimate} from the \textit{AgBiz Logic} main page the user will be directed to a landing page. This landing page will allow the user to either select the existing long term climate tool or the short term climate tool that we will be developing. On this page there will be a brief description of the tool and what does. This description will also describe the difference between the long term climate data tool and the short term data climate tool. Below this description will be two buttons one to run the long term climate data tool and one to run the short term climate data tool. Clicking the long term climate data tool button will take you to the long term climate data tool page. Clicking the short term climate data tool button will take you to the short term climate data tool page. A prototype of this page is shown below in figure 3.1 (Not yet available)\\
+					When the user first navigates to \textit{AgBizClimate} from the \textit{AgBiz Logic} main page the user will be directed to a landing page. This landing page will allow the user to either select the existing long term climate tool or the short term climate tool that we will be developing. On this page there will be a brief description of the tool and what does. This description will also describe the difference between the long term climate data tool and the short term data climate tool. Below this description will be two buttons one to run the long term climate data tool and one to run the short term climate data tool. Clicking the long term climate data tool button will take you to the long term climate data tool page. Clicking the short term climate data tool button will take you to the short term climate data tool page. A prototype of this page is shown below in figure 3.1.\\
+					\begin{figure}
+						\includegraphics[width=\linewidth]{Figures/LandingPage.PNG}
+						\caption{Landing Page}
+						\label{figure3.1}
+					\end{figure}
+					
 
-					After clicking on the short term climate data tool page you will be directed to a page that will allow you to create a new climate scenario. This page will allow the user to chose which budgets they would like to adjust and make notes about this scenario. This page also allows them to cancel or delete the scenario they are currently working on. A prototype for this page is shown below in figure 3.2 (Not yet available)\\
+					After clicking on the short term climate data tool page you will be directed to a page that will allow you to create a new climate scenario. This page will allow the user to chose which budgets they would like to adjust and make notes about this scenario. This page also allows them to cancel or delete the scenario they are currently working on. A prototype for this page is shown below in figure 3.2\\
+					
+					\begin{figure}
+					
+						\includegraphics[width=\linewidth]{Figures/ClimateScenario.PNG}
+						\caption{Allows user to select budgets and make notes}
+						\label{figure3.2}
+						
+					\end{figure}
 
 					Once the user Selects their budgets, makes notes on the scenario and clicks continue the will be redirected to a page where they will be prompted to enter their location. This page will take a county and a sate as input. This page will have a drop down menu for the state and the county. Before the user can enter a County they will be forced to enter a state. Once a state is entered the county drop down menu will auto populate and the user will be allowed to enter a county. A prototype of this page is shown below in figure 3.3 (Not yet available)\\
+					
+					\begin{figure}
+						\includegraphics[width=\linewidth]{Figures/SelectStateAndCounty.PNG}
+						\caption{Allows User to select location}
+						\label{figure3.3}
+					\end{figure}
 
-					After clicking continue the user will be taken to the plots for the location they selected. This page will initially have the 7 month average precipitation plot selected as the default. However, the user can select from four options via a drop down menu. Changing what is selected in the drop down menu will change which plot is displayed. Once the user has reviewed the plots they can then enter in how much they think their yield will be effected based on the climate data. A prototype of this page is shown below in figure 3.4 (Not yet available)\\
+					After clicking continue the user will be taken to the plots for the location they selected. This page will initially have the 7 month average precipitation plot selected as the default. However, the user can select from four options via a drop down menu. Changing what is selected in the drop down menu will change which plot is displayed. Once the user has reviewed the plots they can then enter in how much they think their yield will be effected based on the climate data. A prototype of this page is shown below in figure 3.4\\
+					
+					\begin{figure}
+						\includegraphics[width=\linewidth]{Figures/ChartPage.PNG}
+						\caption{Displays the Data in a plot}
+						\label{figure3.4}
+					\end{figure}
 
 					Next the user will be directed to the budget review page. This page will display a summary of the budget. The summary of the budget will include Income, General Cash Costs and A total summary of the budget. This page will allow the user to adjust the cost per unit, input costs, and quantity sold and will adjust their budget in near real time. This page will also allow the user to remove or add inputs to their general costs. This page will also allow the user to save their budget and output it as a PDF. A prototype of this page is shown below in figure 3.5 (Not yet available)\\
-
+					
+					\begin{figure}
+						\includegraphics[width=\linewidth]{Figures/BudgetReview.PNG}
+						\caption{Allows user to view their budget}
+						\label{figure3.5}
+					\end{figure}
 
         \subsubsection{Hardware Interfaces}
 					This project requires no designed hardware and the hardware this system is running on is managed by the Operating system as a result no hardware interfaces are necessary. Additionally the connection the the NWCTB is managed over the network and requires no hardware interface.\\
@@ -274,3 +306,4 @@ Here we will place our Gantt Chart. Will get completed before Friday.\\
 
 
 \end{document}
+
