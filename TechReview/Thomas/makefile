@@ -1,4 +1,4 @@
-filename=AgBizClimateSRS
+filename=main
 
 pdf: ps
 	ps2pdf ${filename}.ps
