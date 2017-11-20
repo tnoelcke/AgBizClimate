@@ -32,7 +32,7 @@
     \textsc{\Large CS 461}\\[0.5cm]
     \textsc{\Large Fall 2017}\\[0.5cm]
     \HRule \\[0.4cm]
-    { \huge \bfseries Tech Review}\\[0.4cm] % Title of your document
+    { \huge \bfseries Tech Review AgBizClimate}\\[0.4cm] % Title of your document
     \HRule \\[1.5cm]
     \begin{minipage}{0.4\textwidth}
         \begin{flushleft} \large
@@ -49,7 +49,7 @@
     \end{minipage}\\[2cm]
     \begin{abstract}
     \item 
-		The pourpose of this document is to research and consider different technical options for our applcaiton. In this document we research different options for data storage, HTTP request frame works, and testing frameworks. I will consider three possible choices for each section of the application. For each of these options I will weight the pros and cons of each. After comparing the different options I will select the option I would like to use for the AgBizClimate application.
+		The pourpose of this document is to research and consider different technical options for our application. In this document we research different options for data storage, HTTP request frame works, and testing frameworks. I will consider three possible choices for each section of the application. For each of these options I will weight the pros and cons of each. After comparing the different options I will select the option I would like to use for the AgBizClimate application.
     \end{abstract}
     \vfill % Fill the rest of the page with whitespace
     \end{titlepage}
@@ -59,7 +59,7 @@
 		For the AgBizClimate application we will need a way to store data so it can be easily retrieved later. For this application we will store a variety of data including budget data, weather data, and user information. This information will need to be quickly recalled so it can be used in our application. Generally, we will want to select a data storage option that will be easy to set up and allow us a lot of flexibility with what kind of data can be stored. We will also want a data storage option that will quickly recall stored data so it can be used by the application.\\
 		To analyze our options for our application we will define Criteria by which to compare the different options. We will then use the criteria to compare the three options for our application. Once we have compared our options we will select which option or options we plan to use for our application. We will then justify why we choose that option. If we chose multiple options we will describe which situation we will use one option over the other.
 	\subsection{Criteria}
-		I would like to analyze the performance of the data storage based on, Run Time Speed, Ease of Development, and Ease of Set Up and Flexibility. Run Time Speed will be a concrete measure of run time performance. Ease of development and ease of set up will be a much more subjective measure of each option. In those sections I will use the opinion of other software developers along with my own experience to compare each option. For these criteria I will rate each option on a scale from very easy to very hard.
+		I would like to analyze the performance of the data storage based on, Ease of Development, and Ease of Set Up and Flexibility. I will analyze run time speed however, this will not be one of the criteria as it is not critical that our data is retrieved as quickly as possible. Generally, its much more important to consider Ease of development, Set up and flexibility because the primary concern is being able to get the application up and running quickly. Ease of development and ease of set up will be a subjective measure of each option. In those sections I will use the opinion of other software developers along with my own experience to compare each option. Flexibility will be a measure of how easy it is to store different kinds of data using each option. For these criteria I will rate each option on a scale from very easy to very hard.
 	\subsection{Potential Choices}
 		In this section we will discuss the pros and cons of each potential choice. I will also discuss each option as it relates to the criteria defined above. 
 		\subsubsection{PostGreSQL}
@@ -77,7 +77,7 @@
 				Though this approach is very easy for the developer it isn't with out cost. The ORM approach does take a hit in terms of run time performance. The ORM framework will be slower than raw SQL. Another problem with this type of framework is that it doesn’t leave the developer very much control over the database. This means that you are stuck with what you get. If the frame work structures something in the database in a way you don't like you don't have a ton of choice about that. Additionally, making database chances can cause you to loose data in the database if you are not careful about how you handle the migrations.\\
 				
 		\subsubsection{MongoDB}
-		
+		MongoDB is a NOSQL framework where the data is stored as JSON objects. In general MmongoDB is an easy to use frame work for the developer.Given that the objects are returned from the data base as JSON objects the results from the data base are easy to work with. MongoDB is great for non relational data. For our application MongoDB will preform much better for the long term climate data. This is because of the way that the data is stored. However for data that is more relational MongoDB will take a slight performance hit in terms of run time. Given that MongoDB stores data as a JSON object it is very easy to Develop. More or less you can take objects in Javascript or in Python and run them through a JSON translator. Once translated they can put stored in the database. For this reason MongoDB is very flexible. This also makes MongoDB very easy to set up for the same reason because JSON objects are easy to set up.
 	\subsection{Discussion}
 	
 	\subsection{Conclusion}
@@ -102,13 +102,13 @@
 	
 \section{Testing Frame Work}
 		\subsection{Overview}
-						For the AgBizCliate system we will be required to write unit tests for our code. In this section I will discuss the various testing frame works we might use for our project. I will restrict the conversation to frameworks that we can use in Python as parts of our clients application are already in python. It is important for use to write tests for our code for several reasons. Firstly, We will want to ensure that our code actually does what we intended. Secondly, We will want to make sure that when we make changes we do not break our code. Thirdly, Our unit tests will become useful when we want to do integrated builds for our project.
+						For the AgBizCliate system we will be required to write unit tests for our code. In this section I will discuss the various testing frame works we might use for our project. I will restrict the conversation to frameworks that we can use in Python as parts of our clients application are already in python. It is important for use to write tests for our code for several reasons. Firstly, We will want to ensure that our code actually does what we intended. Secondly, We will want to make sure that when we make changes we do not break our code. Thirdly, Our unit tests will become useful when we want to do integrated builds for our project.\\
 
 	
 	\subsection{Criteria}
 	
 	\subsection{Potential Choices}
-		\subsubsection{}
+		\subsubsection{Choice 1}
 		
 		\subsubsection{Choice 2}
 		
