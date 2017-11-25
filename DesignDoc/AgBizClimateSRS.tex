@@ -1,0 +1,138 @@
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{article}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{lscape}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{geometry}
+\geometry{textheight=9.5in, textwidth=7in}
+
+% 1. Fill in these details
+\def \CapstoneTeamName{AgBizClimate}
+\def \CapstoneTeamNumber{26}
+\def \GroupMemberOne{	Thomas Noelcke}
+\def \GroupMemberTwo{	Shane Barrantes}
+\def \GroupMemberThree{	Shengpei Yuan}
+\def \CapstoneProjectName{ Linking Seasonal Weather Data to AgBizClimate\texttrademark}
+\def \CapstoneSponsorCompany{ Oregon State University}
+\def \CapstoneSponsorPerson{ Clark Seavert}
+\def \CapstoneProjectLead{ Sean Hammond}
+
+% 2. Uncomment the appropriate line below so that the document type works
+\def \DocType{ Software Design Document
+				%Requirements Document
+				%Technology Review
+				%Design Document
+				%Progress Report
+				}
+
+\newcommand{\NameSigPair}[1]{\par
+\makebox[2.75in][r]{#1} \hfil 	\makebox[3.25in]{\makebox[2.25in]{\hrulefill} \hfill		\makebox[.75in]{\hrulefill}}
+\par\vspace{-12pt} \textit{\tiny\noindent
+\makebox[2.75in]{} \hfil		\makebox[3.25in]{\makebox[2.25in][r]{Signature} \hfill	\makebox[.75in][r]{Date}}}}
+% 3. If the document is not to be signed, uncomment the RENEWcommand below
+\renewcommand{\NameSigPair}[1]{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{titlepage}
+    \pagenumbering{gobble}
+    \begin{singlespace}
+        \hfill
+        % 4. If you have a logo, use this includegraphics command to put it on the coversheet.
+        %\includegraphics[height=4cm]{CompanyLogo}
+        \par\vspace{.2in}
+        \centering
+        \scshape{
+            \huge CS Capstone \DocType \par
+            {\large\today}\par
+            \vspace{.5in}
+            \textbf{\Huge\CapstoneProjectName}\par
+            \vfill
+            {\large Prepared for}\par
+            \Huge \CapstoneSponsorCompany\par
+            \vspace{5pt}
+            {\Large\NameSigPair{\CapstoneSponsorPerson}\par}
+						{\Large\NameSigPair{\CapstoneProjectLead}\par}
+            {\large Prepared by }\par
+            Group\CapstoneTeamNumber\par
+            % 5. comment out the line below this one if you do not wish to name your team
+            %\CapstoneTeamName\par
+            \vspace{5pt}
+            {\Large
+                \NameSigPair{\GroupMemberOne}\par
+                \NameSigPair{\GroupMemberTwo}\par
+                \NameSigPair{\GroupMemberThree}\par
+            }
+            \vspace{20pt}
+        }
+        \begin{abstract}
+					Will need to write abstract here.
+        \end{abstract}
+    \end{singlespace}
+\end{titlepage}
+\newpage
+\pagenumbering{arabic}
+\tableofcontents
+% 7. uncomment this (if applicable). Consider adding a page break.
+\listoffigures 
+\newpage
+%\listoftables
+\clearpage
+
+% 8. now you write!
+\section{Introduction}
+		\subsection{Overview}
+		%WE MAY NEED TO EDIT THIS SECTION SO THAT IT MAKES MORE SENSE BUT I THINK THERE IS SOME GOOD INFO HERE
+			Seasonal climate is one of the essential factors that affects agricultural production. As a module of \textit{AgBiz Logic}, \textit{AgBizClimate} delivers essential information about climate change to farmers, and help professionals to develop management pathways that best fit their operations under a changing climate. This project aims to link the crucial seasonal climate data from the Northwest Climate Toolbox database to \textit{AgBiz Logic} so that it can provide changes in net returns of crop and livestock enterprises through powerful graphics and tables. \\
+			Currently \textit{AgBizClimate} has a long-term climate tool but no such tool exists for short term climate data. We will implement a tool to extract short-term climate data from the Northwest Climate Toolbox database, display it to the user and allow the user to adjust crop and livestock yields or quality of products sold and, production inputs. Moreover, a landing tool will be developed to allow users to switch between short-term seasonal tool and long-term climate data tool.\\
+			
+	\subsection {Product Functions}
+				\textit{AgBizClimate} is a web based decision tool that will allow users to gain specific insight on how localized climate data for the next seven months will affect their crop and livestock yields or quality of products sold and production inputs. The \textit{AgBizClimate} tool will allow users to input their location (state, county) and a budget for the specific crop or livestock enterprise. \textit{AgBizClimate} will select climate data for the next seven months for that location and provide graphical data showing temperature and precipitation. Users will then be able to change yields or quality of product sold by a percentage they think these factors will affect and modify production inputs. Finally the tool will calculate the net returns.\\
+					
+		\subsection{Scope}
+			This project is a part of a much larger AgBiz Logic\texttrademark program. However, the purpose of this project is to add a short term climate tool to the \textit{AgBizClimate} module. This limits the scope of the project to the \textit{AgBizClimate} Module. Additionally, we will only be adding the short term climate data tool as the long term climate data tool already exists.\\
+			
+		\subsection{User Characteristics}
+			\textit{AgBizClimate} users can be split into two subgroups, agricultural producers and climate researchers. The first subgroup, agricultural users who use this product tend to be between fifty and sixty years old of mixed gender. Their educational background ranges from high school to the completion of college. The primary language this group uses is English, but there are some Spanish users as well. Most of the users in this group tend to have novice computational skills. The primary domain for these users is agricultural and business management. Most agricultural producers who use this product are motivated by the potential profit that the decision tool \textit{AgBizClimate} could potentially offer. The second subgroup, climate researchers range from ages twenty to forty and are of mixed gender. The educational background for most climate researchers  exceed the postgraduate level with their primary language being English. These users generally have advanced computational skills and are motivated by the easily accessible climate and weather data.\\
+				
+		\subsection{Definitions, Acronyms and Abbreviations}
+			REST - Representational State Transfer, This is a type of architecture that manages the state of the program. This is especially popular in web development.\\
+			API- Application Programming Interface. This is a piece of software that allows a connection to another piece of software providing some sort of service.\\
+			NWCTB - Northwest Climate Toolbox. This is the database we will be connecting to that will provide the short term climate data we plan to use.\\
+			Climate Scenario - This is a theoretical calculation of yields, inputs and of the overall budget for one situation based on the climate data.\\
+			SQL Database - This is a relational database that allows for storing and accessing data.\\
+			NOSQL Database - This is a non-relational database that allows for data storage and data access.\\
+
+			\renewcommand\refname{\vskip -1cm}
+		\subsection{References}
+
+		\nocite{*}
+    \bibliographystyle{IEEEtran}
+    \bibliography{IEEEabrv,References}
+		
+\section{Front End Design}
+	\subsection{UI Design}
+	
+	\subsection{Angular Components Design}
+	
+	%potentoally other subsection here for each item that needs to be designed for the front end.
+
+\section{Controller Design}
+	%Talk about how we plan to serve the data from the front end to the back end here.
+	
+\section{API Design}
+%here we will talk about the design of the API that will interface with the NWCTB.
+
+\section{Testing Design}
+%Here we will talk about how we plan to test this project.
+	\subsection{Front End Testing}
+	
+	\subsection{Controller testing}
+	
+	\subsection{API Testing}
+
+
+
+\end{document}
+
