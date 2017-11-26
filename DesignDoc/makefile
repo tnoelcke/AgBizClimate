@@ -1,6 +1,4 @@
-filename=AgBizClimateSRS
-
-pdf: ps
+filename=AgBizClimateDesignDoc
 	ps2pdf ${filename}.ps
 
 pdf-print: ps
