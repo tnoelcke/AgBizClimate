@@ -82,20 +82,19 @@
 
 % 8. now you write!
 \section{Introduction}
+		
+		\subsection{Purpose}
+			The purpose of this Software Design Description (SDD) is to describe the architecture and system design of the \textit{AgBizClimate} project. This document will provide a high level design for the \textit{AgBizClimate} short term climate tool. We will also break down each component and discuss the design of each component in detail. This document is intended for the project owners and software developers of the \textit{AgBizClimate} system.
+		
 		\subsection{Overview}
-		%WE MAY NEED TO EDIT THIS SECTION SO THAT IT MAKES MORE SENSE BUT I THINK THERE IS SOME GOOD INFO HERE
 			Seasonal climate is one of the essential factors that affects agricultural production. As a module of \textit{AgBiz Logic}, \textit{AgBizClimate} delivers essential information about climate change to farmers, and help professionals to develop management pathways that best fit their operations under a changing climate. This project aims to link the crucial seasonal climate data from the Northwest Climate Toolbox database to \textit{AgBiz Logic} so that it can provide changes in net returns of crop and livestock enterprises through powerful graphics and tables. \\
-			Currently \textit{AgBizClimate} has a long-term climate tool but no such tool exists for short term climate data. We will implement a tool to extract short-term climate data from the Northwest Climate Toolbox database, display it to the user and allow the user to adjust crop and livestock yields or quality of products sold and, production inputs. Moreover, a landing tool will be developed to allow users to switch between short-term seasonal tool and long-term climate data tool.\\
 			
-	\subsection {Product Functions}
-				\textit{AgBizClimate} is a web based decision tool that will allow users to gain specific insight on how localized climate data for the next seven months will affect their crop and livestock yields or quality of products sold and production inputs. The \textit{AgBizClimate} tool will allow users to input their location (state, county) and a budget for the specific crop or livestock enterprise. \textit{AgBizClimate} will select climate data for the next seven months for that location and provide graphical data showing temperature and precipitation. Users will then be able to change yields or quality of product sold by a percentage they think these factors will affect and modify production inputs. Finally the tool will calculate the net returns.\\
-					
 		\subsection{Scope}
-			This project is a part of a much larger AgBiz Logic\texttrademark program. However, the purpose of this project is to add a short term climate tool to the \textit{AgBizClimate} module. This limits the scope of the project to the \textit{AgBizClimate} Module. Additionally, we will only be adding the short term climate data tool as the long term climate data tool already exists.\\
-			
-		\subsection{User Characteristics}
-			\textit{AgBizClimate} users can be split into two subgroups, agricultural producers and climate researchers. The first subgroup, agricultural users who use this product tend to be between fifty and sixty years old of mixed gender. Their educational background ranges from high school to the completion of college. The primary language this group uses is English, but there are some Spanish users as well. Most of the users in this group tend to have novice computational skills. The primary domain for these users is agricultural and business management. Most agricultural producers who use this product are motivated by the potential profit that the decision tool \textit{AgBizClimate} could potentially offer. The second subgroup, climate researchers range from ages twenty to forty and are of mixed gender. The educational background for most climate researchers  exceed the postgraduate level with their primary language being English. These users generally have advanced computational skills and are motivated by the easily accessible climate and weather data.\\
-				
+			This project is a part of a much larger AgBiz Logic\texttrademark program. However, the purpose of this project is to add a short term climate tool to the \textit{AgBizClimate} module. This limits the scope of the project to the \textit{AgBizClimate} Module. Additionally, we will only be adding the short term climate data tool as the long term climate data tool already exists.\\			
+
+			Currently \textit{AgBizClimate} has a long-term climate tool but no such tool exists for short term climate data. We will implement a tool to extract short-term climate data from the Northwest Climate Toolbox database, display it to the user and allow the user to adjust crop and livestock yields or quality of products sold and, production inputs. Moreover, a landing tool will be developed to allow users to switch between short-term seasonal tool and long-term climate data tool.\\
+		
+		%Please add to this section as you write and use Definitions, Acronyms and Abbreviations.
 		\subsection{Definitions, Acronyms and Abbreviations}
 			REST - Representational State Transfer, This is a type of architecture that manages the state of the program. This is especially popular in web development.\\
 			API- Application Programming Interface. This is a piece of software that allows a connection to another piece of software providing some sort of service.\\
@@ -111,35 +110,65 @@
     \bibliographystyle{IEEEtran}
     \bibliography{IEEEabrv,References}
 		
-\section{Front End Design}
-	\subsection{UI Design}
+		
+\section{System Overview}
+	\subsection {Product Functions}
+				\textit{AgBizClimate} is a web based decision tool that will allow users to gain specific insight on how localized climate data for the next seven months will affect their crop and livestock yields or quality of products sold and production inputs. The \textit{AgBizClimate} tool will allow users to input their location (state, county) and a budget for the specific crop or livestock enterprise. \textit{AgBizClimate} will select climate data for the next seven months for that location and provide graphical data showing temperature and precipitation. Users will then be able to change yields or quality of product sold by a percentage they think these factors will affect and modify production inputs. Finally the tool will calculate the net returns.\\
+
+	\subsection{User Characteristics}
+		\textit{AgBizClimate} users can be split into two subgroups, agricultural producers and climate researchers. The first subgroup, agricultural users who use this product tend to be between fifty and sixty years old of mixed gender. Their educational background ranges from high school to the completion of college. The primary language this group uses is English, but there are some Spanish users as well. Most of the users in this group tend to have novice computational skills. The primary domain for these users is agricultural and business management. Most agricultural producers who use this product are motivated by the potential profit that the decision tool \textit{AgBizClimate} could potentially offer. The second subgroup, climate researchers range from ages twenty to forty and are of mixed gender. The educational background for most climate researchers  exceed the postgraduate level with their primary language being English. These users generally have advanced computational skills and are motivated by the easily accessible climate and weather data.\\
+
+	\subsection{Constraints}
+		There are several key constraints that this product has to work within. The first constraint is that we only have access to two data parameters from the North West Climate Tool box, precipitation and temperature. Secondly, we only have access to their data via the NWCTB API which could have additional restrictions such as limited usage per day, mislabeled data, or poor documentation. Thirdly, we don’t have access to any of the hardware that \textit{AgBizClimate} is exists on as it is being managed by a third party. This will prevent us from improving the hardware or cause roadblocks if their servers are having issues. Lastly, we are limited to using the languages Python and JavaScript since we are integrating our product into an already existing project.\\
+
+	\subsection {Assumptions and Dependencies}
+		We are assuming that the Northwest Climate Toolbox is a functional API that will allow us to pull location based temperature and precipitation data. This data will most likely come in the form of a text body of which we will then format into a JSON object and store in a MongoDB database for future use. Due to the fact that we are writing an addition to an existing project we do not need to interact with the user budgets as these have already been defined. This fact extends to the calculations portion of the \textit{AgBizClimate} product. Our team will simply be accessing data via the NWCTB API, then format the data, store the data, and hand the data over to the tool while will provide some additional front end support.\\
+
+\sectionP{System Architecture}
+	\subsection{Architectural Design}
 	
-	\subsection{Angular Components Design}
+	\subsection{Decomposition Description}
+	
+	\subsection{Design Rationale}
+	
+\section{Data Design}
+	
+	\subsection{Data Description}
+	
+	\subsection{Data Dictionary}
+	
+\section{Component Design}
+
+	\subsection{Front End Design}
+		\subsubsection{UI Design}
+	
+		\subsubsection{Angular Components Design}
 	
 	%potentoally other subsection here for each item that needs to be designed for the front end.
 
-\section{Controller Design}
+	\subsection{Controller Design}
 	%Talk about how we plan to serve the data from the front end to the back end here.
 	
-\section{API Design}
+	\subsection{API Design}
 %here we will talk about the design of the API that will interface with the NWCTB.
-	\subsection{Overview}
-		In this section we will discuss the design of the API that will interface with the NWCTB. This API needs to get the data from the NWCTB, format the data, and send it to the client. Currently, there is a lot of uncertainty around the design of this API because we do not know what sort of API access that we will be given from the NWCTB. We are trying to contact the NWCTB development team regarding our API access but the NWCTB hasn't been very responsive. Because we still don't have NWCTB API access yet and have no date when this might be accomplished, we will discuss several possible options that do not require NWCTB API access along with one design option that includes NWCTB API access.
-	
-	\subsection{Architecture Design}
-	
-	\subsection{}
-	
-	\subsection{}
+		\subsubsection{Overview}
+			In this section we will discuss the design of the API that will interface with the NWCTB. This API needs to get the data from the NWCTB, format the data, and send it to the client. Currently, there is a lot of uncertainty around the design of this API because we do not know what sort of API access that we will be given from the NWCTB. We are trying to contact the NWCTB development team regarding our API access but the NWCTB hasn't been very responsive. Because we still don't have NWCTB API access yet and have no date when this might be accomplished, we will discuss several possible options that do not require NWCTB API access along with one design option that includes NWCTB API access.
 
-%We may want to abandon this section.
-\section{Testing Design}
-%Here we will talk about how we plan to test this project.
-	\subsection{Front End Testing}
+	%We may want to abandon this section.
+	\subsection{Testing Design}
+		%Here we will talk about how we plan to test this project.
+		\subsubsection{Front End Testing}
 	
-	\subsection{Controller testing}
+		\subsubsection{Controller testing}
 	
-	\subsection{API Testing}
+		\subsubsection{API Testing}
+\section{Human Interface Design}
+	\subsection{Overview of User Interface}
+	\subsection{Screen Images}
+	\subsection{Screen Objects and Actions}
+
+%in this section we will show how are design will fufill the functional requirements.	
+\section{Requirements Matrix}
 
 
 
