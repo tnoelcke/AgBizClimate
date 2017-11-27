@@ -87,7 +87,7 @@
 			The purpose of this Software Design Description (SDD) is to describe the architecture and system design of the \textit{AgBizClimate} project. This document will provide a high level design for the \textit{AgBizClimate} short term climate tool. We will also break down each component and discuss the design of each component in detail. This document is intended for the project owners and software developers of the \textit{AgBizClimate} system.
 		
 		\subsection{Overview}
-			Seasonal climate is one of the essential factors that affects agricultural production. As a module of \textit{AgBiz Logic}, \textit{AgBizClimate} delivers essential information about climate change to farmers, and help professionals to develop management pathways that best fit their operations under a changing climate. This project aims to link the crucial seasonal climate data from the Northwest Climate Toolbox database to \textit{AgBiz Logic} so that it can provide changes in net returns of crop and livestock enterprises through powerful graphics and tables. \\
+			Seasonal climate is one of the essential factors that affects agricultural production. As a module of \textit{AgBiz Logic}, \textit{AgBizClimate} delivers essential information about climate change to farmers, and help professionals to develop management pathways that best fit their operations under a changing climate. This project aims to link the crucial seasonal climate data from the Northwest Climate Toolbox database to \textit{AgBiz Logic} so that it can provide changes in net returns of crop and livestock enterprises through powerful graphics and tables.\\
 			
 		\subsection{Scope}
 			This project is a part of a much larger AgBiz Logic\texttrademark program. However, the purpose of this project is to add a short term climate tool to the \textit{AgBizClimate} module. This limits the scope of the project to the \textit{AgBizClimate} Module. Additionally, we will only be adding the short term climate data tool as the long term climate data tool already exists.\\			
@@ -124,11 +124,31 @@
 	\subsection {Assumptions and Dependencies}
 		We are assuming that the Northwest Climate Toolbox is a functional API that will allow us to pull location based temperature and precipitation data. This data will most likely come in the form of a text body of which we will then format into a JSON object and store in a MongoDB database for future use. Due to the fact that we are writing an addition to an existing project we do not need to interact with the user budgets as these have already been defined. This fact extends to the calculations portion of the \textit{AgBizClimate} product. Our team will simply be accessing data via the NWCTB API, then format the data, store the data, and hand the data over to the tool while will provide some additional front end support.\\
 
-\sectionP{System Architecture}
+\section{System Architecture}
 	\subsection{Architectural Design}
-	
+		Shown Below is the architectural design for the \textit{AgBizClimate} project. This UML diagram shows the high level components of the application. This Diagram also shows how these components are connected.
+		
+		%insert diagram here. Please don't be a bitch about where you put the diagrm laTex...
+		
 	\subsection{Decomposition Description}
-	
+		The \textit{AgBizClimate} project can broken down into five components. The eight components are the Backend Controller, The Front End Controller, Existing \textit{AgBiz Logic} Modules, Climate Data API, and the NWCTB API. In this section we will describe each models function and how it interacts with the other modules.
+		
+		\subsubsection{Backend Controller}
+			This component is responsible for connecting the dots between the rest of the components. Generally, the backend controller will handle incoming requests from the front end controller and return the requested content. Through this process this component will also interface with the existing \textit{AgBiz Logic} modules along with the Climate Data API.
+			
+		\subsubsection{Front End Controller}
+			The Front end Controller will be responsible for 
+		\subsubsection{UI}
+		
+		\subsubsection{Existing \textit{AgBiz Logic} modules}
+		
+		\subsubsection{Climate Data API}
+		
+		\subsubsection{NWCTB API}
+		
+		
+		
+		
 	\subsection{Design Rationale}
 	
 \section{Data Design}
@@ -139,8 +159,7 @@
 	
 \section{Component Design}
 
-	\subsection{Front End Design}
-		\subsubsection{UI Design}
+	\subsection{Front End Controller}
 	
 		\subsubsection{Angular Components Design}
 	
@@ -153,6 +172,8 @@
 %here we will talk about the design of the API that will interface with the NWCTB.
 		\subsubsection{Overview}
 			In this section we will discuss the design of the API that will interface with the NWCTB. This API needs to get the data from the NWCTB, format the data, and send it to the client. Currently, there is a lot of uncertainty around the design of this API because we do not know what sort of API access that we will be given from the NWCTB. We are trying to contact the NWCTB development team regarding our API access but the NWCTB hasn't been very responsive. Because we still don't have NWCTB API access yet and have no date when this might be accomplished, we will discuss several possible options that do not require NWCTB API access along with one design option that includes NWCTB API access.
+			
+			\subsection{Cached Climate Data Data Base}
 
 	%We may want to abandon this section.
 	\subsection{Testing Design}
@@ -162,9 +183,14 @@
 		\subsubsection{Controller testing}
 	
 		\subsubsection{API Testing}
-\section{Human Interface Design}
+		
+%Here we will talk about the UI.
+\section{User Interface Design}
+
 	\subsection{Overview of User Interface}
+	
 	\subsection{Screen Images}
+	
 	\subsection{Screen Objects and Actions}
 
 %in this section we will show how are design will fufill the functional requirements.	
