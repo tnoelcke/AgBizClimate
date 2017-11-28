@@ -124,6 +124,7 @@
 	\subsection {Assumptions and Dependencies}
 		We are assuming that the Northwest Climate Toolbox is a functional API that will allow us to pull location based temperature and precipitation data. This data will most likely come in the form of a text body of which we will then format into a JSON object and store in a MongoDB database for future use. Due to the fact that we are writing an addition to an existing project we do not need to interact with the user budgets as these have already been defined. This fact extends to the calculations portion of the \textit{AgBizClimate} product. Our team will simply be accessing data via the NWCTB API, then format the data, store the data, and hand the data over to the tool while will provide some additional front end support.\\
 
+
 \section{System Architecture}
 	\subsection{Architectural Design}
 		Shown Below is the architectural design for the \textit{AgBizClimate} project. This UML diagram shows the high level components of this application. This Diagram also shows how these components will interact.\\
@@ -134,28 +135,33 @@
 		The \textit{AgBizClimate} project can broken down into five components. The eight components are the Backend Controller, The Front End Controller, Existing \textit{AgBiz Logic} Modules, Climate Data API, and the NWCTB API. In this section we will describe each models function and how it interacts with the other modules.\\
 		
 		\subsubsection{Backend Controller}
-			This component is responsible for connecting the dots between the rest of the components. Generally, the backend controller will handle incoming requests from the front end controller and return the requested content. Through this process this component will also interface with the existing \textit{AgBiz Logic} modules along with the Climate Data API.\\
+			This component is responsible for connecting the dots between the rest of the components. Generally, the backend controller will handle incoming requests from the front end controller and return the requested content. Through this process this component will also interface with the existing \textit{AgBiz Logic} modules along with the Climate Data API. For this component we will use a REST API architecture type.\\
 			
 		\subsubsection{Front End Controller}
 			The Front End Controller will act as an interface between the UI, the existing \textit{AgBiz Locic} modules and the Backend Controller. This component will handle UI action made by the user and will use those to make requests to the Backend and existing \textit{AgBiz Logic} Modules. This component will then take the result of these requests and display the relevant information to the user.\\
 
 		\subsubsection{UI}
-			This is the portion of the application that the user will see and interact with. The primary responsibility of this component is to display information to the user. This component will also be responsible for interacting with the front end Controller to ensure that user actions so the program responds correctly to user action.
+			This is the portion of the application that the user will see and interact with. The primary responsibility of this component is to display information to the user. This component will also be responsible for interacting with the front end Controller to ensure that user actions so the program responds correctly to user action.\\
 			
 		\subsubsection{Existing \textit{AgBiz Logic} modules}
-			This component represents the existing functionality already implemented by the existing \textit{AgBiz Logic} project. This component will deal with budget data, user information, and some other general functions that have already been implemented. For the purposes of this project this component will primarily handle requests from the the front end controller and the back end controller.
+			This component represents the existing functionality already implemented by the existing \textit{AgBiz Logic} project. This component will deal with budget data, user information, and some other general functions that have already been implemented. For the purposes of this project this component will primarily handle requests from the the front end controller and the back end controller.\\
 			
 			
 		\subsubsection{Climate Data API}
-			The Climate Data API component will interface withe the NWCTB to provide long term forecast data. This component will take requests, with location data, from the Backend controller and will respond with the formatted data from the NWCTB. We will do this by interfacing with the NWCTB API to get the data. We will then take the data from the NWCTB, parse it into JSON, apply some formatting and pass it back to the requesting client.
-			
+			The Climate Data API component will interface withe the NWCTB to provide long term forecast data. This component will take requests, with location data, from the Backend controller and will respond with the formatted data from the NWCTB. We will do this by interfacing with the NWCTB API to get the data. We will then take the data from the NWCTB, parse it into JSON, apply some formatting and pass it back to the requesting client.\\
+
 		\subsubsection{NWCTB API}
-			The NWCTB API will be our data source for this project. This component will provide the climate data by interfacing with the back end controller. Currently we are not sure how this will happen as the NWCTB has not responded to our requests for API access.
-		
-		
+			The NWCTB API will be our data source for this project. This component will provide the climate data by interfacing with the back end controller. Currently we are not sure how this will happen as the NWCTB has not responded to our requests for API access.\\
 		
 	\subsection{Design Rationale}
-	
+		We've chosen to design this system this way in part because of the nature of our system. We need a front end controller to handle the clients interaction with the server because this is a web development project and the front end will be separate from the server. The front end controller will facilitate the communication between the client and the server.\\
+		We also chose to use a Backend Controller so we can facilitate the communication between the front end controller and the various components on the backend. This makes the application easier to build, test and maintain. This also allows for one line of communication between the backend and the front end. This is necessary to keep the interactions between the backend code and front end code simple. This allows for large changes to be made to both the front end and the backend with out causing them to impact each other.\\
+		We also chose to create the Climate Data API as its own service. We chose to do this because it's easier to test and then the Climate Data API can be reused in future projects and with other components. If we had built the Climate Data API into the backend controller this would not have been possible.\\
+		The NWCTB and Existing \textit{AgBiz Logic} components have already been implemented out side the scope of our project. However, we are still planning to use them in our project. This is why we have create these modules because we will be using them as part of the design of our system but do not want to tightly couple our project with these existing components.
+		
+%in this section we will want to talk about the Climate data and how it will be designed.
+%we may also want to breifly mention the user data and budget data. However we will also
+%Need to metion that we are not responsible for how those items were designed.
 \section{Data Design}
 	
 	\subsection{Data Description}
@@ -194,6 +200,7 @@
 
 	\subsection{Overview of User Interface}
 	
+	%I've already created screen images as part of another project. We should use those here. They are in the figures folder in the project.
 	\subsection{Screen Images}
 	
 	\subsection{Screen Objects and Actions}
