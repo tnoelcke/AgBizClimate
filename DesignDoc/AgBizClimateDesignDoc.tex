@@ -126,7 +126,7 @@
 
 \section{System Architecture}
 	\subsection{Architectural Design}
-		Shown Below is the architectural design for the \textit{AgBizClimate} project. This UML diagram shows the high level components of the application. This Diagram also shows how these components are connected.\\
+		Shown Below is the architectural design for the \textit{AgBizClimate} project. This UML diagram shows the high level components of this application. This Diagram also shows how these components will interact.\\
 		
 		%insert diagram here. Please don't be a bitch about where you put the diagrm laTex...
 		
@@ -140,13 +140,17 @@
 			The Front End Controller will act as an interface between the UI, the existing \textit{AgBiz Locic} modules and the Backend Controller. This component will handle UI action made by the user and will use those to make requests to the Backend and existing \textit{AgBiz Logic} Modules. This component will then take the result of these requests and display the relevant information to the user.\\
 
 		\subsubsection{UI}
-			This is the portion of the application that 
+			This is the portion of the application that the user will see and interact with. The primary responsibility of this component is to display information to the user. This component will also be responsible for interacting with the front end Controller to ensure that user actions so the program responds correctly to user action.
+			
 		\subsubsection{Existing \textit{AgBiz Logic} modules}
-		
+			This component represents the existing functionality already implemented by the existing \textit{AgBiz Logic} project. This component will deal with budget data, user information, and some other general functions that have already been implemented. For the purposes of this project this component will primarily handle requests from the the front end controller and the back end controller.
+			
+			
 		\subsubsection{Climate Data API}
-		
+			The Climate Data API component will interface withe the NWCTB to provide long term forecast data. This component will take requests, with location data, from the Backend controller and will respond with the formatted data from the NWCTB. We will do this by interfacing with the NWCTB API to get the data. We will then take the data from the NWCTB, parse it into JSON, apply some formatting and pass it back to the requesting client.
+			
 		\subsubsection{NWCTB API}
-		
+			The NWCTB API will be our data source for this project. This component will provide the climate data by interfacing with the back end controller. Currently we are not sure how this will happen as the NWCTB has not responded to our requests for API access.
 		
 		
 		
