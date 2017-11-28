@@ -126,20 +126,21 @@
 
 \section{System Architecture}
 	\subsection{Architectural Design}
-		Shown Below is the architectural design for the \textit{AgBizClimate} project. This UML diagram shows the high level components of the application. This Diagram also shows how these components are connected.
+		Shown Below is the architectural design for the \textit{AgBizClimate} project. This UML diagram shows the high level components of the application. This Diagram also shows how these components are connected.\\
 		
 		%insert diagram here. Please don't be a bitch about where you put the diagrm laTex...
 		
 	\subsection{Decomposition Description}
-		The \textit{AgBizClimate} project can broken down into five components. The eight components are the Backend Controller, The Front End Controller, Existing \textit{AgBiz Logic} Modules, Climate Data API, and the NWCTB API. In this section we will describe each models function and how it interacts with the other modules.
+		The \textit{AgBizClimate} project can broken down into five components. The eight components are the Backend Controller, The Front End Controller, Existing \textit{AgBiz Logic} Modules, Climate Data API, and the NWCTB API. In this section we will describe each models function and how it interacts with the other modules.\\
 		
 		\subsubsection{Backend Controller}
-			This component is responsible for connecting the dots between the rest of the components. Generally, the backend controller will handle incoming requests from the front end controller and return the requested content. Through this process this component will also interface with the existing \textit{AgBiz Logic} modules along with the Climate Data API.
+			This component is responsible for connecting the dots between the rest of the components. Generally, the backend controller will handle incoming requests from the front end controller and return the requested content. Through this process this component will also interface with the existing \textit{AgBiz Logic} modules along with the Climate Data API.\\
 			
 		\subsubsection{Front End Controller}
-			The Front end Controller will be responsible for 
+			The Front End Controller will act as an interface between the UI, the existing \textit{AgBiz Locic} modules and the Backend Controller. This component will handle UI action made by the user and will use those to make requests to the Backend and existing \textit{AgBiz Logic} Modules. This component will then take the result of these requests and display the relevant information to the user.\\
+
 		\subsubsection{UI}
-		
+			This is the portion of the application that 
 		\subsubsection{Existing \textit{AgBiz Logic} modules}
 		
 		\subsubsection{Climate Data API}
