@@ -6,6 +6,7 @@
 \usepackage{parskip}
 \usepackage{geometry}
 \geometry{textheight=9.5in, textwidth=7in}
+\graphicspath{{Figures/}}
 
 % 1. Fill in these details
 \def \CapstoneTeamName{AgBizClimate}
@@ -85,7 +86,7 @@
 		
 		\subsection{Purpose}
 			The purpose of this Software Design Description (SDD) is to describe the architecture and system design of the \textit{AgBizClimate} project. This document will provide a high level design for the \textit{AgBizClimate} short term climate tool. This document will also provide a detailed description of the design of the data this project will need to use. We will also break down each component and discuss the design of each component in detail. After that we will discuss the design of the user interface. Finally, we will have a requirements matrix. The requirements matrix will show how each component fulfills the functional requirements for this project. 
-			This document is intended for the project owners and software developers of the \textit{AgBizClimate} system. This document is intended to be a guide for the implimentatino of the \texit{AgBizClimate} short term climate tool.
+			This document is intended for the project owners and software developers of the \textit{AgBizClimate} system. This document is intended to be a guide for the implimentatino of the \textit{AgBizClimate} short term climate tool.
 		
 		\subsection{Overview}
 			Seasonal climate is one of the essential factors that affects agricultural production. As a module of \textit{AgBiz Logic}, \textit{AgBizClimate} delivers essential information about climate change to farmers, and help professionals to develop management pathways that best fit their operations under a changing climate. This project aims to link the crucial seasonal climate data from the Northwest Climate Toolbox database to \textit{AgBiz Logic} so that it can provide changes in net returns of crop and livestock enterprises through powerful graphics and tables.\\
@@ -132,7 +133,7 @@
 		Shown Below is the architectural design for the \textit{AgBizClimate} project. This UML diagram shows the high level components of this application. This Diagram also shows how these components will interact.\\
 		
 		%insert diagram here. Please don't be a bitch about where you put the diagrm laTex...
-		
+		\includegraphics{Architecture}
 		
 	\subsection{Decomposition Description}
 		The \textit{AgBizClimate} project can broken down into six components. The six components are the Backend Controller, The Front End Controller, UI, Existing \textit{AgBiz Logic} Modules, Climate Data API, and the NWCTB API. In this section we will describe each models function and how it interacts with the other modules.\\
@@ -161,7 +162,7 @@
 		We also chose to use a Backend Controller so we can facilitate the communication between the front end controller and the various components on the backend. This makes the application easier to build, test and maintain. This also allows for one line of communication between the backend and the front end. This is necessary to keep the interactions between the backend code and front end code simple. This allows for large changes to be made to both the front end and the backend with out causing them to impact each other.\\
 		We also chose to create the Climate Data API as its own service. We chose to do this because it's easier to test and then the Climate Data API can be reused in future projects and with other components. If we had built the Climate Data API into the backend controller this would not have been possible.\\
 		The NWCTB and Existing \textit{AgBiz Logic} components have already been implemented out side the scope of our project. However, we are still planning to use them in our project. This is why we have create these modules because we will be using them as part of the design of our system but do not want to tightly couple our project with these existing components.\\
-		More generally the components in our system use the REST API architecture type. We chose to do this because it allows for flexible reusable modules. The REST API Architecture type also allows us to break our application into independent modules that are easier to develop, test and maintain. This division of our application also makes it more scalable allowing it to keep up with future demand.\\
+		More generally the components in our system use the REST API architecture type. We chose to do this because it allows for flexible reusable modules. The REST API Architecture also allows us to break our application into independent modules that are easier to develop, test and maintain. This division of our application also makes it more scalable allowing it to keep up with future demand.\\
 		
 %in this section we will want to talk about the Climate data and how it will be designed.
 %we may also want to breifly mention the user data and budget data. However we will also
