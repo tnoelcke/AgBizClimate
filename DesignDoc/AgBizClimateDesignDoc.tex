@@ -67,7 +67,7 @@
             \vspace{20pt}
         }
         \begin{abstract}
-					This design document will cover the proposed design of the AgBizClimate\texttrademark project. We will first give a general introduction to the project. This section will provide some context for why we are doing this project and what this project hopes to accomplish. Next we will talk about the front end design. In this section we will talk about the User Interface and how we plan to implement the UI. After that we will talk about the design of the back end controller. In this section we will discuss how the pages will be served. Finally, We will talk about the design of the API. In this section we will talk about how we plan to interface with the Northwest Climate Tool box to get the data and serve it to the client.
+					This design document will cover the proposed design of the AgBizClimate\texttrademark project. We will first give a general introduction to the project. This section will provide some context for why we are doing this project and what this project hopes to accomplish. Next we will talk about Architecture design. This section will describe a high level structure for the project. After that we will discuss the data for the project and how it will be structured. Then we will discuss in detail the design of each component. Then we will discus the design of the user interface. Finally, we will provide a requirements matrix which will show how each component fulfills the functional requirements.
         \end{abstract}
     \end{singlespace}
 \end{titlepage}
@@ -84,7 +84,8 @@
 \section{Introduction}
 		
 		\subsection{Purpose}
-			The purpose of this Software Design Description (SDD) is to describe the architecture and system design of the \textit{AgBizClimate} project. This document will provide a high level design for the \textit{AgBizClimate} short term climate tool. We will also break down each component and discuss the design of each component in detail. This document is intended for the project owners and software developers of the \textit{AgBizClimate} system.
+			The purpose of this Software Design Description (SDD) is to describe the architecture and system design of the \textit{AgBizClimate} project. This document will provide a high level design for the \textit{AgBizClimate} short term climate tool. This document will also provide a detailed description of the design of the data this project will need to use. We will also break down each component and discuss the design of each component in detail. After that we will discuss the design of the user interface. Finally, we will have a requirements matrix. The requirements matrix will show how each component fulfills the functional requirements for this project. 
+			This document is intended for the project owners and software developers of the \textit{AgBizClimate} system. This document is intended to be a guide for the implimentatino of the \texit{AgBizClimate} short term climate tool.
 		
 		\subsection{Overview}
 			Seasonal climate is one of the essential factors that affects agricultural production. As a module of \textit{AgBiz Logic}, \textit{AgBizClimate} delivers essential information about climate change to farmers, and help professionals to develop management pathways that best fit their operations under a changing climate. This project aims to link the crucial seasonal climate data from the Northwest Climate Toolbox database to \textit{AgBiz Logic} so that it can provide changes in net returns of crop and livestock enterprises through powerful graphics and tables.\\
@@ -102,6 +103,7 @@
 			Climate Scenario - This is a theoretical calculation of yields, inputs and of the overall budget for one situation based on the climate data.\\
 			SQL Database - This is a relational database that allows for storing and accessing data.\\
 			NOSQL Database - This is a non-relational database that allows for data storage and data access.\\
+			UI - User Interface, This is a piece of software that allows a human to interact with the software. Often this is what the user sees while using software.
 
 			\renewcommand\refname{\vskip -1cm}
 		\subsection{References}
@@ -131,20 +133,21 @@
 		
 		%insert diagram here. Please don't be a bitch about where you put the diagrm laTex...
 		
+		
 	\subsection{Decomposition Description}
-		The \textit{AgBizClimate} project can broken down into five components. The eight components are the Backend Controller, The Front End Controller, Existing \textit{AgBiz Logic} Modules, Climate Data API, and the NWCTB API. In this section we will describe each models function and how it interacts with the other modules.\\
+		The \textit{AgBizClimate} project can broken down into six components. The six components are the Backend Controller, The Front End Controller, UI, Existing \textit{AgBiz Logic} Modules, Climate Data API, and the NWCTB API. In this section we will describe each models function and how it interacts with the other modules.\\
 		
 		\subsubsection{Backend Controller}
-			This component is responsible for connecting the dots between the rest of the components. Generally, the backend controller will handle incoming requests from the front end controller and return the requested content. Through this process this component will also interface with the existing \textit{AgBiz Logic} modules along with the Climate Data API. For this component we will use a REST API architecture type.\\
+			This component is responsible for connecting the dots between the rest of the components. Generally, the backend controller will handle incoming requests from the front end controller and return the requested content. This component will also interface with the existing \textit{AgBiz Logic} modules and Climate Data API so it can provide all the requested information.\\
 			
 		\subsubsection{Front End Controller}
-			The Front End Controller will act as an interface between the UI, the existing \textit{AgBiz Locic} modules and the Backend Controller. This component will handle UI action made by the user and will use those to make requests to the Backend and existing \textit{AgBiz Logic} Modules. This component will then take the result of these requests and display the relevant information to the user.\\
+			The Front End Controller will act as an interface between the UI, the existing \textit{AgBiz Locic} modules and the Backend Controller. This component will handle UI action made by the user and will use those to make requests to the Backend and existing \textit{AgBiz Logic} Modules. This component will then take the result of these requests and display the relevant information to the user. This component will also handle user inputs such as a button push or clicking on a drop down menu. This component will take these actions and modify the UI to reflect the actions the user preformed.\\
 
 		\subsubsection{UI}
 			This is the portion of the application that the user will see and interact with. The primary responsibility of this component is to display information to the user. This component will also be responsible for interacting with the front end Controller to ensure that user actions so the program responds correctly to user action.\\
 			
 		\subsubsection{Existing \textit{AgBiz Logic} modules}
-			This component represents the existing functionality already implemented by the existing \textit{AgBiz Logic} project. This component will deal with budget data, user information, and some other general functions that have already been implemented. For the purposes of this project this component will primarily handle requests from the the front end controller and the back end controller.\\
+			This is not a component but rather a collection of components that already exists as part of the \textit{AgBiz logic} system. We will use these components to preform a variate of actions including, retrieving budget data, managing user information, making modifications to budget data and saving budget data back to the database. We will interface with these component from the Front End Controller to handle budget data. We will also interface with these components from the back end to handle user data.\\
 			
 			
 		\subsubsection{Climate Data API}
