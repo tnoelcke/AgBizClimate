@@ -202,32 +202,79 @@
 	\subsection{Data Dictionary}
 		In this section we will describe each piece of data and what it represents. We will also discuss possible values for each piece of data.\\
 		\subsubsection{User Data}
-		
+			In this section we will define the entities and fields that relate to user data and user budgets.\\
 			\subsubsection{User}
 				This entity represents a user along with the data we will need for each user.\\
-				\paragraph{Name}
+				\paragraph{Name} - This is a string that stores the user name of a user.\\
 				
-				\paragraph{Address 1}
+				\paragraph{Address 1} - This  stores the first line of a users address.\\
 				
-				\paragraph{Address 2}
+				\paragraph{Address 2} - This stores the second line of a users address.
 				
-				\paragraph{zip code}
+				\paragraph{zip code} - This stores the zip code for the address the user entered.\\
 				
-				\paragraph{city}
+				\paragraph{city} - This stores the name of the city for the address the user entered.\\
 				
-				\paragraph{state}
+				\paragraph{state} - This stores the name of the state that the user entered. The state must be a valid US state as climate data is not available for out side the US.\\
 				
-				\paragraph{Industry}
+				\paragraph{Industry} - This stores what industry the user is involved in. Currently the user may choose from two options Agriculture or Non-Agriculture.\\
 				
-				\paragraph{Primary Business}
+				\paragraph{Primary Business} - This stores what sort of business a user is employed in. For instance if a user were a farmer they would select Producer.\\
 				
-				\paragraph{Secondary Business}
+				\paragraph{Secondary Business} - This is an optional parameter that stores what if any other business that the user may engage in. For instance if a user is a producer but also packages their product them selves they would select packager for this option.\\
 				
-				
-				
-			
 			\subsubsection{Budget}
-			
+				This entity represents a budget and associated data. It is important to note that Budgets are related to users by a many to many relationship. It is also important to note that this entity is related to the costItem entity and the IncomeItem entity. This relation ship is a many one to many relationship.\\
+				\paragraph{User} - This is a reference to the User entity because a budget should be associated with a user.\\
+				
+				\paragraph{Created Date} - This stores the date that this budget was created.\\
+				
+				\paragraph{Modified Date} - Keeps track of the last time the budget was modified.\\
+				
+				\paragraph{Title} - The user entered title for the budget. This helps users keep their budgets organized.\\
+				
+				\paragraph{notes} - Users entered notes about a budget. This helps a user keep track of their budgets.\\
+				
+				\paragraph{enterprise} - The enterprise type that this budget represents. If it is a conventional crop we would say conventional. If it were an Organic type crop this would be Organic.\\
+				
+				\paragraph{descriptor1 through descriptor6} - Generic descriptor for the budget. May be used might not be used. This item will hold descriptions relevant to the budget we are storing.\\
+				
+				\paragraph{state} - Stores the state that this budget is intended for.\\
+				
+				\paragraph{region} - Stores what region in the state that the budget is intended for.\\
+				
+				\paragraph{time_unit} - Stores how the user would like to measure time for that budget. Some budgets may be measured in years but some may be measured in months or weeks.\\
+				
+				\paragraph{farm_unit} - This item stores how we plan to measure how much land we have to work with. Most farms will choose to use acres. However for some crops its more useful to use a different type of measurement.\\
+				
+				\paragraph{farm_unit_quantity} - This describes how large our farm is based on the farm_unit.\\
+				
+				\paragraph{expense_unit} - This item stores the unit of measurement for an expense. This is similar to a farm_unit.\\
+				
+				\paragraph{expense_unit_quantity} - This item stores how many of the expense_units we have in our budget.\\
+				
+				\paragraph{total_cost} - Total cost represents the total cost of the crop we are using this budget for.\\
+				
+				\paragraph{total_variable_costs} - This represents the total variable cost for this budget. Variable costs are cost that can change and depend on other variables such as fertilizer use.\\
+				
+				\paragraph{total_fixed_costs} - Represents the the total fixed costs for this budget. Fixed costs are costs that will be the same regardless of other variables such as land lease.\\
+				
+				\paragraph{total_general_costs} - This is the total general cost associated with this crop. This represents how much it will cost to produce this crop.\\
+				
+				\paragraph{total_income_less_variable_cost} - This is total income with out subtracting the total costs.\\
+				
+				\paragraph{profit} - This is how much money we will make after we adjust for the total cost of producing the crop.\\
+				
+				\paragraph{breakeven_yield} - This represents the quantity of a crop needed to off set the total cost.\\
+								
+				\paragraph{breakeven_price} - This represents the price we will have to sell our crop at given that the quantity is the breakeven_yield to off set the total cost.\\
+				
+				\paragraph{total_yields} - This represents how many units of a crop we produced.\\
+				
+				\paragraph{primary_income_quantity} - This represents the quantity of the most profitable crop in my budget.\\
+				
+				\paragraph{primary_income_unit} - This represents the unit of measure for the primary_income_quantity.\\
+				
 			\subsubsection{Cost Item}
 			
 			\subsubsection{Income Item}
