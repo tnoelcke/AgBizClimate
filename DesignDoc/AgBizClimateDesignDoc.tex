@@ -425,7 +425,7 @@
 	Overall, the controller tries to decompose the coupling between Model and View. However, as we would mainly employ the python Django framework for the whole AgBizClimate project, the Controller component acts as intermediary agent between front-end UI and back-end Climate APIs. It would also access the existing AgBiz Logic modules for certain needs on climate logics when necessary. However, it should be noted that the Django framework is not doing well at separating the View and Controller clearly, and most times they are tightly interwoven. Therefore, it is better to deliberately define a middle layer between view and controllers. In this project, we could adapt some design pattern techniques called Mediator and Event dispatch mechanism. The following figure depicts the overall structure for Controller and View. We can see that the user action is sent to Controller from View through a Mediator to Controller. And the final effects of Controller on View are sent back to View through Mediator. And the user actions are transferred by event dispatching mechanism. Therefore, the complex dependency relations between Controller and View are largely broken.\\
 	\begin{figure}[htb]
 		\begin{center}
-			\includegraphics[width=275pt]{UMLDiagrams/Controller.jpg}
+			\includegraphics[width=275pt]{UMLDiagrams/Controller.jpeg}
 		\end{center}
 		\caption{Overall structure for Controller and View}
 		\label{fig:UD1}
