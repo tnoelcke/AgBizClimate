@@ -205,208 +205,208 @@
 			In this section we will define the entities and fields that relate to user data and user budgets.\\
 			\subsubsection{User}
 				This entity represents a user along with the data we will need for each user.\\
-				\paragraph{Name} - This is a string that stores the user name of a user.\\
+				\textbf{Name} - This is a string that stores the user name of a user.\\
 				
-				\paragraph{Address 1} - This  stores the first line of a users address.\\
+				\textbf{Address 1} - This  stores the first line of a users address.\\
 				
-				\paragraph{Address 2} - This stores the second line of a users address.
+				\textbf{Address 2} - This stores the second line of a users address.
 				
-				\paragraph{zip code} - This stores the zip code for the address the user entered.\\
+				\textbf{zip code} - This stores the zip code for the address the user entered.\\
 				
-				\paragraph{city} - This stores the name of the city for the address the user entered.\\
+				\textbf{city} - This stores the name of the city for the address the user entered.\\
 				
-				\paragraph{state} - This stores the name of the state that the user entered. The state must be a valid US state as climate data is not available for out side the US.\\
+				\textbf{state} - This stores the name of the state that the user entered. The state must be a valid US state as climate data is not available for out side the US.\\
 				
-				\paragraph{Industry} - This stores what industry the user is involved in. Currently the user may choose from two options Agriculture or Non-Agriculture.\\
+				\textbf{Industry} - This stores what industry the user is involved in. Currently the user may choose from two options Agriculture or Non-Agriculture.\\
 				
-				\paragraph{Primary Business} - This stores what sort of business a user is employed in. For instance if a user were a farmer they would select Producer.\\
+				\textbf{Primary Business} - This stores what sort of business a user is employed in. For instance if a user were a farmer they would select Producer.\\
 				
-				\paragraph{Secondary Business} - This is an optional parameter that stores what if any other business that the user may engage in. For instance if a user is a producer but also packages their product them selves they would select packager for this option.\\
+				\textbf{Secondary Business} - This is an optional parameter that stores what if any other business that the user may engage in. For instance if a user is a producer but also packages their product them selves they would select packager for this option.\\
 				
 			\subsubsection{Budget}
 				This entity represents a budget and associated data. It is important to note that Budgets are related to users by a many to many relationship. It is also important to note that this entity is related to the costItem entity and the IncomeItem entity. This relation ship is a many one to many relationship.\\
-				\paragraph{User} - This is a reference to the User entity because a budget should be associated with a user.\\
+				\textbf{User} - This is a reference to the User entity because a budget should be associated with a user.\\
 				
-				\paragraph{Created Date} - This stores the date that this budget was created.\\
+				\textbf{Created Date} - This stores the date that this budget was created.\\
 				
-				\paragraph{Modified Date} - Keeps track of the last time the budget was modified.\\
+				\textbf{Modified Date} - Keeps track of the last time the budget was modified.\\
 				
-				\paragraph{Title} - The user entered title for the budget. This helps users keep their budgets organized.\\
+				\textbf{Title} - The user entered title for the budget. This helps users keep their budgets organized.\\
 				
-				\paragraph{notes} - Users entered notes about a budget. This helps a user keep track of their budgets.\\
+				\textbf{notes} - Users entered notes about a budget. This helps a user keep track of their budgets.\\
 				
-				\paragraph{enterprise} - The enterprise type that this budget represents. If it is a conventional crop we would say conventional. If it were an Organic type crop this would be Organic.\\
+				\textbf{enterprise} - The enterprise type that this budget represents. If it is a conventional crop we would say conventional. If it were an Organic type crop this would be Organic.\\
 				
-				\paragraph{descriptor1 through descriptor6} - Generic descriptor for the budget. May be used might not be used. This item will hold descriptions relevant to the budget we are storing.\\
+				\textbf{descriptor1 through descriptor6} - Generic descriptor for the budget. May be used might not be used. This item will hold descriptions relevant to the budget we are storing.\\
 				
-				\paragraph{state} - Stores the state that this budget is intended for.\\
+				\textbf{state} - Stores the state that this budget is intended for.\\
 				
-				\paragraph{region} - Stores what region in the state that the budget is intended for.\\
+				\textbf{region} - Stores what region in the state that the budget is intended for.\\
 				
-				\paragraph{time\_unit} - Stores how the user would like to measure time for that budget. Some budgets may be measured in years but some may be measured in months or weeks.\\
+				\textbf{time\_unit} - Stores how the user would like to measure time for that budget. Some budgets may be measured in years but some may be measured in months or weeks.\\
 				
-				\paragraph{farm\_unit} - This item stores how we plan to measure how much land we have to work with. Most farms will choose to use acres. However for some crops its more useful to use a different type of measurement.\\
+				\textbf{farm\_unit} - This item stores how we plan to measure how much land we have to work with. Most farms will choose to use acres. However for some crops its more useful to use a different type of measurement.\\
 				
-				\paragraph{farm\_unit\_quantity} - This describes how large our farm is based on the farm\_unit.\\
+				\textbf{farm\_unit\_quantity} - This describes how large our farm is based on the farm\_unit.\\
 				
-				\paragraph{expense\_unit} - This item stores the unit of measurement for an expense. This is similar to a farm\_unit.\\
+				\textbf{expense\_unit} - This item stores the unit of measurement for an expense. This is similar to a farm\_unit.\\
 				
-				\paragraph{expense\_unit\_quantity} \- This item stores how many of the expense\_units we have in our budget.\\
+				\textbf{expense\_unit\_quantity} \- This item stores how many of the expense\_units we have in our budget.\\
 				
-				\paragraph{total\_cost} \- Total cost represents the total cost of the crop we are using this budget for.\\
+				\textbf{total\_cost} \- Total cost represents the total cost of the crop we are using this budget for.\\
 				
-				\paragraph{total\_variable\_costs} \- This represents the total variable cost for this budget. Variable costs are cost that can change and depend on other variables such as fertilizer use.\\
+				\textbf{total\_variable\_costs} \- This represents the total variable cost for this budget. Variable costs are cost that can change and depend on other variables such as fertilizer use.\\
 				
-				\paragraph{total\_fixed\_costs} - Represents the the total fixed costs for this budget. Fixed costs are costs that will be the same regardless of other variables such as land lease.\\
+				\textbf{total\_fixed\_costs} - Represents the the total fixed costs for this budget. Fixed costs are costs that will be the same regardless of other variables such as land lease.\\
 				
-				\paragraph{total\_general\_costs} - This is the total general cost associated with this crop. This represents how much it will cost to produce this crop.\\
+				\textbf{total\_general\_costs} - This is the total general cost associated with this crop. This represents how much it will cost to produce this crop.\\
 				
-				\paragraph{total\_income\_less\_variable\_cost} - This is total income with out subtracting the total costs.\\
+				\textbf{total\_income\_less\_variable\_cost} - This is total income with out subtracting the total costs.\\
 				
-				\paragraph{profit} - This is how much money we will make after we adjust for the total cost of producing the crop.\\
+				\textbf{profit} - This is how much money we will make after we adjust for the total cost of producing the crop.\\
 				
-				\paragraph{breakeven\_yield} - This represents the quantity of a crop needed to off set the total cost.\\
+				\textbf{breakeven\_yield} - This represents the quantity of a crop needed to off set the total cost.\\
 								
-				\paragraph{breakeven\_price} - This represents the price we will have to sell our crop at given that the quantity is the breakeven\_yield to off set the total cost.\\
+				\textbf{breakeven\_price} - This represents the price we will have to sell our crop at given that the quantity is the breakeven\_yield to off set the total cost.\\
 				
-				\paragraph{total\_yields} \- This represents how many units of a crop we produced.\\
+				\textbf{total\_yields} \- This represents how many units of a crop we produced.\\
 				
-				\paragraph{primary\_income\_quantity} - This represents the quantity of the most profitable crop in my budget.\\
+				\textbf{primary\_income\_quantity} - This represents the quantity of the most profitable crop in my budget.\\
 				
-				\paragraph{primary\_income\_unit} - This represents the unit of measure for the primary\_income\_quantity.\\
+				\textbf{primary\_income\_unit} - This represents the unit of measure for the primary\_income\_quantity.\\
 				
 			\subsubsection{Cost Item}
 				This entity represents an item that is a cost in regards to ranching or farming. It should be noted that this entity is related to a budget via a many to one relationship.\\
 			
-				\paragraph{name} - This represents the name of the cost. For instance if the cost is fertilizer the name of this cost item would be fertilizer.\\
+				\textbf{name} - This represents the name of the cost. For instance if the cost is fertilizer the name of this cost item would be fertilizer.\\
 				
-				\paragraph{notes} - This is user input data that allows the user to make notes about a cost item.\\
+				\textbf{notes} - This is user input data that allows the user to make notes about a cost item.\\
 				
-				\paragraph{parent\_budget} - This is a reference to the budget that this cost item is associated with.\\
+				\textbf{parent\_budget} - This is a reference to the budget that this cost item is associated with.\\
 				
-				\paragraph{parent\_category} - This a broad category that this item belongs to. For instance if this item were round up it would belong to the broader category of pesticides.
+				\textbf{parent\_category} - This a broad category that this item belongs to. For instance if this item were round up it would belong to the broader category of pesticides.
 				
-				\paragraph{category} - This is the category the item falls into. For instance if the cost is paying one of my farm workers this would be labor.\\
+				\textbf{category} - This is the category the item falls into. For instance if the cost is paying one of my farm workers this would be labor.\\
 				
-				\paragraph{sub\_category} - This allows for even farther categorization of cost items.\\
+				\textbf{sub\_category} - This allows for even farther categorization of cost items.\\
 				
-				\paragraph{cost\_type} - This represents what kind of cost this item is. Mainly weather its a fixed or variable type cost.\\
+				\textbf{cost\_type} - This represents what kind of cost this item is. Mainly weather its a fixed or variable type cost.\\
 				
-				\paragraph{farm\_unit\_quantity} - This stores how many farm units we will need to apply this cost too when making calculations.\\
+				\textbf{farm\_unit\_quantity} - This stores how many farm units we will need to apply this cost too when making calculations.\\
 				
-				\paragraph{unit} - This represents the unit that this cost item we be measured in.\\
+				\textbf{unit} - This represents the unit that this cost item we be measured in.\\
 				
-				\paragraph{unit\_quantity} - This is the number of units of this cost item that we will need.\\
+				\textbf{unit\_quantity} - This is the number of units of this cost item that we will need.\\
 				
-				\paragraph{cost\_total} - This is how much the this cost item will cost based on the number units needed and the cost per unit.\\
+				\textbf{cost\_total} - This is how much the this cost item will cost based on the number units needed and the cost per unit.\\
 				
-				\paragraph{cost\_per\_unit} - This represents how much each unit of this cost item will cost.\\
+				\textbf{cost\_per\_unit} - This represents how much each unit of this cost item will cost.\\
 				
-				\paragraph{cost\_per\_farm\_unit} \- this represents how much it will cost to per farm\_unit for this cost item.\\
+				\textbf{cost\_per\_farm\_unit} \- this represents how much it will cost to per farm\_unit for this cost item.\\
 			
 			\subsubsection{Income Item}
 					This entity represents an item that provides income in to the budget such as a crop or livestock. This item is related to the budget entity by a many to one relationship.\\
 					
-					\paragraph{Name} - This represents the name of the Income item. For instance if the income item is corn it would be name corn.\\
+					\textbf{Name} - This represents the name of the Income item. For instance if the income item is corn it would be name corn.\\
 					
-					\paragraph{enterprise} - he enterprise type that this budget represents. If it is a conventional crop we would say conventional. If it were an Organic type crop this would be Organic.\\
+					\textbf{enterprise} - he enterprise type that this budget represents. If it is a conventional crop we would say conventional. If it were an Organic type crop this would be Organic.\\
 					
-					\paragraph{descriptor1 \- descriptor6} - Generic descriptor for the Income Item. May be used might not be used. This item will hold descriptions relevant to the Income Item we are storing.\\
+					\textbf{descriptor1 \- descriptor6} - Generic descriptor for the Income Item. May be used might not be used. This item will hold descriptions relevant to the Income Item we are storing.\\
 					
-					\paragraph{notes} - This will store notes about the Income Item to help the user keep income items organized.\\
+					\textbf{notes} - This will store notes about the Income Item to help the user keep income items organized.\\
 					
-					\paragraph{weight} - 
+					\textbf{weight} - 
 					
-					\paragraph{farm\_unit} - This stores the unit that we will measure how much space we have to grow this Income item.\\
+					\textbf{farm\_unit} - This stores the unit that we will measure how much space we have to grow this Income item.\\
 					
-					\paragraph{farm\_unit\_quantity} \- This represents the number of farm\_units we have to produce this income item.\\
+					\textbf{farm\_unit\_quantity} \- This represents the number of farm\_units we have to produce this income item.\\
 					
-					\paragraph{sale\_unit} \- This specifies how we plan to measure the quantity of this income item.\\
+					\textbf{sale\_unit} \- This specifies how we plan to measure the quantity of this income item.\\
 					
-					\paragraph{sale\_unit\_quantity} - This specifies how many sale units of this cost item we have to sell.\\
+					\textbf{sale\_unit\_quantity} - This specifies how many sale units of this cost item we have to sell.\\
 					
-					\paragraph{return\_total} - This is the total amount we would get from selling this income item.\\
+					\textbf{return\_total} - This is the total amount we would get from selling this income item.\\
 					
-					\paragraph{price\_per\_farm\_unit} - This is how much money we sell our income item per farm unit we have produced.\\
+					\textbf{price\_per\_farm\_unit} - This is how much money we sell our income item per farm unit we have produced.\\
 					
-					\paragraph{price\_per\_sale\_unit} - This is the price we can sell this income item for per sale unit.\\
+					\textbf{price\_per\_sale\_unit} - This is the price we can sell this income item for per sale unit.\\
 		
 		\subsection{Climate Data}
 			In this section we will discuss and define the entities that are required to represent climate data.\\
 				\subsubsection{ClimateScenario}
 					This entity represents a Climate Scenario. This entity keeps track of important user information in regards to Climate Simulations. It is important to note that this entity is related to the Climate Budget entity via a one to many relationship. This Entity is also related to the user entity via a many to one relationship.\\
 					
-					\paragraph{user} - This is a reference to the user who created the climate scenario.\\
+					\textbf{user} - This is a reference to the user who created the climate scenario.\\
 					
-					\paragraph{Title} - This a user entered title that represents the name for the scenario. This allows the user to keep their scenarios organized.\\
+					\textbf{Title} - This a user entered title that represents the name for the scenario. This allows the user to keep their scenarios organized.\\
 					
-					\paragraph{notes} - This is user entered data about this climate scenario. This allows user to better track what each scenario is for.\\
+					\textbf{notes} - This is user entered data about this climate scenario. This allows user to better track what each scenario is for.\\
 					
-					\paragraph{created\_date} - This keeps track of the date that the climate scenario was created.\\
+					\textbf{created\_date} - This keeps track of the date that the climate scenario was created.\\
 					
-					\paragraph{modified\_date} - This keeps track of the date that the climate scenario was lasted modified.\\
+					\textbf{modified\_date} - This keeps track of the date that the climate scenario was lasted modified.\\
 				
 				\subsubsection{ClimateBudget}
 					This entity represents one Budget simulation in a climate scenario. This entity is related to the ClimateScenario entity by a many to one relationship. This entity is also related to the user entity via a many to one relationship. This entity is also related to the budget entity via a many to one relationship.\\
 				
-					\paragraph{user} - This is a reference to the user entity. This represents the user who created this ClimateBudget.\\
+					\textbf{user} - This is a reference to the user entity. This represents the user who created this ClimateBudget.\\
 					
-					\paragraph{climate\_scenario} - This is reference to the ClimateScenario entity this represents the climate scenario that this climate budget belongs with.\\
+					\textbf{climate\_scenario} - This is reference to the ClimateScenario entity this represents the climate scenario that this climate budget belongs with.\\
 					
-					\paragraph{budget} - This is a reference to the budget entity. This budget the budget we are considering for this climate budget.\\
+					\textbf{budget} - This is a reference to the budget entity. This budget the budget we are considering for this climate budget.\\
 					
-					\paragraph{modeling\_estimate} - This represents the estimation that the model produces for how much the climate prediction will effect the climate.\\
+					\textbf{modeling\_estimate} - This represents the estimation that the model produces for how much the climate prediction will effect the climate.\\
 					
-					\paragraph{focus\_group\_estimate} - This is an estimation of how much a model will effect a budget based on a focus group.\\
+					\textbf{focus\_group\_estimate} - This is an estimation of how much a model will effect a budget based on a focus group.\\
 					
-					\paragraph{user\_estimate} - This is the estimation that the user provides for how much the climate factors will effect the budget being considered in this climate budget.\\
+					\textbf{user\_estimate} - This is the estimation that the user provides for how much the climate factors will effect the budget being considered in this climate budget.\\
 					
-					\paragraph{is\_original} - This is a Boolean flag that indicates weather or not this is an original climate budget or a university budget.\\
+					\textbf{is\_original} - This is a Boolean flag that indicates weather or not this is an original climate budget or a university budget.\\
 					
-					\paragraph{position} - This indicates the geographical location that this climate budget is trying to display.\\
+					\textbf{position} - This indicates the geographical location that this climate budget is trying to display.\\
 					
-					\paragraph{created\_date} - This tracks the date that the user created this climate budget.\\
+					\textbf{created\_date} - This tracks the date that the user created this climate budget.\\
 				
 				\subsubsection{ClimateFactor}
 					This entity represents one climate factor that may effect the climate budget. For example we may consider the number of freezing nights in one year. This item is related to the climate budget entity via a many to one relationship.\\
 				
-					\paragraph{climate\_budget} - This is reference to the ClimateBudget entity. This represents the budget we are considering for this climate factor.\\
+					\textbf{climate\_budget} - This is reference to the ClimateBudget entity. This represents the budget we are considering for this climate factor.\\
 					
-					\paragraph{name} - This is the name of the climate factor. For instance average temperature.\\
+					\textbf{name} - This is the name of the climate factor. For instance average temperature.\\
 					
-					\paragraph{state} - This is the state for which this climate factor is being considered.\\
+					\textbf{state} - This is the state for which this climate factor is being considered.\\
 					
-					\paragraph{region} - This is the region for which this climate factor is being considered.\\
+					\textbf{region} - This is the region for which this climate factor is being considered.\\
 					
-					\paragraph{user\_estimate} - This represents the amount the user estimates that this climate factor will impact total crop yield.\\
+					\textbf{user\_estimate} - This represents the amount the user estimates that this climate factor will impact total crop yield.\\
 					
-					\paragraph{created\_date} - This keeps track of when this climate factor was created by the user.\\
+					\textbf{created\_date} - This keeps track of when this climate factor was created by the user.\\
 					
-					\paragraph{modified\_date} \- This keeps track of when this climate factor was last modified by the user.\\
+					\textbf{modified\_date} \- This keeps track of when this climate factor was last modified by the user.\\
 					
-					\paragraph{type} \- this keeps track of what type of climate factor this climate factor represents. Currently we have two types long term and short term.\\
+					\textbf{type} \- this keeps track of what type of climate factor this climate factor represents. Currently we have two types long term and short term.\\
 				
 				\subsubsection{ClimateData}
 					This entity represents Climate data that will be used to determine how climate change may effect a budget. This entity is related to the ClimateFactor entity in a one to one relationship.\\
 				
-					\paragraph{ID} - this is a unique ID by which we can identify this set of climate data.\\
+					\textbf{ID} - this is a unique ID by which we can identify this set of climate data.\\
 					
-					\paragraph{Lat} - This stores the Latitude of the climate data represented by this climate data entity.\\
+					\textbf{Lat} - This stores the Latitude of the climate data represented by this climate data entity.\\
 					
-					\paragraph{Long} - This stores the Longitude of the climate data represented by this climate data entity.\\
+					\textbf{Long} - This stores the Longitude of the climate data represented by this climate data entity.\\
 					
-					\paragraph{Climate\_Factor} - This is a reference to the ClimateFactor entity.\\
+					\textbf{Climate\_Factor} - This is a reference to the ClimateFactor entity.\\
 				
 				\subsubsection{DataFrame}
 					This entity represents one single point in time of a climate data model run. A collection of these DataFrames can represent the data for the whole model run. This entity is related to the ClimateData entity in a many to one relationship.\\
 					
-					\paragraph{ID} - This is a unique identifier we can use to identify this data frame.\\
+					\textbf{ID} - This is a unique identifier we can use to identify this data frame.\\
 					
-					\paragraph{Climate\_data} - This is a reference to the ClimateData entity.\\
+					\textbf{Climate\_data} - This is a reference to the ClimateData entity.\\
 					
-					\paragraph{DateTime} - This keeps track of the date and time that this data point occurs at in time.
+					\textbf{DateTime} - This keeps track of the date and time that this data point occurs at in time.
 					
-					\paragraph{The Data} - This is simply a place holder for the data we will need to store for each data frame. We can't currently know how this section of this entity will need to be formatted as we don't know what the data we will get from the NWCTB will look like.\\
+					\textbf{The Data} - This is simply a place holder for the data we will need to store for each data frame. We can't currently know how this section of this entity will need to be formatted as we don't know what the data we will get from the NWCTB will look like.\\
 				
 				
 		
