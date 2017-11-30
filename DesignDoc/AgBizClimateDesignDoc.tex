@@ -76,26 +76,26 @@
 \pagenumbering{arabic}
 \tableofcontents
 % 7. uncomment this (if applicable). Consider adding a page break.
-\listoffigures 
+\listoffigures
 \newpage
 %\listoftables
 \clearpage
 
 % 8. now you write!
 \section{Introduction}
-		
+
 		\subsection{Purpose}
-			The purpose of this Software Design Description (SDD) is to describe the architecture and system design of the \textit{AgBizClimate} project. This document will provide a high level design for the \textit{AgBizClimate} short term climate tool. This document will also provide a detailed description of the design of the data this project will need to use. We will also break down each component and discuss the design of each component in detail. After that we will discuss the design of the user interface. Finally, we will have a requirements matrix. The requirements matrix will show how each component fulfills the functional requirements for this project. 
+			The purpose of this Software Design Description (SDD) is to describe the architecture and system design of the \textit{AgBizClimate} project. This document will provide a high level design for the \textit{AgBizClimate} short term climate tool. This document will also provide a detailed description of the design of the data this project will need to use. We will also break down each component and discuss the design of each component in detail. After that we will discuss the design of the user interface. Finally, we will have a requirements matrix. The requirements matrix will show how each component fulfills the functional requirements for this project.
 			This document is intended for the project owners and software developers of the \textit{AgBizClimate} system. This document is intended to be a guide for the implimentatino of the \textit{AgBizClimate} short term climate tool.
-		
+
 		\subsection{Overview}
 			Seasonal climate is one of the essential factors that affects agricultural production. As a module of \textit{AgBiz Logic}, \textit{AgBizClimate} delivers essential information about climate change to farmers, and help professionals to develop management pathways that best fit their operations under a changing climate. This project aims to link the crucial seasonal climate data from the Northwest Climate Toolbox database to \textit{AgBiz Logic} so that it can provide changes in net returns of crop and livestock enterprises through powerful graphics and tables.\\
-			
+
 		\subsection{Scope}
-			This project is a part of a much larger AgBiz Logic\texttrademark program. However, the purpose of this project is to add a short term climate tool to the \textit{AgBizClimate} module. This limits the scope of the project to the \textit{AgBizClimate} Module. Additionally, we will only be adding the short term climate data tool as the long term climate data tool already exists.\\			
+			This project is a part of a much larger AgBiz Logic\texttrademark program. However, the purpose of this project is to add a short term climate tool to the \textit{AgBizClimate} module. This limits the scope of the project to the \textit{AgBizClimate} Module. Additionally, we will only be adding the short term climate data tool as the long term climate data tool already exists.\\
 
 			Currently \textit{AgBizClimate} has a long-term climate tool but no such tool exists for short term climate data. We will implement a tool to extract short-term climate data from the Northwest Climate Toolbox database, display it to the user and allow the user to adjust crop and livestock yields or quality of products sold and, production inputs. Moreover, a landing tool will be developed to allow users to switch between short-term seasonal tool and long-term climate data tool.\\
-		
+
 		%Please add to this section as you write and use Definitions, Acronyms and Abbreviations.
 		\subsection{Definitions, Acronyms and Abbreviations}
 			REST - Representational State Transfer, This is a type of architecture that manages the state of the program. This is especially popular in web development.\\
@@ -112,8 +112,8 @@
 		\nocite{*}
     \bibliographystyle{IEEEtran}
     \bibliography{IEEEabrv,References}
-		
-		
+
+
 \section{System Overview}
 	\subsection {Product Functions}
 				\textit{AgBizClimate} is a web based decision tool that will allow users to gain specific insight on how localized climate data for the next seven months will affect their crop and livestock yields or quality of products sold and production inputs. The \textit{AgBizClimate} tool will allow users to input their location (state, county) and a budget for the specific crop or livestock enterprise. \textit{AgBizClimate} will select climate data for the next seven months for that location and provide graphical data showing temperature and precipitation. Users will then be able to change yields or quality of product sold by a percentage they think these factors will affect and modify production inputs. Finally the tool will calculate the net returns.\\
@@ -131,7 +131,7 @@
 \section{System Architecture}
 	\subsection{Architectural Design}
 		Shown Below is the architectural design for the \textit{AgBizClimate} project. This UML diagram shows the high level components of this application. This Diagram also shows how these components will interact.\\
-		
+
 		%insert diagram here. Please don't be a bitch about where you put the diagrm laTex...
 		\begin{figure}[htb]
 			\begin{center}
@@ -140,37 +140,37 @@
 			\caption{System Architecture Design for \textit{AgBizClimate} project}
 			\label{fig:Arch1}
 		\end{figure}
-		
-		
+
+
 	\subsection{Decomposition Description}
 		The \textit{AgBizClimate} project can broken down into six components. The six components are the Backend Controller, The Front End Controller, UI, Existing \textit{AgBiz Logic} Modules, Climate Data API, and the NWCTB API. In this section we will describe each models function and how it interacts with the other modules.\\
-		
+
 		\subsubsection{Backend Controller}
 			This component is responsible for connecting the dots between the rest of the components. Generally, the backend controller will handle incoming requests from the front end controller and return the requested content. This component will also interface with the existing \textit{AgBiz Logic} modules and Climate Data API so it can provide all the requested information.\\
-			
+
 		\subsubsection{Front End Controller}
 			The Front End Controller will act as an interface between the UI, the existing \textit{AgBiz Locic} modules and the Backend Controller. This component will handle UI action made by the user and will use those to make requests to the Backend and existing \textit{AgBiz Logic} Modules. This component will then take the result of these requests and display the relevant information to the user. This component will also handle user inputs such as a button push or clicking on a drop down menu. This component will take these actions and modify the UI to reflect the actions the user preformed.\\
 
 		\subsubsection{UI}
 			This is the portion of the application that the user will see and interact with. The primary responsibility of this component is to display information to the user. This component will also be responsible for interacting with the front end Controller to ensure that user actions so the program responds correctly to user action.\\
-			
+
 		\subsubsection{Existing \textit{AgBiz Logic} modules}
 			This is not a component but rather a collection of components that already exists as part of the \textit{AgBiz logic} system. We will use these components to preform a variate of actions including, retrieving budget data, managing user information, making modifications to budget data and saving budget data back to the database. We will interface with these component from the Front End Controller to handle budget data. We will also interface with these components from the back end to handle user data.\\
-			
-			
+
+
 		\subsubsection{Climate Data API}
 			The Climate Data API component will interface withe the NWCTB to provide long term forecast data. This component will take requests, with location data, from the Backend controller and will respond with the formatted data from the NWCTB. To do we will interface with the NWCTB API to retrieve the data. Then we will take the data from the NWCTB, parse it into JSON, apply some formatting and pass it back to the Backend. For the purposes of this project this component is only going to interface with the Backend Controller. However in the future this API maybe used by other sections of the application as well.\\
 
 		\subsubsection{NWCTB API}
 			The NWCTB API will be our data source for this project. This component will provide the climate data by interfacing with the back end controller. Currently we are not sure how this will happen as the NWCTB has not responded to our requests for API access.\\
-		
+
 	\subsection{Design Rationale}
 		We've chosen to design this system this way in part because of the nature of our system. We need a front end controller to handle the clients interaction with the server because this is a web development project and the front end will be separate from the server. The front end controller will facilitate the communication between the client and the server.\\
 		We also chose to use a Backend Controller so we can facilitate the communication between the front end controller and the various components on the backend. This makes the application easier to build, test and maintain. This also allows for one line of communication between the backend and the front end. This is necessary to keep the interactions between the backend code and front end code simple. This allows for large changes to be made to both the front end and the backend with out causing them to impact each other.\\
 		We also chose to create the Climate Data API as its own service. We chose to do this because it's easier to test and then the Climate Data API can be reused in future projects and with other components. If we had built the Climate Data API into the backend controller this would not have been possible.\\
 		The NWCTB and Existing \textit{AgBiz Logic} components have already been implemented out side the scope of our project. However, we are still planning to use them in our project. This is why we have create these modules because we will be using them as part of the design of our system but do not want to tightly couple our project with these existing components.\\
 		More generally the components in our system use the REST API architecture type. We chose to do this because it allows for flexible reusable modules. The REST API Architecture also allows us to break our application into independent modules that are easier to develop, test and maintain. This division of our application also makes it more scalable allowing it to keep up with future demand.\\
-		
+
 %in this section we will want to talk about the Climate data and how it will be designed.
 %we may also want to breifly mention the user data and budget data. However we will also
 %Need to metion that we are not responsible for how those items were designed.
@@ -197,8 +197,8 @@
 			\caption{Design For the Climate Data for the \textit{AgBizClimate} project}
 			\label{fig:CD1}
 		\end{figure}
-		
-		
+
+
 	\subsection{Data Dictionary}
 		In this section we will describe each piece of data and what it represents. We will also discuss possible values for each piece of data.\\
 		\subsubsection{User Data}
@@ -206,228 +206,232 @@
 			\subsubsection{User}
 				This entity represents a user along with the data we will need for each user.\\
 				\textbf{Name} - This is a string that stores the user name of a user.\\
-				
+
 				\textbf{Address 1} - This  stores the first line of a users address.\\
-				
+
 				\textbf{Address 2} - This stores the second line of a users address.
-				
+
 				\textbf{zip code} - This stores the zip code for the address the user entered.\\
-				
+
 				\textbf{city} - This stores the name of the city for the address the user entered.\\
-				
+
 				\textbf{state} - This stores the name of the state that the user entered. The state must be a valid US state as climate data is not available for out side the US.\\
-				
+
 				\textbf{Industry} - This stores what industry the user is involved in. Currently the user may choose from two options Agriculture or Non-Agriculture.\\
-				
+
 				\textbf{Primary Business} - This stores what sort of business a user is employed in. For instance if a user were a farmer they would select Producer.\\
-				
+
 				\textbf{Secondary Business} - This is an optional parameter that stores what if any other business that the user may engage in. For instance if a user is a producer but also packages their product them selves they would select packager for this option.\\
-				
+
 			\subsubsection{Budget}
 				This entity represents a budget and associated data. It is important to note that Budgets are related to users by a many to many relationship. It is also important to note that this entity is related to the costItem entity and the IncomeItem entity. This relation ship is a many one to many relationship.\\
 				\textbf{User} - This is a reference to the User entity because a budget should be associated with a user.\\
-				
+
 				\textbf{Created Date} - This stores the date that this budget was created.\\
-				
+
 				\textbf{Modified Date} - Keeps track of the last time the budget was modified.\\
-				
+
 				\textbf{Title} - The user entered title for the budget. This helps users keep their budgets organized.\\
-				
+
 				\textbf{notes} - Users entered notes about a budget. This helps a user keep track of their budgets.\\
-				
+
 				\textbf{enterprise} - The enterprise type that this budget represents. If it is a conventional crop we would say conventional. If it were an Organic type crop this would be Organic.\\
-				
+
 				\textbf{descriptor1 through descriptor6} - Generic descriptor for the budget. May be used might not be used. This item will hold descriptions relevant to the budget we are storing.\\
-				
+
 				\textbf{state} - Stores the state that this budget is intended for.\\
-				
+
 				\textbf{region} - Stores what region in the state that the budget is intended for.\\
-				
+
 				\textbf{time\_unit} - Stores how the user would like to measure time for that budget. Some budgets may be measured in years but some may be measured in months or weeks.\\
-				
+
 				\textbf{farm\_unit} - This item stores how we plan to measure how much land we have to work with. Most farms will choose to use acres. However for some crops its more useful to use a different type of measurement.\\
-				
+
 				\textbf{farm\_unit\_quantity} - This describes how large our farm is based on the farm\_unit.\\
-				
+
 				\textbf{expense\_unit} - This item stores the unit of measurement for an expense. This is similar to a farm\_unit.\\
-				
+
 				\textbf{expense\_unit\_quantity} \- This item stores how many of the expense\_units we have in our budget.\\
-				
+
 				\textbf{total\_cost} \- Total cost represents the total cost of the crop we are using this budget for.\\
-				
+
 				\textbf{total\_variable\_costs} \- This represents the total variable cost for this budget. Variable costs are cost that can change and depend on other variables such as fertilizer use.\\
-				
+
 				\textbf{total\_fixed\_costs} - Represents the the total fixed costs for this budget. Fixed costs are costs that will be the same regardless of other variables such as land lease.\\
-				
+
 				\textbf{total\_general\_costs} - This is the total general cost associated with this crop. This represents how much it will cost to produce this crop.\\
-				
+
 				\textbf{total\_income\_less\_variable\_cost} - This is total income with out subtracting the total costs.\\
-				
+
 				\textbf{profit} - This is how much money we will make after we adjust for the total cost of producing the crop.\\
-				
+
 				\textbf{breakeven\_yield} - This represents the quantity of a crop needed to off set the total cost.\\
-								
+
 				\textbf{breakeven\_price} - This represents the price we will have to sell our crop at given that the quantity is the breakeven\_yield to off set the total cost.\\
-				
+
 				\textbf{total\_yields} \- This represents how many units of a crop we produced.\\
-				
+
 				\textbf{primary\_income\_quantity} - This represents the quantity of the most profitable crop in my budget.\\
-				
+
 				\textbf{primary\_income\_unit} - This represents the unit of measure for the primary\_income\_quantity.\\
-				
+
 			\subsubsection{Cost Item}
 				This entity represents an item that is a cost in regards to ranching or farming. It should be noted that this entity is related to a budget via a many to one relationship.\\
-			
+
 				\textbf{name} - This represents the name of the cost. For instance if the cost is fertilizer the name of this cost item would be fertilizer.\\
-				
+
 				\textbf{notes} - This is user input data that allows the user to make notes about a cost item.\\
-				
+
 				\textbf{parent\_budget} - This is a reference to the budget that this cost item is associated with.\\
-				
+
 				\textbf{parent\_category} - This a broad category that this item belongs to. For instance if this item were round up it would belong to the broader category of pesticides.
-				
+
 				\textbf{category} - This is the category the item falls into. For instance if the cost is paying one of my farm workers this would be labor.\\
-				
+
 				\textbf{sub\_category} - This allows for even farther categorization of cost items.\\
-				
+
 				\textbf{cost\_type} - This represents what kind of cost this item is. Mainly weather its a fixed or variable type cost.\\
-				
+
 				\textbf{farm\_unit\_quantity} - This stores how many farm units we will need to apply this cost too when making calculations.\\
-				
+
 				\textbf{unit} - This represents the unit that this cost item we be measured in.\\
-				
+
 				\textbf{unit\_quantity} - This is the number of units of this cost item that we will need.\\
-				
+
 				\textbf{cost\_total} - This is how much the this cost item will cost based on the number units needed and the cost per unit.\\
-				
+
 				\textbf{cost\_per\_unit} - This represents how much each unit of this cost item will cost.\\
-				
+
 				\textbf{cost\_per\_farm\_unit} \- this represents how much it will cost to per farm\_unit for this cost item.\\
-			
+
 			\subsubsection{Income Item}
 					This entity represents an item that provides income in to the budget such as a crop or livestock. This item is related to the budget entity by a many to one relationship.\\
-					
+
 					\textbf{Name} - This represents the name of the Income item. For instance if the income item is corn it would be name corn.\\
-					
+
 					\textbf{enterprise} - he enterprise type that this budget represents. If it is a conventional crop we would say conventional. If it were an Organic type crop this would be Organic.\\
-					
+
 					\textbf{descriptor1 \- descriptor6} - Generic descriptor for the Income Item. May be used might not be used. This item will hold descriptions relevant to the Income Item we are storing.\\
-					
+
 					\textbf{notes} - This will store notes about the Income Item to help the user keep income items organized.\\
-					
-					\textbf{weight} - 
-					
+
+					\textbf{weight} -
+
 					\textbf{farm\_unit} - This stores the unit that we will measure how much space we have to grow this Income item.\\
-					
+
 					\textbf{farm\_unit\_quantity} \- This represents the number of farm\_units we have to produce this income item.\\
-					
+
 					\textbf{sale\_unit} \- This specifies how we plan to measure the quantity of this income item.\\
-					
+
 					\textbf{sale\_unit\_quantity} - This specifies how many sale units of this cost item we have to sell.\\
-					
+
 					\textbf{return\_total} - This is the total amount we would get from selling this income item.\\
-					
+
 					\textbf{price\_per\_farm\_unit} - This is how much money we sell our income item per farm unit we have produced.\\
-					
+
 					\textbf{price\_per\_sale\_unit} - This is the price we can sell this income item for per sale unit.\\
-		
+
 		\subsection{Climate Data}
 			In this section we will discuss and define the entities that are required to represent climate data.\\
 				\subsubsection{ClimateScenario}
 					This entity represents a Climate Scenario. This entity keeps track of important user information in regards to Climate Simulations. It is important to note that this entity is related to the Climate Budget entity via a one to many relationship. This Entity is also related to the user entity via a many to one relationship.\\
-					
+
 					\textbf{user} - This is a reference to the user who created the climate scenario.\\
-					
+
 					\textbf{Title} - This a user entered title that represents the name for the scenario. This allows the user to keep their scenarios organized.\\
-					
+
 					\textbf{notes} - This is user entered data about this climate scenario. This allows user to better track what each scenario is for.\\
-					
+
 					\textbf{created\_date} - This keeps track of the date that the climate scenario was created.\\
-					
+
 					\textbf{modified\_date} - This keeps track of the date that the climate scenario was lasted modified.\\
-				
+
 				\subsubsection{ClimateBudget}
 					This entity represents one Budget simulation in a climate scenario. This entity is related to the ClimateScenario entity by a many to one relationship. This entity is also related to the user entity via a many to one relationship. This entity is also related to the budget entity via a many to one relationship.\\
-				
+
 					\textbf{user} - This is a reference to the user entity. This represents the user who created this ClimateBudget.\\
-					
+
 					\textbf{climate\_scenario} - This is reference to the ClimateScenario entity this represents the climate scenario that this climate budget belongs with.\\
-					
+
 					\textbf{budget} - This is a reference to the budget entity. This budget the budget we are considering for this climate budget.\\
-					
+
 					\textbf{modeling\_estimate} - This represents the estimation that the model produces for how much the climate prediction will effect the climate.\\
-					
+
 					\textbf{focus\_group\_estimate} - This is an estimation of how much a model will effect a budget based on a focus group.\\
-					
+
 					\textbf{user\_estimate} - This is the estimation that the user provides for how much the climate factors will effect the budget being considered in this climate budget.\\
-					
+
 					\textbf{is\_original} - This is a Boolean flag that indicates weather or not this is an original climate budget or a university budget.\\
-					
+
 					\textbf{position} - This indicates the geographical location that this climate budget is trying to display.\\
-					
+
 					\textbf{created\_date} - This tracks the date that the user created this climate budget.\\
-				
+
 				\subsubsection{ClimateFactor}
 					This entity represents one climate factor that may effect the climate budget. For example we may consider the number of freezing nights in one year. This item is related to the climate budget entity via a many to one relationship.\\
-				
+
 					\textbf{climate\_budget} - This is reference to the ClimateBudget entity. This represents the budget we are considering for this climate factor.\\
-					
+
 					\textbf{name} - This is the name of the climate factor. For instance average temperature.\\
-					
+
 					\textbf{state} - This is the state for which this climate factor is being considered.\\
-					
+
 					\textbf{region} - This is the region for which this climate factor is being considered.\\
-					
+
 					\textbf{user\_estimate} - This represents the amount the user estimates that this climate factor will impact total crop yield.\\
-					
+
 					\textbf{created\_date} - This keeps track of when this climate factor was created by the user.\\
-					
+
 					\textbf{modified\_date} \- This keeps track of when this climate factor was last modified by the user.\\
-					
+
 					\textbf{type} \- this keeps track of what type of climate factor this climate factor represents. Currently we have two types long term and short term.\\
-				
+
 				\subsubsection{ClimateData}
 					This entity represents Climate data that will be used to determine how climate change may effect a budget. This entity is related to the ClimateFactor entity in a one to one relationship.\\
-				
+
 					\textbf{ID} - this is a unique ID by which we can identify this set of climate data.\\
-					
+
 					\textbf{Lat} - This stores the Latitude of the climate data represented by this climate data entity.\\
-					
+
 					\textbf{Long} - This stores the Longitude of the climate data represented by this climate data entity.\\
-					
+
 					\textbf{Climate\_Factor} - This is a reference to the ClimateFactor entity.\\
-				
+
 				\subsubsection{DataFrame}
 					This entity represents one single point in time of a climate data model run. A collection of these DataFrames can represent the data for the whole model run. This entity is related to the ClimateData entity in a many to one relationship.\\
-					
+
 					\textbf{ID} - This is a unique identifier we can use to identify this data frame.\\
-					
+
 					\textbf{Climate\_data} - This is a reference to the ClimateData entity.\\
-					
+
 					\textbf{DateTime} - This keeps track of the date and time that this data point occurs at in time.
-					
+
 					\textbf{The Data} - This is simply a place holder for the data we will need to store for each data frame. We can't currently know how this section of this entity will need to be formatted as we don't know what the data we will get from the NWCTB will look like.\\
-				
-				
-		
-		
-		
+
+
+
+
+
 \section{Component Design}
 
 	\subsection{Front End Controller}
-		The front end controller is essential as it is what passes the user input to the climate data API and retrieves valuable data back to the user. This section will discuss individual angular components and their functions. On every page there will a toolbar that provides a link to the AgBizClimate landing page via clicking on the AgBiz Logic trademark and a drop down box that provides user actions on user clicks.	
+		The front end controller is essential as it is what passes the user input to the climate data API and retrieves valuable data back to the user. This section will discuss individual angular components and their functions. On every page there will a toolbar that provides a link to the AgBizClimate landing page via clicking on the AgBiz Logic trademark and a drop down box that provides user actions on user clicks.
 		\subsubsection{Angular Components Design}
-		In this section we will look at each page of AgBizClimate and view the angular components and their function.  	
+		In this section we will look at each page of AgBizClimate and view the angular components and their function.
 	%potentoally other subsection here for each item that needs to be designed for the front end.
 
 	\subsection{Controller Design}
-	%Talk about how we plan to serve the data from the front end to the back end here.
-	
+	As an interface between Model and View, Controller plays a very important role in the entire application architecture. First, it controls the ways of responds of the program to end-users' operations on UI and relevant procedures. And then the underlying relations between user interface (View) and data (Model) is kept. Second, it accepts input from end-users, makes some necessary transformations, and then applies the final results on the data (Model). And in this way, it controls the computations of data (Models). At the same time, it could also reflect the variations on data (Model) back into UI (Views). \\
+	Overall, the controller tries to decompose the coupling between Model and View. However, as we would mainly employ the python Django framework for the whole AgBizClimate project, the Controller component acts as intermediary agent between front-end UI and back-end Climate APIs. It would also access the existing AgBiz Logic modules for certain needs on climate logics when necessary. However, it should be noted that the Django framework is not doing well at separating the View and Controller clearly, and most times they are tightly interwoven. Therefore, it is better to deliberately define a middle layer between view and controllers. In this project, we could adapt some design pattern techniques called Mediator and Event dispatch mechanism. Figure 1 depicts the overall structure for Controller and View. We can see that the user action is sent to Controller from View through a Mediator to Controller. And the final effects of Controller on View are sent back to View through Mediator. And the user actions are transferred by event dispatching mechanism. Therefore, the complex dependency relations between Controller and View are largely broken.\\
+
+	According to the data design, there are four kinds of general data types: user data, climate scenarios, budget data and the climate data. Consequently, we may need four general controllers to handle each of them. However, it is not possible or reasonable to deal all business logic within the four general controllers. We plan to define some specific controllers to deal with more concrete tasks, and organize them hierarchically. That is, underneath the four high level general controllers there are more low level small detailed controllers for various businesses / events. And the events are transferred gradually from lower levels to higher levels.
+
+
 	\subsection{API Design}
 %here we will talk about the design of the API that will interface with the NWCTB.
 		\subsubsection{Overview}
 			In this section we will discuss the overall design of the API that will interface with the NWCTB. This API needs to get the data from the NWCTB, format the data, and send it to the client. Currently, there is a lot of uncertainty around the design of this API because we do not know what sort of API access that we will be given from the NWCTB. We are trying to contact the NWCTB development team regarding our API access but the NWCTB hasn't been very responsive. Because we still don't have NWCTB API access yet and have no date when this might be accomplished, we will discuss several possible options that do not require NWCTB API access along with one design option that includes NWCTB API access.\\
-			
+
 			\subsubsection{Diagrams}
 				Shown below are two diagrams. The first diagram shows a UML design of this module shown in Figure \ref{fig:CDAPI}. Including the route for the API, the functions public and private and the data models used as part of this module. Also shown below in Figure \ref{fig:CDAPITrans} is how a typical transaction will work with the Climate Data API.\\
 		\clearpage
@@ -446,15 +450,15 @@
 			\caption{Typical Climate Data API Transaction}
 			\label{fig:CDAPITrans}
 		\end{figure}
-		
-				
-				
+
+
+
 			\subsubsection{Overall Design}
-			
+
 			\subsubsection{Data Design}
-			
+
 			\subsubsection{NWCTB Interface}
-			
+
 			\subsubsection{Possible Alternative Solutions}
 				\subsubsection{Cached Climate Data Data Base}
 
@@ -462,11 +466,15 @@
 	\subsection{Testing Design}
 		%Here we will talk about how we plan to test this project.
 		\subsubsection{Front End Testing}
-	
+
 		\subsubsection{Controller testing}
-	
+		Controllers are the workhorse of MVC. And the tests of them would to some extent guarantee the correctness of the business logic of the application. Basically, most controllers either render a view or handle form submissions. Thus the test of controller should mainly focus on the concrete user operations or response but not the entire framework or functionalities of the application. And these tests would be done in the phase of unit test. Generally, each test for controller may consist of two steps. \\
+Firstly, one launches a request to the controller method to be tested. This is mainly done by user inputs from the view. In practice, the mocking actions from testing frameworks would replace human operations to do this.\\
+Secondly, one verifies that expected response is received or certain effect has taken place. This step could also be done easily by auto testing frameworks after one has define appropriate test cases.
+
+
 		\subsubsection{API Testing}
-		
+
 %Here we will talk about the UI.
 \section{User Interface Design}
 
@@ -490,10 +498,9 @@
 
 
 
-%in this section we will show how are design will fufill the functional requirements.	
+%in this section we will show how are design will fufill the functional requirements.
 \section{Requirements Matrix}
 
 
 
 \end{document}
-
