@@ -415,9 +415,9 @@
 \section{Component Design}
 
 	\subsection{Front End Controller}
-	
+		The front end controller is essential as it is what passes the user input to the climate data API and retrieves valuable data back to the user. This section will discuss individual angular components and their functions. On every page there will a toolbar that provides a link to the AgBizClimate landing page via clicking on the AgBiz Logic trademark and a drop down box that provides user actions on user clicks.	
 		\subsubsection{Angular Components Design}
-	
+			
 	%potentoally other subsection here for each item that needs to be designed for the front end.
 
 	\subsection{Controller Design}
@@ -448,7 +448,7 @@
 		\end{figure}
 		
 				
-			
+				
 			\subsubsection{Overall Design}
 			
 			\subsubsection{Data Design}
@@ -471,11 +471,24 @@
 \section{User Interface Design}
 
 	\subsection{Overview of User Interface}
-	
+	The user interface is an essential part of any web application as it is the layer between the user and what they want and need out of an application. In this section we will be discussing the User Interface, but more specifically detailing the specific UI elements that together make up each page.
 	%I've already created screen images as part of another project. We should use those here. They are in the figures folder in the project.
 	\subsection{Screen Images}
-	
+	These figures are currently in the figured folder...
 	\subsection{Screen Objects and Actions}
+		\subsubsection{Landing Page}
+		The Landing page consists of two primary parts: the information jumbotron, new scenario creation, and a scenario listings. The information jumbotron is a static and gives the mission statement of the AgBizClimate product. The new scenario creation selection allows the user to click on one of two boxes specifying if they would like to create a new short or long term climate scenario. Finally the scenario listings part is a dynamic table that provides information on the title, notes, date created, and date last modified for all entered climate scenarios.
+		\subsubsection{Climate Scenarios}
+		The new climate scenario page consists of three primary parts: the information section, and budget selection. The information section will state that the user is beginning a new AgBizClimate scenario and provide rules and data entry components for the scenario and notes for the new scenario. Specifically it will allow users to enter text specifying the scenario name and notes for the new scenario. Finally budget selection portion will allow users to add a budget or select a pre existing budget from the existing database.
+		\subsubsection{Region Selection}
+		The region selection page will consist of two drop down boxes that allow the user to specify the state and county for the new climate scenario.
+		\subsubsection{Chart Page}
+		The chart page will contain the charts for temperature, and precipitation based on previous user entry as well as a text box that will allow users to estimate the percent change the chart might have on their budget.
+		\subsubsection{Budget Review}
+		The budget review will allow users to specify the budget income and general cash costs estimates from the previous section. It will also allow users to edit specific components, add variable costs, add fixed cash costs or remove entries all together.
+
+
+
 
 %in this section we will show how are design will fufill the functional requirements.	
 \section{Requirements Matrix}
