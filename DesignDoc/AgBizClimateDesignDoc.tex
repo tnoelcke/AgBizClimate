@@ -460,8 +460,40 @@
 
 
 			\subsubsection{Overall Design}
+				The climate data API can be divided into three different parts. The API Controller it self, the Data that the controller will be using to represent the climate data and the NWCTB interface. The following paragraphs will briefly describe each of these components.
+			\subsubsection{Function Design}
+			In this section we will define and describe each function in the Climate API design. We will also discuss what each function will take as input and what each function will return.
+					\paragraph{\textbf{Public Methods}}
+					
+					
+					\paragraph{GetData(lat, long, parameterType)} - This function call takes three paramaters as input. latitude, longitude and parameter type. The parameter type is the type of data that the client is requesting either precipitation or temperature. This call will then return the requested climate data as a JSON object to the client.\\
+					\paragraph{RouteCall: "~/getdata/\{lat\}/\{long\}/\{paramaterType\}"} - This route takes three parameters via the URL as input. These parameters are the latitude, longitude and the ParameterType. The parameter type is the type of data the user requested. In this case it's either precipitation or temperature. The data will then be formatted as a JSON object and will be returned to the calling client.\\
+					
+					\paragraph{\textbf{Private Methods}}
+					
+					\paragraph{Authenticate()} - This function will preform a hand shake with the NWCTB API to let the NWCTB API know who we are. This function will make a call to the Authorize function in the interface of the NWCTB API. This function will then get the authentication key for later use when we go to make requests to the NWCTB API.\\
+					\paragraph{GetDataFromNWCTB(ClimateData)} - This function will set up and make the request to the NWCTB API. This function will take a ClimateData obejct as a parameter preloaded with the ID, Lat, and Long fields completed. This function will return the climateData object after initializing the DataFrame collection with the data received from the NWCTB.\\
+					\paragraph{FormatData(ClimateData)} - This function will take a climate data object and will transform the object into a JSON object and return it.\\
+					
+				\subsubsection{Model Design}
+					In this section we will define and discuss the models we plan to use in the Climate Data API. For each model we will define and describe each data member and function.\\
+					
+					
+					
+				\subsubsection{NWCTB Interface}
+					We will not be talking about how the NWCTB Interface is designed as for the purposes of this project this is a black box that returns the climate data we requested. However we will discuss the method calls we plan to use for the NWCTB API.\\
+					
+					It should also be noted that this sections is what we are guessing the API Access should look like. Currently we are unsure how we will be accessing the API and what the calls will look like. But for the purposes of the design of this system we have taken our best guess and what it might look like.\\
+					
+					\paragraph{\textbf{Methods}}
+					
+					
+					\paragraph{Authroize()} - This function takes no parameters and preforms a handshake between our application and the NWCTB application. This function call will return an authentication key that we can use later to make function calls to the NWCTB API.\\ 
+					\paragraph{getData(lat, long, Type)} - This call takes latitude, longitude and the data type we are requesting. The data type in this case will either be precipitation or temperature. This function will then return the data we requested or an error if the request we made was unauthorized or was a bad request.\\
+					
 
 			\subsubsection{Data Design}
+			In this section we will discuss the 
 
 			\subsubsection{NWCTB Interface}
 
@@ -476,7 +508,7 @@
 		\subsubsection{Controller testing}
 		Controllers are the workhorse of MVC. And the tests of them would to some extent guarantee the correctness of the business logic of the application. Basically, most controllers either render a view or handle form submissions. Thus the test of controller should mainly focus on the concrete user operations or response but not the entire framework or functionalities of the application. And these tests would be done in the phase of unit test. Generally, each test for controller may consist of two steps. \\
 Firstly, one launches a request to the controller method to be tested. This is mainly done by user inputs from the view. In practice, the mocking actions from testing frameworks would replace human operations to do this.\\
-Secondly, one verifies that expected response is received or certain effect has taken place. This step could also be done easily by auto testing frameworks after one has define appropriate test cases.
+Secondly, one verifies that expected response is received or certain effect has taken place. This step could also be done easily by auto testing frameworks after one has define appropriate test cases.\\
 
 
 		\subsubsection{API Testing}
