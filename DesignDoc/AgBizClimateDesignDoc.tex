@@ -133,7 +133,14 @@
 		Shown Below is the architectural design for the \textit{AgBizClimate} project. This UML diagram shows the high level components of this application. This Diagram also shows how these components will interact.\\
 		
 		%insert diagram here. Please don't be a bitch about where you put the diagrm laTex...
-		\includegraphics{Architecture}
+		\begin{figure}[htb]
+			\begin{center}
+				\includegraphics{UMLDiagrams/ArchitectureDesign.jpg}
+			\end{center}
+			\caption{System Architecture Design for \textit{AgBizClimate} project}
+			\label{fig:Arch1}
+		\end{figure}
+		
 		
 	\subsection{Decomposition Description}
 		The \textit{AgBizClimate} project can broken down into six components. The six components are the Backend Controller, The Front End Controller, UI, Existing \textit{AgBiz Logic} Modules, Climate Data API, and the NWCTB API. In this section we will describe each models function and how it interacts with the other modules.\\
@@ -169,10 +176,28 @@
 %Need to metion that we are not responsible for how those items were designed.
 \section{Data Design}
 	\subsection{Data Description}
-		In this section we will discuss the design of the data required for this system. The data need to implement this system includes the user data, climate scenarios, Budget Data and the climate data. It should be noted that this project adds the climate data to the system. User data, climate scenarios and budget data have already been implemented as part of the existing \texit{AgBiz Logic} system. However, since we will be using this data as part of our project I've included their design in this section.\\
-		Shown below is the design for the data we will use in this program. In this UML diagram are all the various entities required by this system. Additionally we also show the relationship between different entities. Shown below are the UML diagrams for User Data, Climate Scenarios, Budget Data and for the Climate Data.\\
+		In this section we will discuss the design of the data required for this system. The data needed to implement this system includes the user data, climate scenarios, Budget Data and the climate data. It should be noted that this project adds the climate data to the system. User data, climate scenarios and budget data have already been implemented as part of the existing \textit{AgBiz Logic} system. However, since we will be using this data as part of our project I've included their design in this section.\\
+		Shown below is the design for the data we will use in this program. In this UML diagram are all the various entities required by this system. Additionally we also show the relationship between different entities. Shown below are the UML diagrams for User Data, Climate Scenarios, Budget Data, Climate Data and Related Entities.\\
+
+\clearpage
+
+		%insert UML Diagrams here.
+		\begin{figure}[htb]
+			\begin{center}
+				\includegraphics[width=275pt]{UMLDiagrams/UserData.jpg}
+			\end{center}
+			\caption{User Data Currently Implemented in the \textit{AgBiz Logic} project}
+			\label{fig:UD1}
+		\end{figure}
+\clearpage
+		\begin{figure}[htb]
+			\begin{center}
+				\includegraphics[width=300pt]{UMLDiagrams/ClimateData.jpg}
+			\end{center}
+			\caption{Design For the Climate Data for the \textit{AgBizClimate} project}
+			\label{fig:CD1}
+		\end{figure}
 		
-		%insert UML Diagram here.
 		
 	\subsection{Data Dictionary}
 		In this section we will describe each piece of data and what it represents. We will also discuss possible values for each piece of data.\\
@@ -180,7 +205,7 @@
 		
 		\subsubsection{Climate Scenarios}
 		
-		\subsubsectino{}
+		
 		
 \section{Component Design}
 
