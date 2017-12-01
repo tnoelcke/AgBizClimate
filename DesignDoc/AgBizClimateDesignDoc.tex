@@ -421,7 +421,7 @@
 	%potentoally other subsection here for each item that needs to be designed for the front end.
 
 	\subsection{Controller Design}
-	As an interface between Model and View, Controller plays a very important role in the entire application architecture. First, it controls the ways of responds of the program to end-users' operations on UI and relevant procedures. And then the underlying relations between user interface (View) and data (Model) is kept. Second, it accepts input from end-users, makes some necessary transformations, and then applies the final results on the data (Model). And in this way, it controls the computations of data (Models). At the same time, it could also reflect the variations on data (Model) back into UI (Views). \\
+	As an interface between Model and View, the Controller plays a very important role in the entire application architecture. First, it controls the way the application responds to the requests that result from the end-users' operations on UI. Secondly, it maintains the underlying relations between user interface (View) and data (Model). Third, it accepts input from end-users, makes some necessary transformations, and then applies the final results on the data (Model). In this way, it controls the computation of the data (Models). At the same time, it could also reflect the variations on data (Model) back into UI (Views). \\
 	Overall, the controller tries to decompose the coupling between Model and View. However, as we would mainly employ the python Django framework for the whole AgBizClimate project, the Controller component acts as intermediary agent between front-end UI and back-end Climate APIs. It would also access the existing AgBiz Logic modules for certain needs on climate logics when necessary. However, it should be noted that the Django framework is not doing well at separating the View and Controller clearly, and most times they are tightly interwoven. Therefore, it is better to deliberately define a middle layer between view and controllers. In this project, we could adapt some design pattern techniques called Mediator and Event dispatch mechanism. The following figure depicts the overall structure for Controller and View. We can see that the user action is sent to Controller from View through a Mediator to Controller. And the final effects of Controller on View are sent back to View through Mediator. And the user actions are transferred by event dispatching mechanism. Therefore, the complex dependency relations between Controller and View are largely broken.\\
 	\begin{figure}[htb]
 		\begin{center}
@@ -493,20 +493,41 @@
 					
 
 			\subsubsection{Data Design}
-			In this section we will discuss the 
+			In this section we will discuss the design of the models that we will use for the Climate Data API. For each model we will define and describe the fields and methods.\\
+			
+			\paragraph{\textbf{ClimateData}}
+				This model represents the climate data for one whole climate simulation.\\
+			\paragraph{\textbf{Fields}}
+			ID - This is an ID that uniquely identifies this ClimateData object. This will be used to find specific model runs.
+			Lat - This represents that latitude at which this climate situation is located.\\
+			Long - This represents the longitude at which this climate situation is located.\\
+			DataFrame[] - This is a collection of data frames that make up the climate data for this climate simulation.\\
+			
+			\paragraph{\textbf{Methods}}
+			toJSON() - This method takes the ClimateData object and turns it into the equivalent JSON representation.\\
+			
+			\paragarph{\textbf{DataFrame}}
+				This model represents one frame of data for a climate simulation. A data frame represents one moment in time in a climate simulation. A collection of these data frames make up a climate simulation.\\
+			
+			\paragraph{\textbf{Fields}}
+			ID - This is a Unique identifier that will allow us to identify the order that the data frames need to go in.\\
+			Date_time - This is the date time that this data frame occurs on in time.\\
+			The Data - This is a place holder for the data. We currently do not have API access to the NWCTB. As a result we are not sure how the data will be formatted. Once we have the data from the northwest climate tool box we will able replace this place holder with the actual data for each frame.\\
+			
+			\paragraph{\textbf{Methods}}
+			ToJSON() - This produces the equivalent JSON representation of the data frame.\\
+			
 
-			\subsubsection{NWCTB Interface}
-
-			\subsubsection{Possible Alternative Solutions}
-				\subsubsection{Cached Climate Data Data Base}
-
+			\subsubsection{Possible Alternative to the NWCTB}
+				In this section we will discuss other possible solutions for getting our climate data other than using the NWCTB. We are discussing this because it is possible that we may not get API access to the NWCTB or that we will get access after this project is completed. Because there is some uncertainty regarding the API access we have come up with a few different options if we are unable to get the necessary API Access.\\
+				
 	%We may want to abandon this section.
 	\subsection{Testing Design}
 		%Here we will talk about how we plan to test this project.
 		\subsubsection{Front End Testing}
 
 		\subsubsection{Controller testing}
-		Controllers are the workhorse of MVC. And the tests of them would to some extent guarantee the correctness of the business logic of the application. Basically, most controllers either render a view or handle form submissions. Thus the test of controller should mainly focus on the concrete user operations or response but not the entire framework or functionalities of the application. And these tests would be done in the phase of unit test. Generally, each test for controller may consist of two steps. \\
+		Controllers are the workhorse of MVC. And the tests of them would to some extent guarantee the correctness of the business logic of the application. Basically, most controllers either render a view or handle form submissions. Thus the test of controller should mainly focus on the concrete user operations or response but not the entire framework or functionalists of the application. And these tests would be done in the phase of unit test. Generally, each test for controller may consist of two steps. \\
 Firstly, one launches a request to the controller method to be tested. This is mainly done by user inputs from the view. In practice, the mocking actions from testing frameworks would replace human operations to do this.\\
 Secondly, one verifies that expected response is received or certain effect has taken place. This step could also be done easily by auto testing frameworks after one has define appropriate test cases.\\
 
@@ -517,15 +538,15 @@ Secondly, one verifies that expected response is received or certain effect has 
 \section{User Interface Design}
 
 	\subsection{Overview of User Interface}
-	The user interface is an essential part of any web application as it is the layer between the user and what they want and need out of an application. In this section we will be discussing the User Interface, but more specifically detailing the specific UI elements that together make up each page.
+	The user interface is an essential part of any web application as it is the layer between the user and what they want and need out of an application. In this section we will be discussing the User Interface. Specifically, we will be detailing the specific UI elements that make up each page.
 	%I've already created screen images as part of another project. We should use those here. They are in the figures folder in the project.
 	\subsection{Screen Images}
 	These figures are currently in the figured folder...
 	\subsection{Screen Objects and Actions}
 		\subsubsection{Landing Page}
-		The Landing page consists of two primary parts: the information jumbotron, new scenario creation, and a scenario listings. The information jumbotron is a static and gives the mission statement of the AgBizClimate product. The new scenario creation selection allows the user to click on one of two boxes specifying if they would like to create a new short or long term climate scenario. Finally the scenario listings part is a dynamic table that provides information on the title, notes, date created, and date last modified for all entered climate scenarios.
+		The Landing page consists of two primary parts: the information jumbotron, new scenario creation, and a scenario listings. The information jumbotron is a static and gives the mission statement of the AgBizClimate product. The new scenario creation selection allows the user to click on one of two boxes specifying if they would like to create a new short or long term climate scenario. Finally, the scenario listings section is a dynamic table that provides information on the title, notes, date created, and date last modified for all entered climate scenarios.\\
 		\subsubsection{Climate Scenarios}
-		The new climate scenario page consists of three primary parts: the information section, and budget selection. The information section will state that the user is beginning a new AgBizClimate scenario and provide rules and data entry components for the scenario and notes for the new scenario. Specifically it will allow users to enter text specifying the scenario name and notes for the new scenario. Finally budget selection portion will allow users to add a budget or select a pre existing budget from the existing database.
+		The new climate scenario page consists of three primary parts: the information section, and budget selection. The information section will state that the user is beginning a new AgBizClimate scenario and provide rules and data entry components for the scenario and notes for the new scenario. Specifically it will allow users to enter text specifying the scenario name and notes for the new scenario. Finally budget selection portion will allow users to add a budget or select a preexisting budget from the existing database.
 		\subsubsection{Region Selection}
 		The region selection page will consist of two drop down boxes that allow the user to specify the state and county for the new climate scenario.
 		\subsubsection{Chart Page}
