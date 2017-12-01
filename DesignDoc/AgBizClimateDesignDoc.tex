@@ -506,12 +506,12 @@
 			\paragraph{\textbf{Methods}}
 			toJSON() - This method takes the ClimateData object and turns it into the equivalent JSON representation.\\
 			
-			\paragarph{\textbf{DataFrame}}
+			\paragraph{\textbf{DataFrame}}
 				This model represents one frame of data for a climate simulation. A data frame represents one moment in time in a climate simulation. A collection of these data frames make up a climate simulation.\\
 			
 			\paragraph{\textbf{Fields}}
 			ID - This is a Unique identifier that will allow us to identify the order that the data frames need to go in.\\
-			Date_time - This is the date time that this data frame occurs on in time.\\
+			Date\_time - This is the date time that this data frame occurs on in time.\\
 			The Data - This is a place holder for the data. We currently do not have API access to the NWCTB. As a result we are not sure how the data will be formatted. Once we have the data from the northwest climate tool box we will able replace this place holder with the actual data for each frame.\\
 			
 			\paragraph{\textbf{Methods}}
@@ -520,6 +520,18 @@
 
 			\subsubsection{Possible Alternative to the NWCTB}
 				In this section we will discuss other possible solutions for getting our climate data other than using the NWCTB. We are discussing this because it is possible that we may not get API access to the NWCTB or that we will get access after this project is completed. Because there is some uncertainty regarding the API access we have come up with a few different options if we are unable to get the necessary API Access.\\
+				
+				\paragraph{\textbf{Automate Downloading the Data}} \hfill \break
+				One possible solution to getting the data without downloading the data is to write a script to download the data from the website. The data is available for download on their website and It wouldn't be too difficult to create a scrip that goes to their website and download the data. There are some potential issues we may run it using this approach. Firstly, they may throttle our speed if we try to download to many data entries at once or to often. This may happen many times as a person goes through climate scenarios for different crops. One way to over come this problem would be to cache the data in a database locally. This would allow us to only ever grab a data set for a location once. However, with this approach we would need to find a way to ensure that this data is the most updated data. This is the preferred alternative if we do not end up getting the NWCTB API access.\\
+				\paragraph{\textbf{Build a New Service From the Ground Up}} \hfill \break
+				Another possible solution would be to build a new service that went out to the NOAA got the different climate predictions and averaged together the result. The model data used by the NWCTB is public record available to the public for download. It would be possible to create a new service that did essentially the same thing as the NWCTB but without the user interface. There are a few nice things about this solution in that it would give us control over the data from start to finish and would allow us to make calls to an internal service rather than an external one. However, this would have serious impacts on our development time. This would also be a rather complex problem that would require a lot of research. Preferably we will not use this option.\\
+				\paragraph{\textbf{Find A New Climate Data API}} \hfill \break
+				Finally, Another solution would be to find a different API for the climate data we need. Currently we are unaware if another Climate Data API exists that would suite the needs of our application. However, if we were to find one that provided the data we need changing the design of our application to accommodate the new API probably wouldn't cause big issues. Assuming we can find another data source this approach would be ideal.\\
+				
+				
+				
+				
+				
 				
 	%We may want to abandon this section.
 	\subsection{Testing Design}
