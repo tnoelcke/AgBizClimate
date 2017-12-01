@@ -421,17 +421,28 @@
 	%potentoally other subsection here for each item that needs to be designed for the front end.
 
 	\subsection{Controller Design}
-	As an interface between Model and View, the Controller plays a very important role in the entire application architecture. First, it controls the way the application responds to the requests that result from the end-users' operations on UI. Secondly, it maintains the underlying relations between user interface (View) and data (Model). Third, it accepts input from end-users, makes some necessary transformations, and then applies the final results on the data (Model). In this way, it controls the computation of the data (Models). At the same time, it could also reflect the variations on data (Model) back into UI (Views). \\
-	Overall, the controller tries to decompose the coupling between Model and View. However, as we would mainly employ the python Django framework for the whole AgBizClimate project, the Controller component acts as intermediary agent between front-end UI and back-end Climate APIs. It would also access the existing AgBiz Logic modules for certain needs on climate logics when necessary. However, it should be noted that the Django framework is not doing well at separating the View and Controller clearly, and most times they are tightly interwoven. Therefore, it is better to deliberately define a middle layer between view and controllers. In this project, we could adapt some design pattern techniques called Mediator and Event dispatch mechanism. The following figure depicts the overall structure for Controller and View. We can see that the user action is sent to Controller from View through a Mediator to Controller. And the final effects of Controller on View are sent back to View through Mediator. And the user actions are transferred by event dispatching mechanism. Therefore, the complex dependency relations between Controller and View are largely broken.\\
+			\subsubsection{Overview}
+			As an interface between Model and View, the Controller plays a very important role in the entire application architecture. First, it controls the way the application responds to the requests that result from the end-users' operations on UI. Secondly, it maintains the underlying relations between user interface (View) and data (Model). Third, it accepts input from end-users, makes some necessary transformations, and then applies the final results on the data (Model). In this way, it controls the computation of the data (Models). At the same time, it could also reflect the variations on data (Model) back into UI (Views). \\
+			\subsubsection{Overall Design}
+			Overall, the controller tries to decompose the coupling between Model and View. However, as we would mainly employ the python Django framework for the whole AgBizClimate project, the Controller component acts as intermediary agent between front-end UI and back-end Climate APIs. However, it should be noted that the Django framework is not doing well at separating the View and Controller clearly, and most times they are tightly interwoven. Therefore, it is better to deliberately define a middle layer between view and controllers. In this project, we could adapt some design pattern techniques called Mediator and Event dispatch mechanism. The following figure depicts the overall structure for Controller and View. We can see that the user action is sent to Controller from View through a Mediator to Controller. And the final effects of Controller on View are sent back to View through Mediator. And the user actions are transferred by event dispatching mechanism. Therefore, the complex dependency relations between Controller and View are largely broken.\\
+
 	\begin{figure}[htb]
 		\begin{center}
 			\includegraphics[width=275pt]{UMLDiagrams/Controller.jpeg}
 		\end{center}
 		\caption{Overall structure for Controller and View}
-		\label{fig:UD1}
-	\end{figure}
-	According to the data design, there are four kinds of general data types: user data, climate scenarios, budget data and the climate data. Consequently, we may need four general controllers to handle each of them. However, it is not possible or reasonable to deal all business logic within the four general controllers. We plan to define some specific controllers to deal with more concrete tasks, and organize them hierarchically. That is, underneath the four high level general controllers there are more low level small detailed controllers for various businesses / events. And the events are transferred gradually from lower levels to higher levels.
+		\label{fig:Con}
+		\end{figure}
 
+		According to the data design, there are four kinds of general data types: user data, climate scenarios, budget data and the climate data. Consequently, we may need four general controllers to handle each of them. However, it is not possible or reasonable to deal all business logic within the four general controllers. We plan to define some specific controllers to deal with more concrete tasks, and organize them hierarchically. That is, underneath the four high level general controllers there are more low level small detailed controllers for various businesses / events. And the events are transferred gradually from lower levels to higher levels. Another figure presents the top Controller design of the AgBizClimate project. Basically there are two general controller types: Frontend Controller and Backend Controller, which mainly handles the operations/events from UI and data models, respectively. And much of the work are actually finished by the four specific controller under Backend Controller: Climate Scenario Controller, Climate Data Controller, Climate Factor Controller and Climate Budget Controller. Also, it should be noted that the Backend Controller could call the existing AgBiz Logic Model for certain tasks.\\
+
+	\begin{figure}[htb]
+		\begin{center}
+			\includegraphics[width=275pt]{UMLDiagrams/TopController.jpeg}
+		\end{center}
+		\caption{Top controller design diagram}
+		\label{fig:TOPCon}
+	\end{figure}
 
 	\subsection{API Design}
 %here we will talk about the design of the API that will interface with the NWCTB.
@@ -464,37 +475,37 @@
 			\subsubsection{Function Design}
 			In this section we will define and describe each function in the Climate API design. We will also discuss what each function will take as input and what each function will return.
 					\paragraph{\textbf{Public Methods}}
-					
-					
+
+
 					\paragraph{GetData(lat, long, parameterType)} - This function call takes three paramaters as input. latitude, longitude and parameter type. The parameter type is the type of data that the client is requesting either precipitation or temperature. This call will then return the requested climate data as a JSON object to the client.\\
 					\paragraph{RouteCall: "~/getdata/\{lat\}/\{long\}/\{paramaterType\}"} - This route takes three parameters via the URL as input. These parameters are the latitude, longitude and the ParameterType. The parameter type is the type of data the user requested. In this case it's either precipitation or temperature. The data will then be formatted as a JSON object and will be returned to the calling client.\\
-					
+
 					\paragraph{\textbf{Private Methods}}
-					
+
 					\paragraph{Authenticate()} - This function will preform a hand shake with the NWCTB API to let the NWCTB API know who we are. This function will make a call to the Authorize function in the interface of the NWCTB API. This function will then get the authentication key for later use when we go to make requests to the NWCTB API.\\
 					\paragraph{GetDataFromNWCTB(ClimateData)} - This function will set up and make the request to the NWCTB API. This function will take a ClimateData obejct as a parameter preloaded with the ID, Lat, and Long fields completed. This function will return the climateData object after initializing the DataFrame collection with the data received from the NWCTB.\\
 					\paragraph{FormatData(ClimateData)} - This function will take a climate data object and will transform the object into a JSON object and return it.\\
-					
+
 				\subsubsection{Model Design}
 					In this section we will define and discuss the models we plan to use in the Climate Data API. For each model we will define and describe each data member and function.\\
-					
-					
-					
+
+
+
 				\subsubsection{NWCTB Interface}
 					We will not be talking about how the NWCTB Interface is designed as for the purposes of this project this is a black box that returns the climate data we requested. However we will discuss the method calls we plan to use for the NWCTB API.\\
-					
+
 					It should also be noted that this sections is what we are guessing the API Access should look like. Currently we are unsure how we will be accessing the API and what the calls will look like. But for the purposes of the design of this system we have taken our best guess and what it might look like.\\
-					
+
 					\paragraph{\textbf{Methods}}
-					
-					
-					\paragraph{Authroize()} - This function takes no parameters and preforms a handshake between our application and the NWCTB application. This function call will return an authentication key that we can use later to make function calls to the NWCTB API.\\ 
+
+
+					\paragraph{Authroize()} - This function takes no parameters and preforms a handshake between our application and the NWCTB application. This function call will return an authentication key that we can use later to make function calls to the NWCTB API.\\
 					\paragraph{getData(lat, long, Type)} - This call takes latitude, longitude and the data type we are requesting. The data type in this case will either be precipitation or temperature. This function will then return the data we requested or an error if the request we made was unauthorized or was a bad request.\\
-					
+
 
 			\subsubsection{Data Design}
 			In this section we will discuss the design of the models that we will use for the Climate Data API. For each model we will define and describe the fields and methods.\\
-			
+
 			\paragraph{\textbf{ClimateData}}
 				This model represents the climate data for one whole climate simulation.\\
 			\paragraph{\textbf{Fields}}
@@ -502,37 +513,37 @@
 			Lat - This represents that latitude at which this climate situation is located.\\
 			Long - This represents the longitude at which this climate situation is located.\\
 			DataFrame[] - This is a collection of data frames that make up the climate data for this climate simulation.\\
-			
+
 			\paragraph{\textbf{Methods}}
 			toJSON() - This method takes the ClimateData object and turns it into the equivalent JSON representation.\\
-			
+
 			\paragraph{\textbf{DataFrame}}
 				This model represents one frame of data for a climate simulation. A data frame represents one moment in time in a climate simulation. A collection of these data frames make up a climate simulation.\\
-			
+
 			\paragraph{\textbf{Fields}}
 			ID - This is a Unique identifier that will allow us to identify the order that the data frames need to go in.\\
 			Date\_time - This is the date time that this data frame occurs on in time.\\
 			The Data - This is a place holder for the data. We currently do not have API access to the NWCTB. As a result we are not sure how the data will be formatted. Once we have the data from the northwest climate tool box we will able replace this place holder with the actual data for each frame.\\
-			
+
 			\paragraph{\textbf{Methods}}
 			ToJSON() - This produces the equivalent JSON representation of the data frame.\\
-			
+
 
 			\subsubsection{Possible Alternative to the NWCTB}
 				In this section we will discuss other possible solutions for getting our climate data other than using the NWCTB. We are discussing this because it is possible that we may not get API access to the NWCTB or that we will get access after this project is completed. Because there is some uncertainty regarding the API access we have come up with a few different options if we are unable to get the necessary API Access.\\
-				
+
 				\paragraph{\textbf{Automate Downloading the Data}} \hfill \break
 				One possible solution to getting the data without downloading the data is to write a script to download the data from the website. The data is available for download on their website and It wouldn't be too difficult to create a scrip that goes to their website and download the data. There are some potential issues we may run it using this approach. Firstly, they may throttle our speed if we try to download to many data entries at once or to often. This may happen many times as a person goes through climate scenarios for different crops. One way to over come this problem would be to cache the data in a database locally. This would allow us to only ever grab a data set for a location once. However, with this approach we would need to find a way to ensure that this data is the most updated data. This is the preferred alternative if we do not end up getting the NWCTB API access.\\
 				\paragraph{\textbf{Build a New Service From the Ground Up}} \hfill \break
 				Another possible solution would be to build a new service that went out to the NOAA got the different climate predictions and averaged together the result. The model data used by the NWCTB is public record available to the public for download. It would be possible to create a new service that did essentially the same thing as the NWCTB but without the user interface. There are a few nice things about this solution in that it would give us control over the data from start to finish and would allow us to make calls to an internal service rather than an external one. However, this would have serious impacts on our development time. This would also be a rather complex problem that would require a lot of research. Preferably we will not use this option.\\
 				\paragraph{\textbf{Find A New Climate Data API}} \hfill \break
 				Finally, Another solution would be to find a different API for the climate data we need. Currently we are unaware if another Climate Data API exists that would suite the needs of our application. However, if we were to find one that provided the data we need changing the design of our application to accommodate the new API probably wouldn't cause big issues. Assuming we can find another data source this approach would be ideal.\\
-				
-				
-				
-				
-				
-				
+
+
+
+
+
+
 	%We may want to abandon this section.
 	\subsection{Testing Design}
 		%Here we will talk about how we plan to test this project.
@@ -540,8 +551,8 @@
 
 		\subsubsection{Controller testing}
 		Controllers are the workhorse of MVC. And the tests of them would to some extent guarantee the correctness of the business logic of the application. Basically, most controllers either render a view or handle form submissions. Thus the test of controller should mainly focus on the concrete user operations or response but not the entire framework or functionalists of the application. And these tests would be done in the phase of unit test. Generally, each test for controller may consist of two steps. \\
-Firstly, one launches a request to the controller method to be tested. This is mainly done by user inputs from the view. In practice, the mocking actions from testing frameworks would replace human operations to do this.\\
-Secondly, one verifies that expected response is received or certain effect has taken place. This step could also be done easily by auto testing frameworks after one has define appropriate test cases.\\
+		Firstly, one launches a request to the controller method to be tested. This is mainly done by user inputs from the view. In practice, the mocking actions from testing frameworks would replace human operations to do this.\\
+		Secondly, one verifies that expected response is received or certain effect has taken place. This step could also be done easily by auto testing frameworks after one has define appropriate test cases.\\
 
 
 		\subsubsection{API Testing}
