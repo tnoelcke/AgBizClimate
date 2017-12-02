@@ -1,4 +1,6 @@
 filename=AgBizClimateDesignDoc
+	
+pdf: ps
 	ps2pdf ${filename}.ps
 
 pdf-print: ps
