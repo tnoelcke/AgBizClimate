@@ -572,7 +572,8 @@
 	\subsection{Testing Design}
 		%Here we will talk about how we plan to test this project.
 		\subsubsection{Front End Testing}
-
+		We plan to test the front end using a Angular testing framework. Using this testing frame work we will test that every possible user interaction produces some sort of UI action. Essentially the idea is that we ant to test that our UI is responsive for every possible UI action.\\
+		
 		\subsubsection{Controller testing}
 		Controllers are the workhorse of MVC. And the tests of them would to some extent guarantee the correctness of the business logic of the application. Basically, most controllers either render a view or handle form submissions. Thus the test of controller should mainly focus on the concrete user operations or response but not the entire framework or functionalists of the application. And these tests would be done in the phase of unit test. Generally, each test for controller may consist of two steps. \\
 		Firstly, one launches a request to the controller method to be tested. This is mainly done by user inputs from the view. In practice, the mocking actions from testing frameworks would replace human operations to do this.\\
@@ -580,6 +581,7 @@
 
 
 		\subsubsection{API Testing}
+		For the API we will provide testing for every possible API route. We will also test that erogenous resumes result in correct response. Beyond that we will also test each function in the API. For each function we will test a variety of different inputs for each function including valid and invalid inputs. We will then ensure that the correct result is returned for valid requests. For invalid request we will ensure that the correct error message is returned.\\
 
 %Here we will talk about the UI.
 \section{User Interface Design}
@@ -588,7 +590,39 @@
 	The user interface is an essential part of any web application as it is the layer between the user and what they want and need out of an application. In this section we will be discussing the User Interface. Specifically, we will be detailing the specific UI elements that make up each page.
 	%I've already created screen images as part of another project. We should use those here. They are in the figures folder in the project.
 	\subsection{Screen Images}
-	These figures are currently in the figured folder...
+		\begin{figure}[htb]
+		\includegraphics[width=\linewidth]{Figures/LandingPage.eps}
+		\caption{Landing Page}
+		\label{figure3.1}
+	\end{figure}
+					
+	\clearpage
+	\begin{figure}[htb]				
+		\includegraphics[width=\linewidth]{Figures/ClimateScenario.eps}
+		\caption{Allows user to select budgets and make notes}
+		\label{figure3.2}					
+	\end{figure}
+					
+	\clearpage
+	\begin{figure}[htb]
+		\includegraphics[width=\linewidth]{Figures/SelectStateAndCounty.eps}
+		\caption{Allows User to select location}
+		\label{figure3.3}
+	\end{figure}
+	
+	\clearpage
+	\begin{figure}[htb]
+		\includegraphics[width=\linewidth]{Figures/ChartPage.eps}
+		\caption{Displays the Data in a plot}
+		\label{figure3.4}
+	\end{figure}
+	
+	\clearpage
+	\begin{figure}[htb]
+		\includegraphics[width=\linewidth]{Figures/BudgetReivew.eps}
+		\caption{Allows user to view their budget}
+		\label{figure3.5}
+	\end{figure}
 	\subsection{Screen Objects and Actions}
 		\subsubsection{Landing Page}
 		The Landing page consists of two primary parts: the information jumbotron, new scenario creation, and a scenario listings. The information jumbotron is a static and gives the mission statement of the AgBizClimate product. The new scenario creation selection allows the user to click on one of two boxes specifying if they would like to create a new short or long term climate scenario. Finally, the scenario listings section is a dynamic table that provides information on the title, notes, date created, and date last modified for all entered climate scenarios.\\
