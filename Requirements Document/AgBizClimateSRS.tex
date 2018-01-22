@@ -124,10 +124,10 @@
 		\textit{AgBizClimate} users can be split into two subgroups, agricultural producers and climate researchers. The first subgroup, agricultural users who use this product tend to be between fifty and sixty years old of mixed gender. Their educational background ranges from high school to the completion of college. The primary language this group uses is English, but there are some Spanish users as well. Most of the users in this group tend to have novice computational skills. The primary domain for these users is agricultural and business management. Most agricultural producers who use this product are motivated by the potential profit that the decision tool \textit{AgBizClimate} could potentially offer. The second subgroup, climate researchers range from ages twenty to forty and are of mixed gender. The educational background for most climate researchers  exceed the postgraduate level with their primary language being English. These users generally have advanced computational skills and are motivated by the easily accessible climate and weather data.\\
 
 	\subsection{Constraints}
-		There are several key constraints that this product has to work within. The first constraint is that we only have access to two data parameters from the North West Climate Tool box, precipitation and temperature. Secondly, we only have access to their data via the NWCTB API which could have additional restrictions such as limited usage per day, mislabeled data, or poor documentation. Thirdly, we don’t have access to any of the hardware that \textit{AgBizClimate} is exists on as it is being managed by a third party. This will prevent us from improving the hardware or cause roadblocks if their servers are having issues. Lastly, we are limited to using the languages Python and JavaScript since we are integrating our product into an already existing project.\\
+		There are several key constraints that this product has to work within. Firstly, We are limited by the availability and completeness of the data from the NMME data set. The NMME Data set does not have data for every point on in the country. Secondly, we must use the Thredds data server along with the OPeNDAP protocol to access the database where the NMME Data is stored. Thirdly, the date we will be getting from the Thredds server will be in NetCDF format. Fourthly, we don’t have access to any of the hardware that \textit{AgBizClimate} is exists on as it is being managed by a third party. This will prevent us from improving the hardware or cause roadblocks if their servers are having issues. Lastly, we are limited to using the languages Python and JavaScript since we are integrating our product into an already existing project.\\
 
 	\subsection {Assumptions and Dependencies}
-		We are assuming that the Northwest Climate Toolbox is a functional API that will allow us to pull location based temperature and precipitation data. This data will most likely come in the form of a text body of which we will then format into a JSON object and store in a Mongo database for future use. Due to the fact that we are writing an addition to an existing project we do not need to interact with the user budgets as these have already been defined. This fact extends to the calculations portion of the \textit{AgBizClimate} product. Our team will simply be accessing data via the NWCT API, then format the data, store the data, and hand the data over to the tool while will provide some additional front end support.\\
+		We are assuming that the NMME Thredds data base will allow us to pull location based temperature and precipitation data. This data will come in the form of a NetCDF files which we will then format into a JSON object. Due to the fact that we are writing an addition to an existing project we do not need to interact with the user budgets as these have already been defined. This fact extends to the calculations portion of the \textit{AgBizClimate} product. Our team will simply be accessing data via the NWCT API, then format the data, store the data, and hand the data over to the tool while will provide some additional front end support.\\
 
 \section{Specific Requirements}
 This section contains all of the functional and quality requirements of the \textit{AgBizClimate} System. We will give detailed description of what's being added to the \textit{AgBiz Logic} system along with the features we will implement.\\
@@ -146,14 +146,14 @@ This section contains all of the functional and quality requirements of the \tex
 					
 
         \subsubsection{Hardware Interfaces}
-					This project requires no designed hardware and the hardware this system is running on is managed by the Operating system as a result no hardware interfaces are necessary. Additionally the connection the the NWCTB is managed over the network and requires no hardware interface.\\
+					This project requires no designed hardware and the hardware this system is running on is managed by the Operating system as a result no hardware interfaces are necessary. Additionally the connection to the NMME data set is managed over the network and requires no hardware interface.\\
 
         \subsubsection{Software Interface}
-					There are several software interfaces in this application, one between the back end and the front end, one between the back end and the Database and finally a software interface between our RESTFUl API and the NWCTB. The majority of the connections between the front end and the back end are managed for us the the current \textit{AgBiz Logic} system. However, we will still need to connect our API to the back end to provide the data from the NWCTB. To make this connection we will use a RESTFULL API. This will allow for the back end code to make a direct call to our API to extract the data.\\
-					We will also need a connection between the NWCTB and our API. At the time of writing this document we have not received any information from the NWCTB regarding the API they have promised access too. However, We do know that we will need to authenticate the connection with the data base, send a request and then receive the result. Authenticating the connection will involve some sort of hand shake where we pass the NWCTB a key. Once we authenticate the connection we can then send a request. A request will contain a variety of information including a location for which we want the data. Once we have sent the request we will then wait for the response and accept the data. We may also need to store this data is a data base. If this is necessary we will need an additional software interface between the database and the API.\\
+					There are several software interfaces in this application, one between the back end and the front end, one between the back end and the Database and finally a software interface between our RESTFUl API and the NMME data set. The majority of the connections between the front end and the back end are managed for us the the current \textit{AgBiz Logic} system. However, we will still need to connect our API to the back end to provide the data from the NMME data set. To make this connection we will use a RESTFULL API. This will allow for the back end code to make a direct call to our API to extract the data.\\
+					We will also need a connection between the NMME data set and our API. For our API we know we will be using OPeNDAP, a network level protocol, to make the connection between the Thredds database that the NMME data is stored in. OPeNDAP will form the software interface between our API and the Thredds database. We will be able to format our request using query parameters in the URL.\\
 
         \subsubsection{Communications Interfaces}
-					This project will require communication between its various parts. One key lane of communication is between the front end and back end of the application. Another key lane of communication will be between the NWCTB and our API. Most of the communication between components will be carried out through HTTP requests. These are managed by the operating system and will not effect the way our application works.\\
+					This project will require communication between its various parts. One key lane of communication is between the front end and back end of the application. The communication between the front end and back end will be carried out via HTTP. Another key lane of communication will be between the Thredds data base containing the NMME data set and our API. This lane of communication will be carried out using OPeNDAP which is a network later protocol based on HTTP. These are managed by the operating system and are widely used through out the industry so we will not discuss how they work.\\
 
 
 		\subsection{Functional Requirements}
@@ -162,7 +162,7 @@ This section contains all of the functional and quality requirements of the \tex
 
 			%Decided to go with functional requirements instead of user stories because
 			%it will make our Gantt Chart much easier to draft.
-			\subsubsection{Functional Requirements For API}
+			\subsubsection{Functional Requirements For Climate Data API}
 					\paragraph{Functional Requirement 1.1}
 						\textbf{ID: FR1.1} \hfill \break
 						Title: Request for Users Location Data\hfill \break
@@ -172,31 +172,31 @@ This section contains all of the functional and quality requirements of the \tex
 					\paragraph{Functional Requirement 1.2}
 						\textbf{ID: FR1.2}\hfill \break
 						Title: Transforming Users Location data.\hfill \break
-						Description: The API shall take the users Sate and county information and transform it into latitude and longitude. It shall then store the results in a variable for later use.\\
+						Description: The API shall take the users Sate and county information and transform it into latitude and longitude using a google API.\\
 						Dependencies: FR1.1 and FR2.1\hfill \break
 
 					\paragraph{Functional Requirement 1.3}
 						\textbf{ID: FR1.3}\hfill \break
-						Title: NWCTB Authentication \hfill \break
-						Description: The API shall authenticate the connection with the NWCTB by sending a request to connect to the NWCTB. This request will include a validation key to ensure that the connection is valid.\\
-						Dependencies: None.\hfill \break
+						Title: Formatting the OPeNDAP Request \hfill \break
+						Description: One the API has the correct information from the user the API will format a request URL. In formatting this URL the API shall ensure that the correct data is selected from the data base.\\
+						Dependencies: FR1.1, FR1.2, FR 2.1\hfill \break
 
 					\paragraph{Functional Requirement 1.4}
 						\textbf{ID: FR1.4}\hfill \break
 						Title: Requesting data\hfill \break
-						Description: After the correct user information has been gathered and the connection with the NWCTB has been authenticated the API shall send a request to the NWCTB API for the information the user requested. This request shall be made via an HTTP Get request.\\
+						Description: After the URL for the requested location has been formatted the API shall send the request to the Thredds data base containing the NMME data set. The request shall be done using the OPeNDAP protocol.\\
 						Dependencies: FR1.1, FR1.2, FR1.3 and FR2.1\hfill \break
 
 					\paragraph{Functional Requirement 1.5}
 						\textbf{ID: FR1.5}\hfill \break
-						Title: Receive Response from NWCTB\hfill \break
-						Description: After sending the request for the data to the NWCTB API the API shall wait for a response to the request. Once a response has been send the API will receive this response through an HTTP Response. If the request for the user data results in an error the API shall send the appropriate response code along with a useful error message. This shall be done through an HTTP Post response.\\
+						Title: Receiving the data from the Thredds database\hfill \break
+						Description: After sending the request for the data to the Thredds database the API shall wait for a response to the request. Once a response has been send the API will receive this response through the OPeNDAP protocol. If the request for the user data results in an error the API shall send the appropriate response code along with a useful error message to let the client know that their request was unsuccessful. This shall be done through an HTTP Post response.\\
 						Dependencies: FR1.1, FR1.2, FR1.3, FR1.4 and FR1.5.\hfill \break
 
 					\paragraph{Functional Requirement 1.6}
 							\textbf{ID: FR1.6}\hfill \break
 							Title: Processing the Data to JSON\hfill \break
-							Description: Once the request has been successfully received the API shall process the raw data in the response body of the HTTP response sent by the NWCTB API. The raw data shall be placed into a JSON object and useful labels shall be applied to the JSON object so it can be easily displayed later.\\
+							Description: Once the request has been successfully received the API shall process the NETCDF file in the response body sent by the Thredds database. At this point the API will make any calcualtions or alteration to the data that maybe required. The raw data shall be placed into a JSON object and useful labels shall be applied to the JSON object so it can be easily displayed later.\\
 							Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5 and FR2.1\hfill \break
 
 					\paragraph{Functional Requirement 1.7}
@@ -278,9 +278,15 @@ This section contains all of the functional and quality requirements of the \tex
 				In this section we will discuss requirements not apart of our contract with our client. These goals will not be required as apart of this project but are objectives that we would like to complete.\\
 					\paragraph{Stretch Requirement 1.1}
 						\textbf{ID: SR1.1}\hfill \break
-						Title: Location Via a Map\\
+						Title: Location Via a Map \hfill \break
 						Description: In requirement 2.2 instead of using two drop down menus to select the location the user would be able to use a pin on a map of the US to select their location. This would be done through an existing library that would allow us to take a pin on a map and produce a latitude and longitude.\\
 						Dependencies: FR2.1 and FR2.2\\
+						
+						\paragraph{Stretch Requirement 1.2}
+							\textbf{ID: SR1.2}\hfill \break
+							Title: Using Many models to calculate plot data \hfill \break
+							Description: When requesting the model data we shall request many different climate models. We shall then run some statistical calculations on the data. These calculations shall create a 90\% confidence interval. This data will then be used to display the 90\% confidence interval to our users to indicate when there is uncertainty about what will happen.
+							Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5 and FR 2.1
 \begin{landscape}
 	\section{Gantt Chart}
 		An approximate schedule for the AgBizClimate project is shown below. Note that this schedule is subject to change.
