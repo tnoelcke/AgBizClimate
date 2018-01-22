@@ -69,6 +69,9 @@
 					\vhEntry{1.0}{15.10.17}{\GroupMemberOne|\GroupMemberTwo|\GroupMemberThree}{Preliminary Draft}
 					\vhEntry{1.1}{21.1.18}{\GroupMemberOne}{Updating the Functional Requirements to reflect changes in API}
 				\end{versionhistory}
+				\newpage
+				\clearpage
+				
         \begin{abstract}
 			This Software requirements document will cover the requirements for the AgBizClimate project. We will first give a general introduction of the project. This section will provide some context for why we are doing this project and what this project hopes to accomplish. Next will give an overall description of what our application does. This section will what the application does in broad no technical terms. Then we will discuss specific Requirements. This section will provide the technical details of the application including the functional requirements for the application. In the next section there is an approximate project schedule displayed in a Gantt chart. Finally, The last section provides the Tables and Figures referenced throughout the document.\\
         \end{abstract}
@@ -95,8 +98,12 @@
 			REST - Representaional State Transfer, This is a type of architecture that manages the state of the program. This is esspecially populare in web development.\\
 			API- Application Programming Interface. This is a peice of softwared that allows a connection to another peice of software providing some sort of service.\\
 			NWCTB - Northwest Climate Toolbox. This is the database we will be connecting to that will provide the short term climate data we plan to use.\\
+			Thredds Data Server - This is a web server that provides meta-data and data access for scientific data sets using OPeNDAP along with some other remote data access protocols.\\
+			OPeNDAP - Open-source Project for a Network Data Access Protocol. This is the protocol we will be using to retrieve the data sets from the Thredds data server.\\
+			NMME - North American Multi-Model Ensemble. This is a data set that brings together a variety of different weather models into one data set.\\
 			Climate Scenario - This is a theoretical calculation of yields, inputs and of the overall budget for one situation based on the climate data.\\
 			SQL Database - This is a relational database that makes storing and accessing data easy.\\
+			
 
 			\renewcommand\refname{\vskip -1cm}
 		\subsection{References}
@@ -107,8 +114,8 @@
 
 
 		\subsection{Overview}
-			Seasonal climate is one of the essential factors that affects agricultural production. As a module of \textit{AgBiz Logic}, \textit{AgBizClimate} delivers essential information about climate change to farmers, and help professionals to develop management pathways that best fit their operations under a changing climate. This project aims to link the crucial seasonal climate data from the Northwest Climate Toolbox database to \textit{AgBiz Logic} so that it can provide changes in net returns of crop and livestock enterprises through powerful graphics and tables. \\
-			Currently \textit{AgBizClimate} has a long-term climate tool but no such tool exists for short term climate data. We will implement a tool to extract short-term climate data from the Northwest Climate Toolbox database, display it to the user and allow the user to adjust crop and livestock yields or quality of products sold and, production inputs. Moreover, a landing tool will be developed to allow users to switch between short-term seasonal tool and long-term climate data tool.\\
+			Seasonal climate is one of the essential factors that affects agricultural production. As a module of \textit{AgBiz Logic}, \textit{AgBizClimate} delivers essential information about climate change to farmers, and help professionals to develop management pathways that best fit their operations under a changing climate. This project aims to link the crucial seasonal climate data from the NMME data set to \textit{AgBiz Logic} so that it can provide changes in net returns of crop and livestock enterprises through powerful graphics and tables. \\
+			Currently \textit{AgBizClimate} has a long-term climate tool but no such tool exists for short term climate data. We will implement a tool to extract short-term climate data from the NMME data set, display it to the user and allow the user to adjust crop and livestock yields or quality of products sold and, production inputs. Moreover, a landing tool will be developed to allow users to switch between short-term seasonal tool and long-term climate data tool.\\
 \section{Overall Description}
 	\subsection {Product Functions}
 				\textit{AgBizClimate} is a web based decision tool that will allow users to gain specific insight on how localized climate data for the next seven months will affect their crop and livestock yields or quality of products sold and production inputs. The \textit{AgBizClimate} tool will allow users to input their location (state, county) and a budget for the specific crop or livestock enterprise. \textit{AgBizClimate} will select climate data for the next seven months for that location and provide graphical data showing temperature and precipitation. Users will then be able to change yields or quality of product sold by a percentage they think these factors will affect and modify production inputs. Finally the tool will calculate the net returns.\\
