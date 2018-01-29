@@ -9,6 +9,7 @@
 from netCDF4 import Dataset
 import numpy as np
 import sys
+import math
 
 
 #this will check the nearest one hundered points and will return -1 -1 if data cannot be found with in a 10 by 10 grid
@@ -62,10 +63,10 @@ def getIndex(latTarget, lonTarget, lathandle, lonhandle, datahandle):
 	check = datahandle[lat_index, lon_index, 0]
 	print(check)
 	if not math.isnan(check):
-		return lat_index, lon_index
+		return (lat_index, lon_index)
 	(lat_index, lon_index) = searchForData(lat_index, lon_index, len(lat), len(lon), datahandle)
 	print(lat[lat_index], lon[lon_index])
-	print(target_lat, target_lon)
+	print(latTarget, lonTarget)
 	return (lat_index, lon_index)
 	
 	
@@ -90,14 +91,14 @@ datahandle = filehandle.variables['prate_anom']
 
 
 (latI, lonI) = getIndex(latTarget, lonTarget, lathandle, lonhandle, datahandle)
-
+print(latI, lonI)
 
 
 #get the actual climate data but only if the data exists.
-if(latI < 0 and latI < 0):
-	data = []
+data = []
+if(latI >= 0 and latI >= 0):
 	for i in range(7):
-		data.append(datahandle[lat_index, lon_index, i])
+		data.append(datahandle[latI, lonI, i])
 print(data)
 			
 
