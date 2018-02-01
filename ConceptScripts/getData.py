@@ -76,16 +76,16 @@ else:
 	print("Usage: python getData.py [lat] [long]")
 	exit(1)
 #set the OPENDAP Path
-path = "http://thredds.northwestknowledge.net:8080/thredds/dodsC/NWCSC_INTEGRATED_SCENARIOS_ALL_CLIMATE/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_ENSMEAN_forecast_1monthAverage.nc"
+path = "http://thredds.northwestknowledge.net:8080/thredds/dodsC/NWCSC_INTEGRATED_SCENARIOS_ALL_CLIMATE/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_ENSMEAN_forecast_1monthAverage_nochunk.nc"
 
 
 #set up the data handles to filter the data
-filehandle = Dataset(path, 'r', format="netcdf4")
+filehandle = Dataset(path, 'r', format="netcdf3")
 lathandle = filehandle.variables['lat']
 lonhandle = filehandle.variables['lon']
 datahandle = filehandle.variables['prate_anom']
 
-
+print(datahandle[466, 1083, 0])
 
 (latI, lonI) = getIndex(latTarget, lonTarget, lathandle, lonhandle, datahandle)
 print(latI, lonI)
