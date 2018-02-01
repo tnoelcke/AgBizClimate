@@ -37,10 +37,8 @@ def getIndex(latTarget, lonTarget, lathandle, lonhandle, datahandle):
 	lat_index = np.searchsorted(lat, latTarget, side='right')
 	lon_index = np.searchsorted(lon, lonTarget, side='right') 
 	
-	#lets see how effective the search is
-	print(lat[lat_index], lon[lon_index])
-	print(latTarget, lonTarget)
-	print(lat_index, lon_index)
+	print("Lat Index: ", lat_index, " Lon Index: ",lon_index)
+	
 	#Does a bounds check
 	if(lat[lat_index] > latTarget):
 		if(lat_index != 0):
@@ -55,11 +53,9 @@ def getIndex(latTarget, lonTarget, lathandle, lonhandle, datahandle):
 		if(lon_index != len(lon)):
 			lon_index = lon_index + 1
 			
-	print(lat[lat_index], lon[lon_index])
-	print(latTarget, lonTarget)
+	print(" Estimated Lat: ", lat[lat_index]," Estimated Lon: ", lon[lon_index])
 	#in this section we will peak at the data and make sure that we have data at indexes we've specified.
 	#if we don't we will change them slightly and check again until we have the nearest point that has data.
-	print(datahandle)
 	check = datahandle[lat_index, lon_index, 0]
 	print(check)
 	if not math.isnan(check):
@@ -80,14 +76,15 @@ else:
 	print("Usage: python getData.py [lat] [long]")
 	exit(1)
 #set the OPENDAP Path
-path = 'http://tds-proxy.nkn.uidaho.edu/thredds/dodsC/NWCSC_INTEGRATED_SCENARIOS_ALL_CLIMATE/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_ENSMEAN_forecast_1monthAverage.nc'
+path = "http://thredds.northwestknowledge.net:8080/thredds/dodsC/NWCSC_INTEGRATED_SCENARIOS_ALL_CLIMATE/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_ENSMEAN_forecast_1monthAverage.nc"
 
 
 #set up the data handles to filter the data
-filehandle = Dataset(path, 'r', format="NETCDF4")
+filehandle = Dataset(path, 'r', format="netcdf4")
 lathandle = filehandle.variables['lat']
 lonhandle = filehandle.variables['lon']
 datahandle = filehandle.variables['prate_anom']
+
 
 
 (latI, lonI) = getIndex(latTarget, lonTarget, lathandle, lonhandle, datahandle)
@@ -96,10 +93,12 @@ print(latI, lonI)
 
 #get the actual climate data but only if the data exists.
 data = []
-if(latI >= 0 and latI >= 0):
+if(latI >= 0 and latI >= 0 and latI < 435 and lonI < 435):
 	for i in range(7):
 		data.append(datahandle[latI, lonI, i])
-print(data)
+	print(data)
+else:
+	print("No Luck Jo")
 			
 
 
