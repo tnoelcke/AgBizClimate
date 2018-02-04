@@ -60,7 +60,7 @@ def getIndex(latTarget, lonTarget, lathandle, lonhandle, datahandle):
 	print(check)
 	if not math.isnan(check):
 		return (lat_index, lon_index)
-	(lat_index, lon_index) = searchForData(lat_index, lon_index, len(lat), len(lon), datahandle)
+        (lat_index, lon_index) = searchForData(lat_index, lon_index, len(lat) - 1, len(lon) - 1, datahandle)
 	print(lat[lat_index], lon[lon_index])
 	print(latTarget, lonTarget)
 	return (lat_index, lon_index)
@@ -76,7 +76,7 @@ else:
 	print("Usage: python getData.py [lat] [long]")
 	exit(1)
 #set the OPENDAP Path
-path = "http://thredds.northwestknowledge.net:8080/thredds/dodsC/NWCSC_INTEGRATED_SCENARIOS_ALL_CLIMATE/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_ENSMEAN_forecast_1monthAverage_nochunk.nc"
+path = "http://thredds.northwestknowledge.net:8080/thredds/dodsC/NWCSC_INTEGRATED_SCENARIOS_ALL_CLIMATE/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_ENSMEAN_forecast_1monthAverage.nc"
 
 
 #set up the data handles to filter the data
@@ -93,7 +93,7 @@ print(latI, lonI)
 
 #get the actual climate data but only if the data exists.
 data = []
-if(latI >= 0 and latI >= 0 and latI < 435 and lonI < 435):
+if(latI >= 0 and latI >= 0):
 	for i in range(7):
 		data.append(datahandle[latI, lonI, i])
 	print(data)
