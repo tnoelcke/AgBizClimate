@@ -92,10 +92,23 @@
 			This project is a part of a much larger AgBiz Logic\texttrademark program. However, the purpose of this project is to add a short term climate tool to the \textit{AgBizClimate} module. This limits the scope of the project to the \textit{AgBizClimate} Module. Additionally, we will only be adding the short term climate data tool as the long term climate data tool already exists.\\
 
 			Currently \textit{AgBizClimate} has a long-term climate tool but no such tool exists for short term climate data. We will implement a tool to extract short-term climate data from the Northwest Climate Toolbox database, display it to the user and allow the user to adjust crop and livestock yields or quality of products sold and, production inputs. Moreover, a landing tool will be developed to allow users to switch between short-term seasonal tool and long-term climate data tool.\\
+			
+		\subsection{Definitions, Acronyms and Abbreviations}
+			REST - Representaional State Transfer, This is a type of architecture that manages the state of the program. This is esspecially populare in web development.\\
+			API- Application Programming Interface. This is a peice of softwared that allows a connection to another peice of software providing some sort of service.\\
+			NWCTB - Northwest Climate Toolbox. This is the database we will be connecting to that will provide the short term climate data we plan to use.\\
+			Thredds Data Server - This is a web server that provides meta-data and data access for scientific data sets using OPeNDAP along with some other remote data access protocols.\\
+			OPeNDAP - Open-source Project for a Network Data Access Protocol. This is the protocol we will be using to retrieve the data sets from the Thredds data server.\\
+			NMME - North American Multi-Model Ensemble. This is a data set that brings together a variety of different weather models into one data set.\\
+			Climate Scenario - This is a theoretical calculation of yields, inputs and of the overall budget for one situation based on the climate data.\\
+			NETCDF - This is a file storage format for large scientific data sets especially good for any data that is referenced on a grid and related to is geo-location.\\
+			
 		
 		%will need updates.
 		\subsection{Product Function Overview}
 		    \textit{AgBizClimate} is a web based decision tool that will allow users to gain specific insight on how localized climate data for the next seven months will affect their crop and livestock yields or quality of products sold and production inputs. The \textit{AgBizClimate} tool will allow users to input their location (state, county) and a budget for the specific crop or livestock enterprise. \textit{AgBizClimate} will select climate data for the next seven months for that location and provide graphical data showing temperature and precipitation. Users will then be able to change yields or quality of product sold by a percentage they think these factors will affect and modify production inputs. Finally the tool will calculate the net returns.\\
+				
+
 		    
 		\renewcommand\refname{\vskip -1cm}
 		\subsection{References}
@@ -116,6 +129,8 @@
 	    
 	\subsection{Blockers}
 	    In this section we will discuss hurtles we are facing that are impeding progress on this project. We will discuss why they will keep us from moving forward on this project and we will also discuss what we intend to do to move past these problems.\\
+			\subsubsection{netcdf probelms}
+			Initially, we had issues getting netcdf4, a python library for dealing with 
 	
 	%will copy from one note. Will need to modify weekly summary from each week just a tiny bit to make this section work    
 	\subsection{Weekly summary of progress}
