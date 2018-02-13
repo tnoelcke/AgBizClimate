@@ -118,19 +118,47 @@
             \bibliography{IEEEabrv,References}
             
 
-\section{State of the Project}
+\section{Current Project State}
     In this section of this document we will review what items we have resolved, List and explain what items we still have to do, discuss major blockers and give a week by week summary of what we have done so far. This section is intended to give a good overall picture of the status of the \textit{AgBizClimate} project along with what we have accomplished so far.\\
 
 	\subsection{Resolved Items}
-	    In this section we will discuss the items that we have completed this term. We will summarize each item and discuss what went well and what didn't go well with each item.\\
+		\paragraph{Updated Requirements Document:} The requirements document has been updated to reflect changes to the climate data API. We were expecting to have an endpoint we could call with a latitude and a longitude however accessing the climate data is going to require more work that we had originally expected. So we've updated the requirements document to reflect this change.\\
+		
+		
+		\paragraph{Create Concept script for Thredds database:} We've created a concept script to use as an example in our climate API that connects to the Thredds database and read back the climate data for the Latitude and Longitude we've request. However, we are getting errors on reads latter in the data set that we can't explain.\\
+		
+		
+		\paragraph{Install Script for NETCDF4 and Dependencies:} Another problem we encountered while creating the concept script was setting up and installing the python NETCDF4 library. Luckily we were able to write a scrip that installs this library and its dependencies.\\
+		
+		\paragarph{Added option to select Short term Climate Scenario:} We added a drop down to the region selection page that allows users to select short term climate scenarios and long term climate Scenarios. This will allow people to use the tool we are creating.\\
+		
+		%this isn't actually true yet but I'm working on it and getting close.
+		\paragraph{Created The Charts Page:} We've also created the page where the users will view the climate data. This page will also allow the users to enter a change in yield for their crops and will then redirect them to the Budget review page. Though this page has a few issues most of the work is completed.\\
+		
+		
+	\subsection{In progress}
+	In this section we will discuss work items that are in active development. We will describe each item giving a brief description. We will also discuss how much progress has been made on each item.\\
+		
+		\paragraph{Climate Data API:} We have started work on the back end Climate data API however currently it is just an end point that distributes mocked data as we have run into issues with the netcdf4 library we are using to connect to the database with all the data in it. Once we have a solution for connecting to and reading all the values from the database it won't be hard to get real data from the API.\\
+		
+		\paragraph{Document Updates:} We have had some serious changes to the expected design as a result we will need to make some document updates. We have started some of these updates. However, I don't anticipate being able to finish all the document updates this term.\\
 	        
 	\subsection{ToDo's}
 	    In this section we will discuss items we will need still need to do over the next two terms. We will give a brief description of each item. We will also state an approximate time for when we expect each item to be completed.\\
+			
+			\paragraph{Backend Testing:} Given that our Climate data has not yet been well defined we haven't started writing test to test the back end code. Once we get the API written in something close to its final form we will want to start writing some test to ensure that the API meets the requirements in the requirements document.\\
+			
+			\paragraph{Front End testing:} Similarly as the front end work is still in active development we haven’t written any tests to cover this code. However we will be done with front end development soon and should be able to get to work doing front end testing.\\
+			
+			\paragraph{Finding a solution to NETCDF4 Problems:} We will need to find a work around to get around errors we are having while reading from the database using the netcdf4 library. Currently, we think we can get around this by writing the bit that communicates with the server in c\+\+. However we are trying installing dependencies for the netcdf library in a different way first.\\
+			
+			\paragraph{QA:} Finally, before we are done with our project will want to provide some QA on the work that we will have done over the term. This will include running some manual integration tests to ensure that we have completed the work we agreed to complete.\\
 	    
 	\subsection{Blockers}
 	    In this section we will discuss hurtles we are facing that are impeding progress on this project. We will discuss why they will keep us from moving forward on this project and we will also discuss what we intend to do to move past these problems.\\
-			\subsubsection{netcdf probelms}
-			Initially, we had issues getting netcdf4, a python library for dealing with 
+			
+			\subsubsection{netcdf problems}
+			Initially, we had issues getting netcdf4, a python library for dealing with the data files that contain the 
 	
 	%will copy from one note. Will need to modify weekly summary from each week just a tiny bit to make this section work    
 	\subsection{Weekly summary of progress}
