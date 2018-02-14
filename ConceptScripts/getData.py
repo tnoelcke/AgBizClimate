@@ -76,7 +76,7 @@ else:
 	print("Usage: python getData.py [lat] [long]")
 	exit(1)
 #set the OPENDAP Path
-path = "http://thredds.northwestknowledge.net:8080/thredds/dodsC/NWCSC_INTEGRATED_SCENARIOS_ALL_CLIMATE/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_ENSMEAN_forecast_1monthAverage.nc"
+path = "http://thredds.northwestknowledge.net:8080/thredds/dodsC/NWCSC_INTEGRATED_SCENARIOS_ALL_CLIMATE/bcsd-nmme/monthlyForecasts/OLD/bcsd_nmme_metdata_NASA_forecast_1monthAverage.nc"
 
 
 #set up the data handles to filter the data
@@ -85,6 +85,7 @@ lathandle = filehandle.variables['lat']
 lonhandle = filehandle.variables['lon']
 datahandle = filehandle.variables['prate_anom']
 
+#checks to see if we are still getting the error.
 print(datahandle[466, 1083, 0])
 
 (latI, lonI) = getIndex(latTarget, lonTarget, lathandle, lonhandle, datahandle)
