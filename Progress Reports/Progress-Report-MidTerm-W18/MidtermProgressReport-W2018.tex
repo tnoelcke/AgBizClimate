@@ -190,63 +190,101 @@
 		\subsection{Week 2}
 			\subsubsection{Plans}
 				\begin{itemize}
-				
+					\item Meet with Sean.
+					\item Start Iteration One.
+					\item Get UI elements implemented along with most of the front end functionality.
+					\item Plan iterations 2 and 3.
 				\end{itemize}
 			\subsubsection{Progress}
 				\begin{itemize}
-				
+					\item Set up meeting with Sean Hammond for Friday at 1 pm.
+					\item Finished setting up iteration one tasks.
+					\item Finished adding content to the help wiki on the github repository.
+					\item Finally defined Climate Data API Access.
+					\item Set a Weekly status meeting time to meet with the group. We plan to meet every week at one pm.
 				\end{itemize}
-			\subsubsection{Problems
+			\subsubsection{Problems}
 				\begin{itemize}
-				
+					\item API Access is less than ideal and will require more work than we were planning on but is still better than having to write our own service from scratch.
+					\item Finding time to meet up as a group has been more challenging that I had anticipated.
 				\end{itemize}
+				
 			\subsubsection{Summary}
+			This week we didn't get much development work done on our project like we had planed on. However, we did do some set up work. we finished setting up the github repository and finished laying out tasks on our story board. We also started defining what tasks we'd like to have in future iterations of our project. Additionally, we finally know what our API access to the climate data looks like. this will allow us to get the data we will need to plot. However, this will also require much more work that we had planned on and may set us back a bit in terms of our project schedule. That being said we worked in some flex time in to our schedule so we should be able to make it work.\\
 			
 		\subsection{Week 3}
 			\subsubsection{Plans}
 				\begin{itemize}
-				
+					\item Create proof of concept script for connecting to the database and getting data.
+					\item start working on front end changes.
+					\item Update design document and requirement document.
+					\item Meet with Sean for status update at 1pm on Friday.
 				\end{itemize}
 			\subsubsection{Progress}
 				\begin{itemize}
-				
+					\item Started working on concept script.
+					\item Managed to gt dev environment set up instructions completed.
+					\item Installed netcdf.
+					\item Created example script for getting climate data from the thredds database. However we get some errors on certain reads.
+					\item Updated requirements document.
 				\end{itemize}
 			\subsubsection{Problems}
 				\begin{itemize}
-				
+					\item We had a hard time getting NETCDF4 to install. We ended up using anaconda however we are guessing Sean doesn't want to use Anaconda and will want us to produce an install script.\\
 				\end{itemize}
-			\subsubsection{Summary}
+			\subsubsection{Summary} 
+			This week was a primarily a week of setup. we spent most of our time trying to get the dev environment set up along with installing NETCDF4 and its dependencies. This week we did find a way to install NETCDF4 using anaconda. However, we anticipate that we will be required to find a better way to install it. In the mean time this will allow us to develop a concept script. We also managed to the development environment for AgBiz-Logic set up. This took us more time that we had anticipated but wasn't as difficult as we thought it might be. This week we also made some updates to the requirements document to reflect the changes to the climate data API.\\
 			
 		\subsection{week 4}
 			\subsubsection{Plans}
 				\begin{itemize}
-				
+					\item Start working on the front end of the application.
+					\item Refine the proof of concept to be more dynamic.
+					\item Write script to install netcdf and dependencies.
+					\item Start working on backend changes.
+					\item Update documents.
 				\end{itemize}
 			\subsubsection{Progress}
 				\begin{itemize}
-				
+					\item Started working on refining proof of concept script to search for points if the point we asked for doesn't have data also added more advanced bounds checking.
+					\item Determined that NETCDF4 is having issues reading in blocks for chunk three.
 				\end{itemize}
 			\subsubsection{Problems}
 				\begin{itemize}
-				
+					\item requests past index 435 on latitude cause a runtime error.
 				\end{itemize}
 			\subsubsection{Summary}
+			This week was mostly focused on working on the proof of concept scrip that will be used later to access the data from the thredds server. This week we discovered that the NETCDF4 library throws errors on any lat index greater than 435. We also discovered through the database administrator that this is the boundary between chunk two and chunk three of the file we are trying to read. We think that the NETCDF4 library may have a bug in it. Regardless we are going to need to find a work around moving forward. Shane and Thomas also got together on Saturday and started working on front end changes.\\
 						
 		\subsection{week 5}
 			\subsubsection{Plans}
 				\begin{itemize}
+					\item Work on front end changes.
+					\item Follow up with NETCDF4 developers about potential bug.
+					\item Continue to work on concept script to see if we can tease out the runtime error.
+					\item Finish NETCDF5 install script.
+					\item Research other potential options other than python or netcdf4 for reading in data from the serer.\\
 				
 				\end{itemize}
 			\subsubsection{Progress}
 				\begin{itemize}
-				
+					\item Followed up with netcdf4 people.
+					\item Shane finished the netcdf4 install script.
+					\item Researched alternatives to netcdf4 We can write a c program that will to the same thing. There are a few other libraries for reading data via opendap.
+					\item made progress on frontend changes.
 				\end{itemize}
+				
 			\subsubsection{Problems}
 				\begin{itemize}
-				
+					\item Issues with netcdf4 library.
+					\item netcdf4 developers will not fix unless I can produce a self contained example of the read failing.
+					\item We think that netcdf4 dependencies may not be installed correctly.
 				\end{itemize}
-			\subsubsection{Summary}	
-					
+				
+			\subsubsection{Summary}
+			 This week we made progress on the front end development and installing the dependencies for netcdf. However, we've run into some issues with netcdf. We think we maybe able to fix it by installing the dependencies for netcdf from source with certain flags enabled but we aren't totally sure on that. We also started work on setting up the end point where the API will live. The plan for now is to have it serve mock data as to enable us to continue with the rest of the development work without getting behind.\\
+			
+		%will fill out this section later this week.	
 		\subsection{week 6}
 			\subsubsection{Plans}
 				\begin{itemize}
