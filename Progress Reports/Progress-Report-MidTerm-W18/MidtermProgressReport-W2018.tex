@@ -389,9 +389,9 @@ In this section we will each write about our individual parts of the project and
 			ln = ln.strip()
 			if ln == '':
 					continue
-			if ln[0] == '#': # skip comment lines
+			if ln[0] == '#':
 					self.comments += ln + '\n'
-			else:  # climate forecast data
+			else:
 					self.climate_data.append(ln.split(','))
 		\end{lstlisting}
 
