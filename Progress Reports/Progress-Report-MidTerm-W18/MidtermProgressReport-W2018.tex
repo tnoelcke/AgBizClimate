@@ -346,7 +346,13 @@ In the end this library threw errors when trying to read in chucked data from th
 		
 		The other section of the front end development that I have been working on is the Charts page. This page charts four different climate plots over the next 7 months. This then allows the user to switch to the different charts using a tab system. This page also allows the user to enter a percent change in their yield that will then be applied to their budget. Once they enter a yield they will then be redirected to a budget page where they can review their budget and make adjustment to inputs and costs for the various inputs. Shown below is a screen shot of this page.\\
 		
-		\includegraphics{chartsPage.eps}
+		\clearpage
+		\newpage
+		\begin{figure}[h!]
+		\centering
+		\includegraphics[width=17cm]{chartsPage.JPG}
+		\caption{Charts Page}
+		\end{figure}
 		
 As you can see from the graph above in created a box that holds the charts and a box that holds the yields. I chose to do the because for a long term Scenario you would enter a change in yield for each climate factor that you would like to consider. For instance if you consider Temperature and nights below freezing you would add a percent change in yield for each of these projections. However, for a short term scenario you are shown four graphs. To reduce confusion I moved the percent yield input box into its own box on the web page so that it would be clear to the user that they are only entering one percent yield for all four charts. Though this graphs page will get the job done I anticipate that as we start working on our stretch goals the charts page will require more work. This is because we would like to add more models to the graph. Another stretch goal that will require modifications to the charts page is adding a confidence interval to our chart. This will require us to use more advanced features of the chart JS library.\\ 
 
