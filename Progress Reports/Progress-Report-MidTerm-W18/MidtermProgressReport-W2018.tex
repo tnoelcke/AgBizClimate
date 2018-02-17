@@ -322,43 +322,34 @@ In this section we will each write about our individual parts of the project and
 		Through out this project I've had the opportunity to work on many aspects of the project. So far I've worked on the concept script, documentation, and worked on the front end. However, these are not my sections below in the section titled My Sections I will explain why what I've wored on so far does not relate to my sections in the technical review.\\
 
 		\paragraph{Concept API Script} \hfill \break
-		One of the fist things I worked on this term was creating a concept script that connected with the Thredds sever and read in NETCDF climate data from the the server. The goal of this script was to prove that it was possible to use the NETCDF4 library and python to retrieve the data we needed four our project. In the end the script I worked on proved to be a dead end. Though through the process of writing this script I learned a lot about how scientific data storage works. In the end we ran in to a dead end in a bug that the creator of the NETCDF4 library stated they would not fix. Ultimately Shengpei ended up finding another solution to this problem with out using the NETCDF library so I passed the development of the concept script off to him.\\
+		One of the fist things I worked on this term was creating a concept script that connected with the Thredds sever and read in NETCDF climate data from the the server. We decided to use netcdf4 over the OPeNDAP protocol becasue this was what the database administrator suggested we use. The goal of this script was to prove that it was possible to use the NETCDF4 library and python to retrieve the data we needed for our project. In the end the script I worked on proved to be a dead end. Though through the process of writing this script I learned a lot about how scientific data storage works. Its actually really unfortunate that the netcdf4 library didn't work out for us. This frame work was really easy to use and nice to work with. Essentially with this frame work we were able to treat the database like a giant array. Shown below is some code that demonstrates this capability.
+
+\begin{lstlisting}
+#set up the data handles to filter the data
+filehandle = Dataset(path, 'r', format="netcdf3")
+lathandle = filehandle.variables['lat']
+lonhandle = filehandle.variables['lon']
+datahandle = filehandle.variables['prate_anom']
+
+#gets data from the server.
+print(datahandle[466, 1083, 0])
+\end{lstlisting}
+		
+In the end this library threw errors when trying to read in chucked data from the server. I ended up spending a few days trying to debug this issue. It resulted in the netcdf4 developers stating they wouldn't look into this issue unless we could produce a self contained example of this failure. Ultimately Shengpei ended up finding another solution to this problem with out using the NETCDF library so I passed the development of the concept script off to him.\\
 
 		\paragraph{Documentation} \hfill \break
-		Another item I worked on this term was updating the requirements document as a result of changes to the climate API. I made modifications to the glossary and to the functional requirements to reflect the changes made to the project. The big change made to the project was a change in the API Access. This necessitated the updating of the requirements of the project.\\
+		Another item I worked on this term was updating the requirements document as a result of changes to the climate API. I made modifications to the glossary and to the functional requirements to reflect the changes made to the project. The big change made to the project was a change in the API Access. This necessitated the updating of the requirements of the project. These changes reflect the fact that we have to to more work than we expected to retrieve the climate data.\\
 
 
 		\paragraph{Front-end Work} \hfill \break
-		The other work I've been spending a lot of my time on this term is front end development. So far I've done most of the development on the Charts page. This page is the meat and potatoes of the UI in that its the page where we are showing the user the climate data and allowing them to make adjustments to their yields. I also added a drop down menu to the region selection page the allows the user to select a short term climate scenario. If you are interested in viewing the result of this work please see our midterm presentation as inserting code snip-its is impractical given the nature of Angular code.
+		The other section of the application that I've spent a lot of my time on this term is front end development. The first change that I made was to the region selection page. On this page I added a drop down that allows the user to select between a long term climate scenario and a short term climate scenario. This drop down then posted back to the database and also redirects the flow of the application based on the scenario the user selects. If the user selects a long term scenario they are redirected to a page that allows them to select different variables that effect long term climate projections. If the user selects a short term climate Scenario they are redirected to the chart page where they are shown the climate data.\\
+		
+		The other section of the front end development that I have been working on is the Charts page. This page charts four different climate plots over the next 7 months. This then allows the user to switch to the different charts using a tab system. This page also allows the user to enter a percent change in their yield that will then be applied to their budget. Once they enter a yield they will then be redirected to a budget page where they can review their budget and make adjustment to inputs and costs for the various inputs. Shown below is a screen shot of this page.\\
+		
+		\includegraphics{}
 
-		\paragraph{My Sections} \hfill \break
+ 		\paragraph{My Sections} \hfill \break
 		In the tech review my sections were the database, the testing frameworks and the HTTP frame work. I have only spend minimal time working on these sections because there just isn't that much work as relates to this project in these sections. I have not written many unit test yet because we have not developed that much testable code yet. I also haven’t spent any time working on the database because we've not made any data changes requiring migrations just yet. I have however spend some time working on with our HTTP framework while making request to the back end from the front end while doing front end development.\\
-
-	\subsubsection{Peer Review}
-		In this section I will provide a peer review for each of my group mates. For each group mate I will describe contributions made by each group member pointing out things each group member does well
-		\paragraph{Shane Barrantes} \hfill \break
-			Throughout this project this term Shane has been a helpful team mate and has contributed to the project both by writing feature code and by preforming complex environment setup. Shane has provided much input into the execution and planing of this project throughout the beginning of the term. He has been an above average team mate in showing up to and contributing to meetings and work sessions.\\
-
-			I will be first to admit that package management and environment setup are areas of software development that I am weak in. As a result early in this project I struggled getting the environment set up and running. Shane was a huge help in setting up the environment and getting the project running. Not only did Shane help me fix issues with getting the project to build, he also taught me about package managers and project set up in general. Shane also helped the team out by writing install scripts for complicated installs. For instance early in the project we ran into many issues installing the Python netcdf4 library. Shane figured out how to install it and wrote script that installed the netcdf4 library along with its dependencies. Shane has also been very helpful in regards to developing the frond end and back end code. Shane started developing a complicated charts page on the front. He helped get the page set up so that the front end development could be carried out. However, he never had the chance to get that page completed because I needed him to create an elaborate install script that installed the HDF5 library from source enabling certain options on that package.\\
-
-						The only criticism that I may provide on Shane's performance so far this term is that outside of group meetings he hasn't been able to put in as much time as I had hoped. Generally, I think this has been difficult for Shane due a few things beyond his control such as deadlines at work and a heavy course load. As this project progresses this is one area where I hope to see improvement.\\
-
-
-			Shane has also shown his value as a team mate in the way that he communicates and contributes to meetings. Shane is not able to make it to every meeting, however Shane is very good about communicating when he is unable to make it to a meeting and does a good job of warning me of potential scheduling conflicts. When Shane is in meetings he is present, listening and contributing to the conversation. Shane generally focuses well on his work when at work sessions and group meetings.\\
-
-			Overall I would give Shane 8\/10 as a group mate. I've taken two points off because Shane has had a hard time contributing to the project outside of group meetings and work sessions. I anticipate that this will improve as Shane has expressed that he is close to finishing a big project at work. Shane as also expressed that he would also like to see this aspect of his performance Improve.\\
-
-		\paragraph{Shengpei Yuan} \hfill \break
-		Shengpei was largely absent from this project and the beginning of the term. How this was due to some extenuating circumstances. In the last few weeks Shengpei has been a much larger part of this project and has been contributing.\\
-
-		Early this term Shengpei expressed that he would be busy this term as he is taking a large credit load and also studding for his GMAT exam. As a result Shengpei was largely absent from the first four weeks of this project. This is not a personal attack on Shengpei but rather a statement of fact. However, in the last few weeks Shengpei has been more involed in this project.\\
-
-		In the last few weeks Shengpei has been showing up to more meetings and has been able to contribute more to the project. This is a direct result of Shengpei completing his GMAT exam. In his last few weeks Shengpie has being working on a work around for the NETCDF problems we've been having and has found a potential solution.\\
-
-		Overall I would give Shengpei a 5\/10 as a group mate. This ratting has little to do with Shengpei's performance in meetings and when working on the project. But rather is a result of Shengpei being unable to contribute to the project through the first 4 weeks of the project. I anticipate that this will improve as Shengpei has finished his GMAT exam.\\
-
-
-
 
 
 \subsection{Shane Barrantes}
