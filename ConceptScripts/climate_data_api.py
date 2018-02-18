@@ -85,6 +85,7 @@ class NMMEClimateData:
         r = requests.get(url)
         r.close()
         text = r.content
+        print(r.content)
         lines = text.replace('<br//>', '\n').replace('<br />', '\n').split('\n')
         for ln in lines:
             ln = ln.strip()
