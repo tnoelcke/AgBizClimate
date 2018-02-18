@@ -13,7 +13,7 @@ import os
 import shutil
 
 class NMMEClimateData:
-    template_url = '''http://climate-dev.nkn.uidaho.edu/Services/get-netcdf-data/?decimal-precision={precision}&lat={lat}&lon={lon}&positive-east-longitude=False&data-path=/datastore/climate/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_{mod}_forecast_1monthAverage.nc&variable=tmp2m&variable-name=tmp2m&data-path=/datastore/climate/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_{mod}_forecast_1monthAverage.nc&variable=prate&variable-name=prate'''
+    template_url = '''http://climate-dev.nkn.uidaho.edu/Services/get-netcdf-data/?decimal-precision={precision}&lat={lat}&lon={lon}&positive-east-longitude=False&data-path=/datastore/climate/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_{mod}_forecast_1monthAverage.nc&variable=tmp2m&variable-name=tmp2m&data-path=/datastore/climate/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_{mod}_forecast_1monthAverage.nc&variable=prate&variable-name=prate_anom'''
     
     def __init__(self):
         ''' Default parameters (configuration) to call Downscaled NMME Forecast Data.
