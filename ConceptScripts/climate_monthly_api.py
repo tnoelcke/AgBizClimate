@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
+# python 2.7
+
 # Description: The script download NMME climate forecast data by given parameters 
 # like latitude and longitude
 # Download 7 Months of Downscaled NMME Forecast Data from current date.
@@ -8,12 +10,17 @@
 # A template download URL looks like: http://climate-dev.nkn.uidaho.edu/Services/get-netcdf-data/?decimal-precision=2&lat=41&lon=-113&positive-east-longitude=False&data-path=/datastore/climate/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_CFSv2_forecast_1monthAverage.nc&variable=tmp2m&variable-name=tmp2m&data-path=/datastore/climate/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_CFSv2_forecast_1monthAverage.nc&variable=prate&variable-name=prate
 
 
+# http://climate-dev.nkn.uidaho.edu/Services/get-netcdf-data/?decimal-precision=2&lat=44&lon=-123&positive-east-longitude=False&data-path=/datastore/climate/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_CFSv2_forecast_1monthAverage.nc&variable=tmp2m&variable-name=tmp2m&data-path=/datastore/climate/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_CFSv2_forecast_1monthAverage.nc&variable=prate&variable-name=prate&data-path=/datastore/climate/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_CFSv2_forecast_1monthAverage.nc&variable=prate_anom&variable-name=prate_anom&data-path=/datastore/climate/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_CFSv2_forecast_1monthAverage.nc&variable=tmp2m_anom&variable-name=tmp2m_anom
+
+# http://climate-dev.nkn.uidaho.edu/Services/get-netcdf-data/?decimal-precision=2&lat=44&lon=-123&positive-east-longitude=False&data-path=/datastore/climate/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_CFSv2_forecast_1monthAverage.nc&variable=tmp2m&variable-name=tmp2m&data-path=/datastore/climate/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_CFSv2_forecast_1monthAverage.nc&variable=prate_anom_inches&variable-name=prate_anom_inches
+
+
 import requests
 import os
 import shutil
 
 class NMMEClimateData:
-    template_url = '''http://climate-dev.nkn.uidaho.edu/Services/get-netcdf-data/?decimal-precision={precision}&lat={lat}&lon={lon}&positive-east-longitude=False&data-path=/datastore/climate/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_{mod}_forecast_1monthAverage.nc&variable=tmp2m&variable-name=tmp2m&data-path=/datastore/climate/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_{mod}_forecast_1monthAverage.nc&variable=prate_anom_inches&variable-name=prate_anom_inches'''
+    template_url = '''http://climate-dev.nkn.uidaho.edu/Services/get-netcdf-data/?decimal-precision={precision}&lat={lat}&lon={lon}&positive-east-longitude=False&data-path=/datastore/climate/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_{mod}_forecast_1monthAverage.nc&variable=tmp2m&variable-name=tmp2m&data-path=/datastore/climate/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_{mod}_forecast_1monthAverage.nc&variable=prate&variable-name=prate&data-path=/datastore/climate/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_{mod}_forecast_1monthAverage.nc&variable=prate_anom&variable-name=prate_anom&data-path=/datastore/climate/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_{mod}_forecast_1monthAverage.nc&variable=tmp2m_anom&variable-name=tmp2m_anom'''
     
     def __init__(self):
         ''' Default parameters (configuration) to call Downscaled NMME Forecast Data.
@@ -23,9 +30,13 @@ class NMMEClimateData:
         self.lon = -123
         self.mod = 'CFSv2'
         
-        self.climate_data = []
+        self.climate_data = [ ]  # date, tmp2m, tmp2m_anom, prate, prate_anom
         self.comments = ''
-     
+    def get_climate(self):
+        ''' Return a list of extracted climate data (date and float values).
+        '''
+        return self.climate_data
+    
     def set_model(self, model_name):
         ''' Set model code. 
             Possible models including: 
@@ -54,12 +65,12 @@ class NMMEClimateData:
         '''
         self.lon = longitude
     def get_lat(self):
-        ''' Set latitude of the point.
+        ''' Get latitude of the point.
         '''
         return self.lat
         
     def get_lon(self):
-        ''' Set longitude of the point.
+        ''' Get longitude of the point.
         '''
         return self.lon
     
@@ -68,6 +79,9 @@ class NMMEClimateData:
         '''
         pass
         
+    
+        
+    
     def set_product(self):
         ''' Set product.
         '''
@@ -94,7 +108,9 @@ class NMMEClimateData:
             if ln[0] == '#': # skip comment lines
                 self.comments += ln + '\n'
             else:  # climate forecast data
-                self.climate_data.append(ln.split(','))
+                vals = ln.split(',')
+                vals = [float(vals[i]) if i > 0 else vals[i] for i in range(len(vals))]
+                self.climate_data.append(vals)
         
     def save_climate_forecast_json(self, fname):
         ''' Save climate data as json file.
@@ -119,7 +135,7 @@ class NMMEClimateData:
         ''' Read climate forecast data from text file.
         '''
         self.comments = ''
-        self.climate_data = []
+        self.climate_data = [ ]
         with open(fname) as f:
             ln = f.readline()
             if ln[0] == '#': # skip comment lines
@@ -130,11 +146,13 @@ class NMMEClimateData:
     def __str__(self):
         ''' Return string representation of this climate forecast data.
         '''
-        return self.comments + '\n'.join([','.join(items) for items in self.climate_data])
+        return self.comments + '\n'.join([','.join([str(i) for i in items]) for items in self.climate_data])
 
 
 if __name__ == '__main__':
-    climate = NMMEClimateData()
-    climate.prepare_url()
-    climate.download_climate()
-    print (climate)
+    c = NMMEClimateData()
+    c.prepare_url()
+    c.download_climate()
+    print c
+    print ''
+    print c.get_climate()
