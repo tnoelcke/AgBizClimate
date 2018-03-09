@@ -30,7 +30,7 @@ class NMMEClimateData:
         self.lon = -123
         self.mod = 'CFSv2'
         
-        self.climate_data = [ ]  # date, tmp2m, tmp2m_anom, prate, prate_anom
+        self.climate_data = [ ]  # date, tmp2m, prate, prate_anom, tmp2m_anom
         self.comments = ''
     def get_climate(self):
         ''' Return a list of extracted climate data (date and float values).
@@ -78,9 +78,32 @@ class NMMEClimateData:
         ''' Set frequency.
         '''
         pass
-        
     
-        
+    def get_precipitation(self):
+        ''' Return a list of precipitation (i.e. variable prate(in)).
+        '''
+        return [row[2] for row in self.climate_data]
+    
+    def get_temperature(self):
+        ''' Return a list of temperature (i.e. variable tmp2m(F)).
+        '''
+        return [row[1] for row in self.climate_data]
+    
+    def get_precipitation_anomaly(self):
+        ''' Return a list of precipitation anomaly (i.e. variable prate_anom(%): Anomaly in prate).
+        '''
+        return [row[3] for row in self.climate_data]
+    
+    def get_temperature_anomaly(self):
+        ''' Return a list of temperature anomaly (i.e. variable tmp2m_anom(F):Anomaly in tmp2m).
+        '''
+        return [row[4] for row in self.climate_data]
+    
+    def get_date_label(self):
+        ''' Return a list of data labels like [Jan, Feb, Mar, ...].
+        '''
+        months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        return [months[int(row[0][5:7])-1] for row in self.climate_data] 
     
     def set_product(self):
         ''' Set product.
@@ -156,3 +179,17 @@ if __name__ == '__main__':
     print c
     print ''
     print c.get_climate()
+    print 'precipitation:'
+    print c.get_precipitation()
+    print 'temperature:'
+    print c.get_temperature()
+    print 'precipitation anomaly:'
+    print c.get_precipitation_anomaly()
+    print 'temperature anomaly:'
+    print c.get_temperature_anomaly()
+    print 'date label:'
+    print c.get_date_label()
+    
+    
+    
+    
