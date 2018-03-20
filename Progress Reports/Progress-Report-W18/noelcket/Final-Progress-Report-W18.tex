@@ -117,24 +117,30 @@
 
 
 \section{Current Project State}
+In this section we will list the work items we have completed, the work items that are in progress and the work items that still need to be completed. For each work item we will also give a brief description.\\
 
 	\subsection{Resolved Items}
 		\subsubsection{Updated Requirements Document:}
+		Earlier this term I made updates to the Requirements document to reflect the changes to our access to our data source for the short term climate data.\\
 		
 		\subsubsection{Created Climate Data API:}
+		Over the last development period much progress has been made on the climate data API. This API now uses an HTTP request to scrape the data we need from the NMME data set from the Northwest Climate knowledge database. This API is able to reliably get data for most locations.\\
 		
 		\subsubsection{refined the Charts page:}
+		We've also made significant improvements to the charts page that we created in the last development cycle. This page now gets dynamically generated data from the backend API. We've also fixed several bugs with this page that caused the budgets page to not be loaded.\\
 		
 		\subsubsection{Created end point for Climate API:}
-		
-		\subsubsection{Integrated Climate API into the Front End:}
+		Along with creating the end point for the climate data API we also created an end point to serve the data created by the API. This end point takes a State and County and calculates an approximate latitude and longitude for that location. The end point then uses the latitude and longitude to get the data for that location using the climate data API mentioned above. The data is then formatted with labels and returned to the client.\\
 		
 		\subsubsection{Bug Fixes:}
+		As mentioned previously we have made several bug fixes through out this last development cycle. Some of these bug fixes have involved the charts page. One bug prevented the application from going to the budgets page after the charts page. Another bug was introduced because of the introduction of short term climate budgets. This bug prevented the user from using multiple budgets because we could not distinguish between long term scenarios and short term scenarios. We were able to fix these bugs created by introducing new code in to the project over this last development cycle.
 		
 		\subsubsection{Front End Unit Tests:}
+		Finally, We wrote front end unit tests for the code added to project along with updating existing unit tests to reflect changes made to the application. Currently all front end unit tests pass.
 		
 	\subsection{In progress}
 		\subsubsection{refining climate API endpoint:}
+		We are currently in the process of refining our climate API end point. We will need to move the code that actually goes out to the climate database and gets the data as currently it is in the same file as the end point. We will also need to add some error handling for some special cases that we have determined we are likely to encounter. Firstly, we will need to handle the case where a location doesn't have any climate data. Secondly, we will also need to handle the case where the climate data is being updated as this happens once a month and can take as long as three days.\\
 		
 		\subsubsection{Bug Fixes:}
 		
