@@ -143,20 +143,36 @@ In this section we will list the work items we have completed, the work items th
 		We are currently in the process of refining our climate API end point. We will need to move the code that actually goes out to the climate database and gets the data as currently it is in the same file as the end point. We will also need to add some error handling for some special cases that we have determined we are likely to encounter. Firstly, we will need to handle the case where a location doesn't have any climate data. Secondly, we will also need to handle the case where the climate data is being updated as this happens once a month and can take as long as three days.\\
 		
 		\subsubsection{Bug Fixes:}
+		As is typical with most software development projects there will always be bugs to fix. As a result we have several bugs to fix in our application currently. One bug involves the deletion of a climate scenario. Sometimes deleting a climate scenario causes a 500 error. Another bug involves what we do if for some reason our data source for the short term data times out.\\
 		
 		\subsubsection{Front End Responsiveness Testing:}
+		We also need to do some testing that ensure that the UI elements that the user clicks on produce the desired results. As part of the frame work for of the JS testing frame work we are using for this project we can do responsiveness testing. Currently, this process has been started but will need to be finished.\\
 
 	\subsection{ToDo's}
-		\subsubsection{Backend Testing:}
+		\subsubsection{Back End Testing:}
+		The back end code we created to get the climate data will need to be tested. Additionally we will also need to test the end point that this code lives in. Specifically, we need to test that the conversion from county and state to lat long is as accurate as possible.\\
 		
 		\subsubsection{Document Updates:}
-		
-		\subsubsection{Poster Updates:}
+		We will need to update several documents including our design document, the requirements document, the technical review and our expo poster. Most of these items will need to be updated as a result of design choices we made over the term regarding the project.\\
 
-	\subsection{Blockers}
+		\subsubsection{Blockers:}
+		Currently, we have no major blockers. The one major blocker we had at through out the beginning of the term we resolved when we found a better way to get the climate data from the database.\\
 
 \section{My Contributions}
-	%will copy from one note. Will need to modify weekly summary from each week just a tiny bit to make this section work
+	In this section I will discuss my contributions to this project. This section will discuss specifically contributions I've made to the project along with any interesting screen shots or any interesting snipets of code.\\
+
+		\subsection{Back End Development Using NETCDF:}
+		Early in the term we tried to develop the climate data API using NETCDF over the OPENDAP protocol. In the long run we ended up abandoning this method of getting the data from the database. Never the less, early in the term I spend a decent amount of time creating a concept script that using NETCDF4, a python module, to get data from the NMME thredds server. It is unfortunate that we were unable to use this method as it would have been simpler than the method we ended up using, at least in terms of the code. Shown below is a code snipet that shows how to get a particular data point from the database using the NETCDF4 library.\\
+		
+		
+		
+		\subsection{Front End Development:}
+		
+		\subsection{Testing:}
+		
+		\subsection{Project Management:}
+	
+%will copy from one note. Will need to modify weekly summary from each week just a tiny bit to make this section work
 \section{Weekly summary of progress}
 	   In this section we will give a weekly summary of our progress on this project. For each we will list out our plans, problems we have encountered during the week and will show a summery of what we have accomplished during the week.\\
 
@@ -165,7 +181,7 @@ In this section we will list the work items we have completed, the work items th
 				\begin{itemize}
 					\item Meet with group to set up iteration one of project development.
 					\item Meet with Sean to set up git branch and discuss git workflow.
-					\item set taks for iteration 1.
+					\item set tasks for iteration 1.
 				\end{itemize}
 
 			\subsubsection{Progress}
@@ -305,6 +321,67 @@ In this section we will list the work items we have completed, the work items th
 						\subitem There are many ways we can fix this problem we will need to discuss with Sean how he wants this solved.
 				\end{itemize}
 			\subsubsection{Summary} This week was a busy week. This week we accomplished most of the front end development required by this project in the maps page. However, we also introduced some bugs. Mostly we created and issue where if you have multiple budgets its not possible to tell what page you need to redirect to once you save your budget. There are many ways we can solve this so I want to ask Sean how he thinks the best way to go about this is. This week we also made our expo poster along with creating the midterm progress report document and presentation. Additionally, Shengpei found a work around to the NETCDF problems we've been having.\\
+			
+		\subsection{week 7}
+			\subsubsection{Plans}
+				\begin{itemize}
+					\item the first plan
+				\end{itemize}
+			\subsection{Progress}
+				\begin{itemize}
+					\item stuff and things.
+				\end{itemize}
+			\subsection{Problems}
+				\begin{itemize}
+					\item Stuff and things
+				\end{itemize}
+			\subsubsection{Summary}
+			
+		\subsection{week 8}
+			\subsubsection{Plans}
+				\begin{itemize}
+					\item the first plan
+				\end{itemize}
+			\subsection{Progress}
+				\begin{itemize}
+					\item stuff and things.
+				\end{itemize}
+			\subsection{Problems}
+				\begin{itemize}
+					\item Stuff and things
+				\end{itemize}
+			\subsubsection{Summary}
+			
+		\subsection{week 9}
+			\subsubsection{Plans}
+				\begin{itemize}
+					\item the first plan
+				\end{itemize}
+			\subsection{Progress}
+				\begin{itemize}
+					\item stuff and things.
+				\end{itemize}
+			\subsection{Problems}
+				\begin{itemize}
+					\item Stuff and thigns
+				\end{itemize}
+			\subsubsection{Summary}
+
+		\subsection{week 10}
+			\subsubsection{Plans}
+				\begin{itemize}
+					\item the first plan
+				\end{itemize}
+			\subsection{Progress}
+				\begin{itemize}
+					\item stuff and things.
+				\end{itemize}
+			\subsection{Problems}
+				\begin{itemize}
+					\item Stuff and thigns
+				\end{itemize}
+			\subsection{Summary}
+		
 
 \section{Retrospective}
 	\begin{center}
