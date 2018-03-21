@@ -164,9 +164,31 @@ In this section we will list the work items we have completed, the work items th
 		\subsection{Back End Development Using NETCDF:}
 		Early in the term we tried to develop the climate data API using NETCDF over the OPENDAP protocol. In the long run we ended up abandoning this method of getting the data from the database. Never the less, early in the term I spend a decent amount of time creating a concept script that using NETCDF4, a python module, to get data from the NMME thredds server. It is unfortunate that we were unable to use this method as it would have been simpler than the method we ended up using, at least in terms of the code. Shown below is a code snipet that shows how to get a particular data point from the database using the NETCDF4 library.\\
 		
+\begin{lstlisting}
+	#set up the data handles to filter the data
+	filehandle = Dataset(path, 'r', format="netcdf3")
+	lathandle = filehandle.variables['lat']
+	lonhandle = filehandle.variables['lon']
+	datahandle = filehandle.variables['prate_anom']
+
+	#gets data from the server.
+	print(datahandle[466, 1083, 0])
+\end{lstlisting}
 		
-		
+		As you can see getting data from the sever using NETCDF4 is much like using a multi-dimensional array. Essentially there are three indecencies one for latitude, one for longitude and one for time. However, we later found that though this method was easy to use that it was not particularly reliable. We ended up finding issues with reading file chucks from the remote server that we could not diagnose. I even presented this to the NETCDF4 development team through an issue on github, however they wouldn't fix it because we could not identify where in the many layers of software the problem was happening. Luckily one of my team mates found a work around so I passed on development of the API to him.\\
+	
 		\subsection{Front End Development:}
+		For the later half of the term I ended up working on the front end of the application. This development was done using JavaScript through a frame work called Angular. Though I ended up working on many different pages and models on the front end the majority of my development efforts were focused on the charts page. The goal of the charts page is to display charts to the user so that they can make adjustments to their yields based on the data presented in the charts. Shown below is a screen shot of this page.\\
+		
+		%include graphic of charts page here.
+		
+	As you can see from the above graphic this page has four tabs which allow the user to switch between the four different charts the user can view. There is also an input box at the bottom of the page that will validate the users input ensuring that the enter a number with one decimal place.\\
+	
+	The majority of the challenge of building this page was not actually the UI elements. I was able to get those set up and working fairly quickly. Rather the main challenge was setting up all the budgets required for this page and the budget page following. Though this page may seem simple, there are actually many different data structures that need to be managed so that the yield on the budget is adjusted correctly, saved to the database and then passed to the budget editor after the user enters their yield. This page must also get the climate data from the back end and make sure that this data is valid.\\
+	
+	Another major section of front end development this term was modifying the rest of the front end to accommodate the creation of short term climate scenarios. Before we started working on this application short term climate scenarios did not exist. Thus the path through the application that is currently used for short term climate scenarios did not exist. The existing code had to be modified to allow us for branching off in to the short term climate scenario.\\
+	
+	
 		
 		\subsection{Testing:}
 		
