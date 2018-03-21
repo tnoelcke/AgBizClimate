@@ -181,6 +181,7 @@ In this section we will list the work items we have completed, the work items th
 		For the later half of the term I ended up working on the front end of the application. This development was done using JavaScript through a frame work called Angular. Though I ended up working on many different pages and models on the front end the majority of my development efforts were focused on the charts page. The goal of the charts page is to display charts to the user so that they can make adjustments to their yields based on the data presented in the charts. Shown below is a screen shot of this page.\\
 		
 		%include graphic of charts page here.
+		\includegraphics{Images/ChartsPage.JPG}
 		
 	As you can see from the above graphic this page has four tabs which allow the user to switch between the four different charts the user can view. There is also an input box at the bottom of the page that will validate the users input ensuring that the enter a number with one decimal place.\\
 	
@@ -188,9 +189,14 @@ In this section we will list the work items we have completed, the work items th
 	
 	Another major section of front end development this term was modifying the rest of the front end to accommodate the creation of short term climate scenarios. Before we started working on this application short term climate scenarios did not exist. Thus the path through the application that is currently used for short term climate scenarios did not exist. The existing code had to be modified to allow us for branching off in to the short term climate scenario.\\
 	
-	
-		
 		\subsection{Testing:}
+		Another part of the project that I worked on was Testing. In particular over this last term I've worked the front end unit tests. This involved writing test for the Charts Page that I created and updating existing tests based on changes I made to the front end of the application. I also ensured that the code I added in other parts of the application was properly tested.\\
+		
+		While testing one of the things I like about the testing framework we are using is that you can mock the various dependencies that any particular page may need. For instance lets say I need to make a call to the back end to update a budget. Rather than actually have to spin up the back end and call it and test that the correct action is taken, I can simply pass the front end a mock service and tell it to return a predefined value. An example of this code is shown below.\\
+		
+		\begin{lstlisting}
+		
+		\end{lstlisting}
 		
 		\subsection{Project Management:}
 	
