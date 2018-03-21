@@ -63,7 +63,7 @@
         }
         \begin{abstract}
 					%Write Abstract here.
-					The purpose of this document is to give a snap shot of the current state of the \textit{AgBizClimate} project. In this progress report I will start off by giving a short introduction of the project and project goals. Then I will discuss the current state of the project. This will include resolved work items, work items in progress, completed work items and major blockers. The next section will include specific details of my contribution to the project including figures and interesting code. Next I will discuss a weekly summary of progress. This section will include plans, progress, problems and a summery for each week of work this term. Next I will provide a retrospective for development this last term. The retrospective will include a column for positive things that happened this that happened this term, things that need to change and another column for actions we will need to take to implement those changes. The last section will provide a peer review for each group member.\\
+					The purpose of this document is to give a snap shot of the current state of the \textit{AgBizClimate} project. In this progress report I will start off by giving a short introduction of the project and project goals. Then I will discuss the current state of the project. This will include resolved work items, work items in progress, completed work items and major blockers. The next section will include specific details of my contribution to the project including figures and interesting code. Next I will discuss a weekly summary of progress. This section will include plans, progress, problems and a summery for each week of work this term. Next I will provide a retrospective for development this last term. The retrospective will include a column for positive things that happened this that happened this term, things that need to change and another column for actions we will need to take to implement those changes. The last section will provide a peer review for each group member inducing a brief self review.\\
         \end{abstract}
     \end{singlespace}
 \end{titlepage}
@@ -106,16 +106,6 @@
 		\subsection{Product Function Overview}
 		    \textit{AgBizClimate} is a web based decision tool that will allow users to gain specific insight on how localized climate data for the next seven months will affect their crop and livestock yields or quality of products sold and production inputs. The \textit{AgBizClimate} tool will allow users to input their location (state, county) and a budget for the specific crop or livestock enterprise. \textit{AgBizClimate} will select climate data for the next seven months for that location and provide graphical data showing temperature and precipitation. Users will then be able to change yields or quality of product sold by a percentage they think these factors will affect and modify production inputs. Finally the tool will calculate the net returns.\\
 
-
-
-		\renewcommand\refname{\vskip -1cm}
-		\subsection{References}
-
-		    \nocite{*}
-            \bibliographystyle{IEEEtran}
-            \bibliography{IEEEabrv,References}
-
-
 \section{Current Project State}
 In this section we will list the work items we have completed, the work items that are in progress and the work items that still need to be completed. For each work item we will also give a brief description.\\
 
@@ -133,10 +123,10 @@ In this section we will list the work items we have completed, the work items th
 		Along with creating the end point for the climate data API we also created an end point to serve the data created by the API. This end point takes a State and County and calculates an approximate latitude and longitude for that location. The end point then uses the latitude and longitude to get the data for that location using the climate data API mentioned above. The data is then formatted with labels and returned to the client.\\
 		
 		\subsubsection{Bug Fixes:}
-		As mentioned previously we have made several bug fixes through out this last development cycle. Some of these bug fixes have involved the charts page. One bug prevented the application from going to the budgets page after the charts page. Another bug was introduced because of the introduction of short term climate budgets. This bug prevented the user from using multiple budgets because we could not distinguish between long term scenarios and short term scenarios. We were able to fix these bugs created by introducing new code in to the project over this last development cycle.
+		As mentioned previously we have made several bug fixes through out this last development cycle. Some of these bug fixes have involved the charts page. One bug prevented the application from going to the budgets page after the charts page. Another bug was introduced because of the introduction of short term climate budgets. This bug prevented the user from using multiple budgets because we could not distinguish between long term scenarios and short term scenarios. We were able to fix these bugs created by introducing new code in to the project over this last development cycle.\\
 		
 		\subsubsection{Front End Unit Tests:}
-		Finally, We wrote front end unit tests for the code added to project along with updating existing unit tests to reflect changes made to the application. Currently all front end unit tests pass.
+		Finally, We wrote front end unit tests for the code added to project along with updating existing unit tests to reflect changes made to the application. Currently all front end unit tests pass.\\
 		
 	\subsection{In progress}
 		\subsubsection{refining climate API endpoint:}
@@ -181,7 +171,7 @@ In this section we will list the work items we have completed, the work items th
 		For the later half of the term I ended up working on the front end of the application. This development was done using JavaScript through a frame work called Angular. Though I ended up working on many different pages and models on the front end the majority of my development efforts were focused on the charts page. The goal of the charts page is to display charts to the user so that they can make adjustments to their yields based on the data presented in the charts. Shown below is a screen shot of this page.\\
 		
 		%include graphic of charts page here.
-		\includegraphics{Images/ChartsPage.JPG}
+		\includegraphics[width=\paperwidth,scale=0.75]{Images/ChartsPage.JPG}
 		
 	As you can see from the above graphic this page has four tabs which allow the user to switch between the four different charts the user can view. There is also an input box at the bottom of the page that will validate the users input ensuring that the enter a number with one decimal place.\\
 	
@@ -195,11 +185,23 @@ In this section we will list the work items we have completed, the work items th
 		While testing one of the things I like about the testing framework we are using is that you can mock the various dependencies that any particular page may need. For instance lets say I need to make a call to the back end to update a budget. Rather than actually have to spin up the back end and call it and test that the correct action is taken, I can simply pass the front end a mock service and tell it to return a predefined value. An example of this code is shown below.\\
 		
 		\begin{lstlisting}
-		
+it("checks state parameters for scenario id and calls data service to retrieve scenario", 
+function() {
+		spyOn(climateServiceMock, "retrieveScenario").and.callThrough();
+		$state.params = {'scenario': 1};
+		controller.$onInit();
+		$scope.$digest();
+
+    expect(climateServiceMock.retrieveScenario.calls.argsFor(0)).toContain(1);
+    expect($state.go).not.toHaveBeenCalled();
+ });
 		\end{lstlisting}
+		Notice the spyOn function above what that does is it sates the service mock object you'd like to mock along with the specific function you are interested in. Then you can do various things. This example just skips over the function call however you can also tell the mock object to return data or to throw exceptions. What this allows you to do is test the front end code with out any other dependencies. This allows you to better trust the results of your tests.\\
+		
 		
 		\subsection{Project Management:}
-	
+		Over the course of the term I have also spent some time managing the project. For the most part I've set all the project goals and time tables. I've also delegated tasks based on what people are interested in and what they are good at. I also set up the github repo and have been central in setting up meetings with our client. Additionally, I've been adding issues to our github repo so that we can track the progress of our project.\\
+		
 %will copy from one note. Will need to modify weekly summary from each week just a tiny bit to make this section work
 \section{Weekly summary of progress}
 	   In this section we will give a weekly summary of our progress on this project. For each we will list out our plans, problems we have encountered during the week and will show a summery of what we have accomplished during the week.\\
@@ -353,75 +355,134 @@ In this section we will list the work items we have completed, the work items th
 		\subsection{week 7}
 			\subsubsection{Plans}
 				\begin{itemize}
-					\item the first plan
+					\item Fix bug with short term climate scenario where rap around for multiple budgets doesn't work.
+					\item Translate Shengpei's concept script from python 3.6 to 2.7.
+					\item Create end point to host climate API.
+					\item Serve static data from the end point to the front end until API is set up to get dynamic data.
+					\item Integrate Shengpei's API into the end piont.
 				\end{itemize}
 			\subsection{Progress}
 				\begin{itemize}
-					\item stuff and things.
+					\item Fixed Bug with rapping around for multiple budgets.
+					\item Shengpei translated script into python 2.7.
+					\item Shane worked on getting end point setup.
 				\end{itemize}
 			\subsection{Problems}
 				\begin{itemize}
-					\item Stuff and things
+					\item Shengpei's script needs to refined.
+					\item Inexperience with Django.
 				\end{itemize}
-			\subsubsection{Summary}
+			\subsubsection{Summary} This week we continued to work on the frontend of the application. We made progress on getting some of the bugs fixed on the front end. Mainly, Now when you use multiple budgets the application correctly redirects to the correct page once reaching the end of the work flow. Shengpei also managed to get his script ported over from python 3.6 to python 2.7. Shane worked on setting up the endpoint that will evenutally host the climate data API. However, we ran into a few issues with this due to inexperience with Django.\\
 			
 		\subsection{week 8}
 			\subsubsection{Plans}
 				\begin{itemize}
-					\item the first plan
+					\item Create Unit tests for the Data-Impact page.
+					\item update existing unit test to reflect changes in the application.
+					\item Get end point up and running.
+					\item Refine Shengpei's script so it returns data we can consume.
 				\end{itemize}
 			\subsection{Progress}
 				\begin{itemize}
-					\item stuff and things.
+					\item Updated existing front end tests.
+					\item Started working on Unit tests for the front end.
+					\item started working on changes to API to make the data consumable.
 				\end{itemize}
 			\subsection{Problems}
 				\begin{itemize}
-					\item Stuff and things
+					\item Having issues with mocking the services on the front end correctly.
 				\end{itemize}
-			\subsubsection{Summary}
+			\subsubsection{Summary} This week we worked on setting up the back end to serve the data to the front end. We also started working on the front end unit tests. Additionally Shengpei started working on updating the API. It's looking increasingly more likely that we can have a beta next week if not early in week 10.\\
 			
 		\subsection{week 9}
 			\subsubsection{Plans}
 				\begin{itemize}
-					\item the first plan
+					\item Finish Front end testing.
+					\item Get climate data endpoint up and running.
+					\item Finish updates to the climate API.
+					\item Set up front end to use endpoint to dynamically get data.
 				\end{itemize}
 			\subsection{Progress}
 				\begin{itemize}
-					\item stuff and things.
+					\item Finished front end testing.
+					\item Finished setting up end point.
+					\item Finished refining the API.
 				\end{itemize}
 			\subsection{Problems}
-				\begin{itemize}
-					\item Stuff and thigns
-				\end{itemize}
-			\subsubsection{Summary}
+				We had no major problems during this week of development.\\
+			\subsubsection{Summary} This week we continued to make progress on the development of our application. I finished up the front end unit tests and they now all pass. Shane set up the end point and has it ready to consume the API. Shengpei finished making the updates to the API so that the front end can easily consume the data. All that is left to do is to put the pieces together and fix any bugs we've created in the process. Next week we should be able to put the pieces together and produce a fully functioning beta release.\\
 
 		\subsection{week 10}
 			\subsubsection{Plans}
 				\begin{itemize}
-					\item the first plan
+					\item Create Beta Release.
+					\item Start Testing and bug fix phase of the project.
+					\item Write and present final progress report.
+					\item Integrate API into end point to serve data.
+					\item set up front end to call the end point to get the dynamically generated data.
 				\end{itemize}
 			\subsection{Progress}
 				\begin{itemize}
-					\item stuff and things.
+					\item Shane integrated the API in to the end point so our API is now serving dynamically generated data.
+					\item Set up front end to call the end point and get the dynamically generated data. With the completion of this item we now have a fully functional beta release.
+					\item Created progress report template.
+					\item Meet with Sean to demo beta release.
 				\end{itemize}
 			\subsection{Problems}
 				\begin{itemize}
-					\item Stuff and thigns
+					\item Need to write some code to deal with when the Climate data server is under maintenance.
 				\end{itemize}
-			\subsection{Summary}
+			\subsection{Summary} This week we took all the pieces that we already had done and put them together. We found a few issues with the climate API and fixed them. Shane integrated the climate data end point with the climate data API. I then used that end point to get dynamically generated data on the front end. Thus we now have a fully functional beta.\\
 		
 
 \section{Retrospective}
 	\begin{center}
 		\begin{tabular}{| p{0.3\linewidth} | p{0.3\linewidth} | p{0.3\linewidth} |}
 		\hline
-		Positives & Deltas & Actions \\ \hline
-		This Is an example & of How this structure & works \\ \hline
+		Positives & Deltas & Actions \\ 
+		\hline
+			We managed to Get caught Up despite being behind after the first few weeks of the term.
+			& Will need to change gears to updating documents.
+			& Set goals for dates we would like to have each document complete.  \\ 
+		\hline
+			Were much more intentional about meeting as a group to work on the project. As a result we worked much better as a team. 
+			& Need to switch gears and start regression testing the application 
+			& Will need to set testing goals for what we would like to have tested and when. \\ 		\hline
+			We spread the work load more evenly across team members. &
+			We need to be better about keeping each other updated on progress of work items &
+			Have daily stand up meetings either in person or digitally. Message on slack when checking in a work item into github.\\
+			\hline
+				
+		
+		
+	
 	\end{tabular}
 \end{center}
 	
 	
 \section{Peer Reviews}
+	In this section I will review my peers performance through out the term. I will rate their performance based on their performance as a team member along with their contribution to the project. For each team member I will also sate what role in the group they have played through out the project.\\
+	
+	\subsection{Shane Barrantes}
+	Through out this project Shane has been a solid team mate. Generally, Shane makes it to meetings and contributes to the discussion. Through out this project Shane has demonstrated skill in environment setup. Shane has also been contributed a lot to our efforts to do back end development on this project.\\
+	
+	Through out this project Shane has been our go to when it comes to doing environment set up or when it comes to installing packages. Shane was able to create steps to install all the packages required to run our project a few hours where that would have taken Shengpei or myself at least six hours. It should also be noted that Shane was very helpful when it came to doing the NETCDF4 install along with trying to diagnose why that solution wasn't working. Eventually we ended up moving away from that package as we found another way to get the same data but it worth saying that with out Shane it would have taken much more time to figure out that it wasn't going to work for our problem.\\
+	
+	The other major contribution that Shane made this term was backend development. He set up the endpoint to host the climate API. He also set it up such that we can take a state and a county and turn those in to a latitude and a longitude.\\
+	
+	In terms of contribution level I would say that Shane's contribution to this project is less than my own but greater than Shengpei's contribution.\\
+	
+	\subsection{Shengpei Yuan}
+	Shengpei has also been a good team mate particularly twards the end of the term. Shengpei has probably contributed the least to this project in terms of volume but his contribution is central the our project. 
+	
+	It should be noted that Shengpei was largely absent from the group during the begging of the term. He has been studying for his GMAT exam so that he can get into grad school. As a result his contribution towards the beginning of the term was lacking. This is why I rate Shengpei's contribution as less than Shane's.\\
+	
+	However, It should be noted that I would classify Shengpei as our data expert. Though Shengpei didn't contribute until the later half of the term his contributions since then have been extremely helpful. After we found out that the NETCDF4 method of getting the data from the database wasn't going to work Shengpei started working on a new method. Shengpei found a way to generate a URL such that it returned the plain text data that we were looking for. This allowed us to make a simple http get call and then parse the data as raw text. This contribution was critical to completing our project.\\
+	
+	\subsection{Self Review}
+	As for my self I would say that I have been making the largest contribution to the project in this group. This is in part because I have been wearing many hats and have also found this project very interesting. I would classify my role in this group as Project Lead, Technical Expert and JavaScript expert. I have played a central role in leading and managing this project. Which is why I classify my self as the Project Lead. I also classify my self as the technical expert because I have some experience with weather data and climate. I am a self proclaimed weather nerd. Additionally, before I went to school for computer science I spent several years trying to get my degree in atmospheric science. Finally, I classify my self as the JavaScript expert because I did most of the front end JavaScript work.\\
+	
+	In terms of being a good team mate I would say that I have been a fairly good team mate. I try to work with people as well as I can and offer any help that I am capable of giving. I complete the work items I say I'm going to complete on time or a bit ahead of schedule. One thing I think I could have been better about especially at the beaning of the term was delegating tasks.\\
 
 
 
