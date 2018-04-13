@@ -1,4 +1,4 @@
-filename=main
+filename=MidtermProgressReport-W2018
 
 pdf: ps
 	ps2pdf ${filename}.ps
@@ -29,4 +29,4 @@ aread:
 	acroread ${filename}.pdf
 
 clean:
-	rm -f ${filename}.{ps,pdf,log,aux,out,dvi,bbl,blg}
+	rm -f ${filename}.{ps,log,aux,out,dvi,bbl,blg,toc, lof}
