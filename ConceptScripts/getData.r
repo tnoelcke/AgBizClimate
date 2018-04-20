@@ -1,47 +1,59 @@
-%Author: Thomas Noelcke
-%Description: This script uses OPeNDAP to dowload specific sub set of the nmme data
-%requirements: R
+#OPeNDAP Eample Script: Simple R version
+#Purpose: This script pulls one 7 month period from the threads server.
 
-UNDER CONSTRUCTION
 
-%===========================
-%  SET TARGET DATA -modify only the paramaters in this section
-%===========================
-% geographical region
-%
-lat_target = [45.0 45.2];
-lon_target = [-103.0 -103.5] + 360;
 
-%Variables, Models
-var_targer = [1 2 3 4 5 6 7]
-model_target[1:20]
-exp_target = [1:2]
+#laod the libray
+library(ncdf4)
 
-outputFileName = 'maca_subset.mat'
+#Define the URL
+urltotal<-"http://thredds.northwestknowledge.net:8080/thredds/dodsC/NWCSC_INTEGRATED_SCENARIOS_ALL_CLIMATE/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_CMC1_forecast_1monthAverage.nc"
 
-%===================================
-% SET OPENDAP PATH DIR
-%===================================
-pathDir='http://thredds.northwestknowledge.net:8080/thredds/dodsC/NWCSC_INTEGRATED_SCENARIOS_ALL_CLIMATE/bcsd-nmme/monthlyForecasts/bcsd_nmme_metdata_NCAR_forcast_1monthAverage.nc';
+## open file
+ncin <- nc_open(urltotal)
 
-pathName = pathDir;
-loninfo = ncinfo(pathname, 'lon');
-lonSize = loninfo.Size;
-latinfo = ncinfo(pathname, 'lat');
-latSize = latinfo.Size;
+ncin
 
-lat = ncread(pathname, 'lat');
-lon = ncread(pathname, 'lon');
+v3 <- ncin$var[[1]]
 
-%indicies of lat/lon subset
-lat_index = lat(lat_index);
-lon_index = lon(lon_index);
+timesize <- v3$varsize[1]
 
-%============================
-% Paramaters
-%============================
+print("Time size")
+timesize
 
-EXP_Name= {};
-VAR_NAME = {'tmp2m', 'tmp2m_anom', 'prate', 'prate_anom'};
+lonsize <- v3$varsize[2]
+
+print("lon size")
+lonsize
+
+
+latsize <- v3$varsize[3]
+
+print("lat size")
+latsize
+
+
+## define our point of interest
+## note make sure to check weather your source starts counting at 0 or 1
+## e.g. ncdf4 Pcakge starts counting at 1 but OPeNDap Dataset access starts at 0
+
+lon = 1081
+lat  = 444
+
+##define our variable name
+
+var="tmp2m"
+
+data <- ncvar_get(ncin, var, start=c(1, 500, 500), count=c(1, 1, 1))
+
+print("data")
+
+data
+
+nc_close(ncin)
+
+#show the data
+
+
 
 
