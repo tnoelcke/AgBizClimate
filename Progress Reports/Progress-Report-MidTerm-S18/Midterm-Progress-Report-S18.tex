@@ -66,7 +66,7 @@
             \vspace{20pt}
         }
         \begin{abstract}
-					 The purpose of this document is to give a snap shot of the current state of the project. In this progress report will start off by discussing ToDo's we have resolved. We will then move on to items that are in progress. After that we will discuss what is still left to do on the project. Next we will give a week by week summary of our progress including our plans for each week, what we accomplished, problems we encountered and a summery for the week. Finally, In the last section of this report we will each talk about our individual contributions to the project along with a peer review for each of our group mates.\\
+					 The purpose of this document is to give a snap shot of the current state of the project. In this progress report will start off by discussing ToDo's we have resolved. We will then move on to items that are in progress. After that we will discuss what is still left to do on the project. Next we will give a week by week summary of our progress including our plans for each week, what we accomplished, problems we encountered and a summery for the week. Finally, We will share any new or interesting development, or code from our most recent development cycle.\\
         \end{abstract}
     \end{singlespace}
 \end{titlepage}
@@ -123,21 +123,47 @@
     In this section of this document we will review what items we have resolved, List and explain what items we still have to do, discuss major blockers and give a week by week summary of what we have done so far. This section is intended to give a good overall picture of the status of the \textit{AgBizClimate} project along with what we have accomplished so far.\\
 
 	\subsection{Resolved Items}
-
+		\subsubsection{Create Data Access Tool In R}
+		
+		\subsubsection{Update Expo Poster}
+		
+		\subsubsection{Produce Proof of Concept for Rocket Mount Bind}
+		
+		\subsubsection{Write Script for Chron Job}
 
 	\subsection{In progress}
-	
+		%not sure weather I'll have this done by the end of the week...
+		\subsubsection{Rewrite API to use local file provided through a Mount Bind}
+		
+		%Unit testing maybe?
+		
+		%manual testing maybe?
+		
 	\subsection{ToDo's}
-
-			\paragraph{QA:} Finally, before we are done with our project will want to provide some QA on the work that we will have done over the term. This will include running some manual integration tests to ensure that we have completed the work we agreed to complete.\\
+	
+		\subsubsection{Unit Testing}
+		
+		\subsubsection{Manual Testing}
+		
+		\subsubsection{Bug Fixes}
+		
+		\subsubsection{Document Updates}
+			\begin{itemize}
+				\item \textbf{Requirements Document} - Update requirements to reflect most recent changes to the project over the last development cycle.
+				\item \textbf{Design Document} - Update design document to reflect design as build.
+				\item \textbf{Tech Review} - Update tech review to reflect the technology we actually chose to use.
+			\end{itemize}
 
 	\subsection{Blockers}
 	    In this section we will discuss hurtles we are facing that are impeding progress on this project. We will discuss why they will keep us from moving forward on this project and we will also discuss what we intend to do to move past these problems.\\
+			
+			\subsubsection{Threadds Server Issues} Through out this project we were required to connect to a threadds server managed at Idaho State University. We've found that all of the various implementations of the NETCDF4 library have the same underlying c library. This c library doesn't work over the network on clunked files. This means that either the Library wasn't made to be used over the network or that there is a serious by in regards to chunked files. This has significantly impeded our progress this term as we've created several implementations of our API with this library to see if we could find a version that would work over the network.\\
 
-	%will copy from one note. Will need to modify weekly summary from each week just a tiny bit to make this section work
+
 \section{Weekly summary of progress}
 	   In this section we will give a weekly summary of our progress on this project. For each we will list out our plans, problems we have encountered during the week and will show a summery of what we have accomplished during the week.\\
-S
+		
+		
 \section{Interesting Code}
 
 
