@@ -66,7 +66,7 @@
             \vspace{20pt}
         }
         \begin{abstract}
-					 The purpose of this document is to give a snap shot of the current state of the project. In this progress report will start off by discussing ToDo's we have resolved. We will then move on to items that are in progress. After that we will discuss what is still left to do on the project. Next we will give a week by week summary of our progress including our plans for each week, what we accomplished, problems we encountered and a summery for the week. Finally, In the last section of this report we will each talk about our individual contributions to the project along with a peer review for each of our group mates.\\
+					 The purpose of this document is to give a snap shot of the current state of the project. In this progress report will start off by discussing ToDo's we have resolved. We will then move on to items that are in progress. After that we will discuss what is still left to do on the project. Next we will give a week by week summary of our progress including our plans for each week, what we accomplished, problems we encountered and a summery for the week. Finally, We will share any new or interesting development, or code from our most recent development cycle.\\
         \end{abstract}
     \end{singlespace}
 \end{titlepage}
@@ -123,21 +123,102 @@
     In this section of this document we will review what items we have resolved, List and explain what items we still have to do, discuss major blockers and give a week by week summary of what we have done so far. This section is intended to give a good overall picture of the status of the \textit{AgBizClimate} project along with what we have accomplished so far.\\
 
 	\subsection{Resolved Items}
-
+		\subsubsection{Create Data Access Tool In R} We created a concept script to try and connect to the database using R rather than python. The goal was to see if could connect to the database and get the data in R rather than python. The goal was to see if the error we were having was in the python library, however, we found we had the same issue as the python code.\\
+		
+		\subsubsection{Update Expo Poster} We updated the expo poster in prep for expo. We updated the poster to conform with the OSU branding standards and submitted it for printing.\\
+		
+		\subsubsection{Produce Proof of Concept for Rocket Mount Bind} We wrote some example rocket container to prove that we can use a bind mount to pass and update data to our application in our container. 
+		
+		\subsubsection{Rewrite API to use local file provided through a mount bind} We updated the API so that it uses the static data provided through the mount bind. We also added to the entry point script to set an environment variable to specify the location of this file.\\
+		
+		\subsubsection{Write Script for Chron Job} We wrote a script that downloads and updates the data in the file that we want the mount bind to mount. This script will be called by a chron job at the same time every month.\\
 
 	\subsection{In progress}
-	
+		\subsubsection{refine API so it fails gracefully} Currently the API will throw exceptions if the file with the climate data does not exist or if the data you are requesting is out of bounds. We are working to make sure that this is handled in a way that returns a useful error to the user that the short term data is unavailable.\\
+		
+		%Unit testing maybe?
+		\subsubsection{Unit Testing} We are in the process of refining the last of the front end tests along with writing unit test to test the updated API.\\
+		
+		
 	\subsection{ToDo's}
-
-			\paragraph{QA:} Finally, before we are done with our project will want to provide some QA on the work that we will have done over the term. This will include running some manual integration tests to ensure that we have completed the work we agreed to complete.\\
+		
+		\subsubsection{Manual Testing} We need to provide some manual testing to ensure that our addition does not have any bugs. Additionally, we will also need to do some manual testing to ensure that we are not introducing new bugs into the system.\\
+		
+		\subsubsection{Bug Fixes} Inevitably we will find some bugs through our unit tests and manual testing. We will need to verify and fix bugs found during the testing process.\\
+		
+		\subsubsection{Document Updates}
+			\begin{itemize}
+				\item \textbf{Requirements Document} - Update requirements to reflect most recent changes to the project over the last development cycle.
+				\item \textbf{Design Document} - Update design document to reflect design as build.
+				\item \textbf{Tech Review} - Update tech review to reflect the technology we actually chose to use.
+			\end{itemize}
 
 	\subsection{Blockers}
 	    In this section we will discuss hurtles we are facing that are impeding progress on this project. We will discuss why they will keep us from moving forward on this project and we will also discuss what we intend to do to move past these problems.\\
+			
+			\subsubsection{Threadds Server Issues} Through out this project we were required to connect to a threadds server managed at Idaho State University. We've found that all of the various implementations of the NETCDF4 library have the same underlying c library. This c library doesn't work over the network on clunked files. This means that either the Library wasn't made to be used over the network or that there is a serious by in regards to chunked files. This has significantly impeded our progress this term as we've created several implementations of our API with this library to see if we could find a version that would work over the network.\\
+			
+			\subsubsection{Rocket Issues} We had a really hard time getting rocket set up. The rocket documentation is rather sparse and not always accurate. This really slowed us down on proving that a mount bind would work and would behave how we through in rocket. We were able to overcome this by asking for help from some one who had experience using rocket container.\\
 
-	%will copy from one note. Will need to modify weekly summary from each week just a tiny bit to make this section work
+
 \section{Weekly summary of progress}
 	   In this section we will give a weekly summary of our progress on this project. For each we will list out our plans, problems we have encountered during the week and will show a summery of what we have accomplished during the week.\\
-S
+		
+		\subsection{Week 1}
+			\subsubsection{Plans}
+			
+			\subsubsection{Progress}
+			
+			\subsubsection{Problems}
+			
+			\subsubsection{Summary}
+			
+		\subsection{Week 2}
+				\subsubsection{Plans}
+			
+			\subsubsection{Progress}
+			
+			\subsubsection{Problems}
+			
+			\subsubsection{Summary}
+			
+		\subsection{Week 3}
+			\subsubsection{Plans}
+			
+			\subsubsection{Progress}
+			
+			\subsubsection{Problems}
+			
+			\subsubsection{Summary}
+			
+		\subsection{Week 4}
+			\subsubsection{Plans}
+			
+			\subsubsection{Progress}
+			
+			\subsubsection{Problems}
+			
+			\subsubsection{Summary}
+			
+		\subsection{Week 5}
+			\subsubsection{Plans}
+			
+			\subsubsection{Progress}
+			
+			\subsubsection{Problems}
+			
+			\subsubsection{Summary}
+			
+		\subsection{Week 6}
+			\subsubsection{Plans}
+			
+			\subsubsection{Progress}
+			
+			\subsubsection{Problems}
+			
+			\subsubsection{Summary}
+			
+% what do we want to put here?
 \section{Interesting Code}
 
 
