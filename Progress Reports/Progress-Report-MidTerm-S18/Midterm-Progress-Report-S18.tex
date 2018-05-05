@@ -166,29 +166,63 @@
 		
 		\subsection{Week 1}
 			\subsubsection{Plans}
-			
+			    \begin{itemize}
+			        \item Create plan for the term to guarantee we complete project.\\
+			        \item Set up some issues in github for project documentation.\\
+			        \item Set meeting time with TA.\\
+			        \item Set up meeting with Sean.\\
+			    \end{itemize}
 			\subsubsection{Progress}
-			
+			    \begin{itemize}
+			        \item Set issues in github.\\
+			        \item Tried to set meeting time with TA and emailed multiple times but never got a response.\\
+			        \item Set up meeting time for this term with Sean.\\
+			    \end{itemize}
+			    
 			\subsubsection{Problems}
-			
-			\subsubsection{Summary}
+			    \begin{itemize}
+			        \item Everyone was sick this week so we were unable to meet as a group.\\
+			        \item TA did not respond to our inquiry to set up meeting time for this term.\\
+			    \end{itemize}
+			\subsubsection{Summary} This week our team decided to take it easy as we we don't expect the work load this term to be to heavy and every one was sick. We did set up some future meetings with our client and tried to set up a meeting with our TA. We also set up some issues in github and started doing some planning to ensure that we are making progress every week.\\
 			
 		\subsection{Week 2}
-				\subsubsection{Plans}
-			
+			\subsubsection{Plans}
+			    \begin{itemize}
+			        \item Start working on some unit tests along with some manual testing.\\
+			        \item Start working on finishing some of the last development items.\\
+			        \item Start adhoc testing.\\
+			    \end{itemize}
 			\subsubsection{Progress}
-			
+			    \begin{itemize}
+			        \item Stared working on front end tests. I found an bug in the API that causes it to hang on some requests.\\
+			        \item Started working on diagnosis for issue with script.\\
+			        \item Started researching alliterative solutions for getting data.\\
+			    \end{itemize}
 			\subsubsection{Problems}
-			
-			\subsubsection{Summary}
+			    \begin{itemize}
+			        \item API isn't returning any data and is hanging forever. I'm not sure why this is, I think the URL may have changed or there is some error with getting the data due to the updated data in the threadds server.
+			        \item Found that current solution is not stable and we will need to find a different solution.\\
+			    \end{itemize}
+			\subsubsection{Summary} This week we did some manual testing and discovered that the climate API was broken. We started looking into potential causes to this issue and potential solutions. Essentially if you can the URL that we are using to get the data it will hang most of the time. This means that the problem is likely in the database we are trying to connect with and that we will need to find a new solution for getting the data. We have some ideas using matlab or R but we will want to produce a concept stript to prove that this will not be an isssue in those languages also.\\
 			
 		\subsection{Week 3}
 			\subsubsection{Plans}
-			
+			    \begin{itemize}
+			        \item Write matlab API of figure out alternate way to retrieve data.\\
+			        \item If we solve data issue start writing unit tests for backend code.
+			        \item Add hoc testing.\\
+			    \end{itemize}
 			\subsubsection{Progress}
-			
+			    \begin{itemize}
+			        \item Started working on data api using matlab. Discovered that matlab was impossible to use for this purpose as we can't run it in a container and that exporting the interpreter is impractical.\\
+			        \item I was able to create an API that used R to try and get the data. However, this implementation produced the same error as the python version.
+			        \item Met with Sean to discuss possible solutions to this problem. This will probably involve setting up a chron job to get the data every month.\\
+			    \end{itemize}
 			\subsubsection{Problems}
-			
+			    \begin{itemize}
+			        \item 
+			    \end{itemize}
 			\subsubsection{Summary}
 			
 		\subsection{Week 4}
