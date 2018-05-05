@@ -216,41 +216,59 @@
 			\subsubsection{Progress}
 			    \begin{itemize}
 			        \item Started working on data api using matlab. Discovered that matlab was impossible to use for this purpose as we can't run it in a container and that exporting the interpreter is impractical.\\
-			        \item I was able to create an API that used R to try and get the data. However, this implementation produced the same error as the python version.
+			        \item I was able to create an API that used R to try and get the data. However, this implementation produced the same error as the python version.\\
 			        \item Met with Sean to discuss possible solutions to this problem. This will probably involve setting up a chron job to get the data every month.\\
 			    \end{itemize}
 			\subsubsection{Problems}
 			    \begin{itemize}
-			        \item 
+			        \item Our API still isn't returning data and is throwing a fault even in R.\\
+			        \item There is a bug in the underlying c library that prevents us from using netcdf4 files over the network. We think that netcdf4 is unable to handle chunked files over the network.\\
 			    \end{itemize}
-			\subsubsection{Summary}
+			\subsubsection{Summary} This week we started looking for solutions to our climate data related problems. We discovered that matlab was going to be impossible to use for our particular usecase. We also discovered that R has the same problem as the python version of NETCDF4 in that it throws an exception. The final solution is to set up a cron job on the server that downloads the whole data file and parses it into a mongodb database.\\
 			
 		\subsection{Week 4}
 			\subsubsection{Plans}
-			
+			    \begin{itemize}
+			        \item Meet to work on and discuss solution to data problems.\\
+			        \item Create script to download the data and place it in a database.\\
+			        \item Setup Django to use named database for short term data.\\
+			        \item Test this solution using a container.\\
+			    \end{itemize}
 			\subsubsection{Progress}
+			    \begin{itemize}
+			        \item Stated working on creating the script and databse.\\
+			        \item Abandoned idea of using a DB all together and decided that a mount bind to share the directory between the container and the native OS was a better solution.\\
+			        \item Started working on a proof of concept for a mount bind.
+			    \end{itemize}
 			
 			\subsubsection{Problems}
+			    \begin{itemize}
+			        \item Having issues getting docker to run our local docker container.\\
+			        \item Having difficulty understanding the devops process for this project.\\
+			    \end{itemize}
 			
-			\subsubsection{Summary}
+			\subsubsection{Summary} This week we entertained the solution of using mongodb to store our climate database. However after some research and thinking about the problem we decided that the best solution was to use a mount bind. This will allow us to share data between the OS and the container with out the use of a database. We also started working on a proof of concept for this idea, however, we had some difficulties because the support for local docker images through rocket is non-existent.\\
 			
 		\subsection{Week 5}
 			\subsubsection{Plans}
-			
+			    \begin{itemize}
+			        \item Create concept solution showing that we can bind mount on a native os file in the rocket container. 
+			        \item Produce API that uses local version of the NETCDF data file.\\
+			        \item Unit testing and manual testing.\\
+			        \item Update poster and submit poster for printing.\\
+			        \item Complete Midterm progress report.\\
+			    \end{itemize}
 			\subsubsection{Progress}
-			
+			    \begin{itemize}
+			        \item Produced a proof of concept demonstrating that a bind mound will behave how we expect.\\
+			        \item Re-implemented API to use local NETCDF file.\\
+			        \item Wrote midterm progress report.\\
+			        \item Created midterm progress report presentation and video.\\
+			        \item Set up API so it fails gracefully when the data file doesn't exist or the data the user requests isn't in the data file.\\
+			    \end{itemize}
 			\subsubsection{Problems}
-			
-			\subsubsection{Summary}
-			
-		\subsection{Week 6}
-			\subsubsection{Plans}
-			
-			\subsubsection{Progress}
-			
-			\subsubsection{Problems}
-			
-			\subsubsection{Summary}
+			no problems this week.\\
+			\subsubsection{Summary} This week we made a lot of progress on the API. Most of this weeks efforts have been aimed at re-writing the API to use a local file to provide the data. In the production application this data will be provided through a mount bind. Additionally the location of this file is provided through a configuration value in the settings.py file so that it can be specified differently for the production environment. We also set up the API to handle many different errors including invalid input, no data file and data not existing within the daata file.\\
 			
 % what do we want to put here?
 \section{Interesting Code}
