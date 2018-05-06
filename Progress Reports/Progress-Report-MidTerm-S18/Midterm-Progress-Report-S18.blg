@@ -1,0 +1,64 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Midterm-Progress-Report-S18.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: IEEEabrv.bib
+Database file #2: References.bib
+-- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in IEEEexample:AgBizLogic
+Warning--empty journal in IEEEexample:ProblemState
+Warning--empty journal in IEEEexample:RecDoc
+Warning--empty journal in IEEEexample:TechReview
+Warning--empty journal in IEEEexample:DesignDoc
+** IEEEtran BST control entry "IEEEexample:BSTcontrol" detected.
+
+Done.
+You've used 6 entries,
+            4024 wiz_defined-function locations,
+            1199 strings with 14920 characters,
+and the built_in function-call counts, 1830 in all, are:
+= -- 121
+> -- 33
+< -- 3
++ -- 17
+- -- 9
+* -- 80
+:= -- 354
+add.period$ -- 10
+call.type$ -- 6
+change.case$ -- 10
+chr.to.int$ -- 15
+cite$ -- 11
+duplicate$ -- 171
+empty$ -- 166
+format.name$ -- 5
+if$ -- 359
+int.to.chr$ -- 0
+int.to.str$ -- 5
+missing$ -- 26
+newline$ -- 39
+num.names$ -- 5
+pop$ -- 85
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 4
+skip$ -- 126
+stack$ -- 0
+substring$ -- 8
+swap$ -- 68
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 6
+type$ -- 6
+warning$ -- 5
+while$ -- 10
+width$ -- 6
+write$ -- 58
+(There were 5 warnings)

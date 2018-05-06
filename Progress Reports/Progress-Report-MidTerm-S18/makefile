@@ -1,4 +1,4 @@
-filename=MidtermProgressReport-W2018
+filename=Midterm-Progress-Report-S18
 
 pdf: ps
 	ps2pdf ${filename}.ps
