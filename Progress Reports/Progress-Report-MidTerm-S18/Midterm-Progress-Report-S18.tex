@@ -274,9 +274,11 @@
 \section{Interesting Code}
 In this section we will discuss  a piece of code that is interesting, and essential to our application. Our production application is run in the containerization system known as rkt created by CoreOS. Due to this use of containerization and limited permission access on the production server we are unable to download the entire climate dataset from the Northwest Climate Toolbox directly to the container. Instead, we have created a monthly cron job on the native OS (not in the container) that will download the entire climate data set and store it on the production server. We will then remake the container and apply a bind mount which allows the container and therefore AgBizClimate to access the climate data on the native OS. This will allow us to query the dataset with our original API while bypassing the network NETCDF chunking issues.
 
-  \begin{figure}[!htb]
-	  \includegraphics[width=0.8\textwidth,natwidth=610,natheight=642]{interesting_code.eps}
-	  \caption{rkt-run.sh - Bind Mount}
-  \end{figure}
+\begin{verbatim}
+rkt run --interactive \
+    --volume=data,kind=host,source=$PWD \
+    --mount volume=data,target=/data \
+    quay.io/coreos/alpine-sh
+\end{verbatim}
 
 \end{document}
