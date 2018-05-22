@@ -70,7 +70,8 @@
 					\vhEntry{1.0}{15.10.17}{\GroupMemberOne|\GroupMemberTwo|\GroupMemberThree}{Preliminary Draft}
 					\vhEntry{1.1}{21.1.18}{\GroupMemberOne}{Updating the Functional Requirements to reflect changes in API}
 					\vhEntry{1.1.1}{11.2.18}{\GroupMemberOne}{Fixed Errors in the definitions and updated definitions}
-					\vhEntry{2.0}{5.21.18}{\GroupMemberOne}{Updated requirements to reflect as built}
+					\vhEntry{2.0.1}{5.21.18}{\GroupMemberOne}{Updated the UI description to reflect what we actually built. Fixed minor errors.}
+					\vhEntry{2.0.2}{5.21.18}{\GroupMemberOne}{Updated the functional requirements section to match what we actually built.}
 				\end{versionhistory}
 				
         \begin{abstract}
@@ -177,37 +178,37 @@ This section contains all of the functional and quality requirements of the \tex
 					\paragraph{Functional Requirement 1.2}
 						\textbf{ID: FR1.2}\hfill \break
 						Title: Transforming Users Location data.\hfill \break
-						Description: The API shall take the users Sate and county information and transform it into latitude and longitude using a google API.\\
+						Description: The API shall take the users State and county information and transform it into latitude and longitude using a python library.\\
 						Dependencies: FR1.1 and FR2.1\hfill \break
 
 					\paragraph{Functional Requirement 1.3}
 						\textbf{ID: FR1.3}\hfill \break
-						Title: Formatting the OPeNDAP Request \hfill \break
-						Description: One the API has the correct information from the user the API will format a request URL. In formatting this URL the API shall ensure that the correct data is selected from the database. This request shall be for the Ensemble Mean model.\\
+						Title: The data source \hfill \break
+						Description: The data we will use for this API is the ensemble mean model. This data will be provided through a local file. This local file will be put in place using a chron job on the prod server. The data will be exposed to the Docker Container using a mount bind.\\
 						Dependencies: FR1.1, FR1.2, FR 2.1\hfill \break
 
 					\paragraph{Functional Requirement 1.4}
 						\textbf{ID: FR1.4}\hfill \break
-						Title: Requesting data\hfill \break
-						Description: After the URL for the requested location has been formatted the API shall send the request to the Thredds data base containing the NMME data set. The request shall be done using the OPeNDAP protocol.\\
+						Title: Getting the Data\hfill \break
+						After validating the state and county passed to the user the API will then get the data from the local data file. The API will select the closest point with in 20 miles where data is available. If no data is available with in 20 miles the API will return an error.\\
 						Dependencies: FR1.1, FR1.2, FR1.3 and FR2.1\hfill \break
 
 					\paragraph{Functional Requirement 1.5}
 						\textbf{ID: FR1.5}\hfill \break
-						Title: Receiving the data from the Thredds database\hfill \break
-						Description: After sending the request for the data to the Thredds database the API shall wait for a response to the request. Once a response has been send the API will receive this response through the OPeNDAP protocol. If the request for the user data results in an error the API shall send the appropriate response code along with a useful error message to let the client know that their request was unsuccessful. This shall be done through an HTTP Post response.\\
+						Title: Calculating Historical Data\hfill \break
+						Description: After getting the data from the data file we will need to calculate the historical average from the anomaly data and forecast data.\\
 						Dependencies: FR1.1, FR1.2, FR1.3, FR1.4 and FR1.5.\hfill \break
 
 					\paragraph{Functional Requirement 1.6}
 							\textbf{ID: FR1.6}\hfill \break
 							Title: Processing the Data to JSON\hfill \break
-							Description: Once the request has been successfully received the API shall process the NETCDF file in the response body sent by the Thredds database. At this point the API will make any calculations or alteration to the data that maybe required. The raw data shall be placed into a JSON object and useful labels shall be applied to the JSON object so it can be easily displayed later.\\
+							Description: Once the we have all the data we need we will format the data in a JSON object. The JSON object will have meaningful labels that will make it clear what is contained in each field.\\
 							Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5 and FR2.1\hfill \break
 
 					\paragraph{Functional Requirement 1.7}
 						\textbf{ID: FR1.7}\hfill \break
-						Title: Send the Data to the Front End\hfill \break
-						Description: Once the data has been place into a JSON object and formatted the API shall send the resulting data to the front end application so it can be displayed. This shall be done via an HTTP Post response. The JSON object that contains the formatted data shall be placed in the response body. The appropriate headers for the Response shall be set to indicate that the response contains a JSON object.\\
+						Title: Sending the data\hfill \break
+						Description: Once the data has been placed into a JSON object and formatted the API shall send the resulting data to the front end application so it can be displayed. This shall be done via an HTTP Post response. The JSON object that contains the formatted data shall be placed in the response body. The appropriate headers for the Response shall be set to indicate that the response contains a JSON object.\\
 						Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR1.6 and FR2.1\hfill \break
 
 			\subsubsection{Functional Requirements For Front End}
@@ -215,19 +216,19 @@ This section contains all of the functional and quality requirements of the \tex
 				\paragraph{Functional Requirement 2.1}
 					\textbf{ID: FR2.1}\hfill \break
 					Title: Landing Page.\hfill \break
-					Description: Upon loading the \textit{AgBizClimate} application the user will be directed to a loading page this page will allow the user to select between the short term climate tool and the long term climate tool.\\
+					Description: The \textit{AgBizClimate} application the will have a page that will allow the user to select between the short term climate tool and the long term climate tool.\\
 					Dependencies: None.\hfill \break
 
 				\paragraph{Functional Requirement 2.2}
 					\textbf{ID: FR2.2}\hfill \break
 					Title: Request data from API\hfill \break
-					Description: After selecting the short term data tool the user will be directed to a page where they will be required to enter the location they would like to analyze. This page will require the user to first enter a state via a drop down menu and then a county via a drop down menu. Clicking the continue button will send an HTTP request to the API for the climate data for the location the user requested. The Front end will then wait for a response to the request sent to the API. This request shall be made through an HTTP Post request.\\
+					Description: After selecting the short term data tool the user will be directed to a page where they will be required to enter the location they would like to analyze. This page will require the user to first enter a state via a drop down menu and then a county via a drop down menu. Clicking the continue button will send an HTTP request to the API for the climate data for the location the user requested. The Front end will then wait for a response to the request sent to the API. This request shall be made through an HTTP Get request.\\
 					Dependencies: FR2.1\hfill \break
 
 				\paragraph{Functional Requirement 2.3}
 					\textbf{ID: FR2.3}\hfill \break
 					Title: Plot the Data\hfill \break
-					Description: After the API processes the request for the data for the location the the user specified the front end will receive the response from the API. The front end shall then take the data out of the response body and use a plotting library to plot the data and display it to the user.\\
+					Description: After the API processes the request for the data for the location the the user specified the front end will receive the response from the API. The front end shall then consume the data in response body. The data will then be plotted using a plotting library to plot the data and displayed to the user.\\
 					Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR, 1.6, FR1.7, FR2.1 and FR2.2\hfill \break
 
 				\paragraph{Functional Requirement 2.4}
@@ -239,7 +240,7 @@ This section contains all of the functional and quality requirements of the \tex
 				\paragraph{Functional Requirement 2.5}
 					\textbf{ID: FR2.5}\hfill \break
 					Title: Redirect To Budget Tool.\hfill \break
-					Description: Once the user has entered the adjustments to the yield for the crop they are analyzing they shall then be redirected to the existing \textit{AgBizClimate} budgeting tool. This tool will be sent the data they entered in the previous step and shall reflect the adjustments to yield that they made.\\
+					Description: Once the user has entered the adjustments to the yield for the crop they are analyzing they shall then be redirected to the existing \textit{AgBizClimate} budgeting tool. This tool will be sent the data they entered in the previous step and shall reflect the adjustments to the yield.\\
 					Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5, FR, 1.6, FR1.7, FR2.1, FR2.2, FR2.3 and FR2.4\hfill \break
 			\subsubsection{Functional Requirements for Testing}
 				\paragraph{Functional Requirement 3.1}
@@ -287,11 +288,11 @@ This section contains all of the functional and quality requirements of the \tex
 						Description: In requirement 2.2 instead of using two drop down menus to select the location the user would be able to use a pin on a map of the US to select their location. This would be done through an existing library that would allow us to take a pin on a map and produce a latitude and longitude.\\
 						Dependencies: FR2.1 and FR2.2\\
 						
-						\paragraph{Stretch Requirement 1.2}
-							\textbf{ID: SR1.2}\hfill \break
-							Title: Using Many models to calculate plot data \hfill \break
-							Description: When requesting the model data we shall request many different climate models. We shall then run some statistical calculations on the data. These calculations shall create a 90\% confidence interval. This data will then be used to display the 90\% confidence interval to our users to indicate when there is uncertainty about what will happen.
-							Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5 and FR 2.1
+					\paragraph{Stretch Requirement 1.2}
+						\textbf{ID: SR1.2}\hfill \break
+						Title: Using Many models to calculate plot data \hfill \break
+						Description: When requesting the model data we shall request many different climate models. We shall then run some statistical calculations on the data. These calculations shall create a 90\% confidence interval. This data will then be used to display the 90\% confidence interval to our users to indicate when there is uncertainty about what will happen.\hfill \break
+						Dependencies: FR1.1, FR1.2, FR1.3, FR1.4, FR1.5 and FR 2.1 \hfill \break
 \begin{landscape}
 	\section{Gantt Chart}
 		An approximate schedule for the AgBizClimate project is shown below. Note that this schedule is subject to change.
