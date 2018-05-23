@@ -21,7 +21,7 @@
 				%Requirements Document
 				%Technology Review
 				%Design Document
-				Final Progress Report Winter 2018
+				Final Document
 				}
 
 \newcommand{\NameSigPair}[1]{\par
@@ -29,7 +29,7 @@
 \par\vspace{-12pt} \textit{\tiny\noindent
 \makebox[2.75in]{} \hfil		\makebox[3.25in]{\makebox[2.25in][r]{Signature} \hfill	\makebox[.75in][r]{Date}}}}
 % 3. If the document is not to be signed, uncomment the RENEWcommand below
-\renewcommand{\NameSigPair}[1]{#1}
+%\renewcommand{\NameSigPair}[1]{#1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -62,7 +62,7 @@
             \vspace{20pt}
         }
         \begin{abstract}
-					%Write Abstract here.
+			The purpose of this document is to provide documentation regarding the \textit{AgBizClimate} project. We will start off the document by giving a general overview of the \textit{AgBizClimate Project}. This will inclue information about the goals of the project, and information about the project stakeholders. Next we have our requirements document. In this section we will also discuss how our requirements have changed over the last several terms. Next we will be discussing the design document. In this section we will first display our original design document. We will then discuss how our design has changed over the term. After the design document we will display the tech review. Next, we will also display the project poster. Finally we will provide some project documentation regarding how project setup, running the project, how the project works and guids for any API's we are using. After this we will discuss any technical resources for learning more about the technologies that our project uses. Finally, We will end this document with our conclusions and reflections section. This section will involve reflecting on this project and discussing what went well and what didn't go well.\\
         \end{abstract}
     \end{singlespace}
 \end{titlepage}
@@ -76,43 +76,9 @@
 \clearpage
 
 % 8. now you write!
-%this section can likely be coppied from the design doc.
-\section{Introduction}
-	\subsection{Purpose}
-		The purpose of this document is to describe the progress we have made so far on the \textit{AgBizClimate} project. In this document we will give a brief introduction to the \textit{AgBizCliamte} project. In this section we will discuss the purpose of the project. Additionally, we will also discuss the scope of the project and an overview of the project functions.\\
-		This document is designed for the project owners. This document is also designed for the development team so we can evaluate our progress so far on this project. This project is also designed to fulfill the minimum requirements for the CS461 class for the OSU computer science program.\\
+% Will need to review this section to make sure its accurate and that it covers all the bullet points in the 
+% requirements for this section.
 
-				\subsection{Overview}
-			Seasonal climate is one of the essential factors that affects agricultural production. As a module of \textit{AgBiz Logic}, \textit{AgBizClimate} delivers essential information about climate change to farmers, and help professionals to develop management pathways that best fit their operations under a changing climate. This project aims to link the crucial seasonal climate data from the Northwest Climate Toolbox database to \textit{AgBiz Logic} so that it can provide changes in net returns of crop and livestock enterprises through powerful graphics and tables.\\
-
-		\subsection{Scope}
-			This project is a part of a much larger AgBiz Logic\texttrademark program. However, the purpose of this project is to add a short term climate tool to the \textit{AgBizClimate} module. This limits the scope of the project to the \textit{AgBizClimate} Module. Additionally, we will only be adding the short term climate data tool as the long term climate data tool already exists.\\
-
-			Currently \textit{AgBizClimate} has a long-term climate tool but no such tool exists for short term climate data. We will implement a tool to extract short-term climate data from the Northwest Climate Toolbox database, display it to the user and allow the user to adjust crop and livestock yields or quality of products sold and, production inputs. Moreover, a landing tool will be developed to allow users to switch between short-term seasonal tool and long-term climate data tool.\\
-
-		\subsection{Definitions, Acronyms and Abbreviations}
-			REST - Representational State Transfer, This is a type of architecture that manages the state of the program. This is especially popular in web development.\\
-			API- Application Programming Interface. This is a piece of software that allows a connection to another piece of software providing some sort of service.\\
-			NWCTB - Northwest Climate Toolbox. This is the database we will be connecting to that will provide the short term climate data we plan to use.\\
-			Thredds Data Server - This is a web server that provides meta-data and data access for scientific data sets using OPeNDAP along with some other remote data access protocols.\\
-			OPeNDAP - Open-source Project for a Network Data Access Protocol. This is the protocol we will be using to retrieve the data sets from the Thredds data server.\\
-			NMME - North American Multi-Model Ensemble. This is a data set that brings together a variety of different weather models into one data set.\\
-			Climate Scenario - This is a theoretical calculation of yields, inputs and of the overall budget for one situation based on the climate data.\\
-			NETCDF - This is a file storage format for large scientific data sets especially good for any data that is referenced on a grid and related to is geo-location.\\
-
-
-		%will need updates.
-		\subsection{Product Function Overview}
-		    \textit{AgBizClimate} is a web based decision tool that will allow users to gain specific insight on how localized climate data for the next seven months will affect their crop and livestock yields or quality of products sold and production inputs. The \textit{AgBizClimate} tool will allow users to input their location (state, county) and a budget for the specific crop or livestock enterprise. \textit{AgBizClimate} will select climate data for the next seven months for that location and provide graphical data showing temperature and precipitation. Users will then be able to change yields or quality of product sold by a percentage they think these factors will affect and modify production inputs. Finally the tool will calculate the net returns.\\
-
-
-
-		\renewcommand\refname{\vskip -1cm}
-		\subsection{References}
-
-		    \nocite{*}
-            \bibliographystyle{IEEEtran}
-            \bibliography{IEEEabrv,References}
 
 
 \section{Current Project State}
