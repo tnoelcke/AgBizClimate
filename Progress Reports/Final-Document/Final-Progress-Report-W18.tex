@@ -1,0 +1,294 @@
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{article}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{lscape}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{geometry}
+\usepackage{listings}
+\geometry{textheight=9.5in, textwidth=7in}
+
+% 1. Fill in these details
+\def \CapstoneTeamName{AgBizClimate}
+\def \CapstoneTeamNumber{26}
+\def \GroupMemberOne{}%Your Name Here
+\def \CapstoneProjectName{ Linking Seasonal Weather Data to AgBizClimate\texttrademark}
+\def \CapstoneSponsorCompany{ Oregon State University}
+\def \CapstoneSponsorPerson{ Clark Seavert}
+
+% 2. Uncomment the appropriate line below so that the document type works
+\def \DocType{		%Software Requirements Document
+				%Requirements Document
+				%Technology Review
+				%Design Document
+				Final Progress Report Winter 2018
+				}
+
+\newcommand{\NameSigPair}[1]{\par
+\makebox[2.75in][r]{#1} \hfil 	\makebox[3.25in]{\makebox[2.25in]{\hrulefill} \hfill		\makebox[.75in]{\hrulefill}}
+\par\vspace{-12pt} \textit{\tiny\noindent
+\makebox[2.75in]{} \hfil		\makebox[3.25in]{\makebox[2.25in][r]{Signature} \hfill	\makebox[.75in][r]{Date}}}}
+% 3. If the document is not to be signed, uncomment the RENEWcommand below
+\renewcommand{\NameSigPair}[1]{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{titlepage}
+    \pagenumbering{gobble}
+    \begin{singlespace}
+        \hfill
+        % 4. If you have a logo, use this includegraphics command to put it on the coversheet.
+        %\includegraphics[height=4cm]{CompanyLogo}
+        \par\vspace{.2in}
+        \centering
+        \scshape{
+            \huge CS Capstone \DocType \par
+            {\large\today}\par
+            \vspace{.5in}
+            \textbf{\Huge\CapstoneProjectName}\par
+            \vfill
+            {\large Prepared for}\par
+            \Huge \CapstoneSponsorCompany\par
+            \vspace{5pt}
+            {\Large\NameSigPair{\CapstoneSponsorPerson}\par}
+            {\large Prepared by }\par
+            Group\CapstoneTeamNumber\par
+            % 5. comment out the line below this one if you do not wish to name your team
+            %\CapstoneTeamName\par
+            \vspace{5pt}
+            {\Large
+                \NameSigPair{\GroupMemberOne}\par
+            }
+            \vspace{20pt}
+        }
+        \begin{abstract}
+					%Write Abstract here.
+        \end{abstract}
+    \end{singlespace}
+\end{titlepage}
+\newpage
+\pagenumbering{arabic}
+\tableofcontents
+% 7. uncomment this (if applicable). Consider adding a page break.
+%\listoffigures 
+\newpage
+%\listoftables
+\clearpage
+
+% 8. now you write!
+%this section can likely be coppied from the design doc.
+\section{Introduction}
+	\subsection{Purpose}
+		The purpose of this document is to describe the progress we have made so far on the \textit{AgBizClimate} project. In this document we will give a brief introduction to the \textit{AgBizCliamte} project. In this section we will discuss the purpose of the project. Additionally, we will also discuss the scope of the project and an overview of the project functions.\\
+		This document is designed for the project owners. This document is also designed for the development team so we can evaluate our progress so far on this project. This project is also designed to fulfill the minimum requirements for the CS461 class for the OSU computer science program.\\
+
+				\subsection{Overview}
+			Seasonal climate is one of the essential factors that affects agricultural production. As a module of \textit{AgBiz Logic}, \textit{AgBizClimate} delivers essential information about climate change to farmers, and help professionals to develop management pathways that best fit their operations under a changing climate. This project aims to link the crucial seasonal climate data from the Northwest Climate Toolbox database to \textit{AgBiz Logic} so that it can provide changes in net returns of crop and livestock enterprises through powerful graphics and tables.\\
+
+		\subsection{Scope}
+			This project is a part of a much larger AgBiz Logic\texttrademark program. However, the purpose of this project is to add a short term climate tool to the \textit{AgBizClimate} module. This limits the scope of the project to the \textit{AgBizClimate} Module. Additionally, we will only be adding the short term climate data tool as the long term climate data tool already exists.\\
+
+			Currently \textit{AgBizClimate} has a long-term climate tool but no such tool exists for short term climate data. We will implement a tool to extract short-term climate data from the Northwest Climate Toolbox database, display it to the user and allow the user to adjust crop and livestock yields or quality of products sold and, production inputs. Moreover, a landing tool will be developed to allow users to switch between short-term seasonal tool and long-term climate data tool.\\
+
+		\subsection{Definitions, Acronyms and Abbreviations}
+			REST - Representational State Transfer, This is a type of architecture that manages the state of the program. This is especially popular in web development.\\
+			API- Application Programming Interface. This is a piece of software that allows a connection to another piece of software providing some sort of service.\\
+			NWCTB - Northwest Climate Toolbox. This is the database we will be connecting to that will provide the short term climate data we plan to use.\\
+			Thredds Data Server - This is a web server that provides meta-data and data access for scientific data sets using OPeNDAP along with some other remote data access protocols.\\
+			OPeNDAP - Open-source Project for a Network Data Access Protocol. This is the protocol we will be using to retrieve the data sets from the Thredds data server.\\
+			NMME - North American Multi-Model Ensemble. This is a data set that brings together a variety of different weather models into one data set.\\
+			Climate Scenario - This is a theoretical calculation of yields, inputs and of the overall budget for one situation based on the climate data.\\
+			NETCDF - This is a file storage format for large scientific data sets especially good for any data that is referenced on a grid and related to is geo-location.\\
+
+
+		%will need updates.
+		\subsection{Product Function Overview}
+		    \textit{AgBizClimate} is a web based decision tool that will allow users to gain specific insight on how localized climate data for the next seven months will affect their crop and livestock yields or quality of products sold and production inputs. The \textit{AgBizClimate} tool will allow users to input their location (state, county) and a budget for the specific crop or livestock enterprise. \textit{AgBizClimate} will select climate data for the next seven months for that location and provide graphical data showing temperature and precipitation. Users will then be able to change yields or quality of product sold by a percentage they think these factors will affect and modify production inputs. Finally the tool will calculate the net returns.\\
+
+
+
+		\renewcommand\refname{\vskip -1cm}
+		\subsection{References}
+
+		    \nocite{*}
+            \bibliographystyle{IEEEtran}
+            \bibliography{IEEEabrv,References}
+
+
+\section{Current Project State}
+
+	\subsection{Resolved Items}
+	
+	\subsection{In progress}
+
+	\subsection{ToDo's}
+
+	\subsection{Blockers}
+
+
+	%will copy from one note. Will need to modify weekly summary from each week just a tiny bit to make this section work
+\section{Weekly summary of progress}
+	   In this section we will give a weekly summary of our progress on this project. For each we will list out our plans, problems we have encountered during the week and will show a summery of what we have accomplished during the week.\\
+
+		\subsection{Week 1}
+			\subsubsection{Plans}
+				\begin{itemize}
+					\item Meet with group to set up iteration one of project development.
+					\item Meet with Sean to set up git branch and discuss git workflow.
+					\item set taks for iteration 1.
+				\end{itemize}
+
+			\subsubsection{Progress}
+				\begin{itemize}
+					\item Forked github repo from AgBiz-Logic
+					\item Set up a meeting with Sean to discuss project development.
+					\item Started setting up tasks for iteration one on the git repo.
+					\item Started working on the Wiki page with common help items for the project.
+				\end{itemize}
+			\subsubsection{Problems}
+				\begin{itemize}
+					\item Still haven't heard any thing from the NWCTB team regarding API access for the climate data.
+				\end{itemize}
+
+			\subsubsection{Summary}
+			This week we tried to set up a meeting with Sean to do some project planning and set up for iteration one of our project. However, Sean was unavailable this week so we set up a meeting for next week. We also got our git repo, forked from \textit{AgBiz-Logic} set up. We started planning the first iteration of development on the project by adding issues to the github repository. We also started compiling some help pages on the Wiki of our repo.\\
+
+		\subsection{Week 2}
+			\subsubsection{Plans}
+				\begin{itemize}
+					\item Meet with Sean.
+					\item Start Iteration One.
+					\item Get UI elements implemented along with most of the front end functionality.
+					\item Plan iterations 2 and 3.
+				\end{itemize}
+			\subsubsection{Progress}
+				\begin{itemize}
+					\item Set up meeting with Sean Hammond for Friday at 1 pm.
+					\item Finished setting up iteration one tasks.
+					\item Finished adding content to the help wiki on the github repository.
+					\item Finally defined Climate Data API Access.
+					\item Set a Weekly status meeting time to meet with the group. We plan to meet every week at one pm.
+				\end{itemize}
+			\subsubsection{Problems}
+				\begin{itemize}
+					\item API Access is less than ideal and will require more work than we were planning on but is still better than having to write our own service from scratch.
+					\item Finding time to meet up as a group has been more challenging that I had anticipated.
+				\end{itemize}
+
+			\subsubsection{Summary}
+			This week we didn't get much development work done on our project like we had planed on. However, we did do some set up work. we finished setting up the github repository and finished laying out tasks on our story board. We also started defining what tasks we'd like to have in future iterations of our project. Additionally, we finally know what our API access to the climate data looks like. this will allow us to get the data we will need to plot. However, this will also require much more work that we had planned on and may set us back a bit in terms of our project schedule. That being said we worked in some flex time in to our schedule so we should be able to make it work.\\
+
+		\subsection{Week 3}
+			\subsubsection{Plans}
+				\begin{itemize}
+					\item Create proof of concept script for connecting to the database and getting data.
+					\item start working on front end changes.
+					\item Update design document and requirement document.
+					\item Meet with Sean for status update at 1pm on Friday.
+				\end{itemize}
+			\subsubsection{Progress}
+				\begin{itemize}
+					\item Started working on concept script.
+					\item Managed to gt dev environment set up instructions completed.
+					\item Installed netcdf.
+					\item Created example script for getting climate data from the thredds database. However we get some errors on certain reads.
+					\item Updated requirements document.
+				\end{itemize}
+			\subsubsection{Problems}
+				\begin{itemize}
+					\item We had a hard time getting NETCDF4 to install. We ended up using anaconda however we are guessing Sean doesn't want to use Anaconda and will want us to produce an install script.\\
+				\end{itemize}
+			\subsubsection{Summary}
+			This week was a primarily a week of setup. we spent most of our time trying to get the dev environment set up along with installing NETCDF4 and its dependencies. This week we did find a way to install NETCDF4 using anaconda. However, we anticipate that we will be required to find a better way to install it. In the mean time this will allow us to develop a concept script. We also managed to the development environment for AgBiz-Logic set up. This took us more time that we had anticipated but wasn't as difficult as we thought it might be. This week we also made some updates to the requirements document to reflect the changes to the climate data API.\\
+
+		\subsection{week 4}
+			\subsubsection{Plans}
+				\begin{itemize}
+					\item Start working on the front end of the application.
+					\item Refine the proof of concept to be more dynamic.
+					\item Write script to install netcdf and dependencies.
+					\item Start working on backend changes.
+					\item Update documents.
+				\end{itemize}
+			\subsubsection{Progress}
+				\begin{itemize}
+					\item Started working on refining proof of concept script to search for points if the point we asked for doesn't have data also added more advanced bounds checking.
+					\item Determined that NETCDF4 is having issues reading in blocks for chunk three.
+				\end{itemize}
+			\subsubsection{Problems}
+				\begin{itemize}
+					\item requests past index 435 on latitude cause a runtime error.
+				\end{itemize}
+			\subsubsection{Summary}
+			This week was mostly focused on working on the proof of concept scrip that will be used later to access the data from the thredds server. This week we discovered that the NETCDF4 library throws errors on any lat index greater than 435. We also discovered through the database administrator that this is the boundary between chunk two and chunk three of the file we are trying to read. We think that the NETCDF4 library may have a bug in it. Regardless we are going to need to find a work around moving forward. Shane and Thomas also got together on Saturday and started working on front end changes.\\
+
+		\subsection{week 5}
+			\subsubsection{Plans}
+				\begin{itemize}
+					\item Work on front end changes.
+					\item Follow up with NETCDF4 developers about potential bug.
+					\item Continue to work on concept script to see if we can tease out the runtime error.
+					\item Finish NETCDF5 install script.
+					\item Research other potential options other than python or netcdf4 for reading in data from the serer.\\
+
+				\end{itemize}
+			\subsubsection{Progress}
+				\begin{itemize}
+					\item Followed up with netcdf4 people.
+					\item Shane finished the netcdf4 install script.
+					\item Researched alternatives to netcdf4 We can write a c program that will to the same thing. There are a few other libraries for reading data via opendap.
+					\item made progress on frontend changes.
+				\end{itemize}
+
+			\subsubsection{Problems}
+				\begin{itemize}
+					\item Issues with netcdf4 library.
+					\item netcdf4 developers will not fix unless I can produce a self contained example of the read failing.
+					\item We think that netcdf4 dependencies may not be installed correctly.
+				\end{itemize}
+
+			\subsubsection{Summary}
+			 This week we made progress on the front end development and installing the dependencies for netcdf. However, we've run into some issues with netcdf. We think we maybe able to fix it by installing the dependencies for netcdf from source with certain flags enabled but we aren't totally sure on that. We also started work on setting up the end point where the API will live. The plan for now is to have it serve mock data as to enable us to continue with the rest of the development work without getting behind.\\
+
+		%will fill out this section later this week.
+		\subsection{week 6}
+			\subsubsection{Plans}
+				\begin{itemize}
+					\item Finish development of the charts page.
+					\item Set up API to mock data.
+					\item Figure out work around for netCDF problems.
+					\item write the midterm progress report.
+					\item make the midterm progress presentation.
+					\item finish the poster rough draft.
+				\end{itemize}
+			\subsubsection{Progress}
+				\begin{itemize}
+					\item Finished Development on the charts page.
+					\item Finished the midterm progress report.
+					\item Made the midterm progress report presentation.
+					\item Finished the Poster rough draft.
+					\item Found a work around for NETCDF4 issues.
+				\end{itemize}
+			\subsubsection{Problems}
+				\begin{itemize}
+					\item Created some bugs by introducing short term climate scenarios.
+						\subitem There are many ways we can fix this problem we will need to discuss with Sean how he wants this solved.
+				\end{itemize}
+			\subsubsection{Summary} This week was a busy week. This week we accomplished most of the front end development required by this project in the maps page. However, we also introduced some bugs. Mostly we created and issue where if you have multiple budgets its not possible to tell what page you need to redirect to once you save your budget. There are many ways we can solve this so I want to ask Sean how he thinks the best way to go about this is. This week we also made our expo poster along with creating the midterm progress report document and presentation. Additionally, Shengpei found a work around to the NETCDF problems we've been having.\\
+
+\section{Retrospective}
+	\begin{center}
+		\begin{tabular}{| p{0.3\linewidth} | p{0.3\linewidth} | p{0.3\linewidth} |}
+		\hline
+		Positives & Deltas & Actions \\ \hline
+		This Is an example & of How this structure & works \\ \hline
+	\end{tabular}
+\end{center}
+	
+	
+\section{Peer Reviews}
+
+
+
+
+\end{document}
