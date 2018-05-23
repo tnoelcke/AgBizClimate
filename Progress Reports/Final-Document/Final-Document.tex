@@ -123,180 +123,34 @@
 		We are assuming that the NMME Thredds data base will allow us to pull location based temperature and precipitation data. This data will come in the form of a NetCDF files which we will then read and format a JSON response. Due to the fact that we are writing an addition to an existing project we do not need to interact with the user budgets as these have already been defined. This fact extends to the calculations portion of the \textit{AgBizClimate} product. Our team will simply be accessing data via the NMME threadds database, will then format the data, store the data, and hand the data over to the front end or some other sort of client.\\
 
 
-\section{Current Project State}
+\section{Requirements Document}
 
-	\subsection{Resolved Items}
-	
-	\subsection{In progress}
+\section{Design Document}
 
-	\subsection{ToDo's}
+\section{Tech Review}
 
-	\subsection{Blockers}
+\section{Weekly Blog Posts}
+    \subsection{Shane Barrantes}
+    
+    \subsection{Thomas Noelcke}
+    
+    \subsection{Shengpei Yuan}
 
+\section{Final Poster}
 
-	%will copy from one note. Will need to modify weekly summary from each week just a tiny bit to make this section work
-\section{Weekly summary of progress}
-	   In this section we will give a weekly summary of our progress on this project. For each we will list out our plans, problems we have encountered during the week and will show a summery of what we have accomplished during the week.\\
+%We will put set up and configuration steps here. We will also discuss how our project works. Hardware and software requirements. User guids, API Docs.
+\section{Project Documentation}
 
-		\subsection{Week 1}
-			\subsubsection{Plans}
-				\begin{itemize}
-					\item Meet with group to set up iteration one of project development.
-					\item Meet with Sean to set up git branch and discuss git workflow.
-					\item set taks for iteration 1.
-				\end{itemize}
+\section{Recommended Technical Resources}
 
-			\subsubsection{Progress}
-				\begin{itemize}
-					\item Forked github repo from AgBiz-Logic
-					\item Set up a meeting with Sean to discuss project development.
-					\item Started setting up tasks for iteration one on the git repo.
-					\item Started working on the Wiki page with common help items for the project.
-				\end{itemize}
-			\subsubsection{Problems}
-				\begin{itemize}
-					\item Still haven't heard any thing from the NWCTB team regarding API access for the climate data.
-				\end{itemize}
+\section{Conclusions and Reflections}
+    \subsection{Shane Barrantes}
+    
+    \subsection{Thomas Noelcke}
+    
+    \subsection{Shengpei Yuan}
+    
+\section{Appendix 1: Essential Code Listings}
 
-			\subsubsection{Summary}
-			This week we tried to set up a meeting with Sean to do some project planning and set up for iteration one of our project. However, Sean was unavailable this week so we set up a meeting for next week. We also got our git repo, forked from \textit{AgBiz-Logic} set up. We started planning the first iteration of development on the project by adding issues to the github repository. We also started compiling some help pages on the Wiki of our repo.\\
-
-		\subsection{Week 2}
-			\subsubsection{Plans}
-				\begin{itemize}
-					\item Meet with Sean.
-					\item Start Iteration One.
-					\item Get UI elements implemented along with most of the front end functionality.
-					\item Plan iterations 2 and 3.
-				\end{itemize}
-			\subsubsection{Progress}
-				\begin{itemize}
-					\item Set up meeting with Sean Hammond for Friday at 1 pm.
-					\item Finished setting up iteration one tasks.
-					\item Finished adding content to the help wiki on the github repository.
-					\item Finally defined Climate Data API Access.
-					\item Set a Weekly status meeting time to meet with the group. We plan to meet every week at one pm.
-				\end{itemize}
-			\subsubsection{Problems}
-				\begin{itemize}
-					\item API Access is less than ideal and will require more work than we were planning on but is still better than having to write our own service from scratch.
-					\item Finding time to meet up as a group has been more challenging that I had anticipated.
-				\end{itemize}
-
-			\subsubsection{Summary}
-			This week we didn't get much development work done on our project like we had planed on. However, we did do some set up work. we finished setting up the github repository and finished laying out tasks on our story board. We also started defining what tasks we'd like to have in future iterations of our project. Additionally, we finally know what our API access to the climate data looks like. this will allow us to get the data we will need to plot. However, this will also require much more work that we had planned on and may set us back a bit in terms of our project schedule. That being said we worked in some flex time in to our schedule so we should be able to make it work.\\
-
-		\subsection{Week 3}
-			\subsubsection{Plans}
-				\begin{itemize}
-					\item Create proof of concept script for connecting to the database and getting data.
-					\item start working on front end changes.
-					\item Update design document and requirement document.
-					\item Meet with Sean for status update at 1pm on Friday.
-				\end{itemize}
-			\subsubsection{Progress}
-				\begin{itemize}
-					\item Started working on concept script.
-					\item Managed to gt dev environment set up instructions completed.
-					\item Installed netcdf.
-					\item Created example script for getting climate data from the thredds database. However we get some errors on certain reads.
-					\item Updated requirements document.
-				\end{itemize}
-			\subsubsection{Problems}
-				\begin{itemize}
-					\item We had a hard time getting NETCDF4 to install. We ended up using anaconda however we are guessing Sean doesn't want to use Anaconda and will want us to produce an install script.\\
-				\end{itemize}
-			\subsubsection{Summary}
-			This week was a primarily a week of setup. we spent most of our time trying to get the dev environment set up along with installing NETCDF4 and its dependencies. This week we did find a way to install NETCDF4 using anaconda. However, we anticipate that we will be required to find a better way to install it. In the mean time this will allow us to develop a concept script. We also managed to the development environment for AgBiz-Logic set up. This took us more time that we had anticipated but wasn't as difficult as we thought it might be. This week we also made some updates to the requirements document to reflect the changes to the climate data API.\\
-
-		\subsection{week 4}
-			\subsubsection{Plans}
-				\begin{itemize}
-					\item Start working on the front end of the application.
-					\item Refine the proof of concept to be more dynamic.
-					\item Write script to install netcdf and dependencies.
-					\item Start working on backend changes.
-					\item Update documents.
-				\end{itemize}
-			\subsubsection{Progress}
-				\begin{itemize}
-					\item Started working on refining proof of concept script to search for points if the point we asked for doesn't have data also added more advanced bounds checking.
-					\item Determined that NETCDF4 is having issues reading in blocks for chunk three.
-				\end{itemize}
-			\subsubsection{Problems}
-				\begin{itemize}
-					\item requests past index 435 on latitude cause a runtime error.
-				\end{itemize}
-			\subsubsection{Summary}
-			This week was mostly focused on working on the proof of concept scrip that will be used later to access the data from the thredds server. This week we discovered that the NETCDF4 library throws errors on any lat index greater than 435. We also discovered through the database administrator that this is the boundary between chunk two and chunk three of the file we are trying to read. We think that the NETCDF4 library may have a bug in it. Regardless we are going to need to find a work around moving forward. Shane and Thomas also got together on Saturday and started working on front end changes.\\
-
-		\subsection{week 5}
-			\subsubsection{Plans}
-				\begin{itemize}
-					\item Work on front end changes.
-					\item Follow up with NETCDF4 developers about potential bug.
-					\item Continue to work on concept script to see if we can tease out the runtime error.
-					\item Finish NETCDF5 install script.
-					\item Research other potential options other than python or netcdf4 for reading in data from the serer.\\
-
-				\end{itemize}
-			\subsubsection{Progress}
-				\begin{itemize}
-					\item Followed up with netcdf4 people.
-					\item Shane finished the netcdf4 install script.
-					\item Researched alternatives to netcdf4 We can write a c program that will to the same thing. There are a few other libraries for reading data via opendap.
-					\item made progress on frontend changes.
-				\end{itemize}
-
-			\subsubsection{Problems}
-				\begin{itemize}
-					\item Issues with netcdf4 library.
-					\item netcdf4 developers will not fix unless I can produce a self contained example of the read failing.
-					\item We think that netcdf4 dependencies may not be installed correctly.
-				\end{itemize}
-
-			\subsubsection{Summary}
-			 This week we made progress on the front end development and installing the dependencies for netcdf. However, we've run into some issues with netcdf. We think we maybe able to fix it by installing the dependencies for netcdf from source with certain flags enabled but we aren't totally sure on that. We also started work on setting up the end point where the API will live. The plan for now is to have it serve mock data as to enable us to continue with the rest of the development work without getting behind.\\
-
-		%will fill out this section later this week.
-		\subsection{week 6}
-			\subsubsection{Plans}
-				\begin{itemize}
-					\item Finish development of the charts page.
-					\item Set up API to mock data.
-					\item Figure out work around for netCDF problems.
-					\item write the midterm progress report.
-					\item make the midterm progress presentation.
-					\item finish the poster rough draft.
-				\end{itemize}
-			\subsubsection{Progress}
-				\begin{itemize}
-					\item Finished Development on the charts page.
-					\item Finished the midterm progress report.
-					\item Made the midterm progress report presentation.
-					\item Finished the Poster rough draft.
-					\item Found a work around for NETCDF4 issues.
-				\end{itemize}
-			\subsubsection{Problems}
-				\begin{itemize}
-					\item Created some bugs by introducing short term climate scenarios.
-						\subitem There are many ways we can fix this problem we will need to discuss with Sean how he wants this solved.
-				\end{itemize}
-			\subsubsection{Summary} This week was a busy week. This week we accomplished most of the front end development required by this project in the maps page. However, we also introduced some bugs. Mostly we created and issue where if you have multiple budgets its not possible to tell what page you need to redirect to once you save your budget. There are many ways we can solve this so I want to ask Sean how he thinks the best way to go about this is. This week we also made our expo poster along with creating the midterm progress report document and presentation. Additionally, Shengpei found a work around to the NETCDF problems we've been having.\\
-
-\section{Retrospective}
-	\begin{center}
-		\begin{tabular}{| p{0.3\linewidth} | p{0.3\linewidth} | p{0.3\linewidth} |}
-		\hline
-		Positives & Deltas & Actions \\ \hline
-		This Is an example & of How this structure & works \\ \hline
-	\end{tabular}
-\end{center}
-	
-	
-\section{Peer Reviews}
-
-
-
-
+\section{Appendix 2: Catch all}
 \end{document}
