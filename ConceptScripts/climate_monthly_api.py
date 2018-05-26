@@ -26,8 +26,8 @@ class NMMEClimateData:
         ''' Default parameters (configuration) to call Downscaled NMME Forecast Data.
         '''
         self.precision=2
-        self.lat = 44
-        self.lon = -123
+        self.lat = 24
+        self.lon = -124
         self.mod = 'CFSv2'
         
         self.climate_data = [ ]  # date, tmp2m, prate, prate_anom, tmp2m_anom
