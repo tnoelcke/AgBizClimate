@@ -674,71 +674,101 @@
 		\subsubsection{Week 3.3}
 		    \paragraph{Plans} \hfill \break
 		        \begin{itemize}
-		            \item 
+		            \item Write Matlab API or figure out alternative wat to get data from database.\\
+		            \item If we solve data issues start writing tests for backend code.\\
+		            \item Add hoc testing.
 		        \end{itemize}
 		    \paragraph{Progress} \hfill \break
 		        \begin{itemize}
-		            \item 
+		            \item Started working on alternate data API.
+		            \item Found that MatLab was not going to work out as it was going to be hard to virtualize along with the fact that we can't export the interpreter.\\
+		            \item Tried R implimentation and discovered that R has the same problem as the python version.\\
+		            \item Meet with Sean to come up with a better solution for Accessing the data. We decied we will have to produce a chron job that gets the data every month and we will then spin that data into a mongodb database.\\
 		        \end{itemize}
 		    \paragraph{Problems} \hfill \break
 		        \begin{itemize}
-		            \item 
+		            \item Currently our API doesn't return and hangs indefinitely. We were previously accessing the data using a URL method. We've tested this method and determined its the database we are connecting to that is hanging.
+		            \item The underlying C library for the NETCDF library we are using has a bug in it or the server we are connecting to is set up incorrectly. Either way we are not going to be able to depend on this library to read files over the network.\\
 		        \end{itemize}
 		    \paragraph{Summary} \hfill \break
+		        This week we started looking for a solution to our data API problems. We discovered that matlab was not going to be a viable solution as it is impossible to virtualize along with the fact that exporting the interpreter is impossible. We also tried an R version of the same thing and were able to get the up and running but we get the same errors as the python library. In the end we are stuck downloading the whole file and storing it on the local server every month.\\
 
 		\subsubsection{Week 3.4}
 		    \paragraph{Plans} \hfill \break
 		        \begin{itemize}
-		            \item 
+		            \item Meet to work on and discuss solution to problems getting data.\\
+		            \item create script to download data and place data in a database.\\
+		            \item Set up Django to use named database for short term data.\\
+		            \item Test this solution using a container.\\
 		        \end{itemize}
 		    \paragraph{Progress} \hfill \break
 		        \begin{itemize}
-		            \item 
+		            \item Started working on creating database script.\\
+		            \item Decided to abandon the idea of using DB all together and decided to use mount bind to share directory between the os and the container.\\
+		            \item Started workin gon proof of concept for mount bind.\\
 		        \end{itemize}
 		    \paragraph{Problems} \hfill \break
 		        \begin{itemize}
-		            \item 
+		            \item Having issues getting docker image to run using rocket.\\
 		        \end{itemize}
 		    \paragraph{Summary} \hfill \break
-		    
+		        This week we entertained the soltion of using mongodb to store our climate database. However, after some research and thinking about the problem we decided that the best solution was really just to use a mount bind to share a directory between the os and container. We also started working on getting a proof of concept up for this solution. We have run into some issues getting rkt to run a docker image.\\
 		\subsubsection{Week 3.5}
 		    \paragraph{Plans} \hfill \break
 		        \begin{itemize}
-		            \item 
+		            \item Create Concept solution showing that we can bind mount on a native OS file in the rocket container.\\
+		            \item Produce API that uses local version of the netcdf file.\\
+		            \item start working on testing if we can get the API up and running.\\
+		            \item Update Poster and Submit.\\
+		            \item Complete midterm progress report.\\
 		        \end{itemize}
 		    \paragraph{Progress} \hfill \break
 		        \begin{itemize}
-		            \item 
+		            \item On sunday i produced a proof of concept showing that a mount bind works the way I expected it too.\\
+		            \item produced API that uses local version of the netcdf file.\\
+		            \item Created template for midterm progress report doc.\\
+		            \item Worked on midterm progress report and finished it.\\
+		            \item Worked with group to record progress report.\\
+		            \item Reimplimented API.\\
+		            \item Set up api to fail gracefully.\\
 		        \end{itemize}
 		    \paragraph{Problems} \hfill \break
 		        \begin{itemize}
-		            \item 
+		            \item To much work and not enough time.\\
 		        \end{itemize}
 		    \paragraph{Summary} \hfill \break
-		    
+		        This week we made alot of progress on the API. Most of this week development efforts were directed at the API. We managed to rewrite the API so that it uses a local netcdf file containing the climate data. Additionally the location of this file is provided through a configuration file so that it can be set differently for prod vs dev. The API has also been set to handle if the file doesn't exist with out throwing exception's. Finally, we will also set up the API to deal with searching the data when it finds a point that does not have a value. If no data can be found with in the nearest 99 locations then an error will be returned.\\
 		\subsubsection{Week 3.6}
 		    \paragraph{Plans} \hfill \break
 		        \begin{itemize}
-		            \item 
+		            \item Start working on QA and testing.
+		            \item Bug fixes.
+		            \item Layout final schedule.
+		            \item Start Document Updates.
 		        \end{itemize}
 		    \paragraph{Progress} \hfill \break
 		        \begin{itemize}
-		            \item 
+		            \item Came up with final time line and schedule for project.
+		            \item Met with Sean to discuss final hand off date for the project.\\
+		            \item Started working on backend unit test along with updating front end unit tests.\\
 		        \end{itemize}
 		    \paragraph{Problems} \hfill \break
 		        \begin{itemize}
-		            \item 
+		            No problems this week.\\
 		        \end{itemize}
 		    \paragraph{Summary} \hfill \break
-		    
+		    This week was a busy week for all of us as we all had midterms and other projects due. As such we did not spend very much time working on the project this week. Most of the work we got done this week was planning work. However, we did start working on unit tests for the API. I anticipate we will be able to finish up development and testing next week and will be able to hand off the project next week.\\
 		\subsubsection{Week 3.7}
 		    \paragraph{Plans} \hfill \break
 		        \begin{itemize}
-		            \item 
+		            \item Expo.\\
+		            \item Finish testing.\\
 		        \end{itemize}
 		    \paragraph{Progress} \hfill \break
 		        \begin{itemize}
-		            \item 
+		            \item Finished updating front end unit tests.\\
+		            \item Attended Expo.\\
+		            \item Changed minor wording changes on chart page.\\
 		        \end{itemize}
 		    \paragraph{Problems} \hfill \break
 		        \begin{itemize}
