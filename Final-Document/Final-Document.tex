@@ -157,23 +157,47 @@
         \subsubsection{Introduction}
 	    Through out this process some things mentioned above the introduction has changed to reflect the changes to the application. Specifically, We are no longer using NWCTB as we had originally assumed. Instead we are using a Threadds server hosted by the university of Idaho. As such we would change the references to the NWCTB to NMME Threadds database.\\ 
 	    
-	    \subsubsection{Overview}
+	    \subsubsection{Overall description}
+	    Several things changed over the term in the overall descriptions section, constraints, and Assumptions and Dependencies. The constraints changed because we were originally thinking we were going to be required to use the NWCTB API to get the data. Instead of the NWCTB were actually constrained by the downscale NMME Threadds database hosted at University of Idaho. The assumptions and dependencies for similar reasons. We were originally assuming that we were going to need to use the NWCTB to get the data. However, because we ended using the Threadds database this introduced a slew of new dependencies including, netcdf4, the OPeNDAP protocol and HDF5.\\
 	    
 	    \subsubsection{User Interface Changes}
 	    Through out the process of building this application we found that there were a variety of changes were made to the UI design we originally proposed. Below we will discuss the changes we made to the UI. We will break down these changes by section as that's how it was done in the design document. Each section represents a page.\\
 	    
-	    \paragraph{Landing page}
-	    Originally we had proposed a landing page. This would be more properly called the climate manager. 
+	        \paragraph{Landing page}
+	         Originally we though we were going to use the climate manager page to branch between the different climate scenario types. We were going to do this using a button that would create a new short term climate scenario. We ended up choosing to branch a bit later in the process as it made our application simpler. As such the climate manager now only contains one button to create a new climate scenario. The climate manager also allows you to review old scenarios and to delete old scenarios. This was not functionality included in the original document.\\
+	    
+	        \paragraph{New Climate Scenario Page}
+	        The New Climate Scenario page design was more or less unchanged however we did not adequately describe the page in our initial requirements document. We never specified that the user would be able to add up to five budgets using this page.\\
+
+	        \paragraph{Region Select Page}
+	        Originally, the region select page was just going to be to select the region. However, early on in development we realized that if we had our user select the region and forecast scope on this page that it would simplify our work flow. So instead of just selecting state and county the user now selects climate forecast type, state and county. We also did not mention that the user will not be allow to continue with out entering all three of these items.\\
+	        
+	        \paragraph{Charts Page}
+	        In our initial draft of our requirements document we had planed to use a drop down menu to allow the user to select different plots that they might want to look at. We decided that it would be better to use tabs for the same functionality. So now the user may switch between different charts using tabs rather than using a drop down menu.\\
+	    
+	        \paragraph{Climate Summary Page}
+	        We added a new page to the User Interface description. In our original requirements document we did not know we would have a summary page, however the client already had a summary page implemented that we were able to plug the data we created in the short term tool. This page allows the user to see a summary and visual representation of what they did during their short term scenario.\\
+        
+        \subsubsection{Interfaces}
+        Given that the source of our data changed we also made some changes to the hardware and software interfaces. The big change to the hardware interface is that we are now using a Threadds server located at the university of Idaho. Previously we were assuming we would be able to use the NWCTB to get the data.\\
+        
+        We also made some changes the software interface. Given that the source of our data changed several times through out the term we are no longer using the NWCTB to get our data. In fact we are now downloading the data monthly and placing in on the dev server. We are then passing the file to the container our application is run in via a mount bind. As such the software interfaces for our application changed drastically over the term. We now have to include the dev server as part of our software interface. It is also important to note that we are interfacing with the Threadds server at University of Idaho.\\ 
         
         \subsubsection{Functional Requirements changes}
-		    \paragraph{}
+            In this section we will discuss how the functional requirements have changed through out the course of the project. We will only discuss the requirements that have changed and will not discuss requirements that have not changed.\\ 
+            
+		    \paragraph{Functional Requirement 1.3: The data source}
+		    As mentioned previously the source of the data changed from the NWCTB to the threads server hosted at University of Idaho. Additionally, the way our application uses this data changed through out the project. We were initially planning getting each data point as needed. However, we ended up storing the whole data file on the dev server.\\
 		    
+		    \paragraph{Functional Requirement 1.4: Getting the Data}
+		    In our original draft of the document we hadn't had a chance to look at the data yet and did not know that the data would be somewhat sparsely populated. So as the project moved along we realized that it would be possible to request a point and get NAN as a result even though it was in the middle of the data set. As such we were required to do some searching if the initial result was NAN. We eventually settled on searching with in a 20 mile radius as it was unlikely that there was not data with a 20 mile radius. We also realized that 20 miles was an acceptable margin for error.\\
 		    
+		    \paragraph{Functional Requirement 1.5: Calculating Historical Data}
+		    In our original document this requirement was actually sending a request for the data from the server. We swapped this requirement for calculating historic data because our client wanted to be able to see the projection vs the historical data and we are no longer making requests for the data as it is available locally.\\
 		    
-	
-
-		
-		
+		    \paragraph{Functional Requirement 1.6: Formatting the Data}
+		    In our original document we were under the assumption that we would be sending a request for the data and processing the result. So this requirement changed from processing the data returned by our call to an API to formatting the data into a usable json object.\\
+		   
 \section{Design Document}
     \subsection{Original Document}
         \includepdf[pages={1-33}]{./Original-Docs/DesignDoc/AgBizClimateDesignDoc.pdf}
@@ -184,10 +208,366 @@
 
 \section{Weekly Blog Posts}
     \subsection{Shane Barrantes}
+        In This section I've imported the notes from my weekly OneNote updates. I will be denoting the term and week with the following format [Term Number].[Week].
+        
+        \subsubsection{Week 1.1}
+		    
+		    \paragraph{Plans} \hfill \break
+
+		    \paragraph{Problems} \hfill \break
+
+		    \paragraph{Progress} \hfill \break
+
+		    \paragraph{Summary} \hfill \break
+		         I signed up for project preferences and reached out to multiple project managers, none responded back. \\
+		         
+		\subsubsection{Week 1.2}
+		
+		    \paragraph{Plans} \hfill \break
+		        
+		    \paragraph{Problems} \hfill \break
+		
+		    \paragraph{Progress} \hfill \break
+		    
+		    \paragraph{Summary} \hfill \break
+		        I was assigned to the agbiz project. I met with my group and we emailed the client to setup a meeting for Tuesday of next week. 
+		    \\ 
+		        
+		\subsubsection{Week 1.3}
+		
+		    \paragraph{Plans} \hfill \break
+
+		    \paragraph{Problems} \hfill \break
+
+		    \paragraph{Progress} \hfill \break
+		    
+		    \paragraph{Summary} \hfill \break
+		    	\begin{itemize}
+		        \item Met with client to get overview of project.
+                \item Met with TA to better understand his role in project.
+                \item Met with Senior tech of project to discuss the \item specifications of the project.
+                \end{itemize}
+
+		\subsubsection{Week 1.4}
+			\paragraph{Plans} \hfill \break
+
+		    \paragraph{Problems} \hfill \break
+
+		    \paragraph{Progress} \hfill \break
+		    
+		    \paragraph{Summary}
+		    	\begin{itemize}
+		            \item Met with group to make the final draft of the problem statement.
+                    \item Signed a newly sprung NDA, will turn in early next week... 
+                    \item  Met with the TA.
+                \end{itemize}
+
+
+		\subsubsection{Week 1.5}
+		
+		    \paragraph{Plans} \hfill \break
+
+		    \paragraph{Problems} \hfill \break
+
+		    \paragraph{Progress} \hfill \break
+
+		    \paragraph{Summary} \hfill \break
+		    	\begin{itemize}
+		            \item Turned in Problem statement.
+                    \item Met with Client to discuss requirements document.
+                    \item Met with the TA.\\
+                \end{itemize}
+
+
+		\subsubsection{Week 1.6}
+		
+		    \paragraph{Plans} \hfill \break
+		
+		    \paragraph{Problems} \hfill \break
+
+		    \paragraph{Progress} \hfill \break
+
+		    \paragraph{Summary} \hfill \
+		        \begin{itemize}
+		            \item Met with client to discuss the requirements \item document again.
+                    \item Turned in rough draft of the requirements document. 
+                    \item Met with the TA. \\
+                \end{itemize}
+
+		
+		\subsubsection{Week 1.8}
+		
+			\paragraph{Plans} \hfill \break
+		
+		    \paragraph{Problems} \hfill \break
+
+		    \paragraph{Progress} \hfill \break
+
+		    \paragraph{Summary}
+		    \begin{itemize}
+		    \item Turned in Rough draft of the technical review.
+            \item Met with TA.
+            \end{itemize}
+
+		    
+		\subsubsection{Week 1.9}
+		
+			\paragraph{Plans} \hfill \break
+
+		    \paragraph{Problems} \hfill \break
+
+		    \paragraph{Progress} \hfill \break
+
+		    \paragraph{Summary} \hfill \break
+		    \begin{itemize}
+                \item Meeting with TA cancelled.  
+                \item Worked on design document. \\
+		     \end{itemize}
+		\subsubsection{Week 1.10}
+		
+		    \paragraph{Plans} \hfill \break
+
+		    \paragraph{Problems} \hfill \break
+
+		    \paragraph{Progress} \hfill \break
+
+		    \paragraph{Summary} \hfill \break
+		        \begin{itemize}
+                    \item Didn't meet with TA, got cancelled. 
+                    \item Finished/turned in design document. 
+                    \item Made progress report 
+                \end{itemize}
+                		        
+		  \subsubsection{Week 2.1}
+			\paragraph{Plans} \hfill \break
+
+
+			\paragraph{Progress} \hfill \break
+
+			\paragraph{Problems} \hfill \break
+
+
+			\paragraph{Summary} \hfill \break
+			    \begin{itemize}
+                    \item Met with the client
+                    \item Got repo permissions
+                    \item Set tasks
+                \end{itemize}
+
+		\subsubsection{Week 2.2}
+			\paragraph{Plans}
+	
+			\paragraph{Progress} \hfill \break
+
+			\paragraph{Problems} \hfill \break
+
+			\paragraph{Summary}\hfill \break
+			    \begin{itemize}
+                    \item Met with the client
+                    \item Defined API access
+                \end{itemize}
+    
+		\subsubsection{Week 2.3}
+			\paragraph{Plans} \hfill \break
+
+			\paragraph{Progress} \hfill \break
+
+			\paragraph{Problems} \hfill \break
+
+			\paragraph{Summary} \hfill \break
+				\begin{itemize}
+                    \item Worked on concept script 
+                    \item Installed NetCDF and associated packages.
+                \end{itemize}
+    
+
+		\subsubsection{week 2.4}
+			\paragraph{Plans} \hfill \break
+
+			\paragraph{Progress} \hfill \break
+
+			\paragraph{Problems} \hfill \break
+
+			\paragraph{Summary} \hfill \break
+				\begin{itemize}
+                    \item Met with the client
+                    \item Defined API access
+                \end{itemize}
+                
+		\subsubsection{week 2.5}
+			\paragraph{Plans} \hfill \break
+
+			\paragraph{Progress} \hfill \break
+
+			\paragraph{Problems} \hfill \break
+
+			\paragraph{Summary} \hfill \break
+				\begin{itemize}
+                    \item Met with the client
+                    \item Worked on building NetCDF pipeline from source and all associated packages 
+                \end{itemize}
+
+		%will fill out this section later this week.
+		\subsubsection{week 2.6}
+			\paragraph{Plans} \hfill \break
+
+			\paragraph{Progress} \hfill \break
+
+			\paragraph{Problems} \hfill \break
+
+			\paragraph{Summary} \hfill \break
+				\begin{itemize}
+                    \item Finished development of the primary charts page
+                    \item Completed the midterm progress report 
+                \end{itemize}
+			
+		\subsubsection{week 2.7}
+			\paragraph{Plans} \hfill \break
+		    \paragraph{Progress} \hfill \break
+			\paragraph{Problems} \hfill \break
+			\paragraph{Summary} \hfill \break
+				\begin{itemize}
+                    \item Showed client the alpha in meeting 
+                    \item Found a solution to bypass NetCDF to get climate data via URL 
+                \end{itemize}
+
+		\subsubsection{week 2.8}
+			\paragraph{Plans} \hfill \break
+
+			\paragraph{Progress} \hfill \break
+
+			\paragraph{Problems} \hfill \break
+
+			\paragraph{Summary} \hfill \break
+			    Completed the concept script which allowed us to get climate data while bypassing NetCDF.
+
+		\subsubsection{week 2.9}
+			\paragraph{Plans} \hfill \break
+
+			\paragraph{Progress} \hfill \break
+
+			\paragraph{Problems} \hfill \break 
+			
+			\paragraph{Summary} \hfill \break 
+                Created API endpoint for the climate data and charts to pull from.
+
+		\subsubsection{week 2.10}
+			\paragraph{Plans} \hfill \break
+
+			\paragraph{Progress} \hfill \break
+
+			\paragraph{Problems} \hfill \break
+
+			\paragraph{Summary} \hfill \break
+			    Integrated the climate data API into the beta and showed it to the client.
+		
+		\subsubsection{Week 3.1}
+		    \paragraph{Plans} \hfill \break
+
+		    \paragraph{Progress} \hfill \break
+
+		    \paragraph{Problems} \hfill \break
+	
+		    \paragraph{Summary} \hfill \break
+				\begin{itemize}
+                    \item Weren't able to get in contact with TA 
+                    \item Talked with team about plans for the term 
+                \end{itemize}
+		    
+        \subsubsection{Week 3.2}
+		    \paragraph{Plans} \hfill \break
+
+		    \paragraph{Progress} \hfill \break
+		        
+		    \paragraph{Problems} \hfill \break
+		        
+		    \paragraph{Summary} \hfill \break
+		            Found out that the API solution we spent months on doesn't actually work.
+		    
+    
+		\subsubsection{Week 3.3}
+		    \paragraph{Plans} \hfill \break
+
+		    \paragraph{Progress} \hfill \break
+		        
+		    \paragraph{Problems} \hfill \break
+
+		    \paragraph{Summary} \hfill \break
+		        Tried R and MatLab NetCDF solutions for our API, however neither worked for this project. 
+
+		\subsubsection{Week 3.4}
+		    \paragraph{Plans} \hfill \break
+
+		    \paragraph{Progress} \hfill \break
+		
+		    \paragraph{Problems} \hfill \break
+		       
+		    \paragraph{Summary} \hfill \break
+		        Came up with a data mount solution for the climate API. 
+		       
+		\subsubsection{Week 3.5}
+		    \paragraph{Plans} \hfill \break
+		     
+		    \paragraph{Progress} \hfill \break
+		       
+		    \paragraph{Problems} \hfill \break
+		     
+		    \paragraph{Summary} \hfill \break
+		        Created our midterm progress report.
+
+		\subsubsection{Week 3.6}
+		    \paragraph{Plans} \hfill \break
+		       
+		    \paragraph{Progress} \hfill \break
+		      
+		    \paragraph{Problems} \hfill \break
+		    
+		    \paragraph{Summary} \hfill \break
+		        Started creating back-end unit tests.
+		    
+		\subsubsection{Week 3.7}
+		    \paragraph{Plans} \hfill \break
+
+		    \paragraph{Progress} \hfill \break
+		    
+		    \paragraph{Problems} \hfill \break
+		       
+		    \paragraph{Summary} \hfill \break
+		    	\begin{itemize}
+                    \item Finished creating the back-end unit tests
+                    \item Attended Expo
+                \end{itemize}
+		   
+		\subsubsection{Week 3.8}
+		    \paragraph{Plans} \hfill \break
+		    \paragraph{Progress} \hfill \break
+		    \paragraph{Problems} \hfill \break
+		    \paragraph{Summary} \hfill \break
+		        Finished final client recommended changes and re-based to master.
+		    
+		\subsubsection{Week 3.9}
+		    \paragraph{Plans} \hfill \break
+		    \paragraph{Progress} \hfill \break
+		    \paragraph{Problems} \hfill \break
+		    \paragraph{Summary} \hfill \break
+		        Recorded the Final Presentation.
+            
+		\subsubsection{Week 3.10}
+		    \paragraph{Plans} \hfill \break
+		       
+		    \paragraph{Progress} \hfill \break
+		      
+		    \paragraph{Problems} \hfill \break
+		    
+		    \paragraph{Summary} \hfill \break
+		    	\begin{itemize}
+                    \item Finished Final Document 
+                    \item Finished Final Report 
+                \end{itemize}
+
     
     \subsection{Thomas Noelcke}
-        In this section Will be every weekly update that I've made through out the term. It should be noted that I will denote the weeks by [term number].[week] where the week is the week number in the respective term and the term number represents the term. There will be 3 terms 1, 2 and 3 which will represent fall winter and spring respectively.\\ 
-        
+
         \subsubsection {Week 1.1}
         In this week our group had not yet been formed. As such there is no report for this week.
     \subsubsection{Week 1.1}
@@ -869,8 +1249,11 @@
                 No problems this week.\\
 		    \paragraph{Summary} \hfill \break
 		        The primary focus of this week was to work on the final progress presentation and the final progress report document. Given that this document is rather large this took a fair bit of our time this week. We also spent some time working on and recording the final progress report.\\
-		        
+    
+    %shengpei put your week by week summary here.
     \subsection{Shengpei Yuan}
+    
+    
 \newpage
 \section{Final Poster}
     Shown below is a smaller version of the poster we presented at Expo.\\
@@ -891,6 +1274,7 @@
 %This needs to be detailed enough to recreate and/or use your project.
 \section{Project Documentation}
     \subsection{Essential Documents}
+    
     
     %This section will need to cover What websites were helpful?
     %What, if any, reference books really helped?
@@ -916,10 +1300,34 @@
 % If you could do this all over again what would you do differently?
 
 \section{Conclusions and Reflections}
+
     \subsection{Shane Barrantes}
+        Over the course of this project I learned a lot about the following technologies.
+        \begin{itemize}
+            \item \textbf{Django:} I learned how the front-end, back-end, and unit tests work as well as how to add Routes and API Routes.
+            \item \textbf{AngularJS:} I learned basic front-end information about angularJS and got a little bit of insight to how it's often tested.
+            \item \textbf{Rkt:} I learned the limitations of pulling down containers and how to implement bind mounts.
+            \item \textbf{NetCDF:} I learned what NetCDF, it's installation process, how to interact with files, and fairly deep understanding of the functionality.
+            \item \textbf{Github:} I learned how to work in a team environment, how to squash merge conflicts, and how to re-base.
+            \item \textbf{DevOps:} I learned about the deployment process for our project and gained some software building insights.
+        \end{itemize}
+        
+        As far as non-technical information I learned how to frequently communicate with clients and how to work together in a team environment. I also learned how to work independently on a team project.
+        
+        I don't think I learned a whole lot about project work that I hadn't already experienced in a work or internship environment. One thing that stands out is time management while working with a team that has very different active hours than you do. Another thing I learned was how to regularly communicate the work progress directly to the client since.
+        
+        The project management skills I learned over the duration of this project mostly reside in inter-team communication and team scheduling. We frequently setup goals and deadlines that were in flux based on our term schedules, project state, and deadlines.
+        
+        The most important things I learned about working in teams are communication and of how to divide the work based on skills, availability, and fairness. 
+        
+        If I could do this all over again I would look for an alternative solution for our client data API immediately. We took the client specification and tried our best to make it work, however this added months of work on tools and software that in the end were not used in the final product. If we were aware of our final solution sooner, we would have easily been able to do more testing and implement stretch goals.
+
+        
     
     \subsection{Thomas Noelcke}
     
+    
+    %Shengpei Put your conclusion and reflection here.
     \subsection{Shengpei Yuan}
 
 \section{Appendix}    
@@ -927,4 +1335,5 @@
     \subsection{Appendix 1: Essential Code Listings}
 
     \subsection{Appendix 2: Catch all}
+    
 \end{document}
