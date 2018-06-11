@@ -1554,14 +1554,48 @@
 % Any user guides, API documentation etc.
 %This needs to be detailed enough to recreate and/or use your project.
 \section{Project Documentation}
-    \subsection{Essential Documents}
+    \subsection{Configuration Steps}
+        In this section we will include information on how to setup and configure our project for Mac OS X and Ubuntu.
+        \subsubsection{Mac}
+            \begin{itemize}
+                \item Install git: ruby -e "\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \\
+                brew doctor \\
+                brew install git \\
+                \item Clone our project repo: git clone https://github.com/tnoelcke/AgBiz-Logic.git 
+                \item Install Python: brew install python
+                \item Install Python-pip: sudo easy\_install pip
+                \item Install Nodejs: brew install node
+                \item Install PostgreSQL: brew install postgresql
+                \item Move to the directory /AgBiz-Logic/
+                \item Install Django dependencies: pip install -r requirements.txt
+                \item Install node modules: npm install
+                \item Run entrypoint script: ./entrypoint.sh
+            \end{itemize}
+        \subsubsection{Ubuntu}
+            \begin{itemize}
+                \item Install git: sudo apt-get install -y git-core
+                \item Clone our project repo: git clone https://github.com/tnoelcke/AgBiz-Logic.git
+                \item Install Python: sudo apt-get install -y python
+                \item Install Python-pip: sudo apt-get install -y python-pip
+                \item Install Nodejs: curl -sL https://deb.nodesource.com/setup\_8.x | sudo -E bash - \\
+                      sudo apt-get install -y nodejs
+                \item Install PostgreSQL: sudo apt-get install postgresql postgresql-contrib
+                \item Move to the directory /AgBiz-Logic/
+                \item Install Django dependencies: pip install -r requirements.txt
+                \item Install node modules: npm install
+                \item Run entrypoint script: ./entrypoint.sh
+            \end{itemize}
 
+
+    \subsection{Essential Documents}
+            
 
     %This section will need to cover What websites were helpful?
     %What, if any, reference books really helped?
     %were there any people on campus that were really helpful?
     \subsection{Recommended Technical Resources}
         \subsubsection{Helpful web pages}
+            \paragraph{Django-rest-framework.org} The django-rest-framework.org site was an essential resources which covered in-depth information on how to setup a django API view for our climate data API.
 
         \subsubsection{Helpful people on campus}
             \paragraph{Seam Hammond} Sean Hammond is our Clients technical adviser. When ever we ran into problems we weren't sure how to solve Sean was always our go to as he is very familiar with the project and the frame works used on the project.\\
@@ -1631,9 +1665,11 @@
         \subsubsection{Non-Technical Information}
         In this section I will discuss some of the things I learned from this project while working on this project that are not technical items. I will cover what I learned about, working on a team, working with a client, project management and what I would do differently if I were to it all again.\\
         
-            \paragarph{Working On a Team}
+            \paragraph{Working On a Team}
             
-            \paragarph{}
+            \paragraph{Project Management}
+            
+            \paragraph{What I would Do Differently}
         
 
     \subsection{Shengpei Yuan}
