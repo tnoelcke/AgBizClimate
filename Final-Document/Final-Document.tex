@@ -205,12 +205,13 @@
     \subsection{Changes}
     
         \subsubsection{Front End}
-        In this section we will discuss the changes to the design of the front end of this application. We will discuss how our designed changed over the course of the term. 
-        
-        \subsubsection{Back End}
+        In this section we will discuss the changes to the design of the front end of this application. We will discuss how our design changed over the course of the term. 
         
         \subsubsection{API}
+        In this section we will discuss the changes to the design of the back end and API of this application. We will discuss how our design changed over the course of the term.
         
+        At the beginning of the term the data API was meant to be an endpoint that sent a URL request to the Northwest Climate Toolbox to grab climate data for a specific state and county in the United States. However, due to an assortment of issues with their server and components involved this was no longer a viable solution. Instead we downloaded the entire data file and data mounted it. The final API simply takes a state and county, then does a look up in the local data file to return the data to the request sent by the user.
+
         \subsubsection{Architecture Changes}    
 
 \section{Tech Review}
@@ -1565,7 +1566,6 @@
                 \item Install Python: brew install python
                 \item Install Python-pip: sudo easy\_install pip
                 \item Install Nodejs: brew install node
-                \item Install PostgreSQL: brew install postgresql
                 \item Move to the directory /AgBiz-Logic/
                 \item Install Django dependencies: pip install -r requirements.txt
                 \item Install node modules: npm install
@@ -1579,14 +1579,31 @@
                 \item Install Python-pip: sudo apt-get install -y python-pip
                 \item Install Nodejs: curl -sL https://deb.nodesource.com/setup\_8.x | sudo -E bash - \\
                       sudo apt-get install -y nodejs
-                \item Install PostgreSQL: sudo apt-get install postgresql postgresql-contrib
                 \item Move to the directory /AgBiz-Logic/
                 \item Install Django dependencies: pip install -r requirements.txt
                 \item Install node modules: npm install
                 \item Run entrypoint script: ./entrypoint.sh
             \end{itemize}
-
-
+    
+    \subsection{Running the project}
+        Once the project and its dependencies have been successfully installed using the steps in the "Configuration Steps" section, the server can be restarted at any time by running the entrypoint.sh script or using the following command "python app/manage.py run server". 
+    
+    \subsection{Testing the project}
+        Once the project and its dependencies have been successfully installed using the steps in the "Configuration Steps" section the project can be easily tested by using the command "npm test".
+    
+    \subsection{Project Design}
+        \subsubsection{Architecture}
+        
+        \subsubsection{Front End}
+        
+        \subsubsection{Back End}
+        The AgBizClimate back end consists of a Django APIView that's used to route API requests. This APIView acts as an API endpoint and takes the state and country as arguements in the following format climate\_data/state/county. The state and county information is then used to look up a corresponding latitude and longitude using the Python package geopy. Once the latitude and longitude are found found The data API then does a lookup in the climate\_data.nc file in the data mount on the production server to find requested climate data. If the data is not found at that exact latitude and longitude the API then does a search in the surrounding area until valid data is found. Of course, there is a limited distance from the initial request in which the API will actually return data, otherwise an Error is thrown.
+        \begin{center}
+        \includegraphics[width=10cm]{./Images/backend.png}
+        \end{center}
+        
+        
+ 
     \subsection{Essential Documents}
             
 
@@ -1595,7 +1612,17 @@
     %were there any people on campus that were really helpful?
     \subsection{Recommended Technical Resources}
         \subsubsection{Helpful web pages}
-            \paragraph{Django-rest-framework.org} The django-rest-framework.org site was an essential resources which covered in-depth information on how to setup a django API view for our climate data API.
+            \paragraph{Django-rest-framework.org} The django-rest-framework.org site was an essential resources which covered in-depth information on how to setup a django API view for our climate data API.\\
+            
+            \paragraph{Angular JS: } https://angularjs.org - We used this page as a reference for AngularJS syntax and design patterns.\\
+            
+            \paragraph{Jasmine: } https://jasmine.github.io/ - This page is a comprehensive reference on the Jasmine the front end JavaScript testing frame work. This page has documentation to do any thing you might want to do with jasmine.\\ 
+            
+            \paragraph{netcdf4: } http://unidata.github.io/netcdf4-python/ - This page contains a comprehensive guide to all things netcdf4. This reference contains everything including reading and writing netcdf4 files.\\
+            
+            \paragraph{Rocket: } https://coreos.com/rkt/docs/latest/ - This page contains the documentation for the visualization frame work rocket.\\
+            
+            \paragraph{Stack Overflow} It's also fair to mention that we used Stack Overflow for very specific problems that we couldn't find in documentation. This a good reference when we are facing a specific problem that was hard to find in the documentation.\\
 
         \subsubsection{Helpful people on campus}
             \paragraph{Seam Hammond} Sean Hammond is our Clients technical adviser. When ever we ran into problems we weren't sure how to solve Sean was always our go to as he is very familiar with the project and the frame works used on the project.\\
@@ -1666,10 +1693,20 @@
         In this section I will discuss some of the things I learned from this project while working on this project that are not technical items. I will cover what I learned about, working on a team, working with a client, project management and what I would do differently if I were to it all again.\\
         
             \paragraph{Working On a Team}
+            While working on this project I learned that when working on a team communication is key. I learned that communicating frequently and often is important. I also learned that it is especially import to communicate with your team about what your working on. This is important so your team can know what work is getting done so they are sure every thing is getting completed. This is also important because it also ensures that your team doesn't take a task that you are already working thus duplicating work.\\
+            
+            I also learned about the value of pair programming over the course of this project. There were a few times when one of use would get stuck on something for long periods of time. When we eventually asked for help and hand some one look over our shoulder or take a look at the code, we often found the problem. In essence the lesson I learned is that four eyes are better than two and that two heads are better than one.\\
             
             \paragraph{Project Management}
             
+            Through out this project I also learned a lot about project management. I learned how to set up a project board in git hub. I also learned about writing user stories and developing requirements for an application. Through out the course of this project I also learned how to lead a team on software development project.\\
+            
+            The other thing I learned about project management through this project is working with a client. The big lesson I learned is again that communication is key. Communicating with your client is everything. I learned this lesson through positive experiences with our client due to our communication with our client. The main lesson being communicate early and offten.\\
+            
             \paragraph{What I would Do Differently}
+            If I could do this project over again there would be several things i would change. The first of which would be that I would have abandon trying to read netcdf files over the network. When I started to have stability problems I should have realized that netcdf was not going to work over the network for my application. I didn't see the warning signs early enough and wasted a bunch of time trying to figure out how to make a framework that was unstable work.\\
+            
+            If I did this project again I would also be more effective at delegating work to my group mates. It is fair to say that I did more work on this project partially because I have more experience that my team mates but also in part because i was not effective in delegating tasks to my team mates. If I could do this project again I would have delegated tasks more effectively.\\
         
 
     \subsection{Shengpei Yuan}
