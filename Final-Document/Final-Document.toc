@@ -1,0 +1,437 @@
+\contentsline {section}{\numberline {1}Introduction}{4}
+\contentsline {subsection}{\numberline {1.1}The Team}{4}
+\contentsline {paragraph}{Thomas Noelcke}{4}
+\contentsline {paragraph}{Shane Barantes}{4}
+\contentsline {paragraph}{Shengpei Yuan}{4}
+\contentsline {subsection}{\numberline {1.2}Project Sponsors}{4}
+\contentsline {subsection}{\numberline {1.3}Project Importance}{4}
+\contentsline {subsection}{\numberline {1.4}Client Involvement}{4}
+\contentsline {subsection}{\numberline {1.5}Definitions, Acronyms and Abbreviations}{4}
+\contentsline {subsection}{\numberline {1.6}References}{5}
+\contentsline {subsection}{\numberline {1.7}Overview}{5}
+\contentsline {subsection}{\numberline {1.8}Project Scope}{5}
+\contentsline {subsection}{\numberline {1.9}Product Functions}{6}
+\contentsline {subsection}{\numberline {1.10}User Characteristics}{6}
+\contentsline {subsection}{\numberline {1.11}Constraints}{6}
+\contentsline {subsection}{\numberline {1.12}Assumptions and Dependencies}{6}
+\contentsline {section}{\numberline {2}Requirements Document}{6}
+\contentsline {subsection}{\numberline {2.1}Original Document}{6}
+\contentsline {subsection}{\numberline {2.2}Changes}{23}
+\contentsline {subsubsection}{\numberline {2.2.1}Introduction}{23}
+\contentsline {subsubsection}{\numberline {2.2.2}Overall description}{23}
+\contentsline {subsubsection}{\numberline {2.2.3}User Interface Changes}{23}
+\contentsline {paragraph}{Landing page}{23}
+\contentsline {paragraph}{New Climate Scenario Page}{23}
+\contentsline {paragraph}{Region Select Page}{23}
+\contentsline {paragraph}{Charts Page}{23}
+\contentsline {paragraph}{Climate Summary Page}{24}
+\contentsline {subsubsection}{\numberline {2.2.4}Interfaces}{24}
+\contentsline {subsubsection}{\numberline {2.2.5}Functional Requirements changes}{24}
+\contentsline {paragraph}{Functional Requirement 1.3: The data source}{24}
+\contentsline {paragraph}{Functional Requirement 1.4: Getting the Data}{24}
+\contentsline {paragraph}{Functional Requirement 1.5: Calculating Historical Data}{24}
+\contentsline {paragraph}{Functional Requirement 1.6: Formatting the Data}{24}
+\contentsline {section}{\numberline {3}Design Document}{25}
+\contentsline {subsection}{\numberline {3.1}Original Document}{25}
+\contentsline {subsection}{\numberline {3.2}Changes}{59}
+\contentsline {subsubsection}{\numberline {3.2.1}Front End}{59}
+\contentsline {subsubsection}{\numberline {3.2.2}Backend}{59}
+\contentsline {subsubsection}{\numberline {3.2.3}API}{59}
+\contentsline {subsubsection}{\numberline {3.2.4}Architecture}{59}
+\contentsline {section}{\numberline {4}Tech Review}{60}
+\contentsline {section}{\numberline {5}Weekly Blog Posts}{84}
+\contentsline {subsection}{\numberline {5.1}Shane Barrantes}{84}
+\contentsline {subsubsection}{\numberline {5.1.1}Week 1.1}{84}
+\contentsline {paragraph}{Plans}{84}
+\contentsline {paragraph}{Problems}{84}
+\contentsline {paragraph}{Progress}{84}
+\contentsline {paragraph}{Summary}{84}
+\contentsline {subsubsection}{\numberline {5.1.2}Week 1.2}{84}
+\contentsline {paragraph}{Plans}{84}
+\contentsline {paragraph}{Problems}{84}
+\contentsline {paragraph}{Progress}{84}
+\contentsline {paragraph}{Summary}{84}
+\contentsline {subsubsection}{\numberline {5.1.3}Week 1.3}{84}
+\contentsline {paragraph}{Plans}{84}
+\contentsline {paragraph}{Problems}{84}
+\contentsline {paragraph}{Progress}{84}
+\contentsline {paragraph}{Summary}{85}
+\contentsline {subsubsection}{\numberline {5.1.4}Week 1.4}{85}
+\contentsline {paragraph}{Plans}{85}
+\contentsline {paragraph}{Problems}{85}
+\contentsline {paragraph}{Progress}{85}
+\contentsline {paragraph}{Summary}{85}
+\contentsline {subsubsection}{\numberline {5.1.5}Week 1.5}{85}
+\contentsline {paragraph}{Plans}{85}
+\contentsline {paragraph}{Problems}{85}
+\contentsline {paragraph}{Progress}{85}
+\contentsline {paragraph}{Summary}{85}
+\contentsline {subsubsection}{\numberline {5.1.6}Week 1.6}{85}
+\contentsline {paragraph}{Plans}{85}
+\contentsline {paragraph}{Problems}{86}
+\contentsline {paragraph}{Progress}{86}
+\contentsline {paragraph}{Summary}{86}
+\contentsline {subsubsection}{\numberline {5.1.7}Week 1.8}{86}
+\contentsline {paragraph}{Plans}{86}
+\contentsline {paragraph}{Problems}{86}
+\contentsline {paragraph}{Progress}{86}
+\contentsline {paragraph}{Summary}{86}
+\contentsline {subsubsection}{\numberline {5.1.8}Week 1.9}{86}
+\contentsline {paragraph}{Plans}{86}
+\contentsline {paragraph}{Problems}{86}
+\contentsline {paragraph}{Progress}{86}
+\contentsline {paragraph}{Summary}{86}
+\contentsline {subsubsection}{\numberline {5.1.9}Week 1.10}{87}
+\contentsline {paragraph}{Plans}{87}
+\contentsline {paragraph}{Problems}{87}
+\contentsline {paragraph}{Progress}{87}
+\contentsline {paragraph}{Summary}{87}
+\contentsline {subsubsection}{\numberline {5.1.10}Week 2.1}{87}
+\contentsline {paragraph}{Plans}{87}
+\contentsline {paragraph}{Progress}{87}
+\contentsline {paragraph}{Problems}{87}
+\contentsline {paragraph}{Summary}{87}
+\contentsline {subsubsection}{\numberline {5.1.11}Week 2.2}{87}
+\contentsline {paragraph}{Plans}{87}
+\contentsline {paragraph}{Progress}{87}
+\contentsline {paragraph}{Problems}{87}
+\contentsline {paragraph}{Summary}{88}
+\contentsline {subsubsection}{\numberline {5.1.12}Week 2.3}{88}
+\contentsline {paragraph}{Plans}{88}
+\contentsline {paragraph}{Progress}{88}
+\contentsline {paragraph}{Problems}{88}
+\contentsline {paragraph}{Summary}{88}
+\contentsline {subsubsection}{\numberline {5.1.13}week 2.4}{88}
+\contentsline {paragraph}{Plans}{88}
+\contentsline {paragraph}{Progress}{88}
+\contentsline {paragraph}{Problems}{88}
+\contentsline {paragraph}{Summary}{88}
+\contentsline {subsubsection}{\numberline {5.1.14}week 2.5}{88}
+\contentsline {paragraph}{Plans}{88}
+\contentsline {paragraph}{Progress}{88}
+\contentsline {paragraph}{Problems}{88}
+\contentsline {paragraph}{Summary}{89}
+\contentsline {subsubsection}{\numberline {5.1.15}week 2.6}{89}
+\contentsline {paragraph}{Plans}{89}
+\contentsline {paragraph}{Progress}{89}
+\contentsline {paragraph}{Problems}{89}
+\contentsline {paragraph}{Summary}{89}
+\contentsline {subsubsection}{\numberline {5.1.16}week 2.7}{89}
+\contentsline {paragraph}{Plans}{89}
+\contentsline {paragraph}{Progress}{89}
+\contentsline {paragraph}{Problems}{89}
+\contentsline {paragraph}{Summary}{89}
+\contentsline {subsubsection}{\numberline {5.1.17}week 2.8}{89}
+\contentsline {paragraph}{Plans}{89}
+\contentsline {paragraph}{Progress}{89}
+\contentsline {paragraph}{Problems}{89}
+\contentsline {paragraph}{Summary}{90}
+\contentsline {subsubsection}{\numberline {5.1.18}week 2.9}{90}
+\contentsline {paragraph}{Plans}{90}
+\contentsline {paragraph}{Progress}{90}
+\contentsline {paragraph}{Problems}{90}
+\contentsline {paragraph}{Summary}{90}
+\contentsline {subsubsection}{\numberline {5.1.19}week 2.10}{90}
+\contentsline {paragraph}{Plans}{90}
+\contentsline {paragraph}{Progress}{90}
+\contentsline {paragraph}{Problems}{90}
+\contentsline {paragraph}{Summary}{90}
+\contentsline {subsubsection}{\numberline {5.1.20}Week 3.1}{90}
+\contentsline {paragraph}{Plans}{90}
+\contentsline {paragraph}{Progress}{90}
+\contentsline {paragraph}{Problems}{90}
+\contentsline {paragraph}{Summary}{90}
+\contentsline {subsubsection}{\numberline {5.1.21}Week 3.2}{91}
+\contentsline {paragraph}{Plans}{91}
+\contentsline {paragraph}{Progress}{91}
+\contentsline {paragraph}{Problems}{91}
+\contentsline {paragraph}{Summary}{91}
+\contentsline {subsubsection}{\numberline {5.1.22}Week 3.3}{91}
+\contentsline {paragraph}{Plans}{91}
+\contentsline {paragraph}{Progress}{91}
+\contentsline {paragraph}{Problems}{91}
+\contentsline {paragraph}{Summary}{91}
+\contentsline {subsubsection}{\numberline {5.1.23}Week 3.4}{91}
+\contentsline {paragraph}{Plans}{91}
+\contentsline {paragraph}{Progress}{91}
+\contentsline {paragraph}{Problems}{91}
+\contentsline {paragraph}{Summary}{91}
+\contentsline {subsubsection}{\numberline {5.1.24}Week 3.5}{91}
+\contentsline {paragraph}{Plans}{91}
+\contentsline {paragraph}{Progress}{92}
+\contentsline {paragraph}{Problems}{92}
+\contentsline {paragraph}{Summary}{92}
+\contentsline {subsubsection}{\numberline {5.1.25}Week 3.6}{92}
+\contentsline {paragraph}{Plans}{92}
+\contentsline {paragraph}{Progress}{92}
+\contentsline {paragraph}{Problems}{92}
+\contentsline {paragraph}{Summary}{92}
+\contentsline {subsubsection}{\numberline {5.1.26}Week 3.7}{92}
+\contentsline {paragraph}{Plans}{92}
+\contentsline {paragraph}{Progress}{92}
+\contentsline {paragraph}{Problems}{92}
+\contentsline {paragraph}{Summary}{92}
+\contentsline {subsubsection}{\numberline {5.1.27}Week 3.8}{92}
+\contentsline {paragraph}{Plans}{92}
+\contentsline {paragraph}{Progress}{92}
+\contentsline {paragraph}{Problems}{93}
+\contentsline {paragraph}{Summary}{93}
+\contentsline {subsubsection}{\numberline {5.1.28}Week 3.9}{93}
+\contentsline {paragraph}{Plans}{93}
+\contentsline {paragraph}{Progress}{93}
+\contentsline {paragraph}{Problems}{93}
+\contentsline {paragraph}{Summary}{93}
+\contentsline {subsubsection}{\numberline {5.1.29}Week 3.10}{93}
+\contentsline {paragraph}{Plans}{93}
+\contentsline {paragraph}{Progress}{93}
+\contentsline {paragraph}{Problems}{93}
+\contentsline {paragraph}{Summary}{93}
+\contentsline {subsection}{\numberline {5.2}Thomas Noelcke}{93}
+\contentsline {subsubsection}{\numberline {5.2.1}Week 1.1}{93}
+\contentsline {subsubsection}{\numberline {5.2.2}Week 1.1}{94}
+\contentsline {paragraph}{Plans}{94}
+\contentsline {paragraph}{Problems}{94}
+\contentsline {paragraph}{Progress}{94}
+\contentsline {paragraph}{Summary}{94}
+\contentsline {subsubsection}{\numberline {5.2.3}Week 1.3}{94}
+\contentsline {paragraph}{Plans}{94}
+\contentsline {paragraph}{Problems}{94}
+\contentsline {paragraph}{Progress}{94}
+\contentsline {paragraph}{Summary}{95}
+\contentsline {subsubsection}{\numberline {5.2.4}Week 1.4}{95}
+\contentsline {paragraph}{Plans}{95}
+\contentsline {paragraph}{Problems}{95}
+\contentsline {paragraph}{Progress}{95}
+\contentsline {paragraph}{Summary}{95}
+\contentsline {subsubsection}{\numberline {5.2.5}Week 1.5}{95}
+\contentsline {paragraph}{Plans}{95}
+\contentsline {paragraph}{Problems}{95}
+\contentsline {paragraph}{Progress}{96}
+\contentsline {paragraph}{Summary}{96}
+\contentsline {subsubsection}{\numberline {5.2.6}Week 1.6}{96}
+\contentsline {paragraph}{Plans}{96}
+\contentsline {paragraph}{Problems}{96}
+\contentsline {paragraph}{Progress}{96}
+\contentsline {paragraph}{Summary}{96}
+\contentsline {subsubsection}{\numberline {5.2.7}Week 1.7}{97}
+\contentsline {paragraph}{Plans}{97}
+\contentsline {paragraph}{Problems}{97}
+\contentsline {paragraph}{Progress}{97}
+\contentsline {paragraph}{Summary}{97}
+\contentsline {subsubsection}{\numberline {5.2.8}Week 1.8}{97}
+\contentsline {paragraph}{Plans}{97}
+\contentsline {paragraph}{Problems}{97}
+\contentsline {paragraph}{Progress}{97}
+\contentsline {paragraph}{Summary}{98}
+\contentsline {subsubsection}{\numberline {5.2.9}Week 1.9}{98}
+\contentsline {paragraph}{Plans}{98}
+\contentsline {paragraph}{Problems}{98}
+\contentsline {paragraph}{Progress}{98}
+\contentsline {paragraph}{Summary}{98}
+\contentsline {subsubsection}{\numberline {5.2.10}Week 1.10}{98}
+\contentsline {paragraph}{Plans}{98}
+\contentsline {paragraph}{Problems}{98}
+\contentsline {paragraph}{Progress}{99}
+\contentsline {paragraph}{Summary}{99}
+\contentsline {subsubsection}{\numberline {5.2.11}Week 2.1}{99}
+\contentsline {paragraph}{Plans}{99}
+\contentsline {paragraph}{Progress}{99}
+\contentsline {paragraph}{Problems}{99}
+\contentsline {paragraph}{Summary}{99}
+\contentsline {subsubsection}{\numberline {5.2.12}Week 2.2}{99}
+\contentsline {paragraph}{Plans}{99}
+\contentsline {paragraph}{Progress}{100}
+\contentsline {paragraph}{Problems}{100}
+\contentsline {paragraph}{Summary}{100}
+\contentsline {subsubsection}{\numberline {5.2.13}Week 2.3}{100}
+\contentsline {paragraph}{Plans}{100}
+\contentsline {paragraph}{Progress}{100}
+\contentsline {paragraph}{Problems}{101}
+\contentsline {paragraph}{Summary}{101}
+\contentsline {subsubsection}{\numberline {5.2.14}week 2.4}{101}
+\contentsline {paragraph}{Plans}{101}
+\contentsline {paragraph}{Progress}{101}
+\contentsline {paragraph}{Problems}{101}
+\contentsline {paragraph}{Summary}{101}
+\contentsline {subsubsection}{\numberline {5.2.15}week 2.5}{101}
+\contentsline {paragraph}{Plans}{101}
+\contentsline {paragraph}{Progress}{102}
+\contentsline {paragraph}{Problems}{102}
+\contentsline {paragraph}{Summary}{102}
+\contentsline {subsubsection}{\numberline {5.2.16}week 2.6}{102}
+\contentsline {paragraph}{Plans}{102}
+\contentsline {paragraph}{Progress}{103}
+\contentsline {paragraph}{Problems}{103}
+\contentsline {paragraph}{Summary}{103}
+\contentsline {subsubsection}{\numberline {5.2.17}week 2.7}{103}
+\contentsline {paragraph}{Plans}{103}
+\contentsline {paragraph}{Progress}{103}
+\contentsline {paragraph}{Problems}{103}
+\contentsline {paragraph}{Summary}{104}
+\contentsline {subsubsection}{\numberline {5.2.18}week 2.8}{104}
+\contentsline {paragraph}{Plans}{104}
+\contentsline {paragraph}{Progress}{104}
+\contentsline {paragraph}{Problems}{104}
+\contentsline {paragraph}{Summary}{104}
+\contentsline {subsubsection}{\numberline {5.2.19}week 2.9}{104}
+\contentsline {paragraph}{Plans}{104}
+\contentsline {paragraph}{Progress}{105}
+\contentsline {paragraph}{Problems}{105}
+\contentsline {paragraph}{Summary}{105}
+\contentsline {subsubsection}{\numberline {5.2.20}week 2.10}{105}
+\contentsline {paragraph}{Plans}{105}
+\contentsline {paragraph}{Progress}{105}
+\contentsline {paragraph}{Problems}{105}
+\contentsline {paragraph}{Summary}{105}
+\contentsline {subsubsection}{\numberline {5.2.21}Week 3.1}{106}
+\contentsline {paragraph}{Plans}{106}
+\contentsline {paragraph}{Progress}{106}
+\contentsline {paragraph}{Problems}{106}
+\contentsline {paragraph}{Summary}{106}
+\contentsline {subsubsection}{\numberline {5.2.22}Week 3.2}{106}
+\contentsline {paragraph}{Plans}{106}
+\contentsline {paragraph}{Progress}{107}
+\contentsline {paragraph}{Problems}{107}
+\contentsline {paragraph}{Summary}{107}
+\contentsline {subsubsection}{\numberline {5.2.23}Week 3.3}{107}
+\contentsline {paragraph}{Plans}{107}
+\contentsline {paragraph}{Progress}{107}
+\contentsline {paragraph}{Problems}{108}
+\contentsline {paragraph}{Summary}{108}
+\contentsline {subsubsection}{\numberline {5.2.24}Week 3.4}{108}
+\contentsline {paragraph}{Plans}{108}
+\contentsline {paragraph}{Progress}{108}
+\contentsline {paragraph}{Problems}{108}
+\contentsline {paragraph}{Summary}{108}
+\contentsline {subsubsection}{\numberline {5.2.25}Week 3.5}{109}
+\contentsline {paragraph}{Plans}{109}
+\contentsline {paragraph}{Progress}{109}
+\contentsline {paragraph}{Problems}{109}
+\contentsline {paragraph}{Summary}{109}
+\contentsline {subsubsection}{\numberline {5.2.26}Week 3.6}{110}
+\contentsline {paragraph}{Plans}{110}
+\contentsline {paragraph}{Progress}{110}
+\contentsline {paragraph}{Problems}{110}
+\contentsline {paragraph}{Summary}{110}
+\contentsline {subsubsection}{\numberline {5.2.27}Week 3.7}{110}
+\contentsline {paragraph}{Plans}{110}
+\contentsline {paragraph}{Progress}{110}
+\contentsline {paragraph}{Problems}{111}
+\contentsline {paragraph}{Summary}{111}
+\contentsline {subsubsection}{\numberline {5.2.28}Week 3.8}{111}
+\contentsline {paragraph}{Plans}{111}
+\contentsline {paragraph}{Progress}{111}
+\contentsline {paragraph}{Problems}{111}
+\contentsline {paragraph}{Summary}{112}
+\contentsline {subsubsection}{\numberline {5.2.29}Week 3.9}{112}
+\contentsline {paragraph}{Plans}{112}
+\contentsline {paragraph}{Progress}{112}
+\contentsline {paragraph}{Problems}{112}
+\contentsline {paragraph}{Summary}{112}
+\contentsline {subsubsection}{\numberline {5.2.30}Week 3.10}{112}
+\contentsline {paragraph}{Plans}{112}
+\contentsline {paragraph}{Progress}{113}
+\contentsline {paragraph}{Problems}{113}
+\contentsline {paragraph}{Summary}{113}
+\contentsline {subsection}{\numberline {5.3}Shengpei Yuan}{113}
+\contentsline {subsubsection}{\numberline {5.3.1}Week 1.1}{113}
+\contentsline {subsubsection}{\numberline {5.3.2}Week 1.2}{113}
+\contentsline {subsubsection}{\numberline {5.3.3}Week 1.3}{113}
+\contentsline {subsubsection}{\numberline {5.3.4}Week 1.4}{113}
+\contentsline {subsubsection}{\numberline {5.3.5}Week 1.5}{114}
+\contentsline {subsubsection}{\numberline {5.3.6}Week 1.6}{114}
+\contentsline {subsubsection}{\numberline {5.3.7}Week 1.7}{114}
+\contentsline {subsubsection}{\numberline {5.3.8}Week 1.8}{114}
+\contentsline {subsubsection}{\numberline {5.3.9}Week 1.9}{114}
+\contentsline {subsubsection}{\numberline {5.3.10}Week 1.10}{114}
+\contentsline {subsubsection}{\numberline {5.3.11}Week 2.1}{114}
+\contentsline {paragraph}{Plans}{114}
+\contentsline {paragraph}{Progress}{115}
+\contentsline {paragraph}{Problems}{115}
+\contentsline {subsubsection}{\numberline {5.3.12}Week 2.2}{115}
+\contentsline {paragraph}{Plans}{115}
+\contentsline {paragraph}{Progress}{115}
+\contentsline {paragraph}{Problems}{115}
+\contentsline {subsubsection}{\numberline {5.3.13}Week 2.3}{115}
+\contentsline {paragraph}{Plans}{115}
+\contentsline {paragraph}{Progress}{115}
+\contentsline {paragraph}{Problems}{115}
+\contentsline {subsubsection}{\numberline {5.3.14}week 2.4}{115}
+\contentsline {paragraph}{Plans}{115}
+\contentsline {paragraph}{Progress}{116}
+\contentsline {paragraph}{Problems}{116}
+\contentsline {subsubsection}{\numberline {5.3.15}week 2.5}{116}
+\contentsline {paragraph}{Plans}{116}
+\contentsline {paragraph}{Progress}{116}
+\contentsline {paragraph}{Problems}{116}
+\contentsline {subsubsection}{\numberline {5.3.16}week 2.6}{116}
+\contentsline {paragraph}{Plans}{116}
+\contentsline {paragraph}{Progress}{116}
+\contentsline {paragraph}{Problems}{117}
+\contentsline {subsubsection}{\numberline {5.3.17}week 2.7}{117}
+\contentsline {paragraph}{Plans}{117}
+\contentsline {paragraph}{Progress}{117}
+\contentsline {paragraph}{Problems}{117}
+\contentsline {subsubsection}{\numberline {5.3.18}week 2.8}{117}
+\contentsline {paragraph}{Plans}{117}
+\contentsline {paragraph}{Progress}{117}
+\contentsline {paragraph}{Problems}{117}
+\contentsline {subsubsection}{\numberline {5.3.19}week 2.9}{117}
+\contentsline {paragraph}{Plans}{117}
+\contentsline {paragraph}{Progress}{117}
+\contentsline {paragraph}{Problems}{117}
+\contentsline {subsubsection}{\numberline {5.3.20}week 2.10}{118}
+\contentsline {paragraph}{Plans}{118}
+\contentsline {paragraph}{Progress}{118}
+\contentsline {subsubsection}{\numberline {5.3.21}Week 3.1}{118}
+\contentsline {subsubsection}{\numberline {5.3.22}Week 3.2}{118}
+\contentsline {subsubsection}{\numberline {5.3.23}Week 3.3}{118}
+\contentsline {subsubsection}{\numberline {5.3.24}Week 3.4}{118}
+\contentsline {subsubsection}{\numberline {5.3.25}Week 3.5}{118}
+\contentsline {subsubsection}{\numberline {5.3.26}Week 3.6}{118}
+\contentsline {subsubsection}{\numberline {5.3.27}Week 3.7}{118}
+\contentsline {subsubsection}{\numberline {5.3.28}Week 3.8}{118}
+\contentsline {subsubsection}{\numberline {5.3.29}Week 3.9}{118}
+\contentsline {subsubsection}{\numberline {5.3.30}Week 3.10}{119}
+\contentsline {section}{\numberline {6}Final Poster}{120}
+\contentsline {section}{\numberline {7}Project Documentation}{122}
+\contentsline {subsection}{\numberline {7.1}Theory of Operation}{122}
+\contentsline {subsection}{\numberline {7.2}Configuration Steps}{122}
+\contentsline {subsubsection}{\numberline {7.2.1}Mac}{123}
+\contentsline {subsubsection}{\numberline {7.2.2}Ubuntu}{123}
+\contentsline {subsection}{\numberline {7.3}Running the project}{123}
+\contentsline {subsection}{\numberline {7.4}Testing the project}{123}
+\contentsline {subsection}{\numberline {7.5}Project Design}{123}
+\contentsline {subsubsection}{\numberline {7.5.1}Architecture}{123}
+\contentsline {subsubsection}{\numberline {7.5.2}Front End}{124}
+\contentsline {subsubsection}{\numberline {7.5.3}Back End}{125}
+\contentsline {subsection}{\numberline {7.6}Essential Documents}{125}
+\contentsline {subsection}{\numberline {7.7}Recommended Technical Resources}{125}
+\contentsline {subsubsection}{\numberline {7.7.1}Helpful web pages}{125}
+\contentsline {paragraph}{Django-rest-framework.org}{125}
+\contentsline {paragraph}{Angular JS: }{125}
+\contentsline {paragraph}{Jasmine: }{125}
+\contentsline {paragraph}{netcdf4: }{125}
+\contentsline {paragraph}{Rocket: }{125}
+\contentsline {paragraph}{Stack Overflow}{126}
+\contentsline {subsubsection}{\numberline {7.7.2}Helpful people on campus}{126}
+\contentsline {paragraph}{Seam Hammond}{126}
+\contentsline {paragraph}{Rob Hess}{126}
+\contentsline {paragraph}{Graham Barber}{126}
+\contentsline {paragraph}{Zach Lerew}{126}
+\contentsline {section}{\numberline {8}Conclusions and Reflections}{126}
+\contentsline {subsection}{\numberline {8.1}Shane Barrantes}{126}
+\contentsline {subsubsection}{\numberline {8.1.1}Technical Information}{126}
+\contentsline {subsubsection}{\numberline {8.1.2}Non-Technical Information}{126}
+\contentsline {subsection}{\numberline {8.2}Thomas Noelcke}{127}
+\contentsline {subsubsection}{\numberline {8.2.1}Technical Information}{127}
+\contentsline {subsubsection}{\numberline {8.2.2}Non-Technical Information}{128}
+\contentsline {paragraph}{Working On a Team}{128}
+\contentsline {paragraph}{Project Management}{128}
+\contentsline {paragraph}{What I would Do Differently}{128}
+\contentsline {subsection}{\numberline {8.3}Shengpei Yuan}{128}
+\contentsline {subsubsection}{\numberline {8.3.1}Technical Information}{128}
+\contentsline {subsubsection}{\numberline {8.3.2}Non-Technical Information}{129}
+\contentsline {section}{\numberline {9}Appendix}{129}
+\contentsline {subsection}{\numberline {9.1}Appendix 1: Essential Code Listings}{129}
+\contentsline {subsection}{\numberline {9.2}Appendix 2: Catch all}{131}

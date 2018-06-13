@@ -1,32 +1,17 @@
-filename=MidtermProgressReport-W2018
+filename=Final-Document
 
-pdf: ps
-	ps2pdf ${filename}.ps
+all: $(filename).pdf
 
-pdf-print: ps
-	ps2pdf -dColorConversionStrategy=/LeaveColorUnchanged -dPDFSETTINGS=/printer ${filename}.ps
+.PHONY: clean
 
-text: html
-	html2text -width 100 -style pretty ${filename}/${filename}.html | sed -n '/./,$$p' | head -n-2 >${filename}.txt
+$(filename).pdf: *.tex *.bib
+		pdflatex -shell-escape $(filename).tex
+		pdflatex -shell-escape $(filename).tex
+		makeindex $(filename)
+		bibtex $(filename)
+		pdflatex -shell-escape $(filename).tex
+		pdflatex -shell-escape $(filename).tex
 
-html:
-	@#latex2html -split +0 -info "" -no_navigation ${filename}
-	htlatex ${filename}
-
-ps:	dvi
-	dvips -t letter ${filename}.dvi
-
-dvi:
-	latex ${filename}
-	bibtex ${filename}||true
-	latex ${filename}
-	latex ${filename}
-
-read:
-	evince ${filename}.pdf &
-
-aread:
-	acroread ${filename}.pdf
 
 clean:
 	rm -f ${filename}.{ps,log,aux,out,dvi,bbl,blg,toc, lof}
