@@ -227,6 +227,10 @@
         \subsubsection{Architecture}
         The last section of the design that changed over the course of the term was the Architecture of the application. Originally, we were planning on being able to make calls to a rest API that contained the climate data. We were planning on doing this as part of the back-end or if it was really simple as part of the front end. However, as the project progressed we realized that this was not going to work as the implementation of the API we were trying to use wasn't stable. As such we had to make some changes to the Architecture of the application so we could still serve the data. What we ended up doing was mounting the vitalized container that our project is running in to file on the prod server. This now makes the Prod server part of the architecture design in a way that it wasn't before. Shown below is a diagram reflecting this change.\\
         
+        \begin{center}
+        \includegraphics[width=15cm]{./Images/Architecture.png}
+        \end{center}
+        
         
 
 \section{Tech Review}
@@ -1616,16 +1620,19 @@
     
     \subsection{Project Design}
         \subsubsection{Architecture}
-        The AgBizCliamte application architecture is actually fairly simple.  
+        The AgBizCliamte application architecture is actually fairly simple. There are essentially six parts. The first of which is the Front end client. This client is a thick client that handles rendering the UI, interacting with the user and interacting with the back end API. The next part is the back end API. The back end api handles, processing data, serving data and interfacing with the database. The rest API also interfaces with the production server to get data from the data directory. Next there is the production server. The production server is the hosting environment for the Rest API as well as for the data base and the the data directory. The server is also responsible for running a chron job that updates the data directory once a month. The thredds server is a third party server that we connect with to get the short term climate data that we serve to our users. The final part of the application is the database. The database handles storing and serving user data that we want to persist. This includes budgets and climate projections. 
         
         \begin{center}
         \includegraphics[width=15cm]{./Images/Architecture.png}
         \end{center}
         
         \subsubsection{Front End}
+        The front end of this application is a thick client. This thick client is responsible for rendering the user interface, making requests to the api and routing the front end of the application. In our application the front end is actually quite large as there are other tools other than the short term climate tool. However, we are only going to talk about the short term climate tool as this is the part of the project that we worked on. Shown below is a diagram of how the different pages relate to each other. I have omitted the long term climate pages for simplicity.\\
+        
+        
         
         \subsubsection{Back End}
-        The AgBizClimate back end consists of a Django APIView that's used to route API requests. This APIView acts as an API endpoint and takes the state and country as arguements in the following format climate/climate\_data/state/county. The state and county information is then used to look up a corresponding latitude and longitude using the Python package geopy. Once the latitude and longitude are found found The data API then does a look up in the climate\_data.nc file in the data mount on the production server to find requested climate data. If the data is not found at that exact latitude and longitude the API then does a search in the surrounding area until valid data is found. Of course, there is a limited distance from the initial request in which the API will actually return data, otherwise an Error is thrown.
+        The AgBizClimate back end consists of a Django APIView that's used to route API requests. This APIView acts as an API endpoint and takes the state and country as arguments in the following format climate/climate\_data/state/county. The state and county information is then used to look up a corresponding latitude and longitude using the Python package geopy. Once the latitude and longitude are found found The data API then does a look up in the climate\_data.nc file in the data mount on the production server to find requested climate data. If the data is not found at that exact latitude and longitude the API then does a search in the surrounding area until valid data is found. Of course, there is a limited distance from the initial request in which the API will actually return data, otherwise an Error is thrown.
         \begin{center}
         \includegraphics[width=10cm]{./Images/backend.png}
         \end{center}
