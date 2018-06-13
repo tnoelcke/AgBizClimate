@@ -97,6 +97,9 @@
 		\subsection{Project Sponsors}
 		    This project was sponsored by Clark Seavert from OSU the applied economics department at Oregon State University. Professor Seavert specializes in Enterprise budgets, capital investments, and crop and livestock leasing.\\
 
+        \subsection{Project Importance}
+            The importance and goal of the AgBizClimate project was to provide accurate short term climate data (up to seven months out) to farmers, ranchers, and climate researchers in order for them to more accurately make decisions for their respective crafts.
+            
         \subsection{Client Involvement}
             Clark Seavert was largely hands off during this project. However, that's not to say he didn't play a role. Clark was very helpful we reviewing documents and presentations. Clark also provided timely feed back on any change requests to the project.\\
 
@@ -205,14 +208,26 @@
     \subsection{Changes}
     
         \subsubsection{Front End}
-        In this section we will discuss the changes to the design of the front end of this application. We will discuss how our design changed over the course of the term. 
+        In this section we will discuss the changes to the design of the front end of this application. We will discuss how our design changed over the course of the term.\\
+        
+        The design of the front end of the application is largely unchanged from how we envisioned it at the beginning of the term. We were pretty much right about how the interaction between the front end and the back end would work in that we just made rest calls from the front end to the back end. However, It is fair to say that some things did change mostly the order of our pages.\\
+        
+        The main change in our design over the term relates to the fact that we chose where the branch between short term and long term scenarios occurs later in our work flow. Originally, this was going to take place much earlier at the climate manager. After doing some thinking we realized that it made much more sense for this branch to happen at the region select page as the two scenario types share identical steps until after this point. Given that some of the routes in this design depend on that that fact the design has changed to include only one additional page and route that did not exist previously. This is the charts page for the short term scenario. This is the main page that we added. it is fair to say though, that many of the other exist pages did require minor adjustments in order for this to work.\\
+        
+        \subsubsection{Backend}
+        Our original design for the back end of this document was in adequate as we really only had a surface level understanding for how the back end of this project worked. This section should have still been in the original document but would have been a small section where we described how we interacted with the existing back end code. Below I will provide a brief description of how we interact with the back end code.\\
+        
+        It should be noted that there are other parts of the back end that I'm not going to discuss here that our application does rely on but that we are not making any changes too. As such we will not discuss the parts of the back end that we did not have to make changes too. The only major part of the back end that we changed was the model and database entries for climate scenarios. We added one field so we could denote a discernible difference between a short term scenario and a long term scenario. All of the other changes to existing code occurred on the front end.\\
         
         \subsubsection{API}
         In this section we will discuss the changes to the design of the back end and API of this application. We will discuss how our design changed over the course of the term.
         
         At the beginning of the term the data API was meant to be an endpoint that sent a URL request to the Northwest Climate Toolbox to grab climate data for a specific state and county in the United States. However, due to an assortment of issues with their server and components involved this was no longer a viable solution. Instead we downloaded the entire data file and data mounted it. The final API simply takes a state and county, then does a look up in the local data file to return the data to the request sent by the user.
 
-        \subsubsection{Architecture Changes}    
+        \subsubsection{Architecture}
+        The last section of the design that changed over the course of the term was the Architecture of the application. Originally, we were planning on being able to make calls to a rest API that contained the climate data. We were planning on doing this as part of the back-end or if it was really simple as part of the front end. However, as the project progressed we realized that this was not going to work as the implementation of the API we were trying to use wasn't stable. As such we had to make some changes to the Architecture of the application so we could still serve the data. What we ended up doing was mounting the vitalized container that our project is running in to file on the prod server. This now makes the Prod server part of the architecture design in a way that it wasn't before. Shown below is a diagram reflecting this change.\\
+        
+        
 
 \section{Tech Review}
 	\includepdf[pages={1-23}]{./Original-Docs/Tech-Review/TechReviewCombined.pdf}
@@ -1555,6 +1570,14 @@
 % Any user guides, API documentation etc.
 %This needs to be detailed enough to recreate and/or use your project.
 \section{Project Documentation}
+    \subsection{Theory of Operation}
+    The AgBizClimate work flow begins when the use creates a new account. Once the user's account is created they are sent to a landing page where they can navigate to the budget selection page and either upload their own budgets or select pre-loaded university budgets. Once users have selected the budgets they would like to use they navigate to the region selection page where they can select state, county, and climate data type. We worked primarily on the short term climate data type so we will assume the user selected this option. The user is then brought to a charts page where they can view graphical data corresponding to the state and county they selected in the previous page. The variables these charts graph are precipitation, precipitation, temperature, and temperature anomaly. Users can then input the percent change they believe the graphs will affect their budget yields. They are then brought to a final budgets page where they can alter their budget. Finally users are brought to a summary pgae where they can export their new budget. This work flow process is iterative so users can go back and alters the percent change, or add additional budgets.
+        \begin{figure}[h!]
+            \includegraphics[width=17cm]{./Images/workflowDiagram.jpg}
+            \caption{A sample use case diagram for the AgBizClimate project.}
+            % \label{code-listing: findData}
+        \end{figure}
+    
     \subsection{Configuration Steps}
         In this section we will include information on how to setup and configure our project for Mac OS X and Ubuntu.
         \subsubsection{Mac}
@@ -1586,7 +1609,7 @@
             \end{itemize}
     
     \subsection{Running the project}
-        Once the project and its dependencies have been successfully installed using the steps in the "Configuration Steps" section, the server can be restarted at any time by running the entrypoint.sh script or using the following command "python app/manage.py run server". 
+        Once the project and its dependencies have been successfully installed using the steps in the "Configuration Steps" section, the server can be restarted at any time by running the entrypoint.sh script or using the following command "python app/manage.py run server". We have tested our application on Mac OS X and Ubuntu.
     
     \subsection{Testing the project}
         Once the project and its dependencies have been successfully installed using the steps in the "Configuration Steps" section the project can be easily tested by using the command "npm test".
@@ -1594,10 +1617,14 @@
     \subsection{Project Design}
         \subsubsection{Architecture}
         
+        \begin{center}
+        \inclduegraphics[width=15cm]{./Images/}
+        \end{center}
+        
         \subsubsection{Front End}
         
         \subsubsection{Back End}
-        The AgBizClimate back end consists of a Django APIView that's used to route API requests. This APIView acts as an API endpoint and takes the state and country as arguements in the following format climate\_data/state/county. The state and county information is then used to look up a corresponding latitude and longitude using the Python package geopy. Once the latitude and longitude are found found The data API then does a lookup in the climate\_data.nc file in the data mount on the production server to find requested climate data. If the data is not found at that exact latitude and longitude the API then does a search in the surrounding area until valid data is found. Of course, there is a limited distance from the initial request in which the API will actually return data, otherwise an Error is thrown.
+        The AgBizClimate back end consists of a Django APIView that's used to route API requests. This APIView acts as an API endpoint and takes the state and country as arguements in the following format climate/climate\_data/state/county. The state and county information is then used to look up a corresponding latitude and longitude using the Python package geopy. Once the latitude and longitude are found found The data API then does a look up in the climate\_data.nc file in the data mount on the production server to find requested climate data. If the data is not found at that exact latitude and longitude the API then does a search in the surrounding area until valid data is found. Of course, there is a limited distance from the initial request in which the API will actually return data, otherwise an Error is thrown.
         \begin{center}
         \includegraphics[width=10cm]{./Images/backend.png}
         \end{center}
@@ -1740,7 +1767,7 @@
             \caption{This is the data findData function in our ClimateDataView which utilizes a grid search to optimally find the latitude and longitude closest to the user entered state and county.}
             \label{code-listing: findData}
         \end{figure}
-        \newpage
+        \newpage \clearpage
 
     \subsection{Appendix 2: Catch all}
         \begin{figure}[h!]
